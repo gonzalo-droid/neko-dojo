@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+/*
+ * Every page sits inside one theme wrapper (.theme-studio, .theme-animequote, …).
+ * The wrapper defines the --app-* tokens; utilities like bg-canvas or text-ink
+ * read them, so a component looks right in whichever identity it is placed.
+ * Nothing here styles an app from the outside: each theme owns its values.
+ */
+@theme inline {
+  --color-canvas: var(--app-canvas);
+  --color-surface: var(--app-surface);
+  --color-ink: var(--app-ink);
+  --color-muted: var(--app-muted);
+  --color-accent: var(--app-accent);
+  --color-on-accent: var(--app-on-accent);
+  --color-accent2: var(--app-accent2);
+  --color-line: var(--app-line);
+  --color-danger: var(--app-danger, #b42318);
+  --font-display: var(--app-display);
+  --font-body: var(--app-body);
+}
+
+@custom-variant theme-dark (&:where([data-aq-theme="dark"] *));
+
+/* ── Nekodojo studio ─────────────────────────────── */
+.theme-studio {
+  --app-danger: #ff8a80;
+  color-scheme: dark;
+  --app-canvas: #0d0b14;
+  --app-surface: #191523;
+  --app-ink: #f4f0fa;
+  --app-muted: #a49bb5;
+  --app-accent: #a78bfa;
+  --app-on-accent: #0d0b14;
+  --app-accent2: #e9c46a;
+  --app-line: #2a2338;
+  --app-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --app-body: var(--font-inter), system-ui, sans-serif;
+}
+body:has(.theme-studio) { background-color: #0d0b14; }
+
+/* ── AnimeQuote (values from animequote.app) ─────── */
+.theme-animequote {
+  color-scheme: light;
+  --app-canvas: #f7f4ff;
+  --app-surface: #ffffff;
+  --app-ink: #1c1638;
+  --app-muted: #625882;
+  --app-accent: #6d4ae0;
+  --app-on-accent: #f7f4ff;
+  --app-accent2: #e5456b;
+  --app-line: #e4dcfa;
+  --app-display: var(--font-playfair), Georgia, serif;
+  --app-body: var(--font-inter), system-ui, sans-serif;
+}
+html[data-aq-theme="dark"] .theme-animequote {
+  --app-danger: #ff8a80;
+  color-scheme: dark;
+  --app-canvas: #0c0c1e;
+  --app-surface: #181a2e;
+  --app-ink: #f0eaff;
+  --app-muted: #9b8db3;
+  --app-accent: #a78bfa;
+  --app-on-accent: #0c0c1e;
+  --app-accent2: #ff6b8a;
+  --app-line: #2a2846;
+}
+body:has(.theme-animequote) { background-color: #f7f4ff; }
+html[data-aq-theme="dark"] body:has(.theme-animequote) { background-color: #0c0c1e; }
+
+/* ── MTCQuiz ─────────────────────────────────────── */
+.theme-mtcquiz {
+  color-scheme: light;
+  --app-canvas: #fafaf7;
+  --app-surface: #ffffff;
+  --app-ink: #13201f;
+  --app-muted: #4b5b59;
+  --app-accent: #0f766e;
+  --app-on-accent: #ffffff;
+  --app-accent2: #f59e0b;
+  --app-line: #dde6e3;
+  --app-display: var(--font-outfit), system-ui, sans-serif;
+  --app-body: var(--font-inter), system-ui, sans-serif;
+}
+body:has(.theme-mtcquiz) { background-color: #fafaf7; }
+
+/* ── Anki Dojo ───────────────────────────────────── */
+.theme-anki-dojo {
+  color-scheme: light;
+  --app-canvas: #f5efe4;
+  --app-surface: #fbf7ef;
+  --app-ink: #1f1b16;
+  --app-muted: #5e554a;
+  --app-accent: #b5361f;
+  --app-on-accent: #fbf7ef;
+  --app-accent2: #3e6b5a;
+  --app-line: #e2d6c1;
+  --app-display: var(--font-zen-kaku), system-ui, sans-serif;
+  --app-body: var(--font-inter), system-ui, sans-serif;
+}
+body:has(.theme-anki-dojo) { background-color: #f5efe4; }
+
+/* ── Goals ───────────────────────────────────────── */
+.theme-goals {
+  --app-danger: #ff8a80;
+  color-scheme: dark;
+  --app-canvas: #16161a;
+  --app-surface: #222228;
+  --app-ink: #f5f5f2;
+  --app-muted: #a3a39c;
+  --app-accent: #ff6b3d;
+  --app-on-accent: #16161a;
+  --app-accent2: #7dd3a8;
+  --app-line: #34343c;
+  --app-display: var(--font-sora), system-ui, sans-serif;
+  --app-body: var(--font-inter), system-ui, sans-serif;
+}
+body:has(.theme-goals) { background-color: #16161a; }
+
+/* ── Shared base ─────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+:focus-visible {
+  outline: 2px solid var(--app-accent, #a78bfa);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--app-accent);
+  color: var(--app-on-accent);
+  font-weight: 600;
+}
+/* Only for keyboard users: clicks and focus moved by navigation keep it hidden */
+.skip-link:focus-visible { top: 1rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Studio: one orchestrated entrance on the home page */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.rise { animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+/* Studio: tatami grid, very faint */
+.tatami {
+  background-image:
+    linear-gradient(to right, rgb(167 139 250 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(167 139 250 / 0.06) 1px, transparent 1px);
+  background-size: 96px 48px;
+}

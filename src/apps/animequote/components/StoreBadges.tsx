@@ -1,0 +1,98 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Image from "next/image";
+import type { AqContent } from "../content";
+import { RATINGS } from "../content";
+
+type Props = {
+  c: AqContent["badges"];
+  playUrl: string;
+  appStoreUrl: string;
+  showDivider?: boolean;
+  showCaptions?: boolean;
+  showQr?: boolean;
+  align?: "center" | "start";
+};
+
+function StarRating({ rating }: { rating: number }) {
+  return (
+    <span className="inline-flex items-center gap-1 text-xs text-muted">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className="text-accent" aria-hidden="true">
+        <path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z" />
+      </svg>
+      {rating.toFixed(1)}
+    </span>
+  );
+}
+
+const badge =
+  "flex items-center gap-4 rounded-2xl border border-accent/20 bg-surface px-6 py-4 shadow-[0_4px_14px_color-mix(in_srgb,var(--app-accent)_12%,transparent)] transition-colors duration-200 hover:border-accent/50";
+
+export default function StoreBadges({ c, playUrl, appStoreUrl, showDivider = true, showCaptions = true, showQr = false, align = "center" }: Props) {
+  return (
+    <div
+      className={
+        align === "start"
+          ? "flex flex-col items-start justify-start gap-4 sm:flex-row sm:items-center"
+          : "flex flex-col items-center justify-center gap-8 sm:flex-row"
+      }
+    >
+      <div className="flex flex-col items-center gap-3">
+        <div className="flex items-center gap-3">
+          <motion.a href={playUrl} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }} className="block" aria-label={c.gpLabel}>
+            <div className={badge}>
+              <Image src="/apps/animequote/google_play_store.png" alt="" width={30} height={30} className="w-auto object-contain" priority />
+              <div className="text-left">
+                <p className="mb-1 text-xs leading-none text-muted">{c.gpPre}</p>
+                <p className="text-lg font-semibold leading-none text-ink">Google Play</p>
+              </div>
+            </div>
+          </motion.a>
+          {showQr && (
+            <div className="hidden shrink-0 items-center justify-center rounded-xl bg-white p-2 md:flex">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/apps/animequote/qr-google-play.svg" alt={c.gpQr} width={64} height={64} />
+            </div>
+          )}
+        </div>
+        {showCaptions && (
+          <span className="flex items-center gap-2 text-sm text-muted">
+            {c.gpCaption}
+            <StarRating rating={RATINGS.googlePlay} />
+          </span>
+        )}
+      </div>
+
+      {showDivider && <div className="hidden h-20 w-px bg-accent/10 sm:block" />}
+
+      <div className="flex flex-col items-center gap-3">
+        <div className="flex items-center gap-3">
+          <motion.a href={appStoreUrl} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }} className="block" aria-label={c.asLabel}>
+            <div className={badge}>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" className="text-ink" aria-hidden="true">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+              </svg>
+              <div className="text-left">
+                <p className="mb-1 text-xs leading-none text-muted">{c.asPre}</p>
+                <p className="text-lg font-semibold leading-none text-ink">App Store</p>
+              </div>
+            </div>
+          </motion.a>
+          {showQr && (
+            <div className="hidden shrink-0 items-center justify-center rounded-xl bg-white p-2 md:flex">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/apps/animequote/qr-app-store.svg" alt={c.asQr} width={64} height={64} />
+            </div>
+          )}
+        </div>
+        {showCaptions && (
+          <span className="flex items-center gap-2 text-sm text-muted">
+            {c.asCaption}
+            <StarRating rating={RATINGS.appStore} />
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
