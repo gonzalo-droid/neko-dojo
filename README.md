@@ -20,7 +20,7 @@ Opcional: copia `.env.example` a `.env.local`. Sin variables, el sitio funciona 
 
 1. Sube el repositorio a GitHub.
 2. En Vercel: **Add New → Project**, importa el repositorio. Vercel detecta Next.js; no hay que cambiar nada del build.
-3. En **Settings → Environment Variables** añade `NEXT_PUBLIC_SITE_URL=https://nekodojo.com` (Production).
+3. La URL pública (canonical, hreflang, sitemap) sale sola del dominio de producción que Vercel expone en el build (`VERCEL_PROJECT_PRODUCTION_URL`): hoy `neko-dojo.vercel.app`, y `nekodojo.com` en cuanto añadas el dominio. Solo define `NEXT_PUBLIC_SITE_URL` si quieres forzar otra.
 4. Cuando compres el dominio: **Settings → Domains → Add `nekodojo.com`** y sigue las instrucciones de DNS.
 
 Indexación: `robots.txt` solo permite indexar cuando `VERCEL_ENV=production`. Las vistas previas y los builds locales quedan fuera de los buscadores.
@@ -105,4 +105,6 @@ Lo provisional está marcado en pantalla ("Contenido provisional", "Mockup conce
 - **SEO de AnimeQuote**: la landing y los documentos en español apuntan con `canonical` a animequote.app para no competir con ella. Ver `docs/animequote-migration.md`.
 - **Borradores legales** de MTCQuiz, Anki Dojo y Goals: marcados como no vigentes, con `noindex` y fuera del sitemap.
 - **Nombres**: "MTC" (sigla del ministerio) y "Anki" (marca de Ankitects). MTCQuiz muestra un aviso de no afiliación; Anki Dojo figura como nombre provisional.
-- **Rendimiento**: las páginas se renderizan en el servidor en cada visita (la 404 localizada lee una cabecera). Funciona bien en Vercel; si se quiere todo estático, es el primer punto a revisar.
+- **Rendimiento**: el estudio y las landings de MTCQuiz, Anki Dojo y Goals son estáticas. Solo AnimeQuote se renderiza en cada visita, porque lee la cookie de su modo oscuro en su propio layout. La 404 detecta el idioma desde la URL en el cliente: no leas cabeceras ni cookies en el layout raíz o en `not-found.tsx`, porque eso vuelve dinámico todo el sitio.
+- **Contenido provisional**: los textos que empiezan por `[Pendiente]`/`[Pending]` no se muestran; la sección se oculta. Una app publicada con `provisional: true` (MTCQuiz) queda con `noindex` y fuera del sitemap hasta completar su contenido (`isIndexable` en `src/content/apps.ts`).
+- **Novedades**: cada entrada de `news` acepta `date: "AAAA-MM"`; ponla solo con la fecha real.
