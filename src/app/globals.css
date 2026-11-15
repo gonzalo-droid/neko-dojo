@@ -20,7 +20,7 @@
   --font-body: var(--app-body);
 }
 
-@custom-variant theme-dark (&:where([data-aq-theme="dark"] *));
+@custom-variant theme-dark (&:where([data-aq-theme="dark"], [data-aq-theme="dark"] *));
 
 /* ── Nekodojo studio ─────────────────────────────── */
 .theme-studio {
@@ -53,7 +53,7 @@ body:has(.theme-studio) { background-color: #0d0b14; }
   --app-display: var(--font-playfair), Georgia, serif;
   --app-body: var(--font-inter), system-ui, sans-serif;
 }
-html[data-aq-theme="dark"] .theme-animequote {
+.theme-animequote[data-aq-theme="dark"] {
   --app-danger: #ff8a80;
   color-scheme: dark;
   --app-canvas: #0c0c1e;
@@ -66,7 +66,7 @@ html[data-aq-theme="dark"] .theme-animequote {
   --app-line: #2a2846;
 }
 body:has(.theme-animequote) { background-color: #f7f4ff; }
-html[data-aq-theme="dark"] body:has(.theme-animequote) { background-color: #0c0c1e; }
+body:has(.theme-animequote[data-aq-theme="dark"]) { background-color: #0c0c1e; }
 
 /* ── MTCQuiz ─────────────────────────────────────── */
 .theme-mtcquiz {

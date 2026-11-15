@@ -4,7 +4,7 @@ import { useActionState, useState } from "react";
 import { submitContact, type FormState } from "@/lib/forms/actions";
 import { validateContact, type FieldErrors } from "@/lib/forms/validation";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { DemoNotice, FieldError, inputClass } from "./Field";
+import { DemoNotice, Fallback, FieldError, inputClass } from "./Field";
 
 type Props = {
   t: Dictionary["forms"];
@@ -12,9 +12,11 @@ type Props = {
   connected: boolean;
   app?: string;
   options?: { value: string; label: string }[];
+  /** Working alternative while forms are in demo mode. */
+  fallbackEmail?: string;
 };
 
-export default function ContactForm({ t, locale, connected, app, options }: Props) {
+export default function ContactForm({ t, locale, connected, app, options, fallbackEmail }: Props) {
   const [state, action, pending] = useActionState<FormState, FormData>(submitContact, { status: "idle" });
   const [clientErrors, setClientErrors] = useState<FieldErrors | null>(null);
   const errors = clientErrors ?? state.errors ?? {};
@@ -43,6 +45,7 @@ export default function ContactForm({ t, locale, connected, app, options }: Prop
 
   return (
     <form action={action} onSubmit={onSubmit} noValidate className="space-y-4">
+      {!connected && fallbackEmail && <Fallback text={t.fallbackContact} href={`mailto:${fallbackEmail}`} linkLabel={fallbackEmail} />}
       {!connected && <DemoNotice text={t.demoNotice} />}
       <input type="hidden" name="locale" value={locale} />
       <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
@@ -76,7 +79,7 @@ export default function ContactForm({ t, locale, connected, app, options }: Prop
       <button
         type="submit"
         disabled={pending}
-        className="inline-flex items-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-on-accent transition-opacity hover:opacity-90 disabled:opacity-60"
+        className="inline-flex min-h-11 items-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-on-accent transition-opacity hover:opacity-90 disabled:opacity-60"
       >
         {pending ? t.sending : t.send}
       </button>

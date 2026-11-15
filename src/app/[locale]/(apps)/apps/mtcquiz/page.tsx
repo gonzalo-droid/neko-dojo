@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale, type LocaleParams } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
-import { getApp } from "@/content/apps";
+import { getApp, isIndexable, isPlaceholder, liveStores, readyFaq } from "@/content/apps";
+import { mobileApplication } from "@/lib/structured-data";
+import JsonLd from "@/components/shared/JsonLd";
 import { mtcContent } from "@/apps/mtcquiz/content";
 import AppChrome from "@/components/app/AppChrome";
 import StoreButtons from "@/components/app/StoreButtons";
@@ -14,7 +16,7 @@ const app = getApp("mtcquiz");
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
   const locale = await getLocale(params);
   const c = mtcContent[locale];
-  return pageMetadata({ locale, path: "/apps/mtcquiz", title: c.meta.title, description: c.meta.description, siteName: "MTCQuiz" });
+  return pageMetadata({ locale, path: "/apps/mtcquiz", title: c.meta.title, description: c.meta.description, siteName: "MTCQuiz", noindex: !isIndexable(app) });
 }
 
 function Tag({ children }: { children: React.ReactNode }) {
@@ -25,9 +27,14 @@ export default async function MtcQuizPage({ params }: LocaleParams) {
   const locale = await getLocale(params);
   const t = getDictionary(locale);
   const c = mtcContent[locale];
+  const faq = readyFaq(app.support.faq[locale]);
+  const hasSource = !isPlaceholder(c.sourceBody);
+  const hasStores = liveStores(app).length > 0;
+  const appLd = mobileApplication(app, locale);
 
   return (
-    <AppChrome app={app} locale={locale} nav={c.nav}>
+    <AppChrome app={app} locale={locale} nav={faq.length ? c.nav : c.nav.filter((n) => n.href !== "#faq")}>
+      {appLd && <JsonLd data={appLd} />}
       <section className="mx-auto grid max-w-6xl items-center gap-14 px-4 pb-20 pt-14 sm:px-6 md:grid-cols-[1.1fr_1fr] md:pt-20">
         <div>
           <div className="flex flex-wrap items-center gap-3">
@@ -91,18 +98,33 @@ export default async function MtcQuizPage({ params }: LocaleParams) {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-14 px-4 py-20 sm:px-6 md:grid-cols-2">
-        <div>
-          <h2 className="font-display text-2xl font-bold text-ink">{c.sourceTitle}</h2>
-          <p className="mt-3 leading-relaxed text-muted">{c.sourceBody}</p>
-          <h2 className="mt-12 font-display text-2xl font-bold text-ink">{c.downloadTitle}</h2>
-          <div className="mt-5"><StoreButtons stores={app.stores} t={t.common} /></div>
-        </div>
-        <div id="faq" className="scroll-mt-20">
-          <h2 className="font-display text-2xl font-bold text-ink">{t.common.faq}</h2>
-          <div className="mt-5"><FaqList items={app.support.faq[locale]} /></div>
-        </div>
-      </section>
+      {/* Sections without real content yet are left out instead of showing [Pending] markers. */}
+      {(hasSource || hasStores || faq.length > 0) && (
+        <section className="mx-auto grid max-w-6xl gap-14 px-4 py-20 sm:px-6 md:grid-cols-2">
+          {(hasSource || hasStores) && (
+            <div>
+              {hasSource && (
+                <>
+                  <h2 className="font-display text-2xl font-bold text-ink">{c.sourceTitle}</h2>
+                  <p className="mt-3 leading-relaxed text-muted">{c.sourceBody}</p>
+                </>
+              )}
+              {hasStores && (
+                <>
+                  <h2 className={`${hasSource ? "mt-12" : ""} font-display text-2xl font-bold text-ink`}>{c.downloadTitle}</h2>
+                  <div className="mt-5"><StoreButtons stores={app.stores} t={t.common} /></div>
+                </>
+              )}
+            </div>
+          )}
+          {faq.length > 0 && (
+            <div id="faq" className="scroll-mt-20">
+              <h2 className="font-display text-2xl font-bold text-ink">{t.common.faq}</h2>
+              <div className="mt-5"><FaqList items={faq} /></div>
+            </div>
+          )}
+        </section>
+      )}
     </AppChrome>
   );
 }

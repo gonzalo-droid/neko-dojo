@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale, type LocaleParams } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
-import { getApp } from "@/content/apps";
+import { getApp, readyFaq } from "@/content/apps";
+import { INSTAGRAM_URL } from "@/content/site";
 import { isFormsConnected } from "@/lib/forms/provider";
 import { goalsContent } from "@/apps/goals/content";
 import AppChrome from "@/components/app/AppChrome";
@@ -29,17 +30,16 @@ export default async function GoalsPage({ params }: LocaleParams) {
 
   return (
     <AppChrome app={app} locale={locale} nav={c.nav}>
-      <section className="mx-auto max-w-6xl px-4 pb-20 pt-14 sm:px-6 md:pt-20">
-        <StatusBadge status={app.status} label={t.status[app.status]} className="text-ink" />
-        <h1 className="mt-6 font-display font-bold leading-[0.92] tracking-[-0.04em] text-ink">
-          <span className="block text-[clamp(3.25rem,12vw,9rem)]">{big}.</span>
-          <span className="mt-3 block text-[clamp(1.75rem,5.5vw,4rem)] text-accent md:mt-4">{small}</span>
-        </h1>
-
-        <div className="mt-14 grid items-end gap-12 md:grid-cols-[1fr_1.1fr]">
+      <section className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-20 pt-14 sm:px-6 md:grid-cols-[1.15fr_1fr] md:pt-20">
+          {/* Title, promise and action in one block; the mockup sits beside it, not below a gap. */}
           <div>
-            <p className="max-w-md text-lg leading-relaxed text-muted">{c.heroBody}</p>
-            <a href="#lista" className="mt-8 inline-flex rounded-lg bg-accent px-5 py-3 font-semibold text-on-accent hover:opacity-90">
+            <StatusBadge status={app.status} label={t.status[app.status]} className="text-ink" />
+            <h1 className="mt-6 font-display font-bold leading-[0.92] tracking-[-0.04em] text-ink">
+              <span className="block text-[clamp(3.25rem,10vw,7.5rem)]">{big}.</span>{" "}
+              <span className="mt-3 block text-[clamp(1.75rem,4.5vw,3.5rem)] text-accent md:mt-4">{small}</span>
+            </h1>
+            <p className="mt-8 max-w-md text-lg leading-relaxed text-muted">{c.heroBody}</p>
+            <a href="#lista" className="mt-8 inline-flex min-h-11 items-center rounded-lg bg-accent px-5 py-3 font-semibold text-on-accent hover:opacity-90">
               {t.forms.joinWaitlist}
             </a>
           </div>
@@ -69,7 +69,6 @@ export default async function GoalsPage({ params }: LocaleParams) {
             </div>
             <figcaption className="mt-3 text-xs text-muted">{t.common.conceptMockup}</figcaption>
           </figure>
-        </div>
       </section>
 
       <section id="previstas" className="scroll-mt-20 border-t border-line">
@@ -87,15 +86,15 @@ export default async function GoalsPage({ params }: LocaleParams) {
       </section>
 
       <section className="border-t border-line">
-        <div className="mx-auto grid max-w-6xl gap-14 px-4 py-20 sm:px-6 md:grid-cols-2">
+        <div className="mx-auto grid max-w-3xl gap-16 px-4 py-20 sm:px-6">
           <div id="lista" className="scroll-mt-20">
             <h2 className="font-display text-3xl font-bold text-ink">{c.waitlistTitle}</h2>
             <p className="mt-3 text-muted">{c.waitlistBody}</p>
-            <div className="mt-8"><WaitlistForm t={t.forms} locale={locale} connected={isFormsConnected()} app={app.slug} /></div>
+            <div className="mt-8"><WaitlistForm t={t.forms} locale={locale} connected={isFormsConnected()} app={app.slug} fallbackUrl={INSTAGRAM_URL} compact /></div>
           </div>
           <div id="faq" className="scroll-mt-20">
-            <h2 className="font-display text-2xl font-bold text-ink">{t.common.faq}</h2>
-            <div className="mt-5"><FaqList items={app.support.faq[locale]} /></div>
+            <h2 className="font-display text-3xl font-bold text-ink">{t.common.faq}</h2>
+            <div className="mt-5"><FaqList items={readyFaq(app.support.faq[locale])} /></div>
           </div>
         </div>
       </section>

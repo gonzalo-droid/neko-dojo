@@ -4,7 +4,7 @@ import { useActionState, useState } from "react";
 import { submitWaitlist, type FormState } from "@/lib/forms/actions";
 import { validateWaitlist, type FieldErrors } from "@/lib/forms/validation";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { DemoNotice, FieldError, inputClass } from "./Field";
+import { DemoNotice, Fallback, FieldError, inputClass } from "./Field";
 
 type Props = {
   t: Dictionary["forms"];
@@ -14,9 +14,13 @@ type Props = {
   app?: string;
   options?: { value: string; label: string }[];
   idPrefix?: string;
+  /** Working alternative while forms are in demo mode (the studio's Instagram). */
+  fallbackUrl?: string;
+  /** Email and button on one line, for app landings. */
+  compact?: boolean;
 };
 
-export default function WaitlistForm({ t, locale, connected, app, options, idPrefix = "wl" }: Props) {
+export default function WaitlistForm({ t, locale, connected, app, options, idPrefix = "wl", fallbackUrl, compact = false }: Props) {
   const [state, action, pending] = useActionState<FormState, FormData>(submitWaitlist, { status: "idle" });
   const [clientErrors, setClientErrors] = useState<FieldErrors | null>(null);
   const errors = clientErrors ?? state.errors ?? {};
@@ -33,6 +37,7 @@ export default function WaitlistForm({ t, locale, connected, app, options, idPre
 
   return (
     <form action={action} onSubmit={onSubmit} noValidate className="space-y-4">
+      {!connected && fallbackUrl && <Fallback text={t.fallbackWaitlist} href={fallbackUrl} linkLabel={t.instagram} />}
       {!connected && <DemoNotice text={t.demoNotice} />}
       <input type="hidden" name="locale" value={locale} />
       <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
@@ -46,7 +51,8 @@ export default function WaitlistForm({ t, locale, connected, app, options, idPre
           </select>
         </div>
       ) : null}
-      <div>
+      <div className={compact ? "flex flex-col gap-3 sm:flex-row sm:items-end" : undefined}>
+        <div className={compact ? "min-w-0 flex-1" : undefined}>
         <label htmlFor={id("email")} className="text-sm font-medium text-ink">{t.email}</label>
         <input
           id={id("email")}
@@ -59,8 +65,18 @@ export default function WaitlistForm({ t, locale, connected, app, options, idPre
           onChange={() => clientErrors?.email && setClientErrors({ ...clientErrors, email: undefined })}
           className={inputClass}
         />
-        <FieldError id={id("email-err")} message={errors.email && t.errors[errors.email]} />
+        </div>
+        {compact && (
+          <button
+            type="submit"
+            disabled={pending}
+            className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-on-accent transition-opacity hover:opacity-90 disabled:opacity-60"
+          >
+            {pending ? t.sending : t.joinWaitlist}
+          </button>
+        )}
       </div>
+      <FieldError id={id("email-err")} message={errors.email && t.errors[errors.email]} />
       <div>
         <label className="flex items-start gap-3 text-sm text-muted">
           <input
@@ -74,13 +90,15 @@ export default function WaitlistForm({ t, locale, connected, app, options, idPre
         </label>
         <FieldError id={id("consent-err")} message={errors.consent && t.errors[errors.consent]} />
       </div>
-      <button
-        type="submit"
-        disabled={pending}
-        className="inline-flex items-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-on-accent transition-opacity hover:opacity-90 disabled:opacity-60"
-      >
-        {pending ? t.sending : t.joinWaitlist}
-      </button>
+      {!compact && (
+        <button
+          type="submit"
+          disabled={pending}
+          className="inline-flex min-h-11 items-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-on-accent transition-opacity hover:opacity-90 disabled:opacity-60"
+        >
+          {pending ? t.sending : t.joinWaitlist}
+        </button>
+      )}
       <p aria-live="polite" className="text-sm text-ink">
         {state.status === "demo" && t.demoResult}
         {state.status === "sent" && t.joined}

@@ -3,11 +3,17 @@ import type { Dictionary } from "./es";
 const en: Dictionary = {
   meta: {
     homeTitle: "Nekodojo — Small apps. Big possibilities.",
-    homeDescription: "Nekodojo is an independent studio making apps to learn, get inspired and keep moving.",
+    homeDescription:
+      "Nekodojo is an independent app studio: AnimeQuote (anime quotes), MTCQuiz (Peru's driving test), Anki Dojo and Goals. Each app has its own identity.",
+    catalogTitle: "Nekodojo apps: AnimeQuote, MTCQuiz, Anki Dojo and Goals",
+    studioTitle: "The studio — Nekodojo, independent apps",
+    supportTitle: "Nekodojo support: help, contact and data deletion",
+    legalTitle: "Nekodojo legal center: privacy and terms",
   },
   a11y: { skip: "Skip to content", mainNav: "Main navigation", footerNav: "Footer", language: "Language" },
   nav: { apps: "Apps", studio: "Studio", support: "Support", legal: "Legal" },
   languageSwitch: { label: "Español", short: "ES", hint: "View this page in Spanish" },
+  breadcrumbs: { label: "Breadcrumb", apps: "Apps" },
   status: { available: "Available", "in-development": "In development", pending: "To be confirmed" },
   common: {
     provisional: "Placeholder content",
@@ -27,10 +33,16 @@ const en: Dictionary = {
     faq: "Frequently asked questions",
     waitlist: "Waitlist",
     updated: "Last updated",
+    storesPending: "We're confirming the download links. They'll show up here very soon.",
+    rating: (value: string) => `${value} out of 5 in the store`,
   },
   home: {
     lead: "Nekodojo is an independent studio. We make small, carefully built apps, each with a personality of its own.",
-    explore: "Explore the apps",
+    explore: "See the apps",
+    available: "Available",
+    upcoming: "On the way",
+    upcomingBody: "Apps we're building. Visit their page to hear when they launch.",
+    notify: "Notify me",
     shelfLabel: "The studio's apps",
     aboutTitle: "A dojo for small ideas",
     aboutBody:
@@ -42,13 +54,29 @@ const en: Dictionary = {
   },
   catalog: {
     title: "Apps",
-    description: "Every Nekodojo app and where it stands today.",
+    description:
+      "Every Nekodojo app: anime quotes, practice for Peru's driving test, languages with flashcards and goals in steps. Status, platforms and support.",
     intro: "Each app has its own page with links, support and legal documents.",
+    filterLabel: "Filter apps",
+    filterAll: "All",
+    filterAvailable: "Available",
+    filterUpcoming: "On the way",
+    platforms: "Platforms",
+    platformsPending: "To be confirmed",
+    page: "Page",
+    empty: "No apps match this filter.",
   },
   studio: {
     title: "The studio",
-    description: "Nekodojo is an independent studio making tools to learn, get inspired and keep moving.",
+    description:
+      "Nekodojo is an independent studio making small apps to learn, get inspired and keep moving, each with its own identity. See how we work.",
     lead: "Nekodojo is an independent app studio.",
+    principlesTitle: "How we think about apps",
+    timelineTitle: "The apps, one by one",
+    timelineBody: "Each app moves at its own pace. This is where they stand today.",
+    contactTitle: "Want to tell us something?",
+    contactBody: "Ideas, bugs or questions: a person reads every message.",
+    contactCta: "Write to us",
     blocks: [
       {
         title: "Why we exist",
@@ -66,12 +94,24 @@ const en: Dictionary = {
   },
   support: {
     title: "Support",
-    description: "General Nekodojo help and support for each app.",
-    lead: "Need help? Pick the app or write to us.",
+    description:
+      "Help for Nekodojo apps: frequently asked questions, how to delete your data from each app and how to write to us. A person answers.",
+    lead: "Need help? Pick what you need.",
+    tasksTitle: "What do you need?",
+    taskApp: { title: "I have a problem with an app", body: "Pick the app to see its FAQ and contact." },
+    taskData: { title: "I want to delete my data", body: "Each app explains what it stores and how to remove it." },
+    taskOther: { title: "Something else", body: "Write to us and a person will answer." },
+    deleteFor: (name: string) => `${name} data`,
+    copy: "Copy email",
+    copied: "Email copied",
+    writeEmail: "Write an email",
+    emailSubject: (name: string) => `Question about ${name}`,
+    deletionUnreleased: "This app isn't published yet, so it doesn't store any of your data.",
+    deletionContact: "To ask us to delete any of your data related to this app, write to:",
     byApp: "Support by app",
     general: "General questions",
     generalFaq: [
-      { q: "How do I contact the studio?", a: "Use the form on this page or the contact email. A person reads and answers every message." },
+      { q: "How do I contact the studio?", a: "Write to the contact email shown on this page. A person reads and answers every message." },
       { q: "How do I delete my data from an app?", a: "Each app has instructions on its support page, under “Delete data”." },
     ],
     contactTitle: "Write to us",
@@ -83,6 +123,13 @@ const en: Dictionary = {
     title: "Legal center",
     description: "Privacy policies and terms for every Nekodojo app.",
     lead: "Each app has its own documents.",
+    statesTitle: "What each status means",
+    liveExplain: "the document that applies today.",
+    draftExplain: "an outline that doesn't describe the app's actual practices yet. It has no legal value.",
+    colApp: "App",
+    colData: "Your data",
+    deleteData: "Delete data",
+    toc: "On this page",
     live: "In force",
     draft: "Draft",
     draftBanner:
@@ -109,6 +156,9 @@ const en: Dictionary = {
     send: "Send message",
     sending: "Sending…",
     sent: "Message sent. We'll get back to you soon.",
+    fallbackWaitlist: "While we connect the waitlist, follow development on Instagram:",
+    fallbackContact: "While we connect the form, write to us directly at",
+    instagram: "Follow on Instagram",
     joined: "Done, you're on the list.",
     errors: {
       emailRequired: "Enter your email.",
@@ -124,6 +174,7 @@ const en: Dictionary = {
     body: "The link may be mistyped, or the page may have moved.",
     home: "Go home",
     apps: "See the apps",
+    shortcuts: "Looking for one of these apps?",
   },
   footer: {
     rights: "All rights reserved.",

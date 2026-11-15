@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale, type LocaleParams } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
-import { getApp } from "@/content/apps";
+import { getApp, readyFaq } from "@/content/apps";
+import { INSTAGRAM_URL } from "@/content/site";
 import { isFormsConnected } from "@/lib/forms/provider";
 import { ankiContent } from "@/apps/anki-dojo/content";
 import Flashcards from "@/apps/anki-dojo/Flashcards";
@@ -56,19 +57,22 @@ export default async function AnkiDojoPage({ params }: LocaleParams) {
       </section>
 
       <section className="border-t border-line bg-ink text-canvas">
-        <div className="mx-auto grid max-w-6xl gap-14 px-4 py-20 sm:px-6 md:grid-cols-2">
-          <div id="lista" className="scroll-mt-20">
+        <div id="lista" className="mx-auto grid max-w-6xl scroll-mt-20 gap-10 px-4 py-20 sm:px-6 md:grid-cols-[1fr_1.3fr] md:items-center">
+          <div>
             <h2 className="font-display text-3xl font-bold">{c.waitlistTitle}</h2>
             <p className="mt-3 text-canvas/75">{c.waitlistBody}</p>
-            {/* Re-scope the theme so the form reads on the dark band */}
-            <div className="theme-anki-dojo mt-8 rounded-2xl bg-canvas p-5 text-ink sm:p-6">
-              <WaitlistForm t={t.forms} locale={locale} connected={isFormsConnected()} app={app.slug} />
-            </div>
           </div>
-          <div id="faq" className="theme-anki-dojo rounded-2xl bg-canvas p-5 text-ink sm:p-6">
-            <h2 className="font-display text-2xl font-bold">{t.common.faq}</h2>
-            <div className="mt-5"><FaqList items={app.support.faq[locale]} /></div>
+          {/* Re-scope the theme so the form reads on the dark band */}
+          <div className="theme-anki-dojo rounded-2xl bg-canvas p-5 text-ink sm:p-6">
+            <WaitlistForm t={t.forms} locale={locale} connected={isFormsConnected()} app={app.slug} fallbackUrl={INSTAGRAM_URL} compact />
           </div>
+        </div>
+      </section>
+
+      <section id="faq" className="scroll-mt-20 border-t border-line">
+        <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
+          <h2 className="font-display text-3xl font-bold text-ink">{t.common.faq}</h2>
+          <div className="mt-6"><FaqList items={readyFaq(app.support.faq[locale])} /></div>
         </div>
       </section>
     </AppChrome>

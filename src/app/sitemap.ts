@@ -1,12 +1,13 @@
 import type { MetadataRoute } from "next";
 import { locales, localizePath } from "@/i18n/config";
-import { apps } from "@/content/apps";
+import { apps, isIndexable } from "@/content/apps";
 import { SITE_URL } from "@/content/site";
 
-/** Every public page in both languages, with hreflang alternates. Drafts are left out. */
+/** Every public page in both languages, with hreflang alternates. Drafts and placeholder pages are left out. */
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = ["/", "/apps", "/studio", "/support", "/legal"];
   for (const app of apps) {
+    if (!isIndexable(app)) continue;
     paths.push(`/apps/${app.slug}`, `/apps/${app.slug}/support`);
     if (app.legal.mode === "live") paths.push(`/apps/${app.slug}/privacy`, `/apps/${app.slug}/terms`);
   }

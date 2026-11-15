@@ -1,11 +1,17 @@
 const es = {
   meta: {
     homeTitle: "Nekodojo — Pequeñas apps. Grandes posibilidades.",
-    homeDescription: "Nekodojo es un estudio independiente que crea apps para aprender, inspirarse y avanzar.",
+    homeDescription:
+      "Nekodojo es un estudio independiente de apps: AnimeQuote (frases de anime), MTCQuiz (examen de manejo en Perú), Anki Dojo y Goals. Cada una con su identidad.",
+    catalogTitle: "Apps de Nekodojo: AnimeQuote, MTCQuiz, Anki Dojo y Goals",
+    studioTitle: "El estudio — Nekodojo, apps independientes",
+    supportTitle: "Soporte de Nekodojo: ayuda, contacto y eliminación de datos",
+    legalTitle: "Centro legal de Nekodojo: privacidad y términos",
   },
   a11y: { skip: "Saltar al contenido", mainNav: "Navegación principal", footerNav: "Pie de página", language: "Idioma" },
   nav: { apps: "Apps", studio: "Estudio", support: "Soporte", legal: "Legal" },
   languageSwitch: { label: "English", short: "EN", hint: "Ver esta página en inglés" },
+  breadcrumbs: { label: "Ruta de navegación", apps: "Apps" },
   status: { available: "Disponible", "in-development": "En desarrollo", pending: "Por confirmar" },
   common: {
     provisional: "Contenido provisional",
@@ -25,10 +31,16 @@ const es = {
     faq: "Preguntas frecuentes",
     waitlist: "Lista de espera",
     updated: "Última actualización",
+    storesPending: "Estamos confirmando los enlaces de descarga. Aparecerán aquí muy pronto.",
+    rating: (value: string) => `${value} de 5 en la tienda`,
   },
   home: {
     lead: "Nekodojo es un estudio independiente. Hacemos apps pequeñas y cuidadas, cada una con su propia personalidad.",
-    explore: "Explorar las apps",
+    explore: "Ver las apps",
+    available: "Disponibles",
+    upcoming: "En camino",
+    upcomingBody: "Apps que estamos construyendo. Entra a su página para enterarte cuando salgan.",
+    notify: "Avísame",
     shelfLabel: "Las apps del estudio",
     aboutTitle: "Un dojo para ideas pequeñas",
     aboutBody:
@@ -40,13 +52,29 @@ const es = {
   },
   catalog: {
     title: "Apps",
-    description: "Todas las apps de Nekodojo, con su estado actual.",
+    description:
+      "Todas las apps de Nekodojo: frases de anime, práctica para el examen de manejo en Perú, idiomas con tarjetas y metas por pasos. Estado, plataformas y soporte.",
     intro: "Cada app tiene su propia página, con sus enlaces, soporte y documentos legales.",
+    filterLabel: "Filtrar apps",
+    filterAll: "Todas",
+    filterAvailable: "Disponibles",
+    filterUpcoming: "En camino",
+    platforms: "Plataformas",
+    platformsPending: "Por confirmar",
+    page: "Página",
+    empty: "No hay apps en este filtro.",
   },
   studio: {
     title: "El estudio",
-    description: "Nekodojo es un estudio independiente que crea herramientas para aprender, inspirarse y avanzar.",
+    description:
+      "Nekodojo es un estudio independiente que crea apps pequeñas para aprender, inspirarse y avanzar, cada una con su propia identidad. Conoce cómo trabajamos.",
     lead: "Nekodojo es un estudio independiente de apps.",
+    principlesTitle: "Cómo pensamos las apps",
+    timelineTitle: "Las apps, una a una",
+    timelineBody: "Cada app avanza a su ritmo. Este es su estado hoy.",
+    contactTitle: "¿Quieres decirnos algo?",
+    contactBody: "Ideas, errores o preguntas: una persona lee cada mensaje.",
+    contactCta: "Escríbenos",
     blocks: [
       {
         title: "Para qué existimos",
@@ -64,12 +92,24 @@ const es = {
   },
   support: {
     title: "Soporte",
-    description: "Ayuda general de Nekodojo y soporte por app.",
-    lead: "¿Necesitas ayuda? Elige la app o escríbenos.",
+    description:
+      "Ayuda para las apps de Nekodojo: preguntas frecuentes, cómo eliminar tus datos de cada app y cómo escribirnos. Te responde una persona.",
+    lead: "¿Necesitas ayuda? Elige qué necesitas.",
+    tasksTitle: "¿Qué necesitas?",
+    taskApp: { title: "Tengo un problema con una app", body: "Elige la app para ver sus preguntas frecuentes y su contacto." },
+    taskData: { title: "Quiero borrar mis datos", body: "Cada app explica qué guarda y cómo eliminarlo." },
+    taskOther: { title: "Otra consulta", body: "Escríbenos y te responde una persona." },
+    deleteFor: (name: string) => `Datos de ${name}`,
+    copy: "Copiar correo",
+    copied: "Correo copiado",
+    writeEmail: "Escribir un correo",
+    emailSubject: (name: string) => `Consulta sobre ${name}`,
+    deletionUnreleased: "Esta app todavía no está publicada, así que no guarda datos tuyos.",
+    deletionContact: "Para pedir que eliminemos cualquier dato tuyo relacionado con esta app, escríbenos a:",
     byApp: "Soporte por app",
     general: "Preguntas generales",
     generalFaq: [
-      { q: "¿Cómo contacto al estudio?", a: "Escríbenos con el formulario de esta página o al correo de contacto. Respondemos personalmente." },
+      { q: "¿Cómo contacto al estudio?", a: "Escríbenos al correo de contacto que ves en esta página. Respondemos personalmente." },
       { q: "¿Cómo elimino mis datos de una app?", a: "Cada app tiene instrucciones en su página de soporte, en la sección «Eliminar datos»." },
     ],
     contactTitle: "Escríbenos",
@@ -81,6 +121,13 @@ const es = {
     title: "Centro legal",
     description: "Políticas de privacidad y términos de cada app de Nekodojo.",
     lead: "Cada app tiene sus propios documentos.",
+    statesTitle: "Qué significa cada estado",
+    liveExplain: "el documento que se aplica hoy.",
+    draftExplain: "una estructura que todavía no describe las prácticas reales de la app. No tiene valor legal.",
+    colApp: "App",
+    colData: "Tus datos",
+    deleteData: "Eliminar datos",
+    toc: "En esta página",
     live: "Vigente",
     draft: "Borrador",
     draftBanner:
@@ -107,6 +154,9 @@ const es = {
     send: "Enviar mensaje",
     sending: "Enviando…",
     sent: "Mensaje enviado. Te responderemos pronto.",
+    fallbackWaitlist: "Mientras conectamos la lista de espera, sigue el desarrollo en Instagram:",
+    fallbackContact: "Mientras conectamos el formulario, escríbenos directamente a",
+    instagram: "Seguir en Instagram",
     joined: "Listo, estás en la lista.",
     errors: {
       emailRequired: "Escribe tu correo.",
@@ -122,6 +172,7 @@ const es = {
     body: "Puede que el enlace esté mal escrito o que la página se haya movido.",
     home: "Ir al inicio",
     apps: "Ver las apps",
+    shortcuts: "¿Buscabas una de estas apps?",
   },
   footer: {
     rights: "Todos los derechos reservados.",

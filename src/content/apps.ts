@@ -31,6 +31,10 @@ export type AppEntry = {
   tagline: L;
   summary: L;
   stores: StoreLink[];
+  /** Real average rating shown in the stores. Leave it out if there is none. */
+  rating?: number;
+  /** Real screenshot for the studio cards (public path). */
+  screenshot?: { src: string; width: number; height: number; alt: L };
   legal:
     | { mode: "live"; updated: L; publishedAt: { privacy: string; terms: string } }
     | { mode: "draft" };
@@ -61,6 +65,16 @@ export const apps: AppEntry[] = [
       { store: "google-play", url: "https://play.google.com/store/apps/details?id=com.gondroid.quoteanime" },
       { store: "app-store", url: "https://apps.apple.com/pe/app/quoteanime-frases-de-anime/id6762100338?l=en-GB" },
     ],
+    rating: 4.5,
+    screenshot: {
+      src: "/apps/animequote/home_app.png",
+      width: 900,
+      height: 1901,
+      alt: {
+        es: "Pantalla principal de AnimeQuote mostrando una frase de anime a pantalla completa",
+        en: "AnimeQuote home screen showing a full-screen anime quote",
+      },
+    },
     legal: {
       mode: "live",
       updated: { es: "abril de 2026", en: "April 2026" },
@@ -182,14 +196,40 @@ export const apps: AppEntry[] = [
   },
 ];
 
+/** Texts that still start with a [Pending]/[Placeholder] marker are kept out of the page. */
+export function isPlaceholder(text: string): boolean {
+  return /^\[(pendiente|pending|provisional|placeholder)/i.test(text.trim());
+}
+
+/** FAQ entries ready to publish (question and answer without markers). */
+export function readyFaq(items: Faq[]): Faq[] {
+  return items.filter((f) => !isPlaceholder(f.q) && !isPlaceholder(f.a));
+}
+
+/** Store links that actually go somewhere. */
+export function liveStores(app: AppEntry): (StoreLink & { url: string })[] {
+  return app.stores.filter((s): s is StoreLink & { url: string } => !!s.url);
+}
+
+/**
+ * A published app whose page is still full of placeholders stays out of search
+ * until the real content is in (same idea as the draft legal documents).
+ */
+export function isIndexable(app: AppEntry): boolean {
+  return !(app.status === "available" && app.provisional);
+}
+
 export function getApp(slug: AppSlug): AppEntry {
   const app = apps.find((a) => a.slug === slug);
   if (!app) throw new Error(`Unknown app: ${slug}`);
   return app;
 }
 
-/** Studio news. Only facts that can be checked; add new entries at the top. */
-export const news: { app: AppSlug; text: L }[] = [
+/**
+ * Studio news. Only facts that can be checked; add new entries at the top.
+ * date: "YYYY-MM" of the real event. Leave it out if you don't know it; the date is then not shown.
+ */
+export const news: { app: AppSlug; text: L; date?: string }[] = [
   {
     app: "anki-dojo",
     text: {
