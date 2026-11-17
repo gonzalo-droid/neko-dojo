@@ -35,7 +35,7 @@ export function studioGraph(locale: Locale) {
 /** One blog article. The author is the person behind the studio (see /about). */
 export function blogPosting(
   locale: Locale,
-  post: { slug: string; title: string; description: string; date: string; tags: string[] },
+  post: { slug: string; title: string; description: string; date: string; tags: string[]; image: string | null },
   author: string,
   wordCount: number,
 ) {
@@ -49,6 +49,7 @@ export function blogPosting(
     mainEntityOfPage: url,
     inLanguage: locale,
     ...(post.date ? { datePublished: post.date } : {}),
+    ...(post.image ? { image: `${SITE_URL}${post.image}` } : {}),
     ...(post.tags.length ? { keywords: post.tags.join(", ") } : {}),
     wordCount,
     author: { "@type": "Person", name: author, url: abs(locale, "/about") },

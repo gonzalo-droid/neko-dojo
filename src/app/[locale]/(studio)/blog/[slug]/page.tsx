@@ -24,7 +24,14 @@ async function load(params: Params["params"]) {
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale, post } = await load(params);
-  return pageMetadata({ locale, path: `/blog/${post.slug}`, title: `${post.title} — Nekodojo`, description: post.description });
+  return pageMetadata({
+    locale,
+    path: `/blog/${post.slug}`,
+    title: `${post.title} — Nekodojo`,
+    description: post.description,
+    // The post's cover; without one, the studio's share image.
+    image: { url: post.image ?? `/${locale}/opengraph-image`, alt: post.title },
+  });
 }
 
 export default async function Post({ params }: Params) {
