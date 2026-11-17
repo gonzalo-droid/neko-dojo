@@ -35,7 +35,7 @@ Las rutas están siempre en inglés. El español (idioma principal) no lleva pre
 /studio                  /en/studio
 /support                 /en/support
 /legal                   /en/legal
-/apps/[app]              /en/apps/[app]        (animequote, mtcquiz, anki-dojo, goals)
+/apps/[app]              /en/apps/[app]        (animequote, mtcquiz, apruebasucamec, anki-dojo, goals)
 /apps/[app]/privacy      /en/apps/[app]/privacy
 /apps/[app]/terms        /en/apps/[app]/terms
 /apps/[app]/support      /en/apps/[app]/support
@@ -96,11 +96,13 @@ Lo provisional está marcado en pantalla ("Contenido provisional", "Mockup conce
 - **Analítica**: no hay ninguna. Si se añade, preferir una sin cookies (Vercel Analytics) para evitar el banner de consentimiento.
 - **Insignias oficiales** de Google Play / App Store para MTCQuiz, Anki Dojo y Goals (AnimeQuote ya usa las suyas).
 - **Logo definitivo** de Nekodojo.
+- **Icono de ApruebaSUCAMEC**: hoy es la letra "A"; cuando esté el logo, ponlo en `public/apps/apruebasucamec/` y cambia `icon` en `src/content/apps.ts`.
 
 ## Puntos a revisar
 
 - **Política de AnimeQuote**: el texto vigente habla de anuncios de AdMob, de "Frases Anime" y solo de Android, mientras la landing dice "sin anuncios intrusivos" y está en iOS. Se copió tal cual; conviene revisarlo en animequote.app.
 - **SEO de AnimeQuote**: la landing y los documentos en español apuntan con `canonical` a animequote.app para no competir con ella. Ver `docs/animequote-migration.md`.
+- **Legal de ApruebaSUCAMEC**: este sitio es el original (`src/content/legal/apruebasucamec.ts`); la app abre `/apps/apruebasucamec/privacy` y `/terms` desde Configuraciones. Se redactó contra el código de la app (noviembre de 2026): si cambian los anuncios o los datos que guarda, actualiza el texto y las fechas.
 - **Legal de MTCQuiz**: copia de los documentos vigentes en gonzalo-lozg.me/apps-docs/mtcquiz (`src/content/legal/mtcquiz.ts`). La política dice que Android descarga las preguntas de Firebase Realtime Database, pero la app ya las trae dentro; conviene corregir el original.
 - **Borradores legales** de Anki Dojo y Goals: marcados como no vigentes, con `noindex` y fuera del sitemap.
 - **Nombres**: "MTC" (sigla del ministerio) y "Anki" (marca de Ankitects). MTCQuiz muestra un aviso de no afiliación; Anki Dojo figura como nombre provisional.

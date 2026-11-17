@@ -2,7 +2,7 @@ import type { Locale } from "@/i18n/config";
 
 type L<T = string> = Record<Locale, T>;
 
-export type AppSlug = "animequote" | "mtcquiz" | "anki-dojo" | "goals";
+export type AppSlug = "animequote" | "mtcquiz" | "apruebasucamec" | "anki-dojo" | "goals";
 
 /**
  * available       → published in a store
@@ -42,7 +42,11 @@ export type AppEntry = {
         updated: L;
         /** Per-document dates, when privacy and terms were updated on different days. */
         updatedByKind?: { privacy: L; terms: L };
-        publishedAt: { privacy: string; terms: string };
+        /**
+         * Where the original is published, when this site holds a copy (its Spanish page then
+         * points canonical there). Leave it out when this site is the original.
+         */
+        publishedAt?: { privacy: string; terms: string };
       }
     | { mode: "draft" };
   support: {
@@ -189,6 +193,70 @@ export const apps: AppEntry[] = [
     },
   },
   {
+    slug: "apruebasucamec",
+    name: "ApruebaSUCAMEC",
+    status: "in-development",
+    // Texts and screenshots are real (Android build of the app). Only the icon is a letter until the logo is ready.
+    provisional: false,
+    icon: { glyph: "A" },
+    preview: { canvas: "#F4F6FB", ink: "#1A1F36", muted: "#4A5272", accent: "#1A3A6B", fontVar: "--font-poppins" },
+    tagline: {
+      es: "Practica el examen de SUCAMEC y llega listo a tu licencia de armas",
+      en: "Practice for the SUCAMEC test and walk in ready for your firearms license",
+    },
+    summary: {
+      es: "Preguntas tipo examen para el examen teórico de SUCAMEC, con simulacros cronometrados y sin internet.",
+      en: "Exam-style questions for Peru's SUCAMEC written test, with timed practice exams and no internet needed.",
+    },
+    stores: [
+      { store: "google-play", url: null },
+      { store: "app-store", url: null },
+    ],
+    screenshot: {
+      src: "/apps/apruebasucamec/home.webp",
+      width: 920,
+      height: 2053,
+      alt: {
+        es: "Pantalla de inicio de ApruebaSUCAMEC con los modos de estudio y los tipos de licencia L1 a L6",
+        en: "ApruebaSUCAMEC home screen with the study modes and the L1 to L6 license types",
+      },
+    },
+    legal: {
+      mode: "live",
+      updated: { es: "17 de noviembre de 2026", en: "November 17, 2026" },
+    },
+    support: {
+      faq: {
+        es: [
+          { q: "¿ApruebaSUCAMEC es una app oficial?", a: "No. Es una app independiente de Nekodojo y no está afiliada a la SUCAMEC ni a ninguna entidad del Estado peruano." },
+          { q: "¿Cuántas preguntas tiene?", a: "100 preguntas tipo examen: 65 de opción múltiple y 35 de verdadero o falso. En cada intento salen en un orden distinto." },
+          { q: "¿Cómo funciona el simulacro tipo examen?", a: "Te da 5 preguntas al azar y 10 minutos para responderlas. Al terminar ves tu porcentaje y si aprobaste (70 % o más). Durante este simulacro no se muestran anuncios." },
+          { q: "¿Necesito internet o una cuenta?", a: "No necesitas cuenta. Las preguntas y el manual vienen dentro de la app, así que estudias sin conexión. Solo los anuncios y las páginas legales usan internet." },
+          { q: "¿Es gratis?", a: "Sí, con anuncios: un banner en los modos de práctica. Antes de cargar anuncios, la app te pide tu consentimiento cuando corresponde." },
+        ],
+        en: [
+          { q: "Is ApruebaSUCAMEC an official app?", a: "No. It's an independent Nekodojo app and isn't affiliated with SUCAMEC or any Peruvian government body." },
+          { q: "How many questions does it have?", a: "100 exam-style questions: 65 multiple choice and 35 true or false. They come in a different order on every attempt." },
+          { q: "How does the exam simulation work?", a: "It gives you 5 random questions and 10 minutes to answer them. When you finish, you see your score and whether you passed (70% or more). No ads are shown during this simulation." },
+          { q: "Do I need internet or an account?", a: "You don't need an account. The questions and the manual are inside the app, so you can study offline. Only the ads and the legal pages use the internet." },
+          { q: "Is it free?", a: "Yes, with ads: a banner in the practice modes. Before loading ads, the app asks for your consent where it applies." },
+        ],
+      },
+      dataDeletion: {
+        es: [
+          "ApruebaSUCAMEC no crea cuentas, así que no hay una cuenta que eliminar.",
+          "Tu historial de resultados y el tamaño de letra se guardan solo en tu teléfono. Para borrar el historial, ve a Configuraciones → Limpiar historial. Para borrarlo todo, borra los datos de la app en los ajustes del sistema o desinstálala.",
+          "Los datos que usa Google AdMob para mostrar anuncios los gestiona Google. Puedes cambiar tu consentimiento en Configuraciones → Preferencias de anuncios (si la opción aparece en tu región) y restablecer el identificador de publicidad en los ajustes de tu teléfono.",
+        ],
+        en: [
+          "ApruebaSUCAMEC doesn't create accounts, so there is no account to delete.",
+          "Your results history and font size are stored only on your phone. To delete the history, go to Settings → Clear history. To delete everything, clear the app's data in your system settings or uninstall it.",
+          "The data Google AdMob uses to show ads is handled by Google. You can change your consent in Settings → Ad preferences (if the option appears in your region) and reset the advertising ID in your phone's settings.",
+        ],
+      },
+    },
+  },
+  {
     slug: "anki-dojo",
     name: "Anki Dojo",
     status: "in-development",
@@ -274,6 +342,13 @@ export function getApp(slug: AppSlug): AppEntry {
  * date: "YYYY-MM" of the real event. Leave it out if you don't know it; the date is then not shown.
  */
 export const news: { app: AppSlug; text: L; date?: string }[] = [
+  {
+    app: "apruebasucamec",
+    text: {
+      es: "ApruebaSUCAMEC está en desarrollo: practica el examen teórico de SUCAMEC en Android e iOS.",
+      en: "ApruebaSUCAMEC is in development: practice for Peru's SUCAMEC written test on Android and iOS.",
+    },
+  },
   {
     app: "anki-dojo",
     text: {

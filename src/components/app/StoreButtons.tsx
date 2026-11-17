@@ -18,8 +18,9 @@ function StoreIcon({ store, size }: { store: StoreLink["store"]; size: number })
 /**
  * Store buttons with each store's icon, for the stores that have a confirmed link.
  * With showPending, a store without a link appears as a muted "coming soon" badge
- * that isn't clickable. When no link is confirmed at all, one honest line replaces
- * the buttons, so nothing looks clickable that goes nowhere.
+ * that isn't clickable (also when no store has a link yet, for an app on its way).
+ * Without showPending and with no confirmed link, one honest line replaces the
+ * buttons, so nothing looks clickable that goes nowhere.
  */
 export default function StoreButtons({
   stores,
@@ -33,7 +34,7 @@ export default function StoreButtons({
   showPending?: boolean;
 }) {
   const live = stores.filter((s) => s.url);
-  if (live.length === 0) {
+  if (live.length === 0 && !(showPending && stores.length > 0)) {
     return <p className="max-w-md rounded-xl border border-dashed border-line px-4 py-3 text-sm text-muted">{t.storesPending}</p>;
   }
   const shown = showPending ? stores : live;

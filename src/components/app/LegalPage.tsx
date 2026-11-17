@@ -24,7 +24,7 @@ export function legalMetadata(app: AppEntry, kind: Kind, locale: Locale): Metada
     title,
     description: `${title} — Nekodojo`,
     // The Spanish original stays canonical at its current URL; drafts are kept out of search.
-    canonical: app.legal.mode === "live" && locale === "es" ? app.legal.publishedAt[kind] : undefined,
+    canonical: app.legal.mode === "live" && locale === "es" ? app.legal.publishedAt?.[kind] : undefined,
     noindex: !live,
   });
 }
@@ -78,7 +78,7 @@ export default function LegalPage({ app, kind, locale }: { app: AppEntry; kind: 
         {legal.mode === "live" ? (
           <div className="mt-4 space-y-1 text-sm text-muted">
             <p>{t.common.updated}: {(legal.updatedByKind?.[kind] ?? legal.updated)[locale]}</p>
-            <p>{t.legal.liveSource} <RichText text={legal.publishedAt[kind]} /></p>
+            {legal.publishedAt && <p>{t.legal.liveSource} <RichText text={legal.publishedAt[kind]} /></p>}
             {t.legal.translationNote && <p>{t.legal.translationNote}</p>}
           </div>
         ) : (

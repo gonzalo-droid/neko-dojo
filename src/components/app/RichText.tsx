@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 
-const TOKEN = /(https:\/\/[^\s)]+|[\w.+-]+@[\w-]+\.[a-z.]*[a-z])/g;
+// A URL never ends in sentence punctuation, so "see https://x.com." links to https://x.com.
+const TOKEN = /(https:\/\/[^\s)]*[^\s).,;:]|[\w.+-]+@[\w-]+\.[a-z.]*[a-z])/g;
 const IS_URL = /^https:\/\//;
 const IS_EMAIL = /^[\w.+-]+@[\w-]+\.[a-z.]*[a-z]$/;
 

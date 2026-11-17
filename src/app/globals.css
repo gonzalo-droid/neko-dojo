@@ -117,6 +117,30 @@ body:has(.theme-animequote[data-aq-theme="dark"]) { background-color: #0c0c1e; }
 }
 body:has(.theme-mtcquiz) { background-color: #f6f7fc; }
 
+/* ── ApruebaSUCAMEC (palette from the app: navy #1a3a6b, gold #b8860b) ── */
+/*
+ * Navy bands carry the identity, so the page reads apart from MTCQuiz (white + #3949ab)
+ * and from the studio (stone + violet). accent2 is the brand gold darkened to pass
+ * contrast on white; --sa-gold-soft is the app's light gold, used only on navy.
+ */
+.theme-apruebasucamec {
+  color-scheme: light;
+  --app-canvas: #f4f6fb;
+  --app-surface: #ffffff;
+  --app-ink: #1a1f36;
+  --app-muted: #4a5272;
+  --app-accent: #1a3a6b;
+  --app-on-accent: #ffffff;
+  --app-accent2: #8a6508;
+  --app-line: #dce1ec;
+  --app-ok: #1a7f4b;
+  --sa-gold: #b8860b;
+  --sa-gold-soft: #f5e6a3;
+  --app-display: var(--font-poppins), system-ui, sans-serif;
+  --app-body: var(--font-inter), system-ui, sans-serif;
+}
+body:has(.theme-apruebasucamec) { background-color: #f4f6fb; }
+
 /* ── Anki Dojo ───────────────────────────────────── */
 .theme-anki-dojo {
   color-scheme: light;
