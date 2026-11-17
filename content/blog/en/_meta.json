@@ -73,5 +73,37 @@
       "UI",
       "Kotlin"
     ]
+  },
+  "vercel-supabase-claude": {
+    "title": "Vercel, Supabase and Claude: automatic deployments step by step",
+    "description": "How we connected GitHub, Vercel and Claude so every change goes live on its own, what broke on the first deployment, and where Supabase fits in as the database.",
+    "tags": [
+      "Vercel",
+      "Supabase",
+      "Claude",
+      "Next.js",
+      "GitHub"
+    ]
+  },
+  "reels-carruseles-claude": {
+    "title": "Reels and carousels with Claude: two skills and ElevenLabs voices",
+    "description": "The workflow we use to produce animated reels and Instagram carousels with Claude: script, verified data, Remotion, ElevenLabs voiceover and quality checks.",
+    "tags": [
+      "Claude",
+      "Remotion",
+      "ElevenLabs",
+      "Instagram",
+      "Reels"
+    ]
+  },
+  "skills-claude": {
+    "title": "What a Claude skill is, how to create one and which ones I use",
+    "description": "A skill is a manual Claude reads when it needs it. Here is how it works, how to create your own, and which skills I use for the studio and my brands.",
+    "tags": [
+      "Claude",
+      "Skills",
+      "AI",
+      "Automation"
+    ]
   }
 }

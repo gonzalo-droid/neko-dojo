@@ -10,7 +10,10 @@
       "Espresso",
       "Mockito"
     ],
-    "image": "/about/projects/app_noteai.webp"
+    "image": "/about/projects/app_noteai.webp",
+    "categories": [
+      "android"
+    ]
   },
   "kotlin-multiplatform": {
     "title": "Desarrollo de Apps con Kotlin Multiplatform",
@@ -23,7 +26,12 @@
       "iOS",
       "Multiplataforma"
     ],
-    "image": "/about/projects/app_cixcash.webp"
+    "image": "/about/projects/app_cixcash.webp",
+    "categories": [
+      "kmm",
+      "android",
+      "ios"
+    ]
   },
   "android-ai": {
     "title": "Integración de IA en Apps Android",
@@ -36,7 +44,11 @@
       "ML",
       "Kotlin"
     ],
-    "image": "/about/projects/app_noteai.webp"
+    "image": "/about/projects/app_noteai.webp",
+    "categories": [
+      "android",
+      "ia"
+    ]
   },
   "android-mvvm": {
     "title": "Arquitectura MVVM en Android",
@@ -49,7 +61,10 @@
       "Kotlin",
       "ViewModel"
     ],
-    "image": "/about/projects/app_ulearning.webp"
+    "image": "/about/projects/app_ulearning.webp",
+    "categories": [
+      "android"
+    ]
   },
   "android-coroutines": {
     "title": "Coroutines en Android: Programación asíncrona moderna",
@@ -61,7 +76,10 @@
       "Kotlin",
       "Asíncrono"
     ],
-    "image": "/about/projects/app_noteai.webp"
+    "image": "/about/projects/app_noteai.webp",
+    "categories": [
+      "android"
+    ]
   },
   "android-dependency-injection": {
     "title": "Inyección de Dependencias en Android con Hilt",
@@ -74,7 +92,10 @@
       "Kotlin",
       "Testing"
     ],
-    "image": "/about/projects/app_crm.webp"
+    "image": "/about/projects/app_crm.webp",
+    "categories": [
+      "android"
+    ]
   },
   "android-jetpack-compose": {
     "title": "Jetpack Compose: El futuro de la UI en Android",
@@ -86,6 +107,55 @@
       "UI",
       "Kotlin"
     ],
-    "image": "/about/projects/app_erp.webp"
+    "image": "/about/projects/app_erp.webp",
+    "categories": [
+      "android"
+    ]
+  },
+  "vercel-supabase-claude": {
+    "title": "Vercel, Supabase y Claude: despliegues automáticos paso a paso",
+    "description": "Cómo conectamos GitHub, Vercel y Claude para que cada cambio se publique solo, qué falló en el primer despliegue y dónde encaja Supabase como base de datos.",
+    "date": "2026-11-17",
+    "tags": [
+      "Vercel",
+      "Supabase",
+      "Claude",
+      "Next.js",
+      "GitHub"
+    ],
+    "categories": [
+      "web",
+      "ia"
+    ]
+  },
+  "reels-carruseles-claude": {
+    "title": "Reels y carruseles con Claude: dos skills y voces de ElevenLabs",
+    "description": "El flujo que usamos para producir reels animados y carruseles de Instagram con Claude: guion, datos verificados, Remotion, voz con ElevenLabs y control de calidad.",
+    "date": "2026-11-17",
+    "tags": [
+      "Claude",
+      "Remotion",
+      "ElevenLabs",
+      "Instagram",
+      "Reels"
+    ],
+    "categories": [
+      "ia",
+      "marketing"
+    ]
+  },
+  "skills-claude": {
+    "title": "Qué es una skill de Claude, cómo crearla y cuáles uso",
+    "description": "Una skill es un manual que Claude lee cuando lo necesita. Te explico cómo funciona, cómo crear la tuya y qué skills uso para el estudio y mis marcas.",
+    "date": "2026-11-17",
+    "tags": [
+      "Claude",
+      "Skills",
+      "IA",
+      "Automatización"
+    ],
+    "categories": [
+      "ia"
+    ]
   }
 }

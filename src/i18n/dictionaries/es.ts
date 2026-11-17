@@ -91,11 +91,14 @@ const es = {
   },
   blog: {
     title: "Blog",
-    description: "Notas de desarrollo de Gonzalo López: Android, Kotlin, arquitectura, Compose e IA.",
+    description: "Notas de desarrollo de Gonzalo López: Android, Kotlin Multiplatform, web, IA y marketing.",
     eyebrow: "Notas de desarrollo",
-    lead: "Lo que aprendo construyendo apps: arquitectura, Kotlin, Compose e IA.",
+    lead: "Lo que aprendo construyendo apps: Android, Kotlin Multiplatform, web, IA y marketing.",
     back: "Blog",
     translationNote: "",
+    categoriesLabel: "Filtrar por categoría",
+    all: "Todos",
+    empty: "Todavía no hay artículos en esta categoría.",
   },
   studio: {
     title: "El estudio",

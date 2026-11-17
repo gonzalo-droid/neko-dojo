@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { locales, localizePath, isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { pageMetadata } from "@/lib/metadata";
-import { formatDate, getPost, getPosts } from "@/lib/blog";
+import { categoryLabel, formatDate, getPost, getPosts } from "@/lib/blog";
 
 type Params = { params: Promise<{ locale: string; slug: string }> };
 
@@ -34,6 +34,20 @@ export default async function Post({ params }: Params) {
         ← {t.back}
       </Link>
       <h1 className="mt-6 font-display text-4xl font-bold leading-tight tracking-tight md:text-5xl">{post.title}</h1>
+      {post.categories.length > 0 && (
+        <ul className="mt-6 flex flex-wrap gap-2">
+          {post.categories.map((c) => (
+            <li key={c}>
+              <Link
+                href={`${localizePath(locale, "/blog")}?category=${c}`}
+                className="rounded-full bg-surface px-3 py-1 text-xs font-semibold text-accent ring-1 ring-line hover:ring-accent"
+              >
+                {categoryLabel(c, locale)}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
       <p className="mt-3 text-sm text-muted">
         {formatDate(post.date, locale)} · {post.tags.join(" · ")}
       </p>
