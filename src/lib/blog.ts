@@ -12,7 +12,34 @@ import type { Locale } from "@/i18n/config";
 
 const ROOT = path.join(process.cwd(), "content", "blog");
 
-type RawMeta = { title: string; description: string; date?: string; tags?: string[]; image?: string };
+type RawMeta = {
+  title: string;
+  description: string;
+  date?: string;
+  tags?: string[];
+  categories?: string[];
+  image?: string;
+};
+
+/** Blog categories, in the order the filter shows them. Posts set them in the Spanish _meta.json. */
+export const CATEGORIES = [
+  { id: "android", es: "Android", en: "Android" },
+  { id: "ios", es: "iOS", en: "iOS" },
+  { id: "kmm", es: "KMM", en: "KMM" },
+  { id: "web", es: "Web", en: "Web" },
+  { id: "ia", es: "IA", en: "AI" },
+  { id: "marketing", es: "Marketing", en: "Marketing" },
+] as const;
+
+export type CategoryId = (typeof CATEGORIES)[number]["id"];
+
+export function isCategory(value: unknown): value is CategoryId {
+  return CATEGORIES.some((c) => c.id === value);
+}
+
+export function categoryLabel(id: CategoryId, locale: Locale): string {
+  return CATEGORIES.find((c) => c.id === id)![locale];
+}
 
 export type PostMeta = {
   slug: string;
@@ -20,6 +47,7 @@ export type PostMeta = {
   description: string;
   date: string;
   tags: string[];
+  categories: CategoryId[];
   image: string | null;
 };
 
@@ -40,6 +68,7 @@ export function getPosts(locale: Locale): PostMeta[] {
       description: local[slug].description,
       date: m.date ?? "",
       tags: local[slug].tags ?? m.tags ?? [],
+      categories: (m.categories ?? []).filter(isCategory),
       image: m.image ?? null,
     }))
     .sort((a, b) => b.date.localeCompare(a.date));

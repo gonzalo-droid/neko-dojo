@@ -93,11 +93,14 @@ const en: Dictionary = {
   },
   blog: {
     title: "Blog",
-    description: "Development notes by Gonzalo López: Android, Kotlin, architecture, Compose and AI.",
+    description: "Development notes by Gonzalo López: Android, Kotlin Multiplatform, web, AI and marketing.",
     eyebrow: "Development notes",
-    lead: "What I learn building apps: architecture, Kotlin, Compose and AI.",
+    lead: "What I learn building apps: Android, Kotlin Multiplatform, web, AI and marketing.",
     back: "Blog",
     translationNote: "Translated from the original Spanish article.",
+    categoriesLabel: "Filter by category",
+    all: "All",
+    empty: "No articles in this category yet.",
   },
   studio: {
     title: "The studio",
