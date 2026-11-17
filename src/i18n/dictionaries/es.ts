@@ -24,6 +24,7 @@ const es = {
     linkPending: "Enlace pendiente",
     getOn: "Disponible en",
     downloadOn: "Descargar en",
+    comingSoonOn: "Próximamente en",
     contact: "Contacto",
     privacy: "Privacidad",
     terms: "Términos",

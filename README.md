@@ -80,7 +80,7 @@ Cada página vive dentro de un contenedor de tema (`.theme-studio`, `.theme-anim
 | --- | --- |
 | Estado, enlaces de tienda, resumen, FAQ de soporte, pasos de borrado de datos | `src/content/apps.ts` |
 | Icono de una app (ahora es una letra) | `icon` en `src/content/apps.ts` → `{ src: "/apps/<slug>/icon.png" }` |
-| Textos de la landing de MTCQuiz, Anki Dojo y Goals | `src/apps/<slug>/content.ts` |
+| Textos de la landing de Anki Dojo y Goals (MTCQuiz ya tiene los reales) | `src/apps/<slug>/content.ts` |
 | Mockups conceptuales | En la página de cada app; cámbialos por capturas reales en `public/apps/<slug>/` |
 | Documentos legales | `src/content/legal/` — al tener el texto real, pasa la app a `legal: { mode: "live", … }` |
 | Novedades del inicio | `news` en `src/content/apps.ts` |
@@ -93,7 +93,6 @@ Lo provisional está marcado en pantalla ("Contenido provisional", "Mockup conce
 ## Integraciones pendientes
 
 - **Formularios**: hoy son demostraciones (no envían ni guardan nada, y lo dicen). Para conectarlos, define `FORMS_PROVIDER=webhook` y `FORMS_WEBHOOK_URL` en Vercel (sirve Zapier, Make, Google Apps Script, una función de Supabase…), o añade otro proveedor en `src/lib/forms/provider.ts`. La validación ya corre en el navegador y en el servidor.
-- **Enlaces de tienda de MTCQuiz** y su política de privacidad real.
 - **Dominio** `nekodojo.com` en Vercel y `NEXT_PUBLIC_SITE_URL`.
 - **Analítica**: no hay ninguna. Si se añade, preferir una sin cookies (Vercel Analytics) para evitar el banner de consentimiento.
 - **Insignias oficiales** de Google Play / App Store para MTCQuiz, Anki Dojo y Goals (AnimeQuote ya usa las suyas).
@@ -103,8 +102,9 @@ Lo provisional está marcado en pantalla ("Contenido provisional", "Mockup conce
 
 - **Política de AnimeQuote**: el texto vigente habla de anuncios de AdMob, de "Frases Anime" y solo de Android, mientras la landing dice "sin anuncios intrusivos" y está en iOS. Se copió tal cual; conviene revisarlo en animequote.app.
 - **SEO de AnimeQuote**: la landing y los documentos en español apuntan con `canonical` a animequote.app para no competir con ella. Ver `docs/animequote-migration.md`.
-- **Borradores legales** de MTCQuiz, Anki Dojo y Goals: marcados como no vigentes, con `noindex` y fuera del sitemap.
+- **Legal de MTCQuiz**: copia de los documentos vigentes en gonzalo-lozg.me/apps-docs/mtcquiz (`src/content/legal/mtcquiz.ts`). La política dice que Android descarga las preguntas de Firebase Realtime Database, pero la app ya las trae dentro; conviene corregir el original.
+- **Borradores legales** de Anki Dojo y Goals: marcados como no vigentes, con `noindex` y fuera del sitemap.
 - **Nombres**: "MTC" (sigla del ministerio) y "Anki" (marca de Ankitects). MTCQuiz muestra un aviso de no afiliación; Anki Dojo figura como nombre provisional.
 - **Rendimiento**: el estudio y las landings de MTCQuiz, Anki Dojo y Goals son estáticas. Solo AnimeQuote se renderiza en cada visita, porque lee la cookie de su modo oscuro en su propio layout. La 404 detecta el idioma desde la URL en el cliente: no leas cabeceras ni cookies en el layout raíz o en `not-found.tsx`, porque eso vuelve dinámico todo el sitio.
-- **Contenido provisional**: los textos que empiezan por `[Pendiente]`/`[Pending]` no se muestran; la sección se oculta. Una app publicada con `provisional: true` (MTCQuiz) queda con `noindex` y fuera del sitemap hasta completar su contenido (`isIndexable` en `src/content/apps.ts`).
+- **Contenido provisional**: los textos que empiezan por `[Pendiente]`/`[Pending]` no se muestran; la sección se oculta. Una app publicada con `provisional: true` queda con `noindex` y fuera del sitemap hasta completar su contenido (`isIndexable` en `src/content/apps.ts`).
 - **Novedades**: cada entrada de `news` acepta `date: "AAAA-MM"`; ponla solo con la fecha real.

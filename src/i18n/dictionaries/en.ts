@@ -26,6 +26,7 @@ const en: Dictionary = {
     linkPending: "Link pending",
     getOn: "Get it on",
     downloadOn: "Download on the",
+    comingSoonOn: "Coming soon to the",
     contact: "Contact",
     privacy: "Privacy",
     terms: "Terms",

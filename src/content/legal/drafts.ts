@@ -37,12 +37,6 @@ function build(outline: typeof privacyOutline, locale: Locale, extra?: string): 
   };
 }
 
-const mtcNote = {
-  es: "MTCQuiz es una app independiente y no está afiliada al Ministerio de Transportes y Comunicaciones del Perú.",
-  en: "MTCQuiz is an independent app and isn't affiliated with Peru's Ministry of Transport and Communications.",
-};
-
-export function draftDoc(slug: string, kind: "privacy" | "terms", locale: Locale): LegalDoc {
-  const extra = slug === "mtcquiz" ? mtcNote[locale] : undefined;
-  return build(kind === "privacy" ? privacyOutline : termsOutline, locale, extra);
+export function draftDoc(_slug: string, kind: "privacy" | "terms", locale: Locale): LegalDoc {
+  return build(kind === "privacy" ? privacyOutline : termsOutline, locale);
 }
