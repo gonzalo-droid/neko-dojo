@@ -3,6 +3,7 @@ import { htmlLang, locales } from "@/i18n/config";
 import { getLocale } from "@/lib/locale";
 import { inter } from "@/lib/fonts/inter";
 import { SITE_URL } from "@/content/site";
+import StudioThemeScript from "@/components/studio/StudioThemeScript";
 import "../globals.css";
 
 export const dynamicParams = false;
@@ -30,8 +31,12 @@ export default async function RootLayout({
   // No cookies() here: reading them would make every page dynamic. AnimeQuote reads
   // its own theme cookie in its layout, so only its pages are rendered per request.
   return (
-    <html lang={htmlLang[locale]} className={inter.variable} data-scroll-behavior="smooth">
-      <body>{children}</body>
+    // suppressHydrationWarning: StudioThemeScript sets data-theme on <html> before React hydrates.
+    <html lang={htmlLang[locale]} className={inter.variable} data-scroll-behavior="smooth" suppressHydrationWarning>
+      <body>
+        <StudioThemeScript />
+        {children}
+      </body>
     </html>
   );
 }

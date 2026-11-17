@@ -42,7 +42,7 @@ export default async function Studio({ params }: LocaleParams) {
       </section>
 
       {/* Status comes from the app registry, so this list never claims more than apps.ts. */}
-      <section className="border-t border-line">
+      <section className="border-t border-line bg-band">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
           <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">{t.studio.timelineTitle}</h2>
           <p className="mt-3 max-w-lg text-muted">{t.studio.timelineBody}</p>
@@ -51,7 +51,7 @@ export default async function Studio({ params }: LocaleParams) {
               <li key={app.slug} className="relative">
                 <span
                   aria-hidden="true"
-                  className={`absolute -left-[37px] top-4 h-3 w-3 rounded-full ring-4 ring-canvas ${app.status === "available" ? "bg-accent" : "bg-line"}`}
+                  className={`absolute -left-[37px] top-4 h-3 w-3 rounded-full ring-4 ring-band ${app.status === "available" ? "bg-accent" : "bg-line"}`}
                 />
                 <Link
                   href={localizePath(locale, `/apps/${app.slug}`)}

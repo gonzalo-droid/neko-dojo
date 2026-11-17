@@ -11,6 +11,7 @@ const es = {
   a11y: { skip: "Saltar al contenido", mainNav: "Navegación principal", footerNav: "Pie de página", language: "Idioma" },
   nav: { apps: "Apps", studio: "Estudio", about: "Sobre mí", blog: "Blog", support: "Soporte", legal: "Legal" },
   languageSwitch: { label: "English", short: "EN", hint: "Ver esta página en inglés" },
+  theme: { toLight: "Cambiar a tema claro", toDark: "Cambiar a tema oscuro" },
   breadcrumbs: { label: "Ruta de navegación", apps: "Apps" },
   status: { available: "Disponible", "in-development": "En desarrollo", pending: "Por confirmar" },
   common: {

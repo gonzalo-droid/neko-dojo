@@ -13,6 +13,7 @@ const en: Dictionary = {
   a11y: { skip: "Skip to content", mainNav: "Main navigation", footerNav: "Footer", language: "Language" },
   nav: { apps: "Apps", studio: "Studio", about: "About", blog: "Blog", support: "Support", legal: "Legal" },
   languageSwitch: { label: "Español", short: "ES", hint: "View this page in Spanish" },
+  theme: { toLight: "Switch to light theme", toDark: "Switch to dark theme" },
   breadcrumbs: { label: "Breadcrumb", apps: "Apps" },
   status: { available: "Available", "in-development": "In development", pending: "To be confirmed" },
   common: {

@@ -8,7 +8,7 @@ import LanguageSwitch from "@/components/shared/LanguageSwitch";
 
 export default function StudioFooter({ locale, t }: { locale: Locale; t: Dictionary }) {
   return (
-    <footer className="border-t border-line">
+    <footer className="border-t border-line bg-band">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-2.5 text-ink">
