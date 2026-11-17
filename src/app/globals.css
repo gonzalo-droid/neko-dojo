@@ -27,31 +27,16 @@
 
 @custom-variant theme-dark (&:where([data-aq-theme="dark"], [data-aq-theme="dark"] *));
 /* Studio light/dark: <html data-theme> is set before paint (see StudioThemeScript). */
-@custom-variant studio-light (&:where([data-theme="light"] *));
+@custom-variant studio-dark (&:where([data-theme="dark"] *));
 
 /* ── Nekodojo studio ─────────────────────────────── */
-.theme-studio {
-  --app-danger: #ff8a80;
-  color-scheme: dark;
-  --app-canvas: #0d0b14;
-  --app-surface: #191523;
-  --app-ink: #f4f0fa;
-  --app-muted: #a49bb5;
-  --app-accent: #a78bfa;
-  --app-on-accent: #0d0b14;
-  --app-accent2: #e9c46a;
-  --app-line: #2a2338;
-  --app-display: var(--font-space-grotesk), system-ui, sans-serif;
-  --app-body: var(--font-inter), system-ui, sans-serif;
-}
-body:has(.theme-studio) { background-color: #0d0b14; }
 /*
- * Studio light, "sumi": neutral stone paper, white cards, a deeper band for alternate
- * sections, ink-indigo accent and the dark theme's gold as accent2.
+ * Light ("sumi") is the default: neutral stone paper, white cards, a deeper band for
+ * alternate sections, ink-indigo accent and gold as accent2.
  * Deliberately away from AnimeQuote light (lavender #f7f4ff + #6d4ae0) and from
  * Anki Dojo (cream #f5efe4 + red), so the studio never looks like one of its apps.
  */
-[data-theme="light"] .theme-studio {
+.theme-studio {
   --app-danger: #b42318;
   color-scheme: light;
   --app-canvas: #eeede9;
@@ -65,8 +50,27 @@ body:has(.theme-studio) { background-color: #0d0b14; }
   --app-line: #cfcdc5;
   --app-ok: #11704a;
   --app-warn: #8a5800;
+  --app-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --app-body: var(--font-inter), system-ui, sans-serif;
 }
-[data-theme="light"] body:has(.theme-studio) { background-color: #eeede9; }
+body:has(.theme-studio) { background-color: #eeede9; }
+/* Dark, when the visitor chooses it. Every light-only token is reset here. */
+[data-theme="dark"] .theme-studio {
+  --app-danger: #ff8a80;
+  color-scheme: dark;
+  --app-canvas: #0d0b14;
+  --app-surface: #191523;
+  --app-band: #0d0b14;
+  --app-ink: #f4f0fa;
+  --app-muted: #a49bb5;
+  --app-accent: #a78bfa;
+  --app-on-accent: #0d0b14;
+  --app-accent2: #e9c46a;
+  --app-line: #2a2338;
+  --app-ok: #34d399;
+  --app-warn: #fbbf24;
+}
+[data-theme="dark"] body:has(.theme-studio) { background-color: #0d0b14; }
 
 /* ── AnimeQuote (values from animequote.app) ─────── */
 .theme-animequote {
