@@ -83,7 +83,8 @@
       "Claude",
       "Next.js",
       "GitHub"
-    ]
+    ],
+    "image": "/blog/vercel-supabase-claude-en.webp"
   },
   "reels-carruseles-claude": {
     "title": "Reels and carousels with Claude: two skills and ElevenLabs voices",
@@ -94,7 +95,8 @@
       "ElevenLabs",
       "Instagram",
       "Reels"
-    ]
+    ],
+    "image": "/blog/reels-carruseles-claude-en.webp"
   },
   "skills-claude": {
     "title": "What a Claude skill is, how to create one and which ones I use",
@@ -104,6 +106,7 @@
       "Skills",
       "AI",
       "Automation"
-    ]
+    ],
+    "image": "/blog/skills-claude-en.webp"
   }
 }

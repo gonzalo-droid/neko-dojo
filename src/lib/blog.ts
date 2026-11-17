@@ -6,7 +6,8 @@ import type { Locale } from "@/i18n/config";
 /*
  * Blog posts live in content/blog/<locale>/<slug>.md, with titles and
  * descriptions in content/blog/<locale>/_meta.json. Spanish holds the date,
- * tags and image; English only translates title and description.
+ * tags, categories and image; English translates title, description and tags,
+ * and can set its own image when the cover has text.
  * The first seven posts were migrated from gonzalo-lozg.me on 2026-11-17.
  */
 
@@ -69,7 +70,7 @@ export function getPosts(locale: Locale): PostMeta[] {
       date: m.date ?? "",
       tags: local[slug].tags ?? m.tags ?? [],
       categories: (m.categories ?? []).filter(isCategory),
-      image: m.image ?? null,
+      image: local[slug].image ?? m.image ?? null,
     }))
     .sort((a, b) => b.date.localeCompare(a.date));
 }
