@@ -61,7 +61,7 @@ export default async function Home({ params }: LocaleParams) {
         </div>
       </section>
 
-      <section id="apps" className="scroll-mt-20" aria-labelledby="available-title">
+      <section id="apps" className="scroll-mt-20 bg-band" aria-labelledby="available-title">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
           <h2 id="available-title" className="font-display text-2xl font-bold">{t.home.available}</h2>
           <ul className="mt-6 grid grid-cols-1 gap-5 lg:grid-cols-2">

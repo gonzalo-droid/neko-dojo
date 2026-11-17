@@ -15,12 +15,19 @@
   --color-on-accent: var(--app-on-accent);
   --color-accent2: var(--app-accent2);
   --color-line: var(--app-line);
+  /* Alternate section background. Themes without it fall back to the canvas. */
+  --color-band: var(--app-band, var(--app-canvas));
   --color-danger: var(--app-danger, #b42318);
+  /* Status colors (available / live, in progress / draft). Fallbacks = the original dark-friendly values. */
+  --color-ok: var(--app-ok, #34d399);
+  --color-warn: var(--app-warn, #fbbf24);
   --font-display: var(--app-display);
   --font-body: var(--app-body);
 }
 
 @custom-variant theme-dark (&:where([data-aq-theme="dark"], [data-aq-theme="dark"] *));
+/* Studio light/dark: <html data-theme> is set before paint (see StudioThemeScript). */
+@custom-variant studio-light (&:where([data-theme="light"] *));
 
 /* ── Nekodojo studio ─────────────────────────────── */
 .theme-studio {
@@ -38,6 +45,28 @@
   --app-body: var(--font-inter), system-ui, sans-serif;
 }
 body:has(.theme-studio) { background-color: #0d0b14; }
+/*
+ * Studio light, "sumi": neutral stone paper, white cards, a deeper band for alternate
+ * sections, ink-indigo accent and the dark theme's gold as accent2.
+ * Deliberately away from AnimeQuote light (lavender #f7f4ff + #6d4ae0) and from
+ * Anki Dojo (cream #f5efe4 + red), so the studio never looks like one of its apps.
+ */
+[data-theme="light"] .theme-studio {
+  --app-danger: #b42318;
+  color-scheme: light;
+  --app-canvas: #eeede9;
+  --app-surface: #ffffff;
+  --app-band: #e2e1db;
+  --app-ink: #131217;
+  --app-muted: #4a4852;
+  --app-accent: #3d2a94;
+  --app-on-accent: #ffffff;
+  --app-accent2: #8f6400;
+  --app-line: #cfcdc5;
+  --app-ok: #11704a;
+  --app-warn: #8a5800;
+}
+[data-theme="light"] body:has(.theme-studio) { background-color: #eeede9; }
 
 /* ── AnimeQuote (values from animequote.app) ─────── */
 .theme-animequote {
@@ -165,8 +194,8 @@ body {
 /* Studio: tatami grid, very faint */
 .tatami {
   background-image:
-    linear-gradient(to right, rgb(167 139 250 / 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(167 139 250 / 0.06) 1px, transparent 1px);
+    linear-gradient(to right, color-mix(in srgb, var(--app-accent) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--app-accent) 7%, transparent) 1px, transparent 1px);
   background-size: 96px 48px;
 }
 

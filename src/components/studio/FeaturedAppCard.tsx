@@ -8,6 +8,19 @@ import StatusBadge from "@/components/shared/StatusBadge";
 
 const storeNames = { "google-play": "Google Play", "app-store": "App Store" } as const;
 
+/** Relative luminance of a #rrggbb color (WCAG). */
+function luminance(hex: string) {
+  const [r, g, b] = [1, 3, 5]
+    .map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+    .map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+// The card keeps the app's own canvas whatever the studio theme is, so its status dot
+// must follow the card, not the page: dark-friendly greens vanish on a light card.
+const statusOnLight = { "--app-ok": "#11704a", "--app-warn": "#8a5800" } as React.CSSProperties;
+const statusOnDark = { "--app-ok": "#34d399", "--app-warn": "#fbbf24" } as React.CSSProperties;
+
 /**
  * Wide card for a published app, painted in its own identity: what it is, a real
  * screenshot when there is one, and the store links right there (no extra page in between).
@@ -21,7 +34,7 @@ export default function FeaturedAppCard({ app, locale, t }: { app: AppEntry; loc
   return (
     <article
       className="relative grid overflow-hidden rounded-3xl ring-1 ring-white/5 sm:grid-cols-[minmax(0,1fr)_auto]"
-      style={{ background: p.canvas, color: p.ink }}
+      style={{ background: p.canvas, color: p.ink, ...(luminance(p.canvas) > 0.4 ? statusOnLight : statusOnDark) }}
     >
       <div className="flex min-w-0 flex-col p-6 sm:p-8">
         <div className="flex items-center justify-between gap-4">

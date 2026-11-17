@@ -18,7 +18,7 @@ export default function NavLinks({ items }: { items: Item[] }) {
             <Link
               href={item.href}
               aria-current={active ? "page" : undefined}
-              className={`block rounded-md px-2 py-2 text-sm transition-colors hover:text-ink ${
+              className={`block whitespace-nowrap rounded-md px-2 py-2 text-sm transition-colors hover:text-ink ${
                 active ? "text-ink underline decoration-accent decoration-2 underline-offset-[10px]" : "text-muted"
               }`}
             >

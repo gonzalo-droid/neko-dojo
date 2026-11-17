@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
 function State({ live, label }: { live: boolean; label: string }) {
   return (
     <span className="inline-flex items-center gap-1.5 text-xs font-semibold">
-      <span aria-hidden="true" className={`h-2 w-2 rounded-full ${live ? "bg-emerald-400" : "bg-amber-300"}`} />
-      <span className={live ? "text-emerald-300" : "text-amber-200"}>{label}</span>
+      <span aria-hidden="true" className={`h-2 w-2 rounded-full ${live ? "bg-ok" : "bg-warn"}`} />
+      <span className={live ? "text-ok" : "text-warn"}>{label}</span>
     </span>
   );
 }
