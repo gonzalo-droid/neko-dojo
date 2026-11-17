@@ -33,14 +33,21 @@ const portfolioMap: [string, string][] = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async redirects() {
-    return OLD_HOSTS.flatMap((host) =>
+    // The project's default *.vercel.app host serves the same pages: send it to the real domain.
+    const vercelHost = {
+      source: "/:path*",
+      destination: "https://nekodojo.app/:path*",
+      permanent: true,
+      has: [{ type: "host" as const, value: "neko-dojo.vercel.app" }],
+    };
+    return [vercelHost, ...OLD_HOSTS.flatMap((host) =>
       portfolioMap.flatMap(([source, destination]) => [
         { source, destination: `https://nekodojo.app${destination}`, permanent: true, has: [{ type: "host" as const, value: host }] },
         ...(source === "/" || source.includes(":")
           ? []
           : [{ source: `${source}/`, destination: `https://nekodojo.app${destination}`, permanent: true, has: [{ type: "host" as const, value: host }] }]),
       ]),
-    );
+    )];
   },
 };
 

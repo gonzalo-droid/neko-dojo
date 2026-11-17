@@ -16,7 +16,7 @@ export default function FAQ({ c, email }: { c: AqContent["faq"]; email: string }
   return (
     <MotionConfig reducedMotion="user">
       <section id="faq" className="scroll-mt-20 px-4 py-20 sm:px-6 md:py-28">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_1.7fr] lg:gap-16">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <h2 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-ink md:text-5xl">{c.title}</h2>

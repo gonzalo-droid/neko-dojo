@@ -32,6 +32,30 @@ export function studioGraph(locale: Locale) {
   };
 }
 
+/** One blog article. The author is the person behind the studio (see /about). */
+export function blogPosting(
+  locale: Locale,
+  post: { slug: string; title: string; description: string; date: string; tags: string[] },
+  author: string,
+  wordCount: number,
+) {
+  const url = abs(locale, `/blog/${post.slug}`);
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    url,
+    mainEntityOfPage: url,
+    inLanguage: locale,
+    ...(post.date ? { datePublished: post.date } : {}),
+    ...(post.tags.length ? { keywords: post.tags.join(", ") } : {}),
+    wordCount,
+    author: { "@type": "Person", name: author, url: abs(locale, "/about") },
+    publisher: { "@id": ORG_ID },
+  };
+}
+
 export type Crumb = { name: string; path: string };
 
 export function breadcrumbList(locale: Locale, crumbs: Crumb[]) {
