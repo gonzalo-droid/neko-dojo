@@ -4,7 +4,7 @@ const es = {
     homeDescription: "Nekodojo es un estudio independiente que crea apps para aprender, inspirarse y avanzar.",
   },
   a11y: { skip: "Saltar al contenido", mainNav: "Navegación principal", footerNav: "Pie de página", language: "Idioma" },
-  nav: { apps: "Apps", studio: "Estudio", about: "Sobre mí", support: "Soporte", legal: "Legal" },
+  nav: { apps: "Apps", studio: "Estudio", about: "Sobre mí", blog: "Blog", support: "Soporte", legal: "Legal" },
   languageSwitch: { label: "English", short: "EN", hint: "Ver esta página en inglés" },
   status: { available: "Disponible", "in-development": "En desarrollo", pending: "Por confirmar" },
   common: {
@@ -65,6 +65,14 @@ const es = {
     contactTitle: "Hablemos de tu proyecto",
     contactLead: "Cuéntame qué necesitas —una web, una app o automatizar algo con IA— y te respondo con una propuesta.",
     contactCta: "Escríbeme",
+  },
+  blog: {
+    title: "Blog",
+    description: "Notas de desarrollo de Gonzalo López: Android, Kotlin, arquitectura, Compose e IA.",
+    eyebrow: "Notas de desarrollo",
+    lead: "Lo que aprendo construyendo apps: arquitectura, Kotlin, Compose e IA.",
+    back: "Blog",
+    translationNote: "",
   },
   studio: {
     title: "El estudio",

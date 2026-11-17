@@ -9,6 +9,7 @@ export default function StudioHeader({ locale, t }: { locale: Locale; t: Diction
     { href: "/apps", label: t.nav.apps },
     { href: "/studio", label: t.nav.studio },
     { href: "/about", label: t.nav.about },
+    { href: "/blog", label: t.nav.blog },
     { href: "/support", label: t.nav.support },
     { href: "/legal", label: t.nav.legal },
   ];

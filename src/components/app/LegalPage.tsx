@@ -49,7 +49,7 @@ export default function LegalPage({ app, kind, locale }: { app: AppEntry; kind: 
 
         {legal.mode === "live" ? (
           <div className="mt-4 space-y-1 text-sm text-muted">
-            <p>{t.common.updated}: {legal.updated[locale]}</p>
+            <p>{t.common.updated}: {("privacy" in legal.updated ? legal.updated[kind] : legal.updated)[locale]}</p>
             <p>{t.legal.liveSource} <RichText text={legal.publishedAt[kind]} /></p>
             {t.legal.translationNote && <p>{t.legal.translationNote}</p>}
           </div>

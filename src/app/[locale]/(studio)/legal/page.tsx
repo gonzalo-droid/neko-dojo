@@ -31,7 +31,7 @@ export default async function LegalCenter({ params }: LocaleParams) {
                   <Link href={localizePath(locale, `/apps/${app.slug}`)} className="font-semibold hover:text-accent">{app.name}</Link>
                   <p className="text-sm text-muted">
                     <span className={live ? "text-emerald-400" : "text-amber-300"}>{live ? t.legal.live : t.legal.draft}</span>
-                    {app.legal.mode === "live" && <> · {t.common.updated}: {app.legal.updated[locale]}</>}
+                    {app.legal.mode === "live" && <> · {t.common.updated}: {("privacy" in app.legal.updated ? app.legal.updated.privacy : app.legal.updated)[locale]}</>}
                   </p>
                 </div>
               </div>

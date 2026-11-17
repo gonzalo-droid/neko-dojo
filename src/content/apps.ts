@@ -32,7 +32,12 @@ export type AppEntry = {
   summary: L;
   stores: StoreLink[];
   legal:
-    | { mode: "live"; updated: L; publishedAt: { privacy: string; terms: string } }
+    | {
+        mode: "live";
+        /** One date for both documents, or one per document when they differ. */
+        updated: L | { privacy: L; terms: L };
+        publishedAt: { privacy: string; terms: string };
+      }
     | { mode: "draft" };
   support: {
     faq: L<Faq[]>;
@@ -109,10 +114,20 @@ export const apps: AppEntry[] = [
       en: "Practice quizzes for Peru's driver's license knowledge test.",
     },
     stores: [
-      { store: "google-play", url: null },
+      { store: "google-play", url: "https://play.google.com/store/apps/details?id=com.gondroid.mtcquiz" },
       { store: "app-store", url: null },
     ],
-    legal: { mode: "draft" },
+    legal: {
+      mode: "live",
+      updated: {
+        privacy: { es: "16 de noviembre de 2026", en: "November 16, 2026" },
+        terms: { es: "11 de agosto de 2026", en: "August 11, 2026" },
+      },
+      publishedAt: {
+        privacy: "https://gonzalo-lozg.me/apps-docs/mtcquiz/politics/",
+        terms: "https://gonzalo-lozg.me/apps-docs/mtcquiz/term/",
+      },
+    },
     support: {
       faq: {
         es: [

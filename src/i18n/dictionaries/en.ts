@@ -6,7 +6,7 @@ const en: Dictionary = {
     homeDescription: "Nekodojo is an independent studio making apps to learn, get inspired and keep moving.",
   },
   a11y: { skip: "Skip to content", mainNav: "Main navigation", footerNav: "Footer", language: "Language" },
-  nav: { apps: "Apps", studio: "Studio", about: "About", support: "Support", legal: "Legal" },
+  nav: { apps: "Apps", studio: "Studio", about: "About", blog: "Blog", support: "Support", legal: "Legal" },
   languageSwitch: { label: "Español", short: "ES", hint: "View this page in Spanish" },
   status: { available: "Available", "in-development": "In development", pending: "To be confirmed" },
   common: {
@@ -67,6 +67,14 @@ const en: Dictionary = {
     contactTitle: "Let's talk about your project",
     contactLead: "Tell me what you need —a website, an app or automating something with AI— and I'll reply with a proposal.",
     contactCta: "Write to me",
+  },
+  blog: {
+    title: "Blog",
+    description: "Development notes by Gonzalo López: Android, Kotlin, architecture, Compose and AI.",
+    eyebrow: "Development notes",
+    lead: "What I learn building apps: architecture, Kotlin, Compose and AI.",
+    back: "Blog",
+    translationNote: "Translated from the original Spanish article.",
   },
   studio: {
     title: "The studio",

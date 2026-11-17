@@ -1,0 +1,91 @@
+{
+  "android-testing": {
+    "title": "Testing en Android",
+    "description": "Guía práctica sobre cómo implementar diferentes tipos de pruebas en aplicaciones Android.",
+    "date": "2024-03-17",
+    "tags": [
+      "Android",
+      "Testing",
+      "JUnit",
+      "Espresso",
+      "Mockito"
+    ],
+    "image": "/about/projects/app_noteai.webp"
+  },
+  "kotlin-multiplatform": {
+    "title": "Desarrollo de Apps con Kotlin Multiplatform",
+    "description": "Aprende a desarrollar aplicaciones multiplataforma usando Kotlin Multiplatform, compartiendo código entre Android e iOS.",
+    "date": "2024-03-20",
+    "tags": [
+      "Kotlin",
+      "KMM",
+      "Android",
+      "iOS",
+      "Multiplataforma"
+    ],
+    "image": "/about/projects/app_cixcash.webp"
+  },
+  "android-ai": {
+    "title": "Integración de IA en Apps Android",
+    "description": "Cómo integrar inteligencia artificial en tus aplicaciones Android usando servicios como OpenAI y modelos de ML.",
+    "date": "2024-03-19",
+    "tags": [
+      "Android",
+      "IA",
+      "OpenAI",
+      "ML",
+      "Kotlin"
+    ],
+    "image": "/about/projects/app_noteai.webp"
+  },
+  "android-mvvm": {
+    "title": "Arquitectura MVVM en Android",
+    "description": "Guía completa sobre la implementación del patrón MVVM en aplicaciones Android modernas.",
+    "date": "2024-03-18",
+    "tags": [
+      "Android",
+      "MVVM",
+      "Arquitectura",
+      "Kotlin",
+      "ViewModel"
+    ],
+    "image": "/about/projects/app_ulearning.webp"
+  },
+  "android-coroutines": {
+    "title": "Coroutines en Android: Programación asíncrona moderna",
+    "description": "Las coroutines de Kotlin son una herramienta poderosa para manejar operaciones asíncronas en Android. Descubre cómo utilizarlas efectivamente en tus aplicaciones.",
+    "date": "2026-03-26",
+    "tags": [
+      "Android",
+      "Coroutines",
+      "Kotlin",
+      "Asíncrono"
+    ],
+    "image": "/about/projects/app_noteai.webp"
+  },
+  "android-dependency-injection": {
+    "title": "Inyección de Dependencias en Android con Hilt",
+    "description": "La inyección de dependencias es una técnica fundamental en el desarrollo de aplicaciones Android modernas. Aprende a implementar DI usando Hilt, la solución oficial de Google.",
+    "date": "2026-03-26",
+    "tags": [
+      "Android",
+      "Hilt",
+      "Arquitectura",
+      "Kotlin",
+      "Testing"
+    ],
+    "image": "/about/projects/app_crm.webp"
+  },
+  "android-jetpack-compose": {
+    "title": "Jetpack Compose: El futuro de la UI en Android",
+    "description": "Jetpack Compose es el toolkit moderno de UI nativa de Android que simplifica y acelera el desarrollo de interfaces de usuario. Explora sus características principales.",
+    "date": "2026-03-26",
+    "tags": [
+      "Android",
+      "Jetpack Compose",
+      "UI",
+      "Kotlin"
+    ],
+    "image": "/about/projects/app_erp.webp"
+  }
+}
