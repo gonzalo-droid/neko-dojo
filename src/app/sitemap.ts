@@ -5,7 +5,7 @@ import { SITE_URL } from "@/content/site";
 
 /** Every public page in both languages, with hreflang alternates. Drafts are left out. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ["/", "/apps", "/studio", "/support", "/legal"];
+  const paths = ["/", "/apps", "/studio", "/about", "/support", "/legal"];
   for (const app of apps) {
     paths.push(`/apps/${app.slug}`, `/apps/${app.slug}/support`);
     if (app.legal.mode === "live") paths.push(`/apps/${app.slug}/privacy`, `/apps/${app.slug}/terms`);

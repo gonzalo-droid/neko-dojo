@@ -8,6 +8,7 @@ export default function StudioHeader({ locale, t }: { locale: Locale; t: Diction
   const links = [
     { href: "/apps", label: t.nav.apps },
     { href: "/studio", label: t.nav.studio },
+    { href: "/about", label: t.nav.about },
     { href: "/support", label: t.nav.support },
     { href: "/legal", label: t.nav.legal },
   ];

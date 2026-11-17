@@ -39,6 +39,7 @@ export default function StudioFooter({ locale, t }: { locale: Locale; t: Diction
           <p className="text-sm font-semibold text-ink">Nekodojo</p>
           <ul className="mt-3 space-y-2 text-sm">
             <li><Link href={localizePath(locale, "/studio")} className="text-muted hover:text-ink">{t.nav.studio}</Link></li>
+            <li><Link href={localizePath(locale, "/about")} className="text-muted hover:text-ink">{t.nav.about}</Link></li>
             <li><Link href={localizePath(locale, "/support")} className="text-muted hover:text-ink">{t.nav.support}</Link></li>
             <li><Link href={localizePath(locale, "/legal")} className="text-muted hover:text-ink">{t.legal.title}</Link></li>
             <li><a href={`mailto:${CONTACT_EMAIL}`} className="text-muted hover:text-ink">{CONTACT_EMAIL}</a></li>
