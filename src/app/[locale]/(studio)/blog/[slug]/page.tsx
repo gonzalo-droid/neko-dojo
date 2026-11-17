@@ -5,6 +5,8 @@ import { locales, localizePath, isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { pageMetadata } from "@/lib/metadata";
 import { categoryLabel, formatDate, getPost, getPosts } from "@/lib/blog";
+import { blogPosting } from "@/lib/structured-data";
+import JsonLd from "@/components/shared/JsonLd";
 
 type Params = { params: Promise<{ locale: string; slug: string }> };
 
@@ -22,14 +24,24 @@ async function load(params: Params["params"]) {
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale, post } = await load(params);
-  return pageMetadata({ locale, path: `/blog/${post.slug}`, title: `${post.title} — Nekodojo`, description: post.description });
+  return pageMetadata({
+    locale,
+    path: `/blog/${post.slug}`,
+    title: `${post.title} — Nekodojo`,
+    description: post.description,
+    // The post's cover; without one, the studio's share image.
+    image: { url: post.image ?? `/${locale}/opengraph-image`, alt: post.title },
+  });
 }
 
 export default async function Post({ params }: Params) {
   const { locale, post } = await load(params);
-  const t = getDictionary(locale).blog;
+  const dict = getDictionary(locale);
+  const t = dict.blog;
+  const words = post.html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
   return (
     <article className="mx-auto max-w-3xl px-4 py-14 sm:px-6 md:py-20">
+      <JsonLd data={blogPosting(locale, post, dict.about.name, words)} />
       <Link href={localizePath(locale, "/blog")} className="text-sm text-muted hover:text-accent">
         ← {t.back}
       </Link>
