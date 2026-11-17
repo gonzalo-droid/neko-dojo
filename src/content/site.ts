@@ -15,7 +15,10 @@ export const SITE_URL = (
 
 export const STUDIO_NAME = "Nekodojo";
 export const CONTACT_EMAIL = "contacto@gondroid.dev";
-export const INSTAGRAM_URL = "https://www.instagram.com/neko.manga.cix/";
+/** The studio's Instagram: studio pages, structured data and app waitlist fallbacks. */
+export const INSTAGRAM_URL = "https://www.instagram.com/nekodojo.apps/";
+/** AnimeQuote's own link, kept as in the original site (quote-anime/src/lib/constants.ts). */
+export const ANIMEQUOTE_INSTAGRAM_URL = "https://www.instagram.com/neko.manga.cix/";
 
 export const tagline: Record<Locale, string> = {
   es: "Pequeñas apps. Grandes posibilidades.",

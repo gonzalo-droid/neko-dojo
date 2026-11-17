@@ -3,7 +3,7 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale, type LocaleParams } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
 import { getApp } from "@/content/apps";
-import { CONTACT_EMAIL, INSTAGRAM_URL } from "@/content/site";
+import { ANIMEQUOTE_INSTAGRAM_URL, CONTACT_EMAIL } from "@/content/site";
 import { aqContent } from "@/apps/animequote/content";
 import Header from "@/apps/animequote/components/Header";
 import Hero from "@/apps/animequote/components/Hero";
@@ -45,7 +45,7 @@ export default async function AnimeQuotePage({ params }: LocaleParams) {
     applicationCategory: "LifestyleApplication",
     url: "https://animequote.app",
     downloadUrl: playUrl,
-    sameAs: [appStoreUrl, INSTAGRAM_URL],
+    sameAs: [appStoreUrl, ANIMEQUOTE_INSTAGRAM_URL],
     publisher: { "@type": "Organization", name: "Nekodojo" },
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     description: c.meta.description,
@@ -60,9 +60,9 @@ export default async function AnimeQuotePage({ params }: LocaleParams) {
         <Hero c={c} playUrl={playUrl} appStoreUrl={appStoreUrl} />
         <AppShowcase c={c.showcase} />
         <FAQ c={c.faq} email={CONTACT_EMAIL} />
-        <Download c={c} playUrl={playUrl} appStoreUrl={appStoreUrl} instagramUrl={INSTAGRAM_URL} />
+        <Download c={c} playUrl={playUrl} appStoreUrl={appStoreUrl} instagramUrl={ANIMEQUOTE_INSTAGRAM_URL} />
       </main>
-      <Footer c={c.footer} locale={locale} email={CONTACT_EMAIL} instagramUrl={INSTAGRAM_URL} madeBy={t.common.madeBy} rights={t.footer.rights} navLabel={t.a11y.footerNav} />
+      <Footer c={c.footer} locale={locale} email={CONTACT_EMAIL} instagramUrl={ANIMEQUOTE_INSTAGRAM_URL} madeBy={t.common.madeBy} rights={t.footer.rights} navLabel={t.a11y.footerNav} />
       <StickyDownloadBar c={c.sticky} playUrl={playUrl} appStoreUrl={appStoreUrl} labels={c.badges} />
     </>
   );
