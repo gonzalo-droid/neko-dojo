@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { localizePath } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale, type LocaleParams } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
-import { about } from "@/content/about";
-import { CONTACT_EMAIL } from "@/content/site";
-
-/** WhatsApp público que ya figuraba en el portafolio gonzalo-lozg.me. */
-const WHATSAPP_URL = "https://wa.me/51924262747";
+import { about, platformLabel } from "@/content/about";
+import { CONTACT_EMAIL, WHATSAPP_URL } from "@/content/site";
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
   const locale = await getLocale(params);
@@ -74,61 +73,44 @@ export default async function About({ params }: LocaleParams) {
         </section>
 
         {/* Proyectos */}
-        <section className="mt-24">
+        <section id="projects" className="mt-24 scroll-mt-24">
           <h2 className="font-display text-3xl font-bold tracking-tight">{t.projectsTitle}</h2>
           <p className="mt-2 text-muted">{t.projectsLead}</p>
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {about.projects.map((p) => {
-              const c = p.case[locale];
-              return (
-                <article key={p.slug} className="flex flex-col overflow-hidden rounded-2xl bg-surface ring-1 ring-line">
-                  <Image src={p.image} alt={p.title} width={600} height={400} className="aspect-[3/2] w-full object-cover" />
+          <ul className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {about.projects.map((p) => (
+              <li key={p.slug}>
+                <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-surface ring-1 ring-line transition-shadow focus-within:ring-2 focus-within:ring-accent hover:ring-accent">
+                  <Image src={p.image} alt="" width={600} height={400} className="aspect-[3/2] w-full object-cover" />
                   <div className="flex flex-1 flex-col p-5">
-                    <h3 className="font-display text-xl font-bold">{p.title}</h3>
+                    <h3 className="font-display text-xl font-bold">
+                      <Link
+                        href={localizePath(locale, `/about/projects/${p.slug}`)}
+                        className="outline-none after:absolute after:inset-0 after:content-['']"
+                      >
+                        {p.title}
+                      </Link>
+                    </h3>
                     {p.client && (
                       <p className="mt-1 text-sm text-muted">
                         {t.client}: {p.client}
                       </p>
                     )}
                     <p className="mt-3 leading-snug text-ink">{p.summary[locale]}</p>
-                    <p className="mt-3 text-xs text-muted">
-                      <span className="font-semibold">{t.builtWith}:</span> {p.tech.join(" · ")}
+                    <ul className="mt-4 flex flex-wrap gap-1.5" aria-label={t.platforms}>
+                      {p.platforms.map((pl) => (
+                        <li key={pl} className="rounded-full px-2.5 py-0.5 text-xs text-muted ring-1 ring-line">
+                          {platformLabel[pl] ?? pl}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-auto pt-5 text-sm font-semibold text-accent" aria-hidden>
+                      {t.seeCase} <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
                     </p>
-                    <details className="mt-4 text-sm">
-                      <summary className="cursor-pointer font-semibold text-accent">{t.seeCase}</summary>
-                      <dl className="mt-3 space-y-3 text-muted">
-                        {(
-                          [
-                            [t.caseContext, c.context],
-                            [t.caseProblem, c.problem],
-                            [t.caseSolution, c.solution],
-                          ] as const
-                        ).map(([label, paras]) => (
-                          <div key={label}>
-                            <dt className="font-semibold text-ink">{label}</dt>
-                            {paras.map((para) => (
-                              <dd key={para} className="mt-1 leading-relaxed">{para}</dd>
-                            ))}
-                          </div>
-                        ))}
-                      </dl>
-                    </details>
-                    <div className="mt-auto flex flex-wrap gap-3 pt-5 text-sm">
-                      {p.links.length === 0 ? (
-                        <span className="text-muted">{t.privateProject}</span>
-                      ) : (
-                        p.links.map((l) => (
-                          <a key={l.url} href={l.url} target="_blank" rel="noopener noreferrer" className="font-semibold text-accent underline underline-offset-4">
-                            {l.label}
-                          </a>
-                        ))
-                      )}
-                    </div>
                   </div>
                 </article>
-              );
-            })}
-          </div>
+              </li>
+            ))}
+          </ul>
         </section>
 
         {/* Servicios */}

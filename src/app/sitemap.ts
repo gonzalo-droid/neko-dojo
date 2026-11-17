@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { defaultLocale, locales, localizePath } from "@/i18n/config";
 import { apps, isIndexable } from "@/content/apps";
+import { about } from "@/content/about";
 import { SITE_URL } from "@/content/site";
 import { getPosts } from "@/lib/blog";
 
@@ -12,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     paths.push(`/apps/${app.slug}`, `/apps/${app.slug}/support`);
     if (app.legal.mode === "live") paths.push(`/apps/${app.slug}/privacy`, `/apps/${app.slug}/terms`);
   }
+  for (const project of about.projects) paths.push(`/about/projects/${project.slug}`);
   const modified: Record<string, string> = {};
   for (const post of getPosts("es")) {
     paths.push(`/blog/${post.slug}`);
