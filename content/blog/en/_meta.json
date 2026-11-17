@@ -1,0 +1,77 @@
+{
+  "android-testing": {
+    "title": "Testing on Android",
+    "description": "A practical guide to implementing different types of tests in Android apps.",
+    "tags": [
+      "Android",
+      "Testing",
+      "JUnit",
+      "Espresso",
+      "Mockito"
+    ]
+  },
+  "kotlin-multiplatform": {
+    "title": "Building Apps with Kotlin Multiplatform",
+    "description": "Learn how to build cross-platform apps with Kotlin Multiplatform, sharing code between Android and iOS.",
+    "tags": [
+      "Kotlin",
+      "KMM",
+      "Android",
+      "iOS",
+      "Cross-platform"
+    ]
+  },
+  "android-ai": {
+    "title": "Integrating AI into Android Apps",
+    "description": "How to integrate artificial intelligence into your Android apps using services like OpenAI and ML models.",
+    "tags": [
+      "Android",
+      "AI",
+      "OpenAI",
+      "ML",
+      "Kotlin"
+    ]
+  },
+  "android-mvvm": {
+    "title": "MVVM Architecture on Android",
+    "description": "A complete guide to implementing the MVVM pattern in modern Android apps.",
+    "tags": [
+      "Android",
+      "MVVM",
+      "Architecture",
+      "Kotlin",
+      "ViewModel"
+    ]
+  },
+  "android-coroutines": {
+    "title": "Coroutines on Android: Modern Asynchronous Programming",
+    "description": "Kotlin coroutines are a powerful tool for handling asynchronous operations on Android. Discover how to use them effectively in your apps.",
+    "tags": [
+      "Android",
+      "Coroutines",
+      "Kotlin",
+      "Async"
+    ]
+  },
+  "android-dependency-injection": {
+    "title": "Dependency Injection on Android with Hilt",
+    "description": "Dependency injection is a fundamental technique in modern Android app development. Learn how to implement DI using Hilt, Google's official solution.",
+    "tags": [
+      "Android",
+      "Hilt",
+      "Architecture",
+      "Kotlin",
+      "Testing"
+    ]
+  },
+  "android-jetpack-compose": {
+    "title": "Jetpack Compose: The Future of UI on Android",
+    "description": "Jetpack Compose is Android's modern native UI toolkit that simplifies and speeds up user interface development. Explore its main features.",
+    "tags": [
+      "Android",
+      "Jetpack Compose",
+      "UI",
+      "Kotlin"
+    ]
+  }
+}
