@@ -18,6 +18,9 @@
   /* Alternate section background. Themes without it fall back to the canvas. */
   --color-band: var(--app-band, var(--app-canvas));
   --color-danger: var(--app-danger, #b42318);
+  /* Status colors (available / live, in progress / draft). Fallbacks = the original dark-friendly values. */
+  --color-ok: var(--app-ok, #34d399);
+  --color-warn: var(--app-warn, #fbbf24);
   --font-display: var(--app-display);
   --font-body: var(--app-body);
 }
@@ -60,6 +63,8 @@ body:has(.theme-studio) { background-color: #0d0b14; }
   --app-on-accent: #ffffff;
   --app-accent2: #8f6400;
   --app-line: #cfcdc5;
+  --app-ok: #11704a;
+  --app-warn: #8a5800;
 }
 [data-theme="light"] body:has(.theme-studio) { background-color: #eeede9; }
 
