@@ -126,7 +126,8 @@
     "categories": [
       "web",
       "ia"
-    ]
+    ],
+    "image": "/blog/vercel-supabase-claude.webp"
   },
   "reels-carruseles-claude": {
     "title": "Reels y carruseles con Claude: dos skills y voces de ElevenLabs",
@@ -142,7 +143,8 @@
     "categories": [
       "ia",
       "marketing"
-    ]
+    ],
+    "image": "/blog/reels-carruseles-claude.webp"
   },
   "skills-claude": {
     "title": "Qué es una skill de Claude, cómo crearla y cuáles uso",
@@ -156,6 +158,7 @@
     ],
     "categories": [
       "ia"
-    ]
+    ],
+    "image": "/blog/skills-claude.webp"
   }
 }
