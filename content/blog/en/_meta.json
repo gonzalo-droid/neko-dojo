@@ -108,5 +108,16 @@
       "Automation"
     ],
     "image": "/blog/skills-claude-en.webp"
+  },
+  "tipos-de-skills-claude": {
+    "title": "Local, project and profile skills: where to keep each one",
+    "description": "The same skill can live on your computer, in the repository or in your Claude account. What changes in each case, real examples and how I decide where each one goes.",
+    "tags": [
+      "Claude",
+      "Skills",
+      "Claude Code",
+      "AI"
+    ],
+    "image": "/blog/tipos-de-skills-claude-en.webp"
   }
 }
