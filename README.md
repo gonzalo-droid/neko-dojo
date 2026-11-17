@@ -20,8 +20,8 @@ Opcional: copia `.env.example` a `.env.local`. Sin variables, el sitio funciona 
 
 1. Sube el repositorio a GitHub.
 2. En Vercel: **Add New → Project**, importa el repositorio. Vercel detecta Next.js; no hay que cambiar nada del build.
-3. La URL pública (canonical, hreflang, sitemap) sale sola del dominio de producción que Vercel expone en el build (`VERCEL_PROJECT_PRODUCTION_URL`): hoy `neko-dojo.vercel.app`, y `nekodojo.com` en cuanto añadas el dominio. Solo define `NEXT_PUBLIC_SITE_URL` si quieres forzar otra.
-4. Cuando compres el dominio: **Settings → Domains → Add `nekodojo.com`** y sigue las instrucciones de DNS.
+3. La URL pública (canonical, hreflang, sitemap) sale sola del dominio de producción que Vercel expone en el build (`VERCEL_PROJECT_PRODUCTION_URL`): hoy `nekodojo.app`. Solo define `NEXT_PUBLIC_SITE_URL` si quieres forzar otra.
+4. El dominio `nekodojo.app` (y `www.nekodojo.app`) ya está añadido en **Settings → Domains**.
 
 Indexación: `robots.txt` solo permite indexar cuando `VERCEL_ENV=production`. Las vistas previas y los builds locales quedan fuera de los buscadores.
 
@@ -93,7 +93,6 @@ Lo provisional está marcado en pantalla ("Contenido provisional", "Mockup conce
 ## Integraciones pendientes
 
 - **Formularios**: hoy son demostraciones (no envían ni guardan nada, y lo dicen). Para conectarlos, define `FORMS_PROVIDER=webhook` y `FORMS_WEBHOOK_URL` en Vercel (sirve Zapier, Make, Google Apps Script, una función de Supabase…), o añade otro proveedor en `src/lib/forms/provider.ts`. La validación ya corre en el navegador y en el servidor.
-- **Dominio** `nekodojo.com` en Vercel y `NEXT_PUBLIC_SITE_URL`.
 - **Analítica**: no hay ninguna. Si se añade, preferir una sin cookies (Vercel Analytics) para evitar el banner de consentimiento.
 - **Insignias oficiales** de Google Play / App Store para MTCQuiz, Anki Dojo y Goals (AnimeQuote ya usa las suyas).
 - **Logo definitivo** de Nekodojo.

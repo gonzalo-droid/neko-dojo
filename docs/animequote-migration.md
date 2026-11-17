@@ -9,15 +9,15 @@ Estado actual (no cambiar en esta fase):
 
 ## Si algún día se migra a Nekodojo
 
-1. Verificar que `nekodojo.com` esté en producción y que `/apps/animequote` muestre el mismo contenido.
+1. Verificar que `nekodojo.app` esté en producción y que `/apps/animequote` muestre el mismo contenido.
 2. En el proyecto `quote-anime` (o en Vercel, en el dominio `animequote.app`), crear redirecciones **301**:
 
    | Desde | Hacia |
    | --- | --- |
-   | `animequote.app/` | `nekodojo.com/apps/animequote` |
-   | `animequote.app/privacy-policy` | `nekodojo.com/apps/animequote/privacy` |
-   | `animequote.app/terms-and-conditions` | `nekodojo.com/apps/animequote/terms` |
-   | `animequote.app/*` (resto) | `nekodojo.com/apps/animequote` |
+   | `animequote.app/` | `nekodojo.app/apps/animequote` |
+   | `animequote.app/privacy-policy` | `nekodojo.app/apps/animequote/privacy` |
+   | `animequote.app/terms-and-conditions` | `nekodojo.app/apps/animequote/terms` |
+   | `animequote.app/*` (resto) | `nekodojo.app/apps/animequote` |
 
    Mantener el dominio `animequote.app` registrado y apuntando a Vercel indefinidamente, solo para servir las redirecciones.
 3. En Nekodojo, quitar los `canonical` hacia animequote.app:
