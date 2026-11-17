@@ -3,6 +3,7 @@ import { localizePath, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import CatMark from "@/components/shared/CatMark";
 import LanguageSwitch from "@/components/shared/LanguageSwitch";
+import NavLinks from "./NavLinks";
 
 export default function StudioHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
   const links = [
@@ -21,24 +22,13 @@ export default function StudioHeader({ locale, t }: { locale: Locale; t: Diction
           <span className="font-display text-lg font-bold tracking-tight">Nekodojo</span>
         </Link>
         <nav aria-label={t.a11y.mainNav} className="order-3 w-full sm:order-none sm:w-auto">
-          <ul className="-mx-2 flex gap-1 overflow-x-auto">
-            {links.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={localizePath(locale, link.href)}
-                  className="block rounded-md px-2 py-1.5 text-sm text-muted transition-colors hover:text-ink"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <NavLinks items={links.map((l) => ({ href: localizePath(locale, l.href), internal: l.href, label: l.label }))} />
         </nav>
         <LanguageSwitch
           locale={locale}
           label={t.languageSwitch.short}
           hint={t.languageSwitch.hint}
-          className="ml-auto rounded-md border border-line px-2.5 py-1 text-xs font-semibold tracking-wide text-muted transition-colors hover:border-accent hover:text-ink"
+          className="ml-auto rounded-md border border-line px-1 py-0.5 text-xs font-semibold tracking-wide text-muted transition-colors hover:border-accent"
         />
       </div>
     </header>

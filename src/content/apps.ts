@@ -31,11 +31,17 @@ export type AppEntry = {
   tagline: L;
   summary: L;
   stores: StoreLink[];
+  /** Real average rating shown in the stores. Leave it out if there is none. */
+  rating?: number;
+  /** Real screenshot for the studio cards (public path). */
+  screenshot?: { src: string; width: number; height: number; alt: L };
   legal:
     | {
         mode: "live";
-        /** One date for both documents, or one per document when they differ. */
-        updated: L | { privacy: L; terms: L };
+        /** Most recent update of the two documents (shown on the studio's legal page). */
+        updated: L;
+        /** Per-document dates, when privacy and terms were updated on different days. */
+        updatedByKind?: { privacy: L; terms: L };
         publishedAt: { privacy: string; terms: string };
       }
     | { mode: "draft" };
@@ -66,6 +72,16 @@ export const apps: AppEntry[] = [
       { store: "google-play", url: "https://play.google.com/store/apps/details?id=com.gondroid.quoteanime" },
       { store: "app-store", url: "https://apps.apple.com/pe/app/quoteanime-frases-de-anime/id6762100338?l=en-GB" },
     ],
+    rating: 4.5,
+    screenshot: {
+      src: "/apps/animequote/home_app.png",
+      width: 900,
+      height: 1901,
+      alt: {
+        es: "Pantalla principal de AnimeQuote mostrando una frase de anime a pantalla completa",
+        en: "AnimeQuote home screen showing a full-screen anime quote",
+      },
+    },
     legal: {
       mode: "live",
       updated: { es: "abril de 2026", en: "April 2026" },
@@ -105,21 +121,34 @@ export const apps: AppEntry[] = [
     slug: "mtcquiz",
     name: "MTCQuiz",
     status: "available",
-    provisional: true,
-    icon: { glyph: "M" },
-    preview: { canvas: "#FAFAF7", ink: "#13201F", muted: "#4B5B59", accent: "#0F766E", fontVar: "--font-outfit" },
-    tagline: { es: "Tu próximo destino: la licencia.", en: "Next stop: your license." },
+    provisional: false,
+    icon: { src: "/apps/mtcquiz/logo.png" },
+    preview: { canvas: "#F6F7FC", ink: "#161B3D", muted: "#4F5675", accent: "#3949AB", fontVar: "--font-outfit" },
+    tagline: {
+      es: "Practica el balotario del MTC y llega listo a tu examen de brevete",
+      en: "Practice the MTC question bank and walk into your license test ready",
+    },
     summary: {
-      es: "Cuestionarios para preparar el examen de conocimientos de la licencia de conducir en Perú.",
-      en: "Practice quizzes for Peru's driver's license knowledge test.",
+      es: "Las preguntas oficiales del examen de reglas de tránsito del MTC, con simulacros cronometrados y sin internet.",
+      en: "The official questions of Peru's MTC traffic rules test, with timed practice exams and no internet needed.",
     },
     stores: [
       { store: "google-play", url: "https://play.google.com/store/apps/details?id=com.gondroid.mtcquiz" },
-      { store: "app-store", url: null },
+      { store: "app-store", url: "https://apps.apple.com/app/id6800840447" },
     ],
+    screenshot: {
+      src: "/apps/mtcquiz/home.webp",
+      width: 920,
+      height: 2000,
+      alt: {
+        es: "Pantalla de inicio de MTCQuiz con las categorías de licencia A-I, A-IIa, A-IIb y A-IIIa",
+        en: "MTCQuiz home screen listing the A-I, A-IIa, A-IIb and A-IIIa license categories",
+      },
+    },
     legal: {
       mode: "live",
-      updated: {
+      updated: { es: "16 de noviembre de 2026", en: "November 16, 2026" },
+      updatedByKind: {
         privacy: { es: "16 de noviembre de 2026", en: "November 16, 2026" },
         terms: { es: "11 de agosto de 2026", en: "August 11, 2026" },
       },
@@ -131,17 +160,31 @@ export const apps: AppEntry[] = [
     support: {
       faq: {
         es: [
-          { q: "¿MTCQuiz es una app oficial?", a: "No. Es una app independiente de Nekodojo y no está afiliada al Ministerio de Transportes y Comunicaciones." },
-          { q: "[Provisional] ¿De dónde salen las preguntas?", a: "[Pendiente de confirmar la fuente exacta del banco de preguntas.]" },
+          { q: "¿MTCQuiz es una app oficial?", a: "No. Es una app independiente de Nekodojo y no está afiliada al Ministerio de Transportes y Comunicaciones (MTC)." },
+          { q: "¿De dónde salen las preguntas?", a: "Del balotario oficial que publica el MTC para cada categoría de licencia. Copiamos preguntas, respuestas e imágenes tal cual, incluso sus erratas, porque el examen real se califica contra ese documento." },
+          { q: "¿Qué categorías incluye?", a: "Nueve: A-I, A-IIa, A-IIb, A-IIIa, A-IIIb y A-IIIc de la clase A, y B-IIa, B-IIb y B-IIc de la clase B. En total, unas 2.200 preguntas." },
+          { q: "¿Necesito internet o una cuenta?", a: "No necesitas cuenta. Las preguntas están guardadas en la app, así que puedes estudiar y hacer simulacros sin conexión." },
+          { q: "¿Es gratis?", a: "Sí, con anuncios. Premium es opcional y quita los anuncios; se paga a través de la tienda." },
         ],
         en: [
-          { q: "Is MTCQuiz an official app?", a: "No. It's an independent Nekodojo app and isn't affiliated with Peru's Ministry of Transport and Communications." },
-          { q: "[Placeholder] Where do the questions come from?", a: "[Exact source of the question bank pending confirmation.]" },
+          { q: "Is MTCQuiz an official app?", a: "No. It's an independent Nekodojo app and isn't affiliated with Peru's Ministry of Transport and Communications (MTC)." },
+          { q: "Where do the questions come from?", a: "From the official question bank the MTC publishes for each license category. Questions, answers and images are copied as they are, typos included, because the real test is graded against that document." },
+          { q: "Which categories are included?", a: "Nine: A-I, A-IIa, A-IIb, A-IIIa, A-IIIb and A-IIIc in class A, and B-IIa, B-IIb and B-IIc in class B. About 2,200 questions in total." },
+          { q: "Do I need internet or an account?", a: "You don't need an account. The questions are stored in the app, so you can study and take practice tests offline." },
+          { q: "Is it free?", a: "Yes, with ads. Premium is optional and removes the ads; it's paid through the store." },
         ],
       },
       dataDeletion: {
-        es: ["[Pendiente: describir si la app guarda datos y cómo eliminarlos.]"],
-        en: ["[Pending: describe whether the app stores data and how to delete it.]"],
+        es: [
+          "MTCQuiz no te pide crear una cuenta, así que no hay una cuenta que eliminar.",
+          "Tus resultados, tu historial y tu racha de estudio se guardan solo en tu dispositivo. Para borrarlos, borra los datos de la app en los ajustes del sistema o desinstálala.",
+          "Para pedir el acceso, la corrección o la eliminación de otros datos (por ejemplo, los de analítica o reportes de errores en Android), escribe al correo que figura en la política de privacidad.",
+        ],
+        en: [
+          "MTCQuiz doesn't ask you to create an account, so there is no account to delete.",
+          "Your results, history and study streak are stored only on your device. To delete them, clear the app's data in your system settings or uninstall it.",
+          "To ask for access to, correction or deletion of other data (for example, analytics or crash reports on Android), write to the email listed in the privacy policy.",
+        ],
       },
     },
   },
@@ -197,14 +240,40 @@ export const apps: AppEntry[] = [
   },
 ];
 
+/** Texts that still start with a [Pending]/[Placeholder] marker are kept out of the page. */
+export function isPlaceholder(text: string): boolean {
+  return /^\[(pendiente|pending|provisional|placeholder)/i.test(text.trim());
+}
+
+/** FAQ entries ready to publish (question and answer without markers). */
+export function readyFaq(items: Faq[]): Faq[] {
+  return items.filter((f) => !isPlaceholder(f.q) && !isPlaceholder(f.a));
+}
+
+/** Store links that actually go somewhere. */
+export function liveStores(app: AppEntry): (StoreLink & { url: string })[] {
+  return app.stores.filter((s): s is StoreLink & { url: string } => !!s.url);
+}
+
+/**
+ * A published app whose page is still full of placeholders stays out of search
+ * until the real content is in (same idea as the draft legal documents).
+ */
+export function isIndexable(app: AppEntry): boolean {
+  return !(app.status === "available" && app.provisional);
+}
+
 export function getApp(slug: AppSlug): AppEntry {
   const app = apps.find((a) => a.slug === slug);
   if (!app) throw new Error(`Unknown app: ${slug}`);
   return app;
 }
 
-/** Studio news. Only facts that can be checked; add new entries at the top. */
-export const news: { app: AppSlug; text: L }[] = [
+/**
+ * Studio news. Only facts that can be checked; add new entries at the top.
+ * date: "YYYY-MM" of the real event. Leave it out if you don't know it; the date is then not shown.
+ */
+export const news: { app: AppSlug; text: L; date?: string }[] = [
   {
     app: "anki-dojo",
     text: {

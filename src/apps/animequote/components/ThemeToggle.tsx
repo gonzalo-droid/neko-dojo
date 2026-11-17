@@ -2,9 +2,9 @@
 
 import { useSyncExternalStore } from "react";
 
-// data-aq-theme on <html> is the source of truth. The server sets it from the
-// "aq-theme" cookie, so a saved dark theme is painted from the first frame.
-const root = () => document.documentElement;
+// data-aq-theme on the .theme-animequote wrapper is the source of truth. Its layout
+// sets it from the "aq-theme" cookie, so a saved dark theme is painted from the first frame.
+const root = () => (document.querySelector(".theme-animequote") as HTMLElement | null) ?? document.documentElement;
 
 function subscribe(onChange: () => void) {
   const el = root();

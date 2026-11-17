@@ -2,45 +2,74 @@ import type { Locale } from "@/i18n/config";
 import type { LegalDoc } from "./types";
 
 /*
- * Copy of the documents in force at gonzalo-lozg.me/apps-docs/mtcquiz/
- * (privacy: 16 Nov 2026 · terms: 11 Aug 2026), migrated on 2026-11-17.
+ * Copy of the documents in force at gonzalo-lozg.me/apps-docs/mtcquiz
+ * (privacy: 16 November 2026; terms: 11 August 2026).
  * Spanish is the original text; English is a reference translation.
- * Do not change practices described here without checking the app.
+ * The original's data table is kept as a list. If you edit the original, update this file too.
  */
 
-const CONTACT = "gonzalo.lozg@gmail.com";
-const IDS = "MTCQuiz — com.gondroid.mtcquiz (Android) / com.gonzadev.mtcquiz (iOS)";
+const GOOGLE_PRIVACY = "https://policies.google.com/privacy";
+const FIREBASE_PRIVACY = "https://firebase.google.com/support/privacy";
+
+const factsEs = {
+  list: [
+    "Nombre de la app: MTCQuiz",
+    "Responsable: NekoDojo",
+    "Paquete Android: com.gondroid.mtcquiz",
+    "Bundle ID iOS: com.gonzadev.mtcquiz",
+    "Contacto: gonzalo.lozg@gmail.com",
+    "Jurisdicción: Perú",
+  ],
+};
+
+const factsEn = {
+  list: [
+    "App name: MTCQuiz",
+    "Controller: NekoDojo",
+    "Android package: com.gondroid.mtcquiz",
+    "iOS bundle ID: com.gonzadev.mtcquiz",
+    "Contact: gonzalo.lozg@gmail.com",
+    "Jurisdiction: Peru",
+  ],
+};
+
+const contactEs = {
+  list: [
+    "Correo electrónico: gonzalo.lozg@gmail.com",
+    "Responsable: NekoDojo",
+    "Aplicación: MTCQuiz — com.gondroid.mtcquiz (Android) / com.gonzadev.mtcquiz (iOS)",
+  ],
+};
+
+const contactEn = {
+  list: [
+    "Email: gonzalo.lozg@gmail.com",
+    "Controller: NekoDojo",
+    "App: MTCQuiz — com.gondroid.mtcquiz (Android) / com.gonzadev.mtcquiz (iOS)",
+  ],
+};
 
 const privacyEs: LegalDoc = {
-  intro: [
-    {
-      list: [
-        "Nombre de la app: MTCQuiz",
-        "Responsable: NekoDojo",
-        "Paquete Android: com.gondroid.mtcquiz",
-        "Bundle ID iOS: com.gonzadev.mtcquiz",
-        `Contacto: ${CONTACT}`,
-        "Jurisdicción: Perú",
-      ],
-    },
-  ],
+  intro: [factsEs],
   sections: [
     {
       heading: "1. Introducción",
       blocks: [
-        "Esta Política de Privacidad describe cómo NekoDojo (\"nosotros\", \"nuestro\") recopila, utiliza y protege la información relacionada con el uso de MTCQuiz, una aplicación móvil de carácter educativo diseñada para ayudar a postulantes a la licencia de conducir en Perú a prepararse para el examen de manejo del Ministerio de Transportes y Comunicaciones (MTC).",
+        "Esta Política de Privacidad describe cómo NekoDojo (“nosotros”, “nuestro”) recopila, utiliza y protege la información relacionada con el uso de MTCQuiz, una aplicación móvil de carácter educativo diseñada para ayudar a postulantes a la licencia de conducir en Perú a prepararse para el examen de manejo del Ministerio de Transportes y Comunicaciones (MTC).",
         "Al descargar, instalar o utilizar MTCQuiz, aceptas las prácticas descritas en este documento. Si no estás de acuerdo con alguna parte de esta política, te recomendamos no utilizar la aplicación.",
       ],
     },
     {
       heading: "2. Responsable del tratamiento",
       blocks: [
-        `El responsable del tratamiento de los datos descritos en esta política es NekoDojo, desarrollador de MTCQuiz. Para cualquier consulta relacionada con privacidad, protección de datos o el ejercicio de tus derechos, puedes escribir a ${CONTACT}.`,
+        "El responsable del tratamiento de los datos descritos en esta política es NekoDojo, desarrollador de MTCQuiz. Para cualquier consulta relacionada con privacidad, protección de datos o el ejercicio de tus derechos, puedes escribir a gonzalo.lozg@gmail.com.",
       ],
     },
     {
       heading: "3. Datos que recopilamos",
-      blocks: ["MTCQuiz recopila distintos tipos de información según la fuente y el servicio involucrado. A continuación se detalla cada uno de forma precisa:"],
+      blocks: [
+        "MTCQuiz recopila distintos tipos de información según la fuente y el servicio involucrado. A continuación se detalla cada uno de forma precisa:",
+      ],
     },
     {
       heading: "3.1 Inicio de sesión con Google (actualmente no en uso)",
@@ -70,7 +99,7 @@ const privacyEs: LegalDoc = {
     {
       heading: "3.5 Publicidad (Google AdMob)",
       blocks: [
-        "La versión gratuita de MTCQuiz muestra anuncios (banner e intersticiales) a través de Google AdMob. Para ello, AdMob puede recopilar el identificador de publicidad de tu dispositivo (Advertising ID / IDFA) y otros datos técnicos necesarios para mostrar anuncios. Consulta la sección 7 para más detalles sobre publicidad.",
+        "La versión gratuita de MTCQuiz muestra anuncios (banner e intersticiales) a través de Google AdMob. Para ello, AdMob puede recopilar el identificador de publicidad de tu dispositivo (Advertising ID / IDFA) y otros datos técnicos necesarios para mostrar anuncios. Consulta la sección 6 para más detalles sobre publicidad.",
       ],
     },
     {
@@ -106,18 +135,19 @@ const privacyEs: LegalDoc = {
       ],
     },
     {
-      heading: "Resumen: dato · origen · dónde se almacena",
+      heading: "Resumen de datos",
       blocks: [
+        "Dato — origen — dónde se almacena:",
         {
           list: [
-            "Nombre y foto de perfil (Google) · Firebase Auth / Google Sign-In (no en uso actualmente) · Local",
-            "Eventos de uso y funnel de compra · Firebase Analytics · Google/Firebase",
-            "Reportes de errores e info del dispositivo · Firebase Crashlytics · Google/Firebase",
-            "Preguntas y categorías del examen · Firebase Realtime Database · Solo lectura, sin subir datos",
-            "Advertising ID · Google AdMob · Google AdMob",
-            "Recibos de compra · Google Play Billing / App Store · Google / Apple",
-            "Puntaje, respuestas y fecha del simulacro · Uso de la app · Local (Room / SwiftData)",
-            "Racha y fecha de último estudio · Uso de la app · Local (DataStore / UserDefaults)",
+            "Nombre y foto de perfil (Google) — Firebase Auth / Google Sign-In (no en uso actualmente) — local.",
+            "Eventos de uso y funnel de compra — Firebase Analytics — Google/Firebase.",
+            "Reportes de errores e info del dispositivo — Firebase Crashlytics — Google/Firebase.",
+            "Preguntas y categorías del examen — Firebase Realtime Database — solo lectura, sin subir datos.",
+            "Advertising ID — Google AdMob — Google AdMob.",
+            "Recibos de compra — Google Play Billing / App Store — Google / Apple.",
+            "Puntaje, respuestas y fecha del simulacro — uso de la app — local (Room / SwiftData).",
+            "Racha y fecha de último estudio — uso de la app — local (DataStore / UserDefaults).",
           ],
         },
       ],
@@ -150,11 +180,11 @@ const privacyEs: LegalDoc = {
         "MTCQuiz utiliza los siguientes servicios de terceros, cada uno con su propia política de privacidad:",
         {
           list: [
-            "Firebase Auth / Google Sign-In (Google LLC) — autenticación opcional, actualmente no habilitada en la interfaz. https://policies.google.com/privacy",
-            "Firebase Analytics (Google LLC) — analítica de uso de la app. https://firebase.google.com/support/privacy",
-            "Firebase Crashlytics (Google LLC) — reportes de errores y estabilidad. https://firebase.google.com/support/privacy",
-            "Firebase Realtime Database (Google LLC) — entrega del contenido del examen. https://firebase.google.com/support/privacy",
-            "Google AdMob (Google LLC) — publicidad dentro de la app. https://policies.google.com/technologies/ads",
+            `Firebase Auth / Google Sign-In (Google LLC) — autenticación opcional, actualmente no habilitada en la interfaz. Política: ${FIREBASE_PRIVACY}`,
+            `Firebase Analytics (Google LLC) — analítica de uso de la app. Política: ${FIREBASE_PRIVACY}`,
+            `Firebase Crashlytics (Google LLC) — reportes de errores y estabilidad. Política: ${FIREBASE_PRIVACY}`,
+            `Firebase Realtime Database (Google LLC) — entrega del contenido del examen. Política: ${FIREBASE_PRIVACY}`,
+            `Google AdMob (Google LLC) — publicidad dentro de la app. Política: ${GOOGLE_PRIVACY}`,
             "Google Play Billing (Android) / App Store (iOS) — procesamiento de suscripciones y pagos, gestionado por Google o Apple según tu plataforma.",
           ],
         },
@@ -196,7 +226,7 @@ const privacyEs: LegalDoc = {
             "Oposición: oponerte al tratamiento de tus datos en determinadas circunstancias.",
           ],
         },
-        `Puedes ejercer cualquiera de estos derechos escribiendo a ${CONTACT}. Responderemos tu solicitud en un plazo razonable conforme a la normativa aplicable. Ten en cuenta que la mayoría de tus datos (resultados, racha, preferencias) ya están bajo tu control directo: puedes eliminarlos en cualquier momento borrando los datos de la app o desinstalándola.`,
+        "Puedes ejercer cualquiera de estos derechos escribiendo a gonzalo.lozg@gmail.com. Responderemos tu solicitud en un plazo razonable conforme a la normativa aplicable. Ten en cuenta que la mayoría de tus datos (resultados, racha, preferencias) ya están bajo tu control directo: puedes eliminarlos en cualquier momento borrando los datos de la app o desinstalándola.",
       ],
     },
     {
@@ -213,39 +243,25 @@ const privacyEs: LegalDoc = {
     },
     {
       heading: "13. Contacto",
-      blocks: [
-        "Si tienes preguntas, dudas o deseas ejercer alguno de tus derechos sobre tus datos personales, puedes contactarnos:",
-        { list: [`Correo electrónico: ${CONTACT}`, "Responsable: NekoDojo", `Aplicación: ${IDS}`] },
-      ],
+      blocks: ["Si tienes preguntas, dudas o deseas ejercer alguno de tus derechos sobre tus datos personales, puedes contactarnos:", contactEs],
     },
   ],
 };
 
 const privacyEn: LegalDoc = {
-  intro: [
-    {
-      list: [
-        "App name: MTCQuiz",
-        "Controller: NekoDojo",
-        "Android package: com.gondroid.mtcquiz",
-        "iOS bundle ID: com.gonzadev.mtcquiz",
-        `Contact: ${CONTACT}`,
-        "Jurisdiction: Peru",
-      ],
-    },
-  ],
+  intro: [factsEn],
   sections: [
     {
       heading: "1. Introduction",
       blocks: [
-        "This Privacy Policy describes how NekoDojo (\"we\", \"our\") collects, uses and protects information related to the use of MTCQuiz, an educational mobile app designed to help driver's license applicants in Peru prepare for the driving test of the Ministry of Transport and Communications (MTC).",
-        "By downloading, installing or using MTCQuiz, you accept the practices described in this document. If you disagree with any part of this policy, we recommend that you do not use the app.",
+        "This Privacy Policy describes how NekoDojo (“we”, “our”) collects, uses and protects information related to the use of MTCQuiz, an educational mobile app designed to help driver's license applicants in Peru prepare for the driving test of the Ministry of Transport and Communications (MTC).",
+        "By downloading, installing or using MTCQuiz, you accept the practices described in this document. If you disagree with any part of this policy, we recommend that you don't use the app.",
       ],
     },
     {
       heading: "2. Data controller",
       blocks: [
-        `The controller of the data described in this policy is NekoDojo, developer of MTCQuiz. For any question about privacy, data protection or exercising your rights, write to ${CONTACT}.`,
+        "The controller of the data described in this policy is NekoDojo, developer of MTCQuiz. For any question about privacy, data protection or exercising your rights, write to gonzalo.lozg@gmail.com.",
       ],
     },
     {
@@ -255,7 +271,7 @@ const privacyEn: LegalDoc = {
     {
       heading: "3.1 Google sign-in (not currently in use)",
       blocks: [
-        "Google sign-in is currently disabled in the app's interface: MTCQuiz works in open-access mode and doesn't require an account to use its main features. However, the authentication component (Firebase Auth with Google Sign-In via Credential Manager) remains included in the app package for future use, so we document it here transparently.",
+        "Google sign-in is currently disabled in the app's interface: MTCQuiz works in open-access mode and doesn't require an account to use its main features. However, the authentication component (Firebase Auth with Google Sign-In via Credential Manager) remains in the app package for future use, so we document it here for transparency.",
         "If this feature is enabled in the future and you choose to sign in with your Google account, the app would store your name (displayName) and profile photo (photoUrl) locally on your device (DataStore on Android / UserDefaults on iOS). This information isn't sent to NekoDojo's own servers.",
       ],
     },
@@ -280,7 +296,7 @@ const privacyEn: LegalDoc = {
     {
       heading: "3.5 Advertising (Google AdMob)",
       blocks: [
-        "The free version of MTCQuiz shows ads (banner and interstitial) through Google AdMob. To do so, AdMob may collect your device's advertising identifier (Advertising ID / IDFA) and other technical data needed to show ads. See section 7 for more details about advertising.",
+        "The free version of MTCQuiz shows ads (banner and interstitial) through Google AdMob. To do so, AdMob may collect your device's advertising identifier (Advertising ID / IDFA) and other technical data needed to show ads. See section 6 for more details about advertising.",
       ],
     },
     {
@@ -292,7 +308,7 @@ const privacyEn: LegalDoc = {
     {
       heading: "3.7 Your test results (local only)",
       blocks: [
-        "When you complete a practice test, MTCQuiz saves your score, the answer you gave to each question and the date of the test. This data is stored only on your device (Room on Android / SwiftData on iOS) and is never uploaded to a server.",
+        "When you complete a practice test, MTCQuiz saves your score, the answers given for each question and the date of the test. This data is stored only on your device (Room on Android / SwiftData on iOS) and is never uploaded to a server.",
       ],
     },
     {
@@ -304,46 +320,47 @@ const privacyEn: LegalDoc = {
     {
       heading: "3.9 iPhone app (iOS)",
       blocks: [
-        "The iPhone version collects less than the Android version:",
+        "The iPhone version collects less than the Android one:",
         {
           list: [
-            "It doesn't use Firebase: no Analytics, Crashlytics, Realtime Database or sign-in. The questions are bundled inside the app.",
+            "It doesn't use Firebase: no Analytics, Crashlytics, Realtime Database or sign-in. The questions are included inside the app.",
             "It has no in-app purchases in its current version.",
-            "The only third-party service is Google AdMob (banners, interstitials and an optional rewarded ad to download the question-bank PDF). According to the privacy disclosure of Google's own SDK, it may collect the advertising identifier (IDFA), interaction and advertising data, approximate location derived from the IP address, and diagnostic data.",
-            "Before loading ads, the app shows Google's consent form when applicable and Apple's App Tracking Transparency request. If you don't allow tracking, the app doesn't access the IDFA and AdMob shows non-personalised ads.",
+            "The only third-party service is Google AdMob (banners, interstitials and an optional rewarded ad to download the question bank PDF). According to the privacy declaration of Google's own SDK, it may collect the advertising identifier (IDFA), interaction and advertising data, approximate location derived from the IP address, and diagnostic data.",
+            "Before loading ads, the app shows Google's consent form where applicable and Apple's App Tracking Transparency request. If you don't allow tracking, the app doesn't access the IDFA and AdMob shows non-personalized ads.",
           ],
         },
       ],
     },
     {
-      heading: "Summary: data · source · where it's stored",
+      heading: "Data summary",
       blocks: [
+        "Data — source — where it's stored:",
         {
           list: [
-            "Name and profile photo (Google) · Firebase Auth / Google Sign-In (not currently in use) · Local",
-            "Usage events and purchase funnel · Firebase Analytics · Google/Firebase",
-            "Crash reports and device info · Firebase Crashlytics · Google/Firebase",
-            "Test questions and categories · Firebase Realtime Database · Read-only, no data uploaded",
-            "Advertising ID · Google AdMob · Google AdMob",
-            "Purchase receipts · Google Play Billing / App Store · Google / Apple",
-            "Practice-test score, answers and date · App usage · Local (Room / SwiftData)",
-            "Streak and last study date · App usage · Local (DataStore / UserDefaults)",
+            "Name and profile photo (Google) — Firebase Auth / Google Sign-In (not currently in use) — local.",
+            "Usage events and purchase funnel — Firebase Analytics — Google/Firebase.",
+            "Crash reports and device info — Firebase Crashlytics — Google/Firebase.",
+            "Test questions and categories — Firebase Realtime Database — read-only, no data uploaded.",
+            "Advertising ID — Google AdMob — Google AdMob.",
+            "Purchase receipts — Google Play Billing / App Store — Google / Apple.",
+            "Practice test score, answers and date — app usage — local (Room / SwiftData).",
+            "Streak and last study date — app usage — local (DataStore / UserDefaults).",
           ],
         },
       ],
     },
     {
-      heading: "4. Purposes of processing",
+      heading: "4. Purpose of processing",
       blocks: [
         "We use the data described above for the following purposes:",
         {
           list: [
-            "Providing the questions and categories of the MTC driving test.",
-            "Saving your progress, scores and study streak directly on your device.",
-            "Diagnosing and fixing technical errors to improve the app's stability.",
-            "Understanding general app usage and the performance of the subscription funnel, in aggregate and not individually identifiable by us.",
-            "Showing ads in the free version through Google AdMob.",
-            "Processing Premium subscriptions through the relevant app store.",
+            "Provide the questions and categories of the MTC driving test.",
+            "Save your progress, scores and study streak directly on your device.",
+            "Diagnose and fix technical errors to improve the app's stability.",
+            "Understand general app usage and how the subscription funnel performs, in aggregate and not individually identifiable by us.",
+            "Show ads in the free version through Google AdMob.",
+            "Process Premium subscriptions through the relevant app store.",
           ],
         },
       ],
@@ -351,7 +368,7 @@ const privacyEn: LegalDoc = {
     {
       heading: "5. Legal basis",
       blocks: [
-        "Personal data is processed in accordance with Law No. 29733, Peru's Personal Data Protection Law, and its regulations. The legal basis for processing is, as applicable, performing the requested service (showing test content, processing subscriptions), the legitimate interest in maintaining and improving the app (analytics and crash reports), and consent where required (for example, device permissions). MTCQuiz doesn't claim compliance with regulations of other jurisdictions such as the European GDPR or California's CCPA.",
+        "Personal data is processed in accordance with Law No. 29733, Peru's Personal Data Protection Law, and its regulations. The legal basis is, as applicable, performing the requested service (showing test content, processing subscriptions), the legitimate interest in maintaining and improving the app (analytics and crash reports), and consent where appropriate (for example, device permissions). MTCQuiz doesn't claim compliance with regulations of other jurisdictions such as the European GDPR or California's CCPA.",
       ],
     },
     {
@@ -360,11 +377,11 @@ const privacyEn: LegalDoc = {
         "MTCQuiz uses the following third-party services, each with its own privacy policy:",
         {
           list: [
-            "Firebase Auth / Google Sign-In (Google LLC) — optional sign-in, not currently enabled in the interface. https://policies.google.com/privacy",
-            "Firebase Analytics (Google LLC) — app usage analytics. https://firebase.google.com/support/privacy",
-            "Firebase Crashlytics (Google LLC) — crash reporting and stability. https://firebase.google.com/support/privacy",
-            "Firebase Realtime Database (Google LLC) — delivery of the test content. https://firebase.google.com/support/privacy",
-            "Google AdMob (Google LLC) — in-app advertising. https://policies.google.com/technologies/ads",
+            `Firebase Auth / Google Sign-In (Google LLC) — optional authentication, not currently enabled in the interface. Policy: ${FIREBASE_PRIVACY}`,
+            `Firebase Analytics (Google LLC) — app usage analytics. Policy: ${FIREBASE_PRIVACY}`,
+            `Firebase Crashlytics (Google LLC) — crash reports and stability. Policy: ${FIREBASE_PRIVACY}`,
+            `Firebase Realtime Database (Google LLC) — delivery of the test content. Policy: ${FIREBASE_PRIVACY}`,
+            `Google AdMob (Google LLC) — in-app advertising. Policy: ${GOOGLE_PRIVACY}`,
             "Google Play Billing (Android) / App Store (iOS) — subscription and payment processing, handled by Google or Apple depending on your platform.",
           ],
         },
@@ -373,7 +390,7 @@ const privacyEn: LegalDoc = {
     {
       heading: "7. Advertising and Advertising ID",
       blocks: [
-        "In the free version, MTCQuiz shows banner and interstitial ads through Google AdMob. To select and measure ads, AdMob may use your device's advertising identifier (Advertising ID on Android / IDFA on iOS). You can reset or limit this identifier in your device's privacy settings (Settings → Google → Ads on Android, or Settings → Privacy & Security → Apple Advertising on iOS). We have no direct access to the data AdMob collects to personalise ads. On iPhone, you can also accept or decline tracking when the app asks, and change that choice in Settings → Privacy & Security → Tracking.",
+        "In the free version, MTCQuiz shows banner and interstitial ads through Google AdMob. To select and measure ads, AdMob may use your device's advertising identifier (Advertising ID on Android / IDFA on iOS). You can reset or limit this identifier in your device's privacy settings (Settings → Google → Ads on Android, or Settings → Privacy & Security → Apple Advertising on iOS). We don't have direct access to the data AdMob collects to personalize ads. On iPhone, you can also accept or decline tracking when the app asks, and change that choice in Settings → Privacy & Security → Tracking.",
       ],
     },
     {
@@ -382,8 +399,8 @@ const privacyEn: LegalDoc = {
         "On Android, MTCQuiz requests the following permissions:",
         {
           list: [
-            "INTERNET: needed to download the test content, show ads and send analytics/crash reports.",
-            "WRITE_EXTERNAL_STORAGE: used only to export or save the question-bank PDF to your device when you request it.",
+            "INTERNET: needed to download the test content, show ads and sync analytics/crash reports.",
+            "WRITE_EXTERNAL_STORAGE: used only to export or save the question bank PDF to your device when you ask for it.",
           ],
         },
       ],
@@ -391,7 +408,7 @@ const privacyEn: LegalDoc = {
     {
       heading: "9. Local data storage and security",
       blocks: [
-        "Your test results, study streak and (if enabled in the future) your Google profile information are stored only on your device using standard platform mechanisms (Room and DataStore on Android; SwiftData and UserDefaults on iOS). This data is protected by the operating system's own security measures and is deleted automatically if you uninstall the app. Communications with Firebase use encrypted connections (HTTPS/TLS).",
+        "Your test results, study streak and (if enabled in the future) your Google profile information are stored only on your device using standard platform mechanisms (Room and DataStore on Android; SwiftData and UserDefaults on iOS). This data is protected by the operating system's own security measures and is deleted automatically if you uninstall the app. Communication with Firebase uses encrypted connections (HTTPS/TLS).",
       ],
     },
     {
@@ -400,17 +417,17 @@ const privacyEn: LegalDoc = {
         "Under Peru's Personal Data Protection Law No. 29733, you have the right to:",
         {
           list: [
-            "Access: request information about the data we process about you.",
-            "Rectification: request correction of inaccurate or incomplete data.",
-            "Cancellation: request deletion of your data where applicable.",
+            "Access: ask for information about the data we process about you.",
+            "Rectification: ask for inaccurate or incomplete data to be corrected.",
+            "Cancellation: ask for your data to be deleted where appropriate.",
             "Objection: object to the processing of your data in certain circumstances.",
           ],
         },
-        `You can exercise any of these rights by writing to ${CONTACT}. We'll answer your request within a reasonable time under applicable law. Note that most of your data (results, streak, preferences) is already under your direct control: you can delete it at any time by clearing the app's data or uninstalling it.`,
+        "You can exercise any of these rights by writing to gonzalo.lozg@gmail.com. We'll answer your request within a reasonable time under the applicable rules. Keep in mind that most of your data (results, streak, preferences) is already under your direct control: you can delete it at any time by clearing the app's data or uninstalling it.",
       ],
     },
     {
-      heading: "11. Children",
+      heading: "11. Minors",
       blocks: [
         "MTCQuiz is a general educational app aimed at driver's license applicants in Peru. We don't state a specific minimum age of use, and the app doesn't implement age verification in its code. If you're a parent or guardian and believe a minor in your care has used the app and you want more information or the deletion of associated data, contact us at the email given in the contact section.",
       ],
@@ -418,26 +435,23 @@ const privacyEn: LegalDoc = {
     {
       heading: "12. Changes to this policy",
       blocks: [
-        "We may update this Privacy Policy from time to time to reflect changes in the app, in the third-party services we use or in applicable law. The date of the last update is always shown at the top of this page. We recommend reviewing this document periodically.",
+        "We may update this Privacy Policy from time to time to reflect changes in the app, in the third-party services we use or in the applicable rules. The date of the last update is always shown at the top of this page. We recommend reviewing this document periodically.",
       ],
     },
     {
       heading: "13. Contact",
-      blocks: [
-        "If you have questions or want to exercise any of your rights over your personal data, you can contact us:",
-        { list: [`Email: ${CONTACT}`, "Controller: NekoDojo", `App: ${IDS}`] },
-      ],
+      blocks: ["If you have questions or want to exercise any of your rights over your personal data, contact us:", contactEn],
     },
   ],
 };
 
 const termsEs: LegalDoc = {
-  intro: privacyEs.intro,
+  intro: [factsEs],
   sections: [
     {
       heading: "1. Aceptación de los términos",
       blocks: [
-        "Estos Términos y Condiciones (\"Términos\") regulan el acceso y uso de MTCQuiz, aplicación móvil desarrollada por NekoDojo (\"nosotros\", \"la app\"), disponible para Android e iOS. Al descargar, instalar o usar MTCQuiz, aceptas quedar vinculado por estos Términos. Si no estás de acuerdo, no debes utilizar la aplicación.",
+        "Estos Términos y Condiciones (“Términos”) regulan el acceso y uso de MTCQuiz, aplicación móvil desarrollada por NekoDojo (“nosotros”, “la app”), disponible para Android e iOS. Al descargar, instalar o usar MTCQuiz, aceptas quedar vinculado por estos Términos. Si no estás de acuerdo, no debes utilizar la aplicación.",
       ],
     },
     {
@@ -477,7 +491,7 @@ const termsEs: LegalDoc = {
     {
       heading: "6. Propiedad intelectual",
       blocks: [
-        "Todo el contenido de MTCQuiz —incluyendo, sin limitación, el diseño, la marca \"MTCQuiz\", los textos, la estructura de las preguntas, gráficos, íconos y el código de la aplicación— es propiedad de NekoDojo o de sus licenciantes, y está protegido por las leyes de propiedad intelectual aplicables. Queda prohibida la reproducción, distribución, modificación o explotación comercial del contenido de la app sin autorización previa por escrito, salvo el uso personal permitido por la licencia otorgada en la sección 3.",
+        "Todo el contenido de MTCQuiz —incluyendo, sin limitación, el diseño, la marca “MTCQuiz”, los textos, la estructura de las preguntas, gráficos, íconos y el código de la aplicación— es propiedad de NekoDojo o de sus licenciantes, y está protegido por las leyes de propiedad intelectual aplicables. Queda prohibida la reproducción, distribución, modificación o explotación comercial del contenido de la app sin autorización previa por escrito, salvo el uso personal permitido por la licencia otorgada en la sección 3.",
       ],
     },
     {
@@ -498,7 +512,7 @@ const termsEs: LegalDoc = {
     {
       heading: "8. Limitación de responsabilidad y exención de garantías",
       blocks: [
-        "MTCQuiz se ofrece \"tal cual\" y \"según disponibilidad\", con fines exclusivamente educativos y de preparación. No garantizamos que el contenido esté libre de errores, que refleje con exactitud el examen oficial vigente del MTC, ni que su uso resulte en la aprobación del examen oficial. El resultado de tu examen depende de múltiples factores fuera de nuestro control.",
+        "MTCQuiz se ofrece “tal cual” y “según disponibilidad”, con fines exclusivamente educativos y de preparación. No garantizamos que el contenido esté libre de errores, que refleje con exactitud el examen oficial vigente del MTC, ni que su uso resulte en la aprobación del examen oficial. El resultado de tu examen depende de múltiples factores fuera de nuestro control.",
         "En la máxima medida permitida por la ley aplicable, NekoDojo no será responsable por daños indirectos, incidentales, especiales o consecuentes derivados del uso o la imposibilidad de uso de la aplicación, incluyendo —sin limitación— la reprobación del examen oficial, pérdida de datos locales por desinstalación, o interrupciones del servicio ocasionadas por terceros (Firebase, AdMob, Google Play, App Store).",
       ],
     },
@@ -528,53 +542,50 @@ const termsEs: LegalDoc = {
     },
     {
       heading: "13. Contacto",
-      blocks: [
-        "Si tienes preguntas sobre estos Términos y Condiciones, puedes contactarnos:",
-        { list: [`Correo electrónico: ${CONTACT}`, "Responsable: NekoDojo", `Aplicación: ${IDS}`] },
-      ],
+      blocks: ["Si tienes preguntas sobre estos Términos y Condiciones, puedes contactarnos:", contactEs],
     },
   ],
 };
 
 const termsEn: LegalDoc = {
-  intro: privacyEn.intro,
+  intro: [factsEn],
   sections: [
     {
       heading: "1. Acceptance of the terms",
       blocks: [
-        "These Terms and Conditions (\"Terms\") govern access to and use of MTCQuiz, a mobile app developed by NekoDojo (\"we\", \"the app\"), available for Android and iOS. By downloading, installing or using MTCQuiz, you agree to be bound by these Terms. If you don't agree, you must not use the app.",
+        "These Terms and Conditions (“Terms”) govern access to and use of MTCQuiz, a mobile app developed by NekoDojo (“we”, “the app”), available for Android and iOS. By downloading, installing or using MTCQuiz, you agree to be bound by these Terms. If you don't agree, you must not use the app.",
       ],
     },
     {
       heading: "2. Description of the service",
       blocks: [
         "MTCQuiz is an educational practice app that offers practice tests, question banks and study material for people preparing to take the driving test of Peru's Ministry of Transport and Communications (MTC). The app is available for Android (minimum version: Android 8.0 / SDK 26) and iOS (minimum version: iOS 17).",
-        "MTCQuiz is an independent practice and study tool. It isn't an official app of the MTC or of any Peruvian government entity, and it doesn't guarantee that you'll pass the official test. The content is offered for educational and preparation purposes.",
+        "MTCQuiz is an independent practice and study tool. It isn't an official app of the MTC or of any Peruvian government body, and it doesn't guarantee that you'll pass the official test. The content is offered for educational and preparation purposes.",
       ],
     },
     {
-      heading: "3. License",
+      heading: "3. License to use",
       blocks: [
-        "Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable and revocable license to download, install and use MTCQuiz on devices you own or control, solely for your personal, non-commercial use. This license gives you no ownership rights over the app or its content.",
+        "Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable and revocable license to download, install and use MTCQuiz on devices you own or control, solely for your personal, non-commercial use. This license doesn't give you any ownership rights over the app or its content.",
       ],
     },
     {
       heading: "4. User accounts",
       blocks: [
-        "MTCQuiz can be used without creating an account. The app includes an optional Google sign-in component (Firebase Auth with Google Sign-In), but this feature is currently disabled in the interface and the app works in open-access mode. If this feature is enabled in the future, your use of it will be subject to the terms of the Google account you use, in addition to these Terms. You can find details on how this information is handled in our Privacy Policy.",
+        "MTCQuiz can be used without creating an account. The app includes an optional Google sign-in component (Firebase Auth with Google Sign-In), but this feature is currently disabled in the interface and the app runs in open-access mode. If this feature is enabled in the future, your use of it will be subject to the terms of the Google account you use, in addition to these Terms. You can find details on how this information is handled in our Privacy Policy.",
       ],
     },
     {
       heading: "5. Subscriptions and payments",
       blocks: [
-        "MTCQuiz uses a freemium model: the free version includes access to the practice content with ads (banner and interstitial, shown through Google AdMob). The Premium subscription removes in-app advertising.",
+        "MTCQuiz uses a freemium model: the free version includes access to the practice content with ads (banner and interstitial, shown through Google AdMob). The Premium subscription removes ads inside the app.",
         {
           list: [
             "The Premium subscription is offered in monthly and annual plans. The exact price is shown dynamically in your device's app store at the time of purchase.",
             "Subscriptions are processed and billed through Google Play (Android) or the App Store (iOS), depending on your device. MTCQuiz doesn't process or store payment data directly.",
             "Subscriptions renew automatically at the end of each period unless you cancel them before the renewal date.",
-            "You can cancel your subscription at any time from your Google Play account settings (Android) or the App Store subscription settings (iOS). Cancelling prevents future charges but doesn't automatically refund the period already started, unless the relevant store's policy says otherwise.",
-            "Refunds, billing disputes and other billing matters are governed by Google Play's or the App Store's own policies, depending on the platform used.",
+            "You can cancel your subscription at any time from your Google Play account settings (Android) or the App Store subscription settings (iOS). Cancelling prevents future charges but doesn't trigger automatic refunds for the period already started, unless the relevant store's policy says otherwise.",
+            "Refunds, billing disputes and other billing matters are governed by the policies of Google Play or the App Store, depending on the platform used.",
           ],
         },
       ],
@@ -582,7 +593,7 @@ const termsEn: LegalDoc = {
     {
       heading: "6. Intellectual property",
       blocks: [
-        "All MTCQuiz content —including, without limitation, the design, the \"MTCQuiz\" brand, texts, question structure, graphics, icons and the app's code— is owned by NekoDojo or its licensors and is protected by applicable intellectual property laws. Reproducing, distributing, modifying or commercially exploiting the app's content without prior written permission is prohibited, except for the personal use allowed by the license granted in section 3.",
+        "All MTCQuiz content —including, without limitation, the design, the “MTCQuiz” brand, the texts, the structure of the questions, graphics, icons and the app's code— is owned by NekoDojo or its licensors and is protected by the applicable intellectual property laws. Reproduction, distribution, modification or commercial exploitation of the app's content without prior written authorization is prohibited, except for the personal use allowed by the license granted in section 3.",
       ],
     },
     {
@@ -591,11 +602,11 @@ const termsEn: LegalDoc = {
         "When using MTCQuiz, you agree not to:",
         {
           list: [
-            "Reverse-engineer, decompile or disassemble the app, except to the extent permitted by applicable law.",
-            "Copy, redistribute or resell the question-bank content or any app material without permission.",
-            "Use the app for fraudulent or illegal purposes, or in ways that may harm others.",
+            "Reverse engineer, decompile or disassemble the app, except to the extent allowed by applicable law.",
+            "Copy, redistribute or resell the question bank content or any app material without authorization.",
+            "Use the app for fraudulent or illegal purposes or in ways that may harm others.",
             "Interfere with the normal operation of the app, its servers or the third-party services it uses (Firebase, AdMob, app stores).",
-            "Attempt to bypass, manipulate or falsify the subscription or advertising system.",
+            "Try to bypass, manipulate or falsify the subscription or advertising system.",
           ],
         },
       ],
@@ -603,8 +614,8 @@ const termsEn: LegalDoc = {
     {
       heading: "8. Limitation of liability and disclaimer of warranties",
       blocks: [
-        "MTCQuiz is provided \"as is\" and \"as available\", solely for educational and preparation purposes. We don't guarantee that the content is error-free, that it accurately reflects the MTC's current official test, or that using it will result in passing the official test. Your test result depends on many factors beyond our control.",
-        "To the maximum extent permitted by applicable law, NekoDojo won't be liable for indirect, incidental, special or consequential damages arising from the use of or inability to use the app, including —without limitation— failing the official test, loss of local data due to uninstalling, or service interruptions caused by third parties (Firebase, AdMob, Google Play, App Store).",
+        "MTCQuiz is provided “as is” and “as available”, solely for educational and preparation purposes. We don't guarantee that the content is error-free, that it accurately reflects the MTC's current official test, or that using it will result in passing the official test. Your test result depends on many factors outside our control.",
+        "To the maximum extent permitted by applicable law, NekoDojo won't be liable for indirect, incidental, special or consequential damages arising from the use of or inability to use the app, including —without limitation— failing the official test, loss of local data on uninstall, or service interruptions caused by third parties (Firebase, AdMob, Google Play, App Store).",
       ],
     },
     {
@@ -622,21 +633,18 @@ const termsEn: LegalDoc = {
     {
       heading: "11. Governing law and jurisdiction",
       blocks: [
-        "These Terms are governed by the laws of the Republic of Peru. Any dispute arising from the interpretation or performance of these Terms will be submitted to the competent courts of Peru, unless applicable law provides otherwise.",
+        "These Terms are governed by the laws of the Republic of Peru. Any dispute arising from the interpretation or performance of these Terms will be submitted to the competent courts of Peru, unless the applicable rules provide otherwise.",
       ],
     },
     {
       heading: "12. Changes to the terms",
       blocks: [
-        "We may update these Terms and Conditions from time to time to reflect changes in the app, in the third-party services we use or in applicable law. The date of the last update is always shown at the top of this page. Continued use of MTCQuiz after an update means you accept the new Terms.",
+        "We may update these Terms and Conditions from time to time to reflect changes in the app, in the third-party services we use or in the applicable rules. The date of the last update is always shown at the top of this page. Continued use of MTCQuiz after an update means you accept the new Terms.",
       ],
     },
     {
       heading: "13. Contact",
-      blocks: [
-        "If you have questions about these Terms and Conditions, you can contact us:",
-        { list: [`Email: ${CONTACT}`, "Controller: NekoDojo", `App: ${IDS}`] },
-      ],
+      blocks: ["If you have questions about these Terms and Conditions, contact us:", contactEn],
     },
   ],
 };

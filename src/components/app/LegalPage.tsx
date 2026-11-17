@@ -7,6 +7,10 @@ import { getLegalDoc, type Block } from "@/content/legal";
 import { pageMetadata } from "@/lib/metadata";
 import AppChrome from "./AppChrome";
 import RichText from "./RichText";
+import Breadcrumbs from "@/components/shared/Breadcrumbs";
+
+const slugify = (s: string, i: number) =>
+  `s${i + 1}-${s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40)}`;
 
 type Kind = "privacy" | "terms";
 
@@ -41,7 +45,31 @@ export default function LegalPage({ app, kind, locale }: { app: AppEntry; kind: 
   const legal = app.legal;
   return (
     <AppChrome app={app} locale={locale}>
-      <article className="mx-auto max-w-3xl px-4 py-14 sm:px-6 md:py-20">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16">
+        <Breadcrumbs
+          locale={locale}
+          label={t.breadcrumbs.label}
+          crumbs={[
+            { name: "Nekodojo", path: "/" },
+            { name: app.name, path: `/apps/${app.slug}` },
+            { name: kind === "privacy" ? t.common.privacy : t.common.terms, path: `/apps/${app.slug}/${kind}` },
+          ]}
+        />
+      <div className="mt-6 grid gap-10 lg:grid-cols-[14rem_minmax(0,1fr)]">
+        {/* Table of contents: sticky on desktop, a collapsible list on phones. */}
+        <nav aria-label={t.legal.toc} className="lg:sticky lg:top-24 lg:self-start">
+          <details className="rounded-xl border border-line bg-surface p-4 lg:border-0 lg:bg-transparent lg:p-0" open>
+            <summary className="cursor-pointer text-sm font-semibold text-ink lg:pointer-events-none lg:list-none">{t.legal.toc}</summary>
+            <ol className="mt-3 space-y-1.5 text-sm">
+              {doc.sections.map((s, i) => (
+                <li key={s.heading}>
+                  <a href={`#${slugify(s.heading, i)}`} className="block py-1 text-muted hover:text-accent">{s.heading}</a>
+                </li>
+              ))}
+            </ol>
+          </details>
+        </nav>
+      <article className="max-w-3xl">
         <Link href={localizePath(locale, `/apps/${app.slug}`)} className="text-sm text-muted hover:text-accent">
           ← {t.legal.backToApp(app.name)}
         </Link>
@@ -49,7 +77,7 @@ export default function LegalPage({ app, kind, locale }: { app: AppEntry; kind: 
 
         {legal.mode === "live" ? (
           <div className="mt-4 space-y-1 text-sm text-muted">
-            <p>{t.common.updated}: {("privacy" in legal.updated ? legal.updated[kind] : legal.updated)[locale]}</p>
+            <p>{t.common.updated}: {(legal.updatedByKind?.[kind] ?? legal.updated)[locale]}</p>
             <p>{t.legal.liveSource} <RichText text={legal.publishedAt[kind]} /></p>
             {t.legal.translationNote && <p>{t.legal.translationNote}</p>}
           </div>
@@ -62,14 +90,16 @@ export default function LegalPage({ app, kind, locale }: { app: AppEntry; kind: 
         {doc.intro && <div className="mt-8 space-y-4">{doc.intro.map((b, i) => <BlockView key={i} block={b} />)}</div>}
 
         <div className="mt-10 space-y-10">
-          {doc.sections.map((s) => (
-            <section key={s.heading}>
+          {doc.sections.map((s, i) => (
+            <section key={s.heading} id={slugify(s.heading, i)} className="scroll-mt-24">
               <h2 className="font-display text-xl font-bold text-ink">{s.heading}</h2>
               <div className="mt-3 space-y-4">{s.blocks.map((b, i) => <BlockView key={i} block={b} />)}</div>
             </section>
           ))}
         </div>
       </article>
+      </div>
+      </div>
     </AppChrome>
   );
 }

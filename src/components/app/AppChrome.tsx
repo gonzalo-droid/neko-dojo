@@ -46,7 +46,7 @@ export default function AppChrome({ app, locale, children, nav = [], actions }: 
               locale={locale}
               label={t.languageSwitch.short}
               hint={t.languageSwitch.hint}
-              className="rounded-md border border-line px-2 py-1 text-xs font-semibold text-muted hover:border-accent hover:text-ink"
+              className="rounded-md border border-line px-1 py-0.5 text-xs font-semibold text-muted hover:border-accent"
             />
           </div>
         </div>
