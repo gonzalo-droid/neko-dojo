@@ -678,3 +678,15 @@ export const about: AboutData = {
     }
   ]
 };
+
+/** Display names for the platform codes used in `projects[].platforms`. */
+export const platformLabel: Record<string, string> = {
+  android: "Android",
+  ios: "iOS",
+  web: "Web",
+  kmm: "Kotlin Multiplatform",
+};
+
+export function getProject(slug: string): AboutProject | undefined {
+  return about.projects.find((p) => p.slug === slug);
+}
