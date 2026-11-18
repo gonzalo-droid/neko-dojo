@@ -5,8 +5,7 @@ import { liveStores, type AppEntry } from "@/content/apps";
 import type { Dictionary } from "@/i18n/dictionaries";
 import AppIcon from "@/components/shared/AppIcon";
 import StatusBadge from "@/components/shared/StatusBadge";
-
-const storeNames = { "google-play": "Google Play", "app-store": "App Store" } as const;
+import StoreIcon, { storeNames } from "@/components/shared/StoreIcon";
 
 /** Relative luminance of a #rrggbb color (WCAG). */
 function luminance(hex: string) {
@@ -65,9 +64,10 @@ export default function FeaturedAppCard({ app, locale, t }: { app: AppEntry; loc
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center rounded-xl px-4 text-sm font-semibold transition-opacity hover:opacity-90"
+                className="inline-flex min-h-11 items-center gap-2 rounded-xl px-4 text-sm font-semibold transition-opacity hover:opacity-90"
                 style={i === 0 ? { background: p.ink, color: p.canvas } : { boxShadow: `inset 0 0 0 1.5px ${p.ink}`, color: p.ink }}
               >
+                <StoreIcon store={s.store} size={18} />
                 {s.store === "app-store" ? t.common.downloadOn : t.common.getOn} {storeNames[s.store]}
               </a>
             ))

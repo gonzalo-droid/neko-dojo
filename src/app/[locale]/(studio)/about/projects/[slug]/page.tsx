@@ -7,6 +7,9 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { pageMetadata } from "@/lib/metadata";
 import { about, getProject, platformLabel } from "@/content/about";
 import { CONTACT_EMAIL, WHATSAPP_URL } from "@/content/site";
+import type { StoreLink } from "@/content/apps";
+import StoreButtons from "@/components/app/StoreButtons";
+import { storeFromUrl } from "@/components/shared/StoreIcon";
 
 type Params = { params: Promise<{ locale: string; slug: string }> };
 
@@ -36,8 +39,17 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function ProjectCase({ params }: Params) {
   const { locale, project } = await load(params);
-  const t = getDictionary(locale).about;
+  const dict = getDictionary(locale);
+  const t = dict.about;
   const c = project.case[locale];
+  // Store links get the same badges as the app pages; the rest (web, GitHub) stay text links.
+  const storeLinks: StoreLink[] = [];
+  const otherLinks: typeof project.links = [];
+  for (const l of project.links) {
+    const store = storeFromUrl(l.url);
+    if (store) storeLinks.push({ store, url: l.url });
+    else otherLinks.push(l);
+  }
   const platforms = project.platforms.map((p) => platformLabel[p] ?? p);
 
   const index = about.projects.findIndex((p) => p.slug === project.slug);
@@ -109,20 +121,25 @@ export default async function ProjectCase({ params }: Params) {
                   {project.links.length === 0 ? (
                     <span className="text-muted">{t.privateProject}</span>
                   ) : (
-                    <ul className="space-y-1">
-                      {project.links.map((l) => (
-                        <li key={l.url}>
-                          <a
-                            href={l.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex min-h-11 items-center font-semibold text-accent underline underline-offset-4"
-                          >
-                            {l.label} ↗
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="space-y-2">
+                      {storeLinks.length > 0 && <StoreButtons stores={storeLinks} t={dict.common} size="sm" />}
+                      {otherLinks.length > 0 && (
+                        <ul className="space-y-1">
+                          {otherLinks.map((l) => (
+                            <li key={l.url}>
+                              <a
+                                href={l.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex min-h-11 items-center font-semibold text-accent underline underline-offset-4"
+                              >
+                                {l.label} ↗
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
                   )}
                 </dd>
               </div>
