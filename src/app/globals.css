@@ -141,6 +141,77 @@ body:has(.theme-mtcquiz) { background-color: #f6f7fc; }
 }
 body:has(.theme-apruebasucamec) { background-color: #f4f6fb; }
 
+/* ── Cazadores Perú ("Expediente cívico", tokens from the app's Color.kt) ── */
+/*
+ * Follows the visitor's system theme, like the app's default "Sistema".
+ * accent = poster red (#7a1d12), only for marks and headings; --ph-action is the call red,
+ * reserved for the hotline. The poster tokens (--ph-paper…) and the dark --ph-header are
+ * the same in both themes, as in the app. Gold (--ph-reward) always carries ink text.
+ */
+.theme-peruxhunter {
+  color-scheme: light;
+  --app-canvas: #f3f1ec;
+  --app-surface: #ffffff;
+  --app-band: #ece8e0;
+  --app-ink: #16181b;
+  --app-muted: #4a4f57;
+  --app-accent: #7a1d12;
+  --app-on-accent: #fff3e6;
+  --app-accent2: #b4121b;
+  --app-line: #dad6ce;
+  --app-ok: #1a7f4b;
+  --app-warn: #8a5800;
+  --ph-action: #b4121b;
+  --ph-on-action: #ffffff;
+  --ph-header: #16181b;
+  --ph-header-field: #2a2d32;
+  --ph-on-header-muted: #b9b5ad;
+  --ph-paper: #efe4cc;
+  --ph-on-paper: #2b1d10;
+  --ph-on-paper-muted: #5a4630;
+  --ph-paper-line: #cdbf9f;
+  --ph-poster-red: #7a1d12;
+  --ph-on-poster-red: #fff3e6;
+  --ph-reward: #f2b93b;
+  --ph-ink: #16181b;
+  --app-display: var(--font-archivo), system-ui, sans-serif;
+  --app-body: var(--font-archivo), system-ui, sans-serif;
+}
+body:has(.theme-peruxhunter) { background-color: #f3f1ec; }
+@media (prefers-color-scheme: dark) {
+  .theme-peruxhunter {
+    --app-danger: #ff8a80;
+    color-scheme: dark;
+    --app-canvas: #121315;
+    --app-surface: #1c1e21;
+    --app-band: #18191c;
+    --app-ink: #edebe6;
+    --app-muted: #b9b5ad;
+    /* Poster red is too dark on #121315: the light paper stands in as the accent. */
+    --app-accent: #efe4cc;
+    --app-on-accent: #2b1d10;
+    --app-accent2: #e5484d;
+    --app-line: #2e3136;
+    --app-ok: #34d399;
+    --app-warn: #fbbf24;
+    --ph-action: #e5484d;
+    --ph-on-action: #16181b;
+    --ph-header: #0b0c0d;
+    --ph-header-field: #24272b;
+  }
+  body:has(.theme-peruxhunter) { background-color: #121315; }
+}
+/* Condensed titles: Archivo at 70 % width, weight 800, uppercase (the app's "display" style). */
+.ph-cond {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-weight: 800;
+  font-stretch: 70%;
+  font-variation-settings: "wdth" 70;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.ph-mono { font-family: var(--font-plex-mono), ui-monospace, monospace; }
+
 /* ── Anki Dojo ───────────────────────────────────── */
 .theme-anki-dojo {
   color-scheme: light;

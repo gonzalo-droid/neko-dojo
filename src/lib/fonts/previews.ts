@@ -47,3 +47,14 @@ export const poppinsPreview = localFont({
   preload: false,
   fallback: ["system-ui", "sans-serif"],
 });
+
+export const archivoPreview = localFont({
+  src: "./files/archivo-latin-wght-wdth-normal.woff2",
+  weight: "400 800",
+  style: "normal",
+  variable: "--font-archivo",
+  display: "swap",
+  preload: false,
+  declarations: [{ prop: "font-stretch", value: "70% 100%" }],
+  fallback: ["system-ui", "sans-serif"],
+});
