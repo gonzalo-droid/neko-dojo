@@ -2,7 +2,7 @@ import type { Locale } from "@/i18n/config";
 
 type L<T = string> = Record<Locale, T>;
 
-export type AppSlug = "animequote" | "mtcquiz" | "apruebasucamec" | "anki-dojo" | "goals";
+export type AppSlug = "animequote" | "mtcquiz" | "apruebasucamec" | "peruxhunter" | "anki-dojo" | "goals";
 
 /**
  * available       → published in a store
@@ -257,6 +257,77 @@ export const apps: AppEntry[] = [
     },
   },
   {
+    slug: "peruxhunter",
+    name: "Cazadores Perú",
+    // Built and submitted, not live yet: on 2026-11-18 both store links below returned 404.
+    // When they open, set status "available" and paste the links in `stores`:
+    //   Google Play https://play.google.com/store/apps/details?id=com.nekodojo.peruxhunter
+    //   App Store   https://apps.apple.com/app/id6836196201
+    status: "in-development",
+    // Texts are the app's own; screenshots are real (iOS) with faces, names and IDs pixelated.
+    provisional: false,
+    icon: { src: "/apps/peruxhunter/logo.png" },
+    preview: { canvas: "#EFE4CC", ink: "#2B1D10", muted: "#5A4630", accent: "#7A1D12", fontVar: "--font-archivo" },
+    tagline: {
+      es: "Conoce a los más buscados del Perú. Si los reconoces, llama gratis.",
+      en: "Know Peru's most wanted. If you recognize one, call for free.",
+    },
+    summary: {
+      es: "Los buscados del Programa de Recompensas del Mininter como carteles «Se busca», con la línea gratuita 0-800-40-007 a un toque. App no oficial.",
+      en: "The people wanted by Peru's Interior Ministry Rewards Program as “Wanted” posters, with the free 0-800-40-007 hotline one tap away. Unofficial app.",
+    },
+    stores: [
+      { store: "google-play", url: null },
+      { store: "app-store", url: null },
+    ],
+    screenshot: {
+      src: "/apps/peruxhunter/home.webp",
+      width: 920,
+      height: 1996,
+      alt: {
+        es: "Inicio de Cazadores Perú: línea gratuita 0-800-40-007 y los más buscados como carteles (caras y nombres pixelados)",
+        en: "Cazadores Perú home: the free 0-800-40-007 hotline and the most wanted as posters (faces and names pixelated)",
+      },
+    },
+    // The app opens these pages from AppConfig.kt (this site is the original).
+    legal: {
+      mode: "live",
+      updated: { es: "18 de noviembre de 2026", en: "November 18, 2026" },
+    },
+    support: {
+      faq: {
+        es: [
+          { q: "¿Cazadores Perú es una app oficial?", a: "No. Es una app independiente de Nekodojo. No está afiliada al Ministerio del Interior ni a la Policía Nacional del Perú." },
+          { q: "¿De dónde salen los datos?", a: "De la web pública del Programa de Recompensas del Ministerio del Interior (recompensas.pe). La lista se actualiza cada semana y puede cambiar sin aviso: verifica siempre en recompensas.pe." },
+          { q: "¿La app envía o guarda mis reportes?", a: "No. Para reportar, la app marca la línea gratuita 0-800-40-007 (o el 1818) o abre tu app de correo con el texto listo para que lo envíes tú." },
+          { q: "¿Quién paga la recompensa?", a: "El Estado, después de validar la información. La app no interviene en ese proceso ni puede asegurar que proceda." },
+          { q: "¿Qué significan las clases S, A, B y C?", a: "Son un sello de la app que agrupa a los buscados según el monto de la recompensa. No son una calificación oficial." },
+          { q: "¿Es gratis?", a: "Sí. La app es gratuita y muestra anuncios, que ayudan a mantener el proyecto." },
+        ],
+        en: [
+          { q: "Is Cazadores Perú an official app?", a: "No. It's an independent Nekodojo app. It isn't affiliated with Peru's Ministry of the Interior or the Peruvian National Police." },
+          { q: "Where does the data come from?", a: "From the public website of the Interior Ministry's Rewards Program (recompensas.pe). The list is updated every week and may change without notice: always check recompensas.pe." },
+          { q: "Does the app send or store my reports?", a: "No. To report, the app dials the free 0-800-40-007 hotline (or 1818) or opens your email app with the text ready for you to send." },
+          { q: "Who pays the reward?", a: "The Peruvian State, after it validates the information. The app takes no part in that process and can't promise a reward." },
+          { q: "What do the S, A, B and C classes mean?", a: "They're the app's own badge, grouping wanted people by reward amount. They aren't an official rating." },
+          { q: "Is it free?", a: "Yes. The app is free and shows ads, which help keep the project going." },
+        ],
+      },
+      dataDeletion: {
+        es: [
+          "Cazadores Perú no crea cuentas, así que no hay una cuenta que eliminar.",
+          "Tus carteles guardados y tus preferencias viven solo en tu teléfono. Para borrarlos, quítalos desde Mis carteles, borra los datos de la app en los ajustes del sistema o desinstálala.",
+          "Los datos que usa Google AdMob para mostrar anuncios los gestiona Google. Puedes cambiar tu consentimiento en Ajustes → Preferencias de anuncios (si la opción aparece en tu región) y restablecer el identificador de publicidad en los ajustes de tu teléfono.",
+        ],
+        en: [
+          "Cazadores Perú doesn't create accounts, so there is no account to delete.",
+          "Your saved posters and preferences live only on your phone. To delete them, remove them from My posters, clear the app's data in your system settings or uninstall it.",
+          "The data Google AdMob uses to show ads is handled by Google. You can change your consent in Settings → Ad preferences (if the option appears in your region) and reset the advertising ID in your phone's settings.",
+        ],
+      },
+    },
+  },
+  {
     slug: "anki-dojo",
     name: "Anki Dojo",
     status: "in-development",
@@ -342,6 +413,13 @@ export function getApp(slug: AppSlug): AppEntry {
  * date: "YYYY-MM" of the real event. Leave it out if you don't know it; the date is then not shown.
  */
 export const news: { app: AppSlug; text: L; date?: string }[] = [
+  {
+    app: "peruxhunter",
+    text: {
+      es: "Cazadores Perú está en camino: los buscados del Programa de Recompensas como carteles, en Android e iOS.",
+      en: "Cazadores Perú is on its way: the people wanted by Peru's Rewards Program as posters, on Android and iOS.",
+    },
+  },
   {
     app: "apruebasucamec",
     text: {

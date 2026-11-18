@@ -3,7 +3,7 @@ const es = {
     homeTitle: "Nekodojo — Pequeñas apps. Grandes posibilidades.",
     homeDescription:
       "Nekodojo es un estudio independiente de apps: AnimeQuote (frases de anime), MTCQuiz (examen de manejo en Perú), ApruebaSUCAMEC (examen SUCAMEC en Perú), Anki Dojo y Goals. Cada una con su identidad.",
-    catalogTitle: "Apps de Nekodojo: AnimeQuote, MTCQuiz, ApruebaSUCAMEC, Anki Dojo y Goals",
+    catalogTitle: "Apps de Nekodojo: AnimeQuote, MTCQuiz, ApruebaSUCAMEC, Cazadores Perú, Anki Dojo y Goals",
     studioTitle: "El estudio — Nekodojo, apps independientes",
     supportTitle: "Soporte de Nekodojo: ayuda, contacto y eliminación de datos",
     legalTitle: "Centro legal de Nekodojo: privacidad y términos",
