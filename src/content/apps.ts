@@ -292,7 +292,12 @@ export const apps: AppEntry[] = [
     // The app opens these pages from AppConfig.kt (this site is the original).
     legal: {
       mode: "live",
-      updated: { es: "18 de noviembre de 2026", en: "November 18, 2026" },
+      // Most recent of the two (shown on the studio's legal page); the terms did not change on 2026-11-19.
+      updated: { es: "19 de noviembre de 2026", en: "November 19, 2026" },
+      updatedByKind: {
+        privacy: { es: "19 de noviembre de 2026", en: "November 19, 2026" },
+        terms: { es: "18 de noviembre de 2026", en: "November 18, 2026" },
+      },
     },
     support: {
       faq: {

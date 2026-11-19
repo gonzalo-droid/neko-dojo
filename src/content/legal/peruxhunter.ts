@@ -9,15 +9,18 @@ import type { LegalDoc } from "./types";
  * Every practice here was checked against the app's code (HunterXPeru, 2026-11-18):
  * - No accounts, no own backend, no analytics or crash reporting, no Firebase SDK.
  * - Local storage: Room (saved posters "favorites", weekly list with thumbnails, search/detail/catalog
- *   caches with a 7-day TTL) and DataStore (onboarding_done, theme_mode, ads_hidden).
+ *   caches with a 7-day TTL) and DataStore (onboarding_done, theme_mode).
  * - Network: the weekly list and photos from Firebase Storage over plain HTTPS (sync/sync_requisitoriados.py
  *   publishes it and deletes people who are no longer listed), the Mininter API as fallback,
- *   Google Mobile Ads (banners on Home, Search and My posters; never on the record, report or onboarding)
+ *   Google Mobile Ads (banners on Home, Search, My posters and each record; never on report or onboarding)
  *   with UMP and ATT, and these pages in a WebView. User-Agent "CazadoresPeru/<version> (<platform>)".
  * - Report: tel: 0-800-40-007 / 1818, or mailto: denuncias@mininter.gob.pe drafted on the phone.
  * - Share: poster image built on the device and handed to the system share sheet; on iOS,
  *   NSPhotoLibraryAddUsageDescription only for saving it to Photos.
  * - Android permissions from the release APK (aapt dump permissions).
+ * 2026-11-19, next build (changes given by the owner, NOT re-checked against the app code): the "hide ads"
+ * option (ads_hidden) no longer exists; banners also at the bottom of each record; a rewarded ad before sharing
+ * a poster (no ad if none is available or there is no UMP consent); recompensas.pe opens in a WebView from Settings.
  * If the app changes any of this, update this file and the dates in src/content/apps.ts.
  */
 
@@ -79,7 +82,7 @@ const privacyEs: LegalDoc = {
           list: [
             "Los carteles que guardas en Mis carteles.",
             "La lista semanal de personas buscadas con sus fotos en miniatura, y copias temporales de búsquedas y fichas consultadas, que se renuevan a los 7 días.",
-            "Tus preferencias: el tema (sistema, claro u oscuro), si ya viste la introducción y, si lo activaste, la opción de ocultar anuncios en ese equipo.",
+            "Tus preferencias: el tema (sistema, claro u oscuro) y si ya viste la introducción.",
           ],
         },
         "Estos datos no salen de tu teléfono y nosotros no podemos verlos. Puedes quitar un cartel desde Mis carteles, y borrar todo lo demás borrando los datos de la app en los ajustes del sistema o desinstalándola.",
@@ -96,7 +99,7 @@ const privacyEs: LegalDoc = {
     {
       heading: "6. Publicidad (Google AdMob)",
       blocks: [
-        "Cazadores Perú es gratuita y se financia con anuncios de Google AdMob, un servicio de Google LLC. Hoy la app muestra banners en Inicio, en la lista de Buscar y en Mis carteles; nunca en la ficha, en la pantalla de reporte ni en la introducción. Si más adelante usa otros formatos de AdMob, esta política se actualizará.",
+        "Cazadores Perú es gratuita y se financia con anuncios de Google AdMob, un servicio de Google LLC. La app muestra banners en Inicio, en la lista de Buscar, en Mis carteles y al final de la ficha de cada persona. Antes de compartir un cartel puede mostrarte un anuncio bonificado de pantalla completa, solo si aceptas verlo. Nunca muestra anuncios en la pantalla de reporte ni en la introducción, ni anuncios que aparezcan sin que los pidas al abrir o cerrar pantallas. Si más adelante usa otros formatos de AdMob, esta política se actualizará.",
         "Para mostrar y medir anuncios, y para prevenir fraude, el SDK de Google Mobile Ads puede recopilar, según la declaración de privacidad del propio Google:",
         {
           list: [
@@ -135,12 +138,14 @@ const privacyEs: LegalDoc = {
           ],
         },
         "En esas conexiones la app solo envía lo necesario para pedir los datos (por ejemplo, el nombre que buscas cuando se usa la API de respaldo) y se identifica con su nombre y versión. Como cualquier servicio en internet, esos proveedores pueden registrar datos técnicos de la conexión, como la dirección IP, por seguridad y para su funcionamiento. Este sitio no usa analítica ni publicidad.",
+        "Si abres “Fuente de datos: recompensas.pe” desde Ajustes, la web oficial del Programa de Recompensas se carga dentro de la app. Ese sitio, del Ministerio del Interior, recibe los mismos datos técnicos que si lo abrieras en tu navegador (por ejemplo, la dirección IP) y los trata según sus propias condiciones. Los enlaces a otros sitios se abren en tu navegador.",
       ],
     },
     {
       heading: "9. Compartir carteles",
       blocks: [
         "Cuando compartes un cartel, la app crea la imagen en tu teléfono y la entrega al menú de compartir del sistema; tú eliges con quién y por dónde. En iPhone, si eliges guardar la imagen en Fotos, el sistema te pide permiso para agregarla; la app no lee tu galería. Nekodojo no recibe lo que compartes.",
+        "Antes de compartir, la app te avisa que verás un anuncio corto de Google AdMob y te deja cancelar. Al terminar el anuncio se abre el menú de compartir. Si no hay un anuncio disponible, o no diste tu consentimiento para los anuncios, el cartel se comparte sin anuncio. Ese anuncio está sujeto a lo descrito en la sección 6.",
       ],
     },
     {
@@ -149,7 +154,7 @@ const privacyEs: LegalDoc = {
         "En Android, la app declara estos permisos, todos relacionados con la conexión y los anuncios:",
         {
           list: [
-            "INTERNET y ACCESS_NETWORK_STATE: descargar la lista, las fotos, los anuncios y las páginas legales, y saber si hay conexión.",
+            "INTERNET y ACCESS_NETWORK_STATE: descargar la lista, las fotos, los anuncios, las páginas legales y la web oficial recompensas.pe, y saber si hay conexión.",
             "AD_ID y los permisos de AdServices (ID de publicidad, atribución y temas): los usa el SDK de Google Mobile Ads para los anuncios, sujeto a tu consentimiento y a los ajustes de tu teléfono.",
             "WAKE_LOCK y FOREGROUND_SERVICE: los agregan las bibliotecas de Google para su funcionamiento interno; la app no los usa para nada más.",
           ],
@@ -253,7 +258,7 @@ const privacyEn: LegalDoc = {
           list: [
             "The posters you save in My posters.",
             "The weekly list of wanted people with their thumbnail photos, and temporary copies of searches and records you opened, which are refreshed after 7 days.",
-            "Your preferences: the theme (system, light or dark), whether you've seen the introduction and, if you turned it on, the option to hide ads on that device.",
+            "Your preferences: the theme (system, light or dark) and whether you've seen the introduction.",
           ],
         },
         "This data never leaves your phone and we can't see it. You can remove a poster from My posters, and delete everything else by clearing the app's data in your system settings or uninstalling it.",
@@ -270,7 +275,7 @@ const privacyEn: LegalDoc = {
     {
       heading: "6. Advertising (Google AdMob)",
       blocks: [
-        "Cazadores Perú is free and funded by Google AdMob ads, a service of Google LLC. Today the app shows banners on Home, in the Search list and in My posters; never on the record, the report screen or the introduction. If it later uses other AdMob formats, this policy will be updated.",
+        "Cazadores Perú is free and funded by Google AdMob ads, a service of Google LLC. The app shows banners on Home, in the Search list, in My posters and at the bottom of each person's record. Before you share a poster it may show you a full-screen rewarded ad, only if you agree to watch it. It never shows ads on the report screen or in the introduction, nor ads that appear, without you asking for them, when you open or close screens. If it later uses other AdMob formats, this policy will be updated.",
         "To show and measure ads, and to prevent fraud, the Google Mobile Ads SDK may collect, according to Google's own privacy declaration:",
         {
           list: [
@@ -309,12 +314,14 @@ const privacyEn: LegalDoc = {
           ],
         },
         "Over those connections the app only sends what it needs to request the data (for example, the name you search for when the fallback API is used) and identifies itself with its name and version. Like any internet service, those providers may log technical connection data, such as the IP address, for security and to keep running. This site uses no analytics or advertising.",
+        "If you open “Data source: recompensas.pe” from Settings, the official website of the Rewards Program loads inside the app. That site, run by the Ministry of the Interior, receives the same technical data as if you opened it in your browser (for example, the IP address) and handles it under its own terms. Links to other sites open in your browser.",
       ],
     },
     {
       heading: "9. Sharing posters",
       blocks: [
         "When you share a poster, the app builds the image on your phone and hands it to the system share menu; you choose who gets it and how. On iPhone, if you choose to save the image to Photos, the system asks your permission to add it; the app doesn't read your photo library. Nekodojo doesn't receive what you share.",
+        "Before you share, the app tells you that you will see a short Google AdMob ad and lets you cancel. When the ad ends, the share menu opens. If no ad is available, or you did not give your consent for ads, the poster is shared without an ad. That ad is subject to what section 6 describes.",
       ],
     },
     {
@@ -323,7 +330,7 @@ const privacyEn: LegalDoc = {
         "On Android, the app declares these permissions, all related to the connection and ads:",
         {
           list: [
-            "INTERNET and ACCESS_NETWORK_STATE: download the list, photos, ads and legal pages, and check whether there's a connection.",
+            "INTERNET and ACCESS_NETWORK_STATE: download the list, photos, ads, legal pages and the official recompensas.pe website, and check whether there's a connection.",
             "AD_ID and the AdServices permissions (advertising ID, attribution and topics): used by the Google Mobile Ads SDK for ads, subject to your consent and your phone's settings.",
             "WAKE_LOCK and FOREGROUND_SERVICE: added by Google's libraries for their internal operation; the app doesn't use them for anything else.",
           ],
