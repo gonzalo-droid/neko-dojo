@@ -138,7 +138,7 @@ export const apps: AppEntry[] = [
     },
     stores: [
       { store: "google-play", url: "https://play.google.com/store/apps/details?id=com.gondroid.mtcquiz" },
-      { store: "app-store", url: "https://apps.apple.com/app/id6800840447" },
+      { store: "app-store", url: "https://apps.apple.com/pe/app/mtcquiz-examen-brevete-per%C3%BA/id6800840447" },
     ],
     screenshot: {
       src: "/apps/mtcquiz/home.webp",
