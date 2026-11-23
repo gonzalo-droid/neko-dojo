@@ -23,7 +23,6 @@ export default function AppChrome({ app, locale, children, nav = [], actions }: 
   const base = `/apps/${app.slug}`;
   return (
     <>
-      <a href="#main" className="skip-link">{t.a11y.skip}</a>
       <header className="sticky top-0 z-40 border-b border-line bg-canvas/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:gap-4 sm:px-6">
           <BackToStudio href={localizePath(locale, "/apps")} label={t.common.backToStudio} hint={t.common.allApps} />

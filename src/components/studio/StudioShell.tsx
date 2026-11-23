@@ -17,7 +17,6 @@ export default function StudioShell({ locale, children }: { locale: Locale; chil
   return (
     <div className={`theme-studio ${fontVars} min-h-screen bg-canvas font-body text-ink`}>
       <JsonLd data={studioGraph(locale)} />
-      <a href="#main" className="skip-link">{t.a11y.skip}</a>
       <StudioHeader locale={locale} t={t} />
       <main id="main">{children}</main>
       <StudioFooter locale={locale} t={t} />

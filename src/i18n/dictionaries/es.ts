@@ -8,7 +8,7 @@ const es = {
     supportTitle: "Soporte de Nekodojo: ayuda, contacto y eliminación de datos",
     legalTitle: "Centro legal de Nekodojo: privacidad y términos",
   },
-  a11y: { skip: "Saltar al contenido", mainNav: "Navegación principal", footerNav: "Pie de página", language: "Idioma" },
+  a11y: { mainNav: "Navegación principal", footerNav: "Pie de página", language: "Idioma" },
   nav: { apps: "Apps", studio: "Estudio", about: "Sobre mí", blog: "Blog", support: "Soporte", legal: "Legal" },
   languageSwitch: { label: "English", short: "EN", hint: "Ver esta página en inglés" },
   theme: { toLight: "Cambiar a tema claro", toDark: "Cambiar a tema oscuro" },
