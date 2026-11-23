@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { parsePath } from "@/i18n/config";
 
-type Item = { href: string; internal: string; label: string };
+/** desktopOnly: hidden on phones, where the footer already links it (keeps the strip from overflowing). */
+type Item = { href: string; internal: string; label: string; desktopOnly?: boolean };
 
 /** Main studio links with the current section marked (aria-current + accent underline). */
 export default function NavLinks({ items }: { items: Item[] }) {
@@ -14,11 +15,11 @@ export default function NavLinks({ items }: { items: Item[] }) {
       {items.map((item) => {
         const active = internal === item.internal || internal.startsWith(`${item.internal}/`);
         return (
-          <li key={item.href}>
+          <li key={item.href} className={item.desktopOnly ? "max-sm:hidden" : undefined}>
             <Link
               href={item.href}
               aria-current={active ? "page" : undefined}
-              className={`block whitespace-nowrap rounded-md px-2 py-2 text-sm transition-colors hover:text-ink ${
+              className={`flex min-h-11 items-center whitespace-nowrap rounded-md px-2 text-sm transition-colors hover:text-ink ${
                 active ? "text-ink underline decoration-accent decoration-2 underline-offset-[10px]" : "text-muted"
               }`}
             >

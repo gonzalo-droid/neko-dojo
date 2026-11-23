@@ -13,7 +13,7 @@ const es = {
   languageSwitch: { label: "English", short: "EN", hint: "Ver esta página en inglés" },
   theme: { toLight: "Cambiar a tema claro", toDark: "Cambiar a tema oscuro" },
   breadcrumbs: { label: "Ruta de navegación", apps: "Apps" },
-  status: { available: "Disponible", "in-development": "En desarrollo", pending: "Por confirmar" },
+  status: { available: "Disponible", testing: "En pruebas", "in-development": "En desarrollo", pending: "Por confirmar" },
   common: {
     provisional: "Contenido provisional",
     conceptMockup: "Mockup conceptual",

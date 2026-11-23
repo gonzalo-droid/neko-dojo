@@ -20,15 +20,15 @@ export default function StudioFooter({ locale, t }: { locale: Locale; t: Diction
             locale={locale}
             label={t.languageSwitch.label}
             hint={t.languageSwitch.hint}
-            className="mt-6 inline-block text-sm text-muted underline underline-offset-4 hover:text-ink"
+            className="mt-3 inline-flex min-h-11 items-center text-sm text-muted underline underline-offset-4 hover:text-ink"
           />
         </div>
         <nav aria-label={t.a11y.footerNav}>
           <p className="text-sm font-semibold text-ink">{t.nav.apps}</p>
-          <ul className="mt-3 space-y-2 text-sm">
+          <ul className="mt-1 text-sm">
             {apps.map((app) => (
               <li key={app.slug}>
-                <Link href={localizePath(locale, `/apps/${app.slug}`)} className="text-muted hover:text-ink">
+                <Link href={localizePath(locale, `/apps/${app.slug}`)} className="inline-flex min-h-11 items-center text-muted hover:text-ink">
                   {app.name}
                 </Link>
               </li>
@@ -37,14 +37,14 @@ export default function StudioFooter({ locale, t }: { locale: Locale; t: Diction
         </nav>
         <div>
           <p className="text-sm font-semibold text-ink">Nekodojo</p>
-          <ul className="mt-3 space-y-2 text-sm">
-            <li><Link href={localizePath(locale, "/studio")} className="text-muted hover:text-ink">{t.nav.studio}</Link></li>
-            <li><Link href={localizePath(locale, "/about")} className="text-muted hover:text-ink">{t.nav.about}</Link></li>
-            <li><Link href={localizePath(locale, "/blog")} className="text-muted hover:text-ink">{t.nav.blog}</Link></li>
-            <li><Link href={localizePath(locale, "/support")} className="text-muted hover:text-ink">{t.nav.support}</Link></li>
-            <li><Link href={localizePath(locale, "/legal")} className="text-muted hover:text-ink">{t.legal.title}</Link></li>
-            <li><a href={`mailto:${CONTACT_EMAIL}`} className="text-muted hover:text-ink">{CONTACT_EMAIL}</a></li>
-            <li><a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink">Instagram</a></li>
+          <ul className="mt-1 text-sm">
+            <li><Link href={localizePath(locale, "/studio")} className="inline-flex min-h-11 items-center text-muted hover:text-ink">{t.nav.studio}</Link></li>
+            <li><Link href={localizePath(locale, "/about")} className="inline-flex min-h-11 items-center text-muted hover:text-ink">{t.nav.about}</Link></li>
+            <li><Link href={localizePath(locale, "/blog")} className="inline-flex min-h-11 items-center text-muted hover:text-ink">{t.nav.blog}</Link></li>
+            <li><Link href={localizePath(locale, "/support")} className="inline-flex min-h-11 items-center text-muted hover:text-ink">{t.nav.support}</Link></li>
+            <li><Link href={localizePath(locale, "/legal")} className="inline-flex min-h-11 items-center text-muted hover:text-ink">{t.legal.title}</Link></li>
+            <li><a href={`mailto:${CONTACT_EMAIL}`} className="inline-flex min-h-11 items-center text-muted hover:text-ink">{CONTACT_EMAIL}</a></li>
+            <li><a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-muted hover:text-ink">Instagram</a></li>
           </ul>
         </div>
       </div>

@@ -99,7 +99,7 @@ const es = {
     title: "Y además",
     items: [
       { key: "report", title: "Reportar a tu manera", body: "Llama al 0-800-40-007 o al 1818, o escribe: la app arma un correo con lugar, hora y detalles. No envía ni guarda nada; lo envías tú." },
-      { key: "share", title: "Comparte el cartel", body: "Envía el cartel como imagen por WhatsApp o redes, con la línea gratuita y el aviso de que no es oficial." },
+      { key: "share", title: "Comparte el cartel", body: "Envía el cartel como imagen por WhatsApp o redes, con la línea gratuita y el aviso de que no es oficial. Antes puede pedirte ver un anuncio corto." },
       { key: "saved", title: "Mis carteles, sin conexión", body: "Guarda una ficha con el marcador y su cartel queda a mano en tu teléfono, incluso sin internet. El 0-800 funciona sin datos." },
       { key: "a11y", title: "Claro, oscuro y letra grande", body: "Sigue el tema de tu teléfono o elige uno. Respeta la letra grande del sistema sin cortar el contenido." },
     ],
@@ -142,8 +142,8 @@ const es = {
     ],
     supportNote: "La app es gratuita y muestra anuncios, que ayudan a mantenerla.",
   },
-  downloadTitle: "Descarga Cazadores Perú",
-  downloadBody: "Gratis para Android e iOS. Los enlaces aparecerán aquí cuando la app esté publicada en las tiendas.",
+  downloadTitle: "En pruebas en iPhone y Android",
+  downloadBody: "Gratis para iPhone y Android. Estamos probando la app antes de publicarla; los enlaces aparecerán aquí cuando esté en las tiendas.",
   notice: {
     title: "App no oficial",
     body: "Cazadores Perú es una app independiente de Nekodojo. No está afiliada al Ministerio del Interior ni a la Policía Nacional del Perú. Muestra datos públicos del Programa de Recompensas, que pueden cambiar sin aviso.",
@@ -214,7 +214,7 @@ const en: Content = {
     title: "And also",
     items: [
       { key: "report", title: "Report your way", body: "Call 0-800-40-007 or 1818, or write: the app drafts an email with place, time and details. It sends and stores nothing; you send it." },
-      { key: "share", title: "Share the poster", body: "Send the poster as an image on WhatsApp or social media, with the free hotline and a note that it's unofficial." },
+      { key: "share", title: "Share the poster", body: "Send the poster as an image on WhatsApp or social media, with the free hotline and a note that it's unofficial. It may first ask you to watch a short ad." },
       { key: "saved", title: "My posters, offline", body: "Save a record with the bookmark and its poster stays on your phone, even without internet. The 0-800 line works without data." },
       { key: "a11y", title: "Light, dark and large text", body: "Follows your phone's theme or pick one. Supports the system's large text without cutting content off." },
     ],
@@ -257,8 +257,8 @@ const en: Content = {
     ],
     supportNote: "The app is free and shows ads, which help keep it running.",
   },
-  downloadTitle: "Get Cazadores Perú",
-  downloadBody: "Free for Android and iOS. The links will show up here once the app is live in the stores.",
+  downloadTitle: "In testing on iPhone and Android",
+  downloadBody: "Free for iPhone and Android. We're testing the app before releasing it; the links will show up here once it's in the stores.",
   notice: {
     title: "Unofficial app",
     body: "Cazadores Perú is an independent Nekodojo app. It isn't affiliated with Peru's Ministry of the Interior or the Peruvian National Police. It shows public data from the Rewards Program, which may change without notice.",

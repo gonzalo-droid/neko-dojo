@@ -7,9 +7,10 @@ export type AppSlug = "animequote" | "mtcquiz" | "apruebasucamec" | "peruxhunter
 /**
  * available       → published in a store
  * in-development  → being built, has a waitlist
+ * testing         → in TestFlight / Play testing, not public in the stores yet
  * pending         → status not confirmed yet, has a waitlist
  */
-export type AppStatus = "available" | "in-development" | "pending";
+export type AppStatus = "available" | "testing" | "in-development" | "pending";
 
 export type StoreLink = {
   store: "google-play" | "app-store";
@@ -195,10 +196,12 @@ export const apps: AppEntry[] = [
   {
     slug: "apruebasucamec",
     name: "ApruebaSUCAMEC",
-    status: "in-development",
-    // Texts and screenshots are real (Android build of the app). Only the icon is a letter until the logo is ready.
+    // 1.0.0 (1) in TestFlight; the Android AAB goes to Play internal testing (2026-11-23). No public test link yet.
+    // Package name and bundle id: com.nekodojo.sucamecquiz.
+    status: "testing",
+    // Texts, logo and screenshots are real (iOS build of the app).
     provisional: false,
-    icon: { glyph: "A" },
+    icon: { src: "/apps/apruebasucamec/logo.png" },
     preview: { canvas: "#F4F6FB", ink: "#1A1F36", muted: "#4A5272", accent: "#1A3A6B", fontVar: "--font-poppins" },
     tagline: {
       es: "Practica el examen de SUCAMEC y llega listo a tu licencia de armas",
@@ -215,7 +218,7 @@ export const apps: AppEntry[] = [
     screenshot: {
       src: "/apps/apruebasucamec/home.webp",
       width: 920,
-      height: 2053,
+      height: 1999,
       alt: {
         es: "Pantalla de inicio de ApruebaSUCAMEC con los modos de estudio y los tipos de licencia L1 a L6",
         en: "ApruebaSUCAMEC home screen with the study modes and the L1 to L6 license types",
@@ -229,14 +232,14 @@ export const apps: AppEntry[] = [
       faq: {
         es: [
           { q: "¿ApruebaSUCAMEC es una app oficial?", a: "No. Es una app independiente de Nekodojo y no está afiliada a la SUCAMEC ni a ninguna entidad del Estado peruano." },
-          { q: "¿Cuántas preguntas tiene?", a: "100 preguntas tipo examen: 65 de opción múltiple y 35 de verdadero o falso. En cada intento salen en un orden distinto." },
+          { q: "¿Cuántas preguntas tiene?", a: "100 preguntas tipo examen: 65 de opción múltiple y 35 de verdadero o falso. El simulacro tipo examen y el personalizado eligen preguntas al azar en cada intento." },
           { q: "¿Cómo funciona el simulacro tipo examen?", a: "Te da 5 preguntas al azar y 10 minutos para responderlas. Al terminar ves tu porcentaje y si aprobaste (70 % o más). Durante este simulacro no se muestran anuncios." },
           { q: "¿Necesito internet o una cuenta?", a: "No necesitas cuenta. Las preguntas y el manual vienen dentro de la app, así que estudias sin conexión. Solo los anuncios y las páginas legales usan internet." },
           { q: "¿Es gratis?", a: "Sí, con anuncios: un banner en los modos de práctica. Antes de cargar anuncios, la app te pide tu consentimiento cuando corresponde." },
         ],
         en: [
           { q: "Is ApruebaSUCAMEC an official app?", a: "No. It's an independent Nekodojo app and isn't affiliated with SUCAMEC or any Peruvian government body." },
-          { q: "How many questions does it have?", a: "100 exam-style questions: 65 multiple choice and 35 true or false. They come in a different order on every attempt." },
+          { q: "How many questions does it have?", a: "100 exam-style questions: 65 multiple choice and 35 true or false. The exam simulation and the custom practice pick random questions on every attempt." },
           { q: "How does the exam simulation work?", a: "It gives you 5 random questions and 10 minutes to answer them. When you finish, you see your score and whether you passed (70% or more). No ads are shown during this simulation." },
           { q: "Do I need internet or an account?", a: "You don't need an account. The questions and the manual are inside the app, so you can study offline. Only the ads and the legal pages use the internet." },
           { q: "Is it free?", a: "Yes, with ads: a banner in the practice modes. Before loading ads, the app asks for your consent where it applies." },
@@ -259,11 +262,11 @@ export const apps: AppEntry[] = [
   {
     slug: "peruxhunter",
     name: "Cazadores Perú",
-    // Built and submitted, not live yet: on 2026-11-18 both store links below returned 404.
-    // When they open, set status "available" and paste the links in `stores`:
+    // In testing since 2026-11-18 (TestFlight, iPhone only; Play internal testing). On 2026-11-23 both store
+    // links below still returned 404. When they open, set status "available" and paste the links in `stores`:
     //   Google Play https://play.google.com/store/apps/details?id=com.nekodojo.peruxhunter
     //   App Store   https://apps.apple.com/app/id6836196201
-    status: "in-development",
+    status: "testing",
     // Texts are the app's own; screenshots are real (iOS) with faces, names and IDs pixelated.
     provisional: false,
     icon: { src: "/apps/peruxhunter/logo.png" },
@@ -307,7 +310,7 @@ export const apps: AppEntry[] = [
           { q: "¿La app envía o guarda mis reportes?", a: "No. Para reportar, la app marca la línea gratuita 0-800-40-007 (o el 1818) o abre tu app de correo con el texto listo para que lo envíes tú." },
           { q: "¿Quién paga la recompensa?", a: "El Estado, después de validar la información. La app no interviene en ese proceso ni puede asegurar que proceda." },
           { q: "¿Qué significan las clases S, A, B y C?", a: "Son un sello de la app que agrupa a los buscados según el monto de la recompensa. No son una calificación oficial." },
-          { q: "¿Es gratis?", a: "Sí. La app es gratuita y muestra anuncios, que ayudan a mantener el proyecto." },
+          { q: "¿Es gratis?", a: "Sí. La app es gratuita y muestra anuncios, que ayudan a mantener el proyecto: banners en algunas pantallas y, antes de compartir un cartel, un anuncio corto que puedes aceptar. La pantalla de reporte nunca tiene anuncios." },
         ],
         en: [
           { q: "Is Cazadores Perú an official app?", a: "No. It's an independent Nekodojo app. It isn't affiliated with Peru's Ministry of the Interior or the Peruvian National Police." },
@@ -315,7 +318,7 @@ export const apps: AppEntry[] = [
           { q: "Does the app send or store my reports?", a: "No. To report, the app dials the free 0-800-40-007 hotline (or 1818) or opens your email app with the text ready for you to send." },
           { q: "Who pays the reward?", a: "The Peruvian State, after it validates the information. The app takes no part in that process and can't promise a reward." },
           { q: "What do the S, A, B and C classes mean?", a: "They're the app's own badge, grouping wanted people by reward amount. They aren't an official rating." },
-          { q: "Is it free?", a: "Yes. The app is free and shows ads, which help keep the project going." },
+          { q: "Is it free?", a: "Yes. The app is free and shows ads, which help keep the project going: banners on some screens and, before you share a poster, a short ad you can accept. The report screen never has ads." },
         ],
       },
       dataDeletion: {
@@ -420,16 +423,20 @@ export function getApp(slug: AppSlug): AppEntry {
 export const news: { app: AppSlug; text: L; date?: string }[] = [
   {
     app: "peruxhunter",
+    // TestFlight build 2.0.0 (2) and Play internal testing, both on 2026-11-18.
+    date: "2026-11",
     text: {
-      es: "Cazadores Perú está en camino: los buscados del Programa de Recompensas como carteles, en Android e iOS.",
-      en: "Cazadores Perú is on its way: the people wanted by Peru's Rewards Program as posters, on Android and iOS.",
+      es: "Cazadores Perú entró en pruebas en iPhone y Android: los buscados del Programa de Recompensas como carteles.",
+      en: "Cazadores Perú is now in testing on iPhone and Android: the people wanted by Peru's Rewards Program as posters.",
     },
   },
   {
     app: "apruebasucamec",
+    // Build 1.0.0 (1) in TestFlight on 2026-11-23.
+    date: "2026-11",
     text: {
-      es: "ApruebaSUCAMEC está en desarrollo: practica el examen teórico de SUCAMEC en Android e iOS.",
-      en: "ApruebaSUCAMEC is in development: practice for Peru's SUCAMEC written test on Android and iOS.",
+      es: "ApruebaSUCAMEC entró en pruebas en iOS y Android: practica el examen teórico de SUCAMEC.",
+      en: "ApruebaSUCAMEC is now in testing on iOS and Android: practice for Peru's SUCAMEC written test.",
     },
   },
   {
