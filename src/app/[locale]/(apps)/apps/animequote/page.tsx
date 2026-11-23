@@ -61,7 +61,7 @@ export default async function AnimeQuotePage({ params }: LocaleParams) {
         <FAQ c={c.faq} email={CONTACT_EMAIL} />
         <Download c={c} playUrl={playUrl} appStoreUrl={appStoreUrl} instagramUrl={ANIMEQUOTE_INSTAGRAM_URL} />
       </main>
-      <Footer c={c.footer} locale={locale} email={CONTACT_EMAIL} instagramUrl={ANIMEQUOTE_INSTAGRAM_URL} madeBy={t.common.madeBy} rights={t.footer.rights} navLabel={t.a11y.footerNav} />
+      <Footer c={c.footer} locale={locale} email={CONTACT_EMAIL} instagramUrl={ANIMEQUOTE_INSTAGRAM_URL} madeBy={t.common.madeBy} collab={t.common.collab} rights={t.footer.rights} navLabel={t.a11y.footerNav} />
       <StickyDownloadBar c={c.sticky} playUrl={playUrl} appStoreUrl={appStoreUrl} labels={c.badges} />
     </>
   );

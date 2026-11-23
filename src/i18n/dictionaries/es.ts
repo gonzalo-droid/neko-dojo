@@ -22,6 +22,7 @@ const es = {
     backToStudio: "Nekodojo",
     allApps: "Ver todas las apps de Nekodojo",
     madeBy: "Una app de Nekodojo",
+    collab: "En colaboración con",
     linkPending: "Enlace pendiente",
     getOn: "Disponible en",
     downloadOn: "Descargar en",
@@ -223,6 +224,7 @@ const es = {
   },
   footer: {
     rights: "Todos los derechos reservados.",
+    builtBy: "Sitio desarrollado por",
   },
 };
 

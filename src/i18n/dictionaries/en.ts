@@ -24,6 +24,7 @@ const en: Dictionary = {
     backToStudio: "Nekodojo",
     allApps: "See all Nekodojo apps",
     madeBy: "A Nekodojo app",
+    collab: "In collaboration with",
     linkPending: "Link pending",
     getOn: "Get it on",
     downloadOn: "Download on the",
@@ -225,6 +226,7 @@ const en: Dictionary = {
   },
   footer: {
     rights: "All rights reserved.",
+    builtBy: "Site built by",
   },
 };
 

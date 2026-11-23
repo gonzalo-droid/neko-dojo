@@ -91,6 +91,11 @@ const es = {
     title: "Gratis, con anuncios",
     body: "Todo el contenido es gratuito. La app muestra un banner en los modos de práctica y te pide tu consentimiento antes de cargar anuncios cuando corresponde. El simulacro tipo examen no tiene anuncios.",
   },
+  webQuiz: {
+    title: "Practica también en la web",
+    body: "¿No tienes la app a mano? Usa el cuestionario online del examen SUCAMEC: gratis, desde el navegador y sin instalar nada.",
+    cta: "Abrir el cuestionario online",
+  },
   downloadTitle: "En pruebas en iOS y Android",
   downloadBody: "Estamos probando la app en iPhone y Android antes de publicarla. Los enlaces de descarga aparecerán aquí en cuanto esté publicada en las tiendas.",
 };
@@ -161,6 +166,11 @@ const en: SucamecContent = {
   pricing: {
     title: "Free, with ads",
     body: "All the content is free. The app shows a banner in the practice modes and asks for your consent before loading ads where it applies. The exam simulation has no ads.",
+  },
+  webQuiz: {
+    title: "Practice on the web too",
+    body: "No app at hand? Use the online SUCAMEC exam quiz: free, in your browser, nothing to install. The quiz is in Spanish.",
+    cta: "Open the online quiz",
   },
   downloadTitle: "In testing on iOS and Android",
   downloadBody: "We're testing the app on iPhone and Android before releasing it. Download links will show up here as soon as it's out in the stores.",

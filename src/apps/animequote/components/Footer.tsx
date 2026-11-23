@@ -1,13 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { localizePath, type Locale } from "@/i18n/config";
+import { COBAYATECH_URL } from "@/content/site";
 import CatMark from "@/components/shared/CatMark";
 import type { AqContent } from "../content";
 import InstagramIcon from "./Instagram";
 
-type Props = { c: AqContent["footer"]; locale: Locale; email: string; instagramUrl: string; madeBy: string; rights: string; navLabel: string };
+type Props = { c: AqContent["footer"]; locale: Locale; email: string; instagramUrl: string; madeBy: string; collab: string; rights: string; navLabel: string };
 
-export default function Footer({ c, locale, email, instagramUrl, madeBy, rights, navLabel }: Props) {
+export default function Footer({ c, locale, email, instagramUrl, madeBy, collab, rights, navLabel }: Props) {
   const base = "/apps/animequote";
   const link = "text-sm text-muted transition-colors duration-200 hover:text-accent";
   return (
@@ -40,6 +41,10 @@ export default function Footer({ c, locale, email, instagramUrl, madeBy, rights,
             <CatMark className="h-4 w-4" />
             {madeBy}
           </Link>
+          <p className="-mt-3 text-sm text-muted">
+            {collab}{" "}
+            <a href={COBAYATECH_URL} target="_blank" rel="noopener" className="font-semibold text-ink underline underline-offset-4 hover:text-accent">CobayaTech</a>
+          </p>
           <p className="text-xs text-muted">© {new Date().getFullYear()} NekoDojo. {rights}</p>
         </div>
       </div>

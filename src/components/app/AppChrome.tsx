@@ -4,6 +4,7 @@ import { getDictionary } from "@/i18n/dictionaries";
 import type { AppEntry } from "@/content/apps";
 import AppIcon from "@/components/shared/AppIcon";
 import LanguageSwitch from "@/components/shared/LanguageSwitch";
+import { COBAYATECH_URL } from "@/content/site";
 import CatMark from "@/components/shared/CatMark";
 import BackToStudio from "@/components/shared/BackToStudio";
 
@@ -60,10 +61,16 @@ export default function AppChrome({ app, locale, children, nav = [], actions }: 
               <li><Link href={localizePath(locale, `${base}/terms`)} className="inline-flex min-h-11 items-center text-muted hover:text-accent">{t.common.terms}</Link></li>
             </ul>
           </nav>
-          <Link href={localizePath(locale)} className="inline-flex min-h-11 items-center gap-2 text-muted hover:text-ink">
-            <CatMark className="h-4 w-4" />
-            {t.common.madeBy}
-          </Link>
+          <div className="flex flex-wrap items-center gap-x-5">
+            <Link href={localizePath(locale)} className="inline-flex min-h-11 items-center gap-2 text-muted hover:text-ink">
+              <CatMark className="h-4 w-4" />
+              {t.common.madeBy}
+            </Link>
+            <span className="text-muted">
+              {t.common.collab}{" "}
+              <a href={COBAYATECH_URL} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center font-semibold text-ink underline underline-offset-4 hover:text-accent">CobayaTech</a>
+            </span>
+          </div>
         </div>
       </footer>
     </>

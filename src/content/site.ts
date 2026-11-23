@@ -17,6 +17,10 @@ export const CONTACT_EMAIL = "contacto@gondroid.dev";
 /** Public WhatsApp that already appeared on the gonzalo-lozg.me portfolio. */
 export const WHATSAPP_URL = "https://wa.me/51924262747";
 /** The studio's Instagram: studio pages, structured data and app waitlist fallbacks. */
+/** Development partner credited in the footers. */
+export const COBAYATECH_URL = "https://cobayatech.com";
+/** Online SUCAMEC quiz linked from the ApruebaSUCAMEC landing. */
+export const SUCAMEC_WEB_QUIZ_URL = "https://alvaro-barrera.me/sucamec/";
 export const INSTAGRAM_URL = "https://www.instagram.com/nekodojo.apps/";
 /** AnimeQuote's own link, kept as in the original site (quote-anime/src/lib/constants.ts). */
 export const ANIMEQUOTE_INSTAGRAM_URL = "https://www.instagram.com/neko.manga.cix/";
