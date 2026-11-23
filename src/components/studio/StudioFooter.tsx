@@ -2,7 +2,7 @@ import Link from "next/link";
 import { localizePath, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { apps } from "@/content/apps";
-import { CONTACT_EMAIL, INSTAGRAM_URL, tagline } from "@/content/site";
+import { COBAYATECH_URL, CONTACT_EMAIL, INSTAGRAM_URL, tagline } from "@/content/site";
 import CatMark from "@/components/shared/CatMark";
 import LanguageSwitch from "@/components/shared/LanguageSwitch";
 
@@ -48,9 +48,13 @@ export default function StudioFooter({ locale, t }: { locale: Locale; t: Diction
           </ul>
         </div>
       </div>
-      <p className="mx-auto max-w-6xl px-4 pb-10 text-xs text-muted sm:px-6">
-        © {new Date().getFullYear()} Nekodojo. {t.footer.rights}
-      </p>
+      <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 pb-10 text-xs text-muted sm:flex-row sm:justify-between sm:px-6">
+        <p>© {new Date().getFullYear()} Nekodojo. {t.footer.rights}</p>
+        <p>
+          {t.footer.builtBy}{" "}
+          <a href={COBAYATECH_URL} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center font-semibold text-ink underline underline-offset-4 hover:text-accent sm:min-h-0">CobayaTech</a>
+        </p>
+      </div>
     </footer>
   );
 }

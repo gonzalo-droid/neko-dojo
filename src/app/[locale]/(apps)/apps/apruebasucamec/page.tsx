@@ -1,3 +1,4 @@
+import { SUCAMEC_WEB_QUIZ_URL } from "@/content/site";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -79,6 +80,28 @@ export default async function ApruebaSucamecPage({ params }: LocaleParams) {
             </div>
           ))}
         </dl>
+      </section>
+
+      {/* The online quiz, for practice without the app */}
+      <section className="border-b border-line">
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 sm:px-6 md:flex-row md:items-center md:justify-between">
+          <div className="max-w-xl">
+            <h2 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">{c.webQuiz.title}</h2>
+            <p className="mt-2 leading-relaxed text-muted">{c.webQuiz.body}</p>
+          </div>
+          <div className="flex shrink-0 flex-col gap-2 md:items-end">
+            <a
+              href={SUCAMEC_WEB_QUIZ_URL}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 font-semibold text-on-accent transition-opacity hover:opacity-90"
+            >
+              {c.webQuiz.cta}
+              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M6 3h7v7M13 3 4 12" /></svg>
+            </a>
+            <span className="text-sm text-muted">alvaro-barrera.me</span>
+          </div>
+        </div>
       </section>
 
       {/* Study modes */}
