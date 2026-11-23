@@ -82,25 +82,28 @@ export default async function ApruebaSucamecPage({ params }: LocaleParams) {
         </dl>
       </section>
 
-      {/* The online quiz, for practice without the app */}
-      <section className="border-b border-line">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 sm:px-6 md:flex-row md:items-center md:justify-between">
-          <div className="max-w-xl">
-            <h2 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">{c.webQuiz.title}</h2>
-            <p className="mt-2 leading-relaxed text-muted">{c.webQuiz.body}</p>
-          </div>
-          <div className="flex shrink-0 flex-col gap-2 md:items-end">
+      {/* The online quiz, for practice without the app: on the hero's navy so it reads as a second way in. */}
+      <section className="bg-accent text-on-accent">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.1fr_1fr] md:gap-16 md:py-16">
+          <div>
+            <h2 className="font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl">{c.webQuiz.title}</h2>
+            <p className="mt-3 max-w-md text-lg leading-relaxed text-on-accent/85">{c.webQuiz.body}</p>
             <a
               href={SUCAMEC_WEB_QUIZ_URL}
               target="_blank"
               rel="noopener"
-              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 font-semibold text-on-accent transition-opacity hover:opacity-90"
+              className="mt-8 inline-flex min-h-12 items-center gap-2 rounded-lg bg-[var(--sa-gold-soft)] px-6 py-3 text-lg font-bold text-accent transition-transform hover:-translate-y-0.5 active:translate-y-0"
             >
               {c.webQuiz.cta}
-              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M6 3h7v7M13 3 4 12" /></svg>
+              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 3h7v7M13 3 4 12" /></svg>
             </a>
-            <span className="text-sm text-muted">alvaro-barrera.me</span>
+            <p className="mt-3 text-sm text-on-accent/75">{c.webQuiz.opens}</p>
           </div>
+          <ul className="space-y-3">
+            {c.webQuiz.modes.map((m) => (
+              <li key={m} className="border-l-4 border-[var(--sa-gold)] bg-on-accent/[0.07] px-5 py-4 text-on-accent/95">{m}</li>
+            ))}
+          </ul>
         </div>
       </section>
 
