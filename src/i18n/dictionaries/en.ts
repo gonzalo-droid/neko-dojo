@@ -39,6 +39,9 @@ const en: Dictionary = {
     rating: (value: string) => `${value} out of 5 in the store`,
   },
   home: {
+    heroArt: "Coloured blocks, one per app, that connect and keep forming the Nekodojo cat, a phone, the AI sparkle and the infinity sign",
+    pauseArt: "Pause animation",
+    playArt: "Resume animation",
     lead: "Nekodojo is an independent studio. We make small, carefully built apps, each with a personality of its own.",
     explore: "See the apps",
     available: "Available",
