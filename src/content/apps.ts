@@ -226,7 +226,11 @@ export const apps: AppEntry[] = [
     },
     legal: {
       mode: "live",
-      updated: { es: "17 de noviembre de 2026", en: "November 17, 2026" },
+      updated: { es: "23 de noviembre de 2026", en: "November 23, 2026" },
+      updatedByKind: {
+        privacy: { es: "23 de noviembre de 2026", en: "November 23, 2026" },
+        terms: { es: "17 de noviembre de 2026", en: "November 17, 2026" },
+      },
     },
     support: {
       faq: {

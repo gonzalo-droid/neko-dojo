@@ -8,7 +8,8 @@ import type { LegalDoc } from "./types";
  *
  * Every practice described here was checked against the app's code (sucamec-app,
  * November 2026): shared_preferences for history and font size, google_mobile_ads with
- * UMP consent and ATT on iOS, a banner in every mode except the exam simulation,
+ * UMP consent and ATT on iOS, banners on Home, the full bank and the practice modes,
+ * an interstitial after untimed and custom practice exams, no ads in the exam simulation,
  * webview_flutter for these pages, no Firebase, no accounts, no own server.
  * Android permissions come from the built APK. If the app changes any of this, update
  * this file and the dates in src/content/apps.ts.
@@ -66,7 +67,14 @@ const privacyEs: LegalDoc = {
     {
       heading: "4. Publicidad (Google AdMob)",
       blocks: [
-        "ApruebaSUCAMEC es gratuita y se financia con anuncios de Google AdMob, un servicio de Google LLC. Hoy la app muestra un banner en los modos de práctica; en el simulacro tipo examen no hay anuncios. Más adelante podría mostrar otros formatos de AdMob (por ejemplo, intersticiales, con recompensa o nativos); si lo hace, esta política se actualizará.",
+        "ApruebaSUCAMEC es gratuita y se financia con anuncios de Google AdMob, un servicio de Google LLC. Hoy la app muestra estos formatos:",
+        {
+          list: [
+            "Banners: en la pantalla de inicio, en el banco completo de preguntas (uno cada 10 preguntas) y en los modos de práctica.",
+            "Anuncios a pantalla completa (intersticiales): a veces, al terminar un simulacro sin tiempo o uno personalizado, sobre la pantalla de resultados. Se muestra como máximo uno cada 3 minutos y puedes cerrarlo.",
+          ],
+        },
+        "En el simulacro tipo examen no hay anuncios. La app no muestra anuncios con recompensa ni nativos; si en algún momento lo hace, esta política se actualizará.",
         "Para mostrar y medir anuncios, y para prevenir fraude, el SDK de Google Mobile Ads puede recopilar, según la declaración de privacidad del propio Google:",
         {
           list: [
@@ -204,7 +212,14 @@ const privacyEn: LegalDoc = {
     {
       heading: "4. Advertising (Google AdMob)",
       blocks: [
-        "ApruebaSUCAMEC is free and funded by Google AdMob ads, a service of Google LLC. Today the app shows a banner in the practice modes; there are no ads in the exam simulation. Later on it may show other AdMob formats (for example, interstitial, rewarded or native ads); if it does, this policy will be updated.",
+        "ApruebaSUCAMEC is free and funded by Google AdMob ads, a service of Google LLC. Today the app shows these formats:",
+        {
+          list: [
+            "Banners: on the home screen, in the full question bank (one every 10 questions) and in the practice modes.",
+            "Full-screen (interstitial) ads: sometimes, when you finish an untimed or custom practice exam, over the results screen. At most one is shown every 3 minutes, and you can close it.",
+          ],
+        },
+        "There are no ads in the exam simulation. The app doesn't show rewarded or native ads; if that ever changes, this policy will be updated.",
         "To show and measure ads, and to prevent fraud, the Google Mobile Ads SDK may collect, according to Google's own privacy declaration:",
         {
           list: [
