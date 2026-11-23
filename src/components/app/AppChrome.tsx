@@ -53,15 +53,15 @@ export default function AppChrome({ app, locale, children, nav = [], actions }: 
       </header>
       <main id="main">{children}</main>
       <footer className="border-t border-line">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <nav aria-label={t.a11y.footerNav}>
-            <ul className="flex flex-wrap gap-x-6 gap-y-2">
-              <li><Link href={localizePath(locale, `${base}/support`)} className="text-muted hover:text-accent">{t.common.support}</Link></li>
-              <li><Link href={localizePath(locale, `${base}/privacy`)} className="text-muted hover:text-accent">{t.common.privacy}</Link></li>
-              <li><Link href={localizePath(locale, `${base}/terms`)} className="text-muted hover:text-accent">{t.common.terms}</Link></li>
+            <ul className="flex flex-wrap gap-x-6">
+              <li><Link href={localizePath(locale, `${base}/support`)} className="inline-flex min-h-11 items-center text-muted hover:text-accent">{t.common.support}</Link></li>
+              <li><Link href={localizePath(locale, `${base}/privacy`)} className="inline-flex min-h-11 items-center text-muted hover:text-accent">{t.common.privacy}</Link></li>
+              <li><Link href={localizePath(locale, `${base}/terms`)} className="inline-flex min-h-11 items-center text-muted hover:text-accent">{t.common.terms}</Link></li>
             </ul>
           </nav>
-          <Link href={localizePath(locale)} className="inline-flex items-center gap-2 text-muted hover:text-ink">
+          <Link href={localizePath(locale)} className="inline-flex min-h-11 items-center gap-2 text-muted hover:text-ink">
             <CatMark className="h-4 w-4" />
             {t.common.madeBy}
           </Link>
