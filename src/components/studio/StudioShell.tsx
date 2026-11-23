@@ -1,6 +1,6 @@
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { spaceGrotesk } from "@/lib/fonts/space-grotesk";
+import { funnelDisplay } from "@/lib/fonts/funnel-display";
 import { zenKaku } from "@/lib/fonts/zen-kaku";
 import { archivoPreview, outfitPreview, playfairPreview, poppinsPreview, soraPreview } from "@/lib/fonts/previews";
 import JsonLd from "@/components/shared/JsonLd";
@@ -9,8 +9,8 @@ import StudioHeader from "./StudioHeader";
 import StudioFooter from "./StudioFooter";
 
 // App display fonts are loaded here only so the catalog cards can preview each identity
-// (not preloaded: see previews.ts). Space Grotesk is the studio's own display face.
-const fontVars = [spaceGrotesk, playfairPreview, outfitPreview, zenKaku, soraPreview, poppinsPreview, archivoPreview].map((f) => f.variable).join(" ");
+// (not preloaded: see previews.ts). Funnel Display is the studio's own display face.
+const fontVars = [funnelDisplay, playfairPreview, outfitPreview, zenKaku, soraPreview, poppinsPreview, archivoPreview].map((f) => f.variable).join(" ");
 
 export default function StudioShell({ locale, children }: { locale: Locale; children: React.ReactNode }) {
   const t = getDictionary(locale);

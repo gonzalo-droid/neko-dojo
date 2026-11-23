@@ -50,7 +50,7 @@
   --app-line: #cfcdc5;
   --app-ok: #11704a;
   --app-warn: #8a5800;
-  --app-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --app-display: var(--font-funnel-display), system-ui, sans-serif;
   --app-body: var(--font-inter), system-ui, sans-serif;
 }
 body:has(.theme-studio) { background-color: #eeede9; }
