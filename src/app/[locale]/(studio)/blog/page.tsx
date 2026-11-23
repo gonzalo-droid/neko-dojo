@@ -37,7 +37,7 @@ export default async function Blog({ params, searchParams }: Props) {
   return (
     <div className="tatami">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
-        <p className="text-sm font-semibold uppercase tracking-widest text-accent">{t.eyebrow}</p>
+        <p className="text-sm font-semibold text-accent">{t.eyebrow}</p>
         <h1 className="mt-3 font-display text-5xl font-bold leading-[1.02] tracking-tight md:text-6xl">{t.title}</h1>
         <p className="mt-4 max-w-2xl text-lg text-muted">{t.lead}</p>
 

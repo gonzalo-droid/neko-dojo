@@ -73,9 +73,7 @@ export default async function ProjectCase({ params }: Params) {
         {/* Cabecera */}
         <header className="mt-8 grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] lg:gap-12">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-accent">
-              {t.caseEyebrow} · {platforms.join(" + ")}
-            </p>
+            <p className="text-sm font-semibold text-accent">{t.caseEyebrow}</p>
             <h1 className="mt-3 font-display text-4xl font-bold leading-tight tracking-tight md:text-5xl">{project.title}</h1>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink">{project.summary[locale]}</p>
             {project.client && (

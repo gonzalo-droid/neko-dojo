@@ -72,7 +72,7 @@ export default async function MtcQuizPage({ params }: LocaleParams) {
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-12 sm:px-6 md:grid-cols-[1.25fr_1fr] md:pt-20">
         <div>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <span className="text-sm font-semibold uppercase tracking-wide text-accent">{c.eyebrow}</span>
+            <span className="text-sm font-semibold text-accent">{c.eyebrow}</span>
             <StatusBadge status={app.status} label={t.status[app.status]} className="text-ink" />
           </div>
           <h1 className="mt-5 font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl">
