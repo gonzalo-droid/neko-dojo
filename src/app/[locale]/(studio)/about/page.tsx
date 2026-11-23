@@ -32,7 +32,7 @@ export default async function About({ params }: LocaleParams) {
             className="h-40 w-40 rounded-2xl object-cover ring-1 ring-line md:h-52 md:w-52"
           />
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-accent">{t.eyebrow}</p>
+            <p className="text-sm font-semibold text-accent">{t.eyebrow}</p>
             <h1 className="mt-3 font-display text-5xl font-bold leading-[1.02] tracking-tight md:text-6xl">{t.name}</h1>
             <p className="mt-2 font-display text-xl text-muted">{t.role}</p>
             {about.bio.map((p) => (
@@ -104,7 +104,7 @@ export default async function About({ params }: LocaleParams) {
                       ))}
                     </ul>
                     <p className="mt-auto pt-5 text-sm font-semibold text-accent" aria-hidden>
-                      {t.seeCase} <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+                      {t.seeCase}
                     </p>
                   </div>
                 </article>

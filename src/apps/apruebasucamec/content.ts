@@ -38,7 +38,7 @@ const es = {
     { href: "#funciones", label: "Funciones" },
     { href: "#faq", label: "Preguntas" },
   ],
-  eyebrow: "Examen SUCAMEC · Perú",
+  eyebrow: "Examen SUCAMEC en Perú",
   heroBody:
     "Practica con preguntas tipo examen, haz el simulacro con tiempo y mide tu avance antes de rendir el examen teórico para tu licencia de uso de armas de fuego. Sin cuenta y sin internet.",
   disclaimer: "App independiente. No está afiliada a la SUCAMEC ni a ninguna entidad del Estado peruano.",

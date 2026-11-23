@@ -48,7 +48,7 @@ export default async function Home({ params }: LocaleParams) {
                 href="#apps"
                 className="inline-flex min-h-11 items-center rounded-lg bg-accent px-5 py-3 font-semibold text-on-accent transition-opacity hover:opacity-90"
               >
-                {t.home.explore} <span aria-hidden="true" className="ml-2">↓</span>
+                {t.home.explore}
               </a>
               <Link
                 href={localizePath(locale, "/studio")}
@@ -63,7 +63,7 @@ export default async function Home({ params }: LocaleParams) {
 
       <section id="apps" className="scroll-mt-20 bg-band" aria-labelledby="available-title">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
-          <h2 id="available-title" className="font-display text-2xl font-bold">{t.home.available}</h2>
+          <h2 id="available-title" className="font-display text-3xl font-bold tracking-tight md:text-4xl">{t.home.available}</h2>
           <ul className="mt-6 grid grid-cols-1 gap-5 lg:grid-cols-2">
             {available.map((app, i) => (
               <li key={app.slug} className="rise" style={{ animationDelay: `${200 + i * 90}ms` }}>
@@ -73,24 +73,26 @@ export default async function Home({ params }: LocaleParams) {
           </ul>
 
           <div className="mt-16 flex flex-wrap items-end justify-between gap-3">
-            <h2 className="font-display text-2xl font-bold">{t.home.upcoming}</h2>
+            <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">{t.home.upcoming}</h2>
             <p className="max-w-md text-sm text-muted">{t.home.upcomingBody}</p>
           </div>
           <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {upcoming.map((app) => (
               <li key={app.slug}>
                 <Link
-                  href={`${localizePath(locale, `/apps/${app.slug}`)}#lista`}
+                  href={`${localizePath(locale, `/apps/${app.slug}`)}${app.status === "testing" ? "" : "#lista"}`}
                   className="group flex items-center gap-4 rounded-2xl border border-line bg-surface/60 p-4 transition-colors hover:border-accent sm:p-5"
                 >
                   <AppIcon app={app} size={48} />
                   <span className="min-w-0 flex-1">
                     <span className="block font-semibold text-ink">{app.name}</span>
-                    <span className="block truncate text-sm text-muted">{app.tagline[locale]}</span>
+                    <span className="block text-sm text-muted sm:truncate">{app.tagline[locale]}</span>
                     <StatusBadge status={app.status} label={t.status[app.status]} className="mt-1.5 text-muted" />
                   </span>
-                  <span className="shrink-0 rounded-lg border border-line px-3 py-2 text-sm font-semibold text-accent transition-colors group-hover:border-accent">
-                    {t.home.notify} <span aria-hidden="true">→</span>
+                  {/* Phones: the whole card is the link, so the button gives its room to the tagline. */}
+                  <span className="shrink-0 rounded-lg border border-line px-3 py-2 text-sm font-semibold text-accent transition-colors group-hover:border-accent max-sm:hidden">
+                    {/* Apps in testing have no waitlist yet, so the button does not promise a notice. */}
+                    {app.status === "testing" ? t.home.viewApp : t.home.notify}
                   </span>
                 </Link>
               </li>
@@ -101,7 +103,7 @@ export default async function Home({ params }: LocaleParams) {
 
       <section className="border-t border-line">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 md:grid-cols-[1fr_1.2fr] md:py-24">
-          <h2 className="font-display text-4xl font-bold leading-tight tracking-tight md:text-5xl">{t.home.aboutTitle}</h2>
+          <h2 className="font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl">{t.home.aboutTitle}</h2>
           <div>
             <p className="text-lg leading-relaxed text-muted">{t.home.aboutBody}</p>
             <Link href={localizePath(locale, "/studio")} className="mt-6 inline-flex min-h-11 items-center font-semibold text-accent underline underline-offset-4">
@@ -113,7 +115,7 @@ export default async function Home({ params }: LocaleParams) {
 
       <section className="border-t border-line">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
-          <h2 className="font-display text-2xl font-bold">{t.home.newsTitle}</h2>
+          <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">{t.home.newsTitle}</h2>
           <ul className="mt-6 divide-y divide-line border-y border-line">
             {news.map((item) => {
               const app = apps.find((a) => a.slug === item.app)!;

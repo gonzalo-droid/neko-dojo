@@ -42,7 +42,7 @@ export default function FeaturedAppCard({ app, locale, t }: { app: AppEntry; loc
             <StatusBadge status={app.status} label={t.status[app.status]} />
           </span>
         </div>
-        <h3 className="mt-8 text-4xl font-bold leading-tight tracking-tight" style={{ fontFamily: `var(${p.fontVar})` }}>
+        <h3 className="mt-8 text-2xl font-bold leading-tight tracking-tight md:text-3xl" style={{ fontFamily: `var(${p.fontVar})` }}>
           <Link href={href} className="hover:underline hover:decoration-2 hover:underline-offset-4">
             {app.name}
           </Link>

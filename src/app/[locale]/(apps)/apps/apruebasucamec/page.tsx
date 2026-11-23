@@ -53,7 +53,7 @@ export default async function ApruebaSucamecPage({ params }: LocaleParams) {
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-12 sm:px-6 md:grid-cols-[1.25fr_1fr] md:pb-20 md:pt-20">
           <div>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              <span className="text-sm font-semibold uppercase tracking-wide text-[var(--sa-gold-soft)]">{c.eyebrow}</span>
+              <span className="text-sm font-semibold text-[var(--sa-gold-soft)]">{c.eyebrow}</span>
               <StatusBadge status={app.status} label={t.status[app.status]} />
             </div>
             <h1 className="mt-5 font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
@@ -88,12 +88,10 @@ export default async function ApruebaSucamecPage({ params }: LocaleParams) {
             <Rule />
             <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">{c.modes.title}</h2>
             <p className="mt-3 max-w-xl text-lg text-muted">{c.modes.lead}</p>
-            <ol className="mt-10 space-y-4">
-              {c.modes.items.map((m, i) => (
-                <li key={m.title} className="flex gap-4 rounded-2xl border border-line bg-surface p-5">
-                  <span aria-hidden="true" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent font-display text-sm font-bold text-on-accent">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+            {/* The modes are alternatives, not steps: no numbers. */}
+            <ul className="mt-10 space-y-4">
+              {c.modes.items.map((m) => (
+                <li key={m.title} className="rounded-2xl border border-line border-l-4 border-l-[var(--sa-gold)] bg-surface p-5">
                   <div>
                     <h3 className="font-display text-lg font-bold text-ink">{m.title}</h3>
                     <p className="mt-0.5 text-sm font-semibold text-accent2">{m.meta}</p>
@@ -101,7 +99,7 @@ export default async function ApruebaSucamecPage({ params }: LocaleParams) {
                   </div>
                 </li>
               ))}
-            </ol>
+            </ul>
             <p className="mt-6 text-sm text-muted">{c.modes.bankNote}</p>
           </div>
           <div className="mx-auto w-full max-w-[16rem] md:sticky md:top-24 md:max-w-[18rem]">
@@ -168,17 +166,17 @@ export default async function ApruebaSucamecPage({ params }: LocaleParams) {
       {/* Pricing, download and FAQ */}
       <section className="mx-auto grid max-w-6xl gap-14 px-4 py-20 sm:px-6 md:grid-cols-2">
         <div>
-          <h2 className="font-display text-2xl font-bold text-ink">{c.pricing.title}</h2>
+          <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">{c.pricing.title}</h2>
           <p className="mt-3 leading-relaxed text-muted">{c.pricing.body}</p>
           <div className="mt-10 rounded-2xl bg-accent p-6 text-on-accent">
-            <h2 className="font-display text-2xl font-bold">{c.downloadTitle}</h2>
+            <h3 className="font-display text-lg font-bold">{c.downloadTitle}</h3>
             <p className="mt-2 text-on-accent/85">{c.downloadBody}</p>
             <div className="mt-5">{download}</div>
           </div>
         </div>
         {faq.length > 0 && (
           <div id="faq" className="scroll-mt-20">
-            <h2 className="font-display text-2xl font-bold text-ink">{t.common.faq}</h2>
+            <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">{t.common.faq}</h2>
             <div className="mt-5"><FaqList items={faq} /></div>
           </div>
         )}

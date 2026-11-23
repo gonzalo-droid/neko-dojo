@@ -13,7 +13,7 @@ const es = {
   languageSwitch: { label: "English", short: "EN", hint: "Ver esta página en inglés" },
   theme: { toLight: "Cambiar a tema claro", toDark: "Cambiar a tema oscuro" },
   breadcrumbs: { label: "Ruta de navegación", apps: "Apps" },
-  status: { available: "Disponible", testing: "En pruebas", "in-development": "En desarrollo", pending: "Por confirmar" },
+  status: { available: "Disponible", testing: "En pruebas", "in-development": "En desarrollo", pending: "Sin fecha aún" },
   common: {
     provisional: "Contenido provisional",
     conceptMockup: "Mockup conceptual",
@@ -43,6 +43,7 @@ const es = {
     upcoming: "En camino",
     upcomingBody: "Apps que estamos construyendo. Entra a su página para enterarte cuando salgan.",
     notify: "Avísame",
+    viewApp: "Ver la app",
     shelfLabel: "Las apps del estudio",
     aboutTitle: "Un dojo para ideas pequeñas",
     aboutBody:

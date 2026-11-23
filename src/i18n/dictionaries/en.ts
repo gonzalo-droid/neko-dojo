@@ -15,7 +15,7 @@ const en: Dictionary = {
   languageSwitch: { label: "Español", short: "ES", hint: "View this page in Spanish" },
   theme: { toLight: "Switch to light theme", toDark: "Switch to dark theme" },
   breadcrumbs: { label: "Breadcrumb", apps: "Apps" },
-  status: { available: "Available", testing: "In testing", "in-development": "In development", pending: "To be confirmed" },
+  status: { available: "Available", testing: "In testing", "in-development": "In development", pending: "No date yet" },
   common: {
     provisional: "Placeholder content",
     conceptMockup: "Concept mockup",
@@ -45,6 +45,7 @@ const en: Dictionary = {
     upcoming: "On the way",
     upcomingBody: "Apps we're building. Visit their page to hear when they launch.",
     notify: "Notify me",
+    viewApp: "See the app",
     shelfLabel: "The studio's apps",
     aboutTitle: "A dojo for small ideas",
     aboutBody:

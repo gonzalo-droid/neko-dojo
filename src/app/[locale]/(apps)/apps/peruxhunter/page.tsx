@@ -260,7 +260,7 @@ export default async function PeruXHunterPage({ params }: LocaleParams) {
       <section id="seguridad" className="scroll-mt-20 bg-[var(--ph-header)] text-white">
         <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 md:grid-cols-[1.2fr_1fr]">
           <div>
-            <h2 className="ph-cond text-5xl leading-[0.95] sm:text-6xl">{c.safety.title}</h2>
+            <h2 className="ph-cond text-4xl leading-[0.95] sm:text-5xl">{c.safety.title}</h2>
             <p className="mt-4 max-w-lg text-lg leading-relaxed text-[var(--ph-on-header-muted)]">{c.safety.lead}</p>
             <ol className="mt-8 space-y-3 text-lg">
               {c.safety.rules.map((r, i) => (
@@ -339,7 +339,7 @@ export default async function PeruXHunterPage({ params }: LocaleParams) {
       <section className="border-t border-line">
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
           <div className="rounded-2xl border border-[var(--ph-paper-line)] bg-[var(--ph-paper)] p-6 text-[var(--ph-on-paper)] sm:p-8">
-            <h2 className="ph-cond text-2xl">{c.notice.title}</h2>
+            <h2 className="ph-cond text-3xl">{c.notice.title}</h2>
             <p className="mt-2 max-w-3xl leading-relaxed">{c.notice.body}</p>
             <a
               href={SOURCE_URL}
