@@ -3,6 +3,7 @@ import type { AppStatus } from "@/content/apps";
 // Theme tokens, so the dot stays visible on light and dark canvases.
 const tone: Record<AppStatus, string> = {
   available: "bg-ok",
+  testing: "bg-current", // the text colour: visible on any canvas, including accent-coloured heroes
   "in-development": "bg-warn",
   pending: "bg-muted",
 };

@@ -3,7 +3,8 @@ import type { Locale } from "@/i18n/config";
 /*
  * ApruebaSUCAMEC landing copy. Facts (100 questions: 65 multiple choice + 35 true/false,
  * modes, 70 % pass mark, ads only outside the exam simulation, local history) were checked
- * against the app's code in November 2026. Screenshots come from the Android build.
+ * against the app's code in November 2026. Screenshots come from the iOS build 1.0.0 (manual screen left
+ * out: it shows a pistol with its brand).
  */
 
 type Shot = { src: string; alt: string };
@@ -53,12 +54,12 @@ const es = {
     lead: "Desde repasar todo el banco hasta simular el examen con el reloj en contra.",
     items: [
       { title: "Simular examen SUCAMEC", meta: "5 preguntas · 10 minutos", body: "Preguntas al azar y cronómetro, pensado como el examen real. Aquí no hay anuncios." },
-      { title: "Simulacro completo", meta: "20 preguntas · sin límite", body: "Una práctica más larga, a tu ritmo, para cubrir más temas en cada intento." },
+      { title: "Simulacro completo", meta: "100 preguntas · sin límite", body: "Todo el banco en orden y a tu ritmo, para repasar cada tema sin el reloj." },
       { title: "Simulacro personalizado", meta: "De 1 a 100 preguntas", body: "Tú eliges cuántas preguntas quieres responder hoy." },
       { title: "Ver banco completo", meta: "100 preguntas", body: "Todas las preguntas con la respuesta correcta a la vista, para estudiar antes de practicar." },
     ],
-    bankNote: "65 de opción múltiple y 35 de verdadero o falso, en un orden distinto en cada intento.",
-    shot: { src: shots.exam, alt: "Simulacro de examen con cronómetro de 10 minutos, pregunta 1 de 5 y la alternativa C marcada" } as Shot,
+    bankNote: "65 de opción múltiple y 35 de verdadero o falso. El simulacro tipo examen y el personalizado las eligen al azar.",
+    shot: { src: shots.exam, alt: "Simulacro de examen con el cronómetro en 09:44, pregunta 1 de 5 de verdadero o falso y Verdadero marcado" } as Shot,
   },
   results: {
     title: "Sabes cómo vas en cada intento",
@@ -68,8 +69,8 @@ const es = {
       "Intenta de nuevo o copia tu resultado para compartirlo.",
       "El historial guarda tus intentos en el teléfono, incluso los que dejaste a medias.",
     ],
-    resultShot: { src: shots.result, alt: "Resultado final del simulacro: 80 %, aprobado, 4 correctas y 1 incorrecta de 5" } as Shot,
-    reviewShot: { src: shots.review, alt: "Revisión del examen con la pregunta 1 respondida correctamente y la alternativa Zona Rural marcada en verde" } as Shot,
+    resultShot: { src: shots.result, alt: "Resultado final del simulacro: 100 %, aprobado, 5 correctas de 5" } as Shot,
+    reviewShot: { src: shots.review, alt: "Revisión del examen: las preguntas 1 y 2 correctas, con la respuesta correcta marcada en verde, y la 3 incorrecta" } as Shot,
   },
   licenses: {
     title: "Los tipos de licencia, a la mano",
@@ -83,15 +84,15 @@ const es = {
       { title: "Tamaño de letra", body: "Ajústalo con vista previa y se aplica en toda la app." },
       { title: "Sin cuenta", body: "No te pedimos registro. Tu historial se queda en tu teléfono." },
       { title: "Sin internet", body: "Las preguntas y el manual vienen dentro de la app." },
-      { title: "Android e iOS", body: "La misma app en los dos sistemas, pensada para usarse en vertical." },
+      { title: "Teléfono y tablet", body: "La misma app en iPhone, iPad y Android, también en tablets." },
     ],
   },
   pricing: {
     title: "Gratis, con anuncios",
     body: "Todo el contenido es gratuito. La app muestra un banner en los modos de práctica y te pide tu consentimiento antes de cargar anuncios cuando corresponde. El simulacro tipo examen no tiene anuncios.",
   },
-  downloadTitle: "Muy pronto en tu teléfono",
-  downloadBody: "Estamos terminando la app. Los enlaces de descarga aparecerán aquí en cuanto esté publicada.",
+  downloadTitle: "En pruebas en iOS y Android",
+  downloadBody: "Estamos probando la app en iPhone y Android antes de publicarla. Los enlaces de descarga aparecerán aquí en cuanto esté publicada en las tiendas.",
 };
 
 export type SucamecContent = typeof es;
@@ -124,12 +125,12 @@ const en: SucamecContent = {
     lead: "From reviewing the whole bank to simulating the test against the clock.",
     items: [
       { title: "SUCAMEC exam simulation", meta: "5 questions · 10 minutes", body: "Random questions and a timer, designed like the real test. No ads here." },
-      { title: "Full practice exam", meta: "20 questions · no time limit", body: "A longer practice at your own pace, to cover more topics in each attempt." },
+      { title: "Full practice exam", meta: "100 questions · no time limit", body: "The whole bank in order and at your own pace, to cover every topic without the clock." },
       { title: "Custom practice exam", meta: "1 to 100 questions", body: "You choose how many questions to answer today." },
       { title: "Full question bank", meta: "100 questions", body: "Every question with the right answer shown, to study before you practice." },
     ],
-    bankNote: "65 multiple choice and 35 true or false, in a different order on every attempt.",
-    shot: { src: shots.exam, alt: "Exam simulation with a 10-minute timer, question 1 of 5 and option C selected" },
+    bankNote: "65 multiple choice and 35 true or false. The exam simulation and the custom practice pick them at random.",
+    shot: { src: shots.exam, alt: "Exam simulation with the timer at 09:44, true-or-false question 1 of 5 and True selected" },
   },
   results: {
     title: "Know where you stand after every attempt",
@@ -139,8 +140,8 @@ const en: SucamecContent = {
       "Try again or copy your result to share it.",
       "The history keeps your attempts on your phone, even the ones you left unfinished.",
     ],
-    resultShot: { src: shots.result, alt: "Final result of the simulation: 80%, passed, 4 right and 1 wrong out of 5" },
-    reviewShot: { src: shots.review, alt: "Exam review with question 1 answered correctly and the Zona Rural option marked in green" },
+    resultShot: { src: shots.result, alt: "Final result of the simulation: 100%, passed, 5 right out of 5" },
+    reviewShot: { src: shots.review, alt: "Exam review: questions 1 and 2 right, with the correct answer marked in green, and question 3 wrong" },
   },
   licenses: {
     title: "License types at hand",
@@ -154,15 +155,15 @@ const en: SucamecContent = {
       { title: "Font size", body: "Adjust it with a live preview and it applies across the whole app." },
       { title: "No account", body: "No sign-up. Your history stays on your phone." },
       { title: "No internet", body: "The questions and the manual come inside the app." },
-      { title: "Android and iOS", body: "The same app on both systems, designed for portrait use." },
+      { title: "Phone and tablet", body: "The same app on iPhone, iPad and Android, tablets included." },
     ],
   },
   pricing: {
     title: "Free, with ads",
     body: "All the content is free. The app shows a banner in the practice modes and asks for your consent before loading ads where it applies. The exam simulation has no ads.",
   },
-  downloadTitle: "Coming soon to your phone",
-  downloadBody: "We're finishing the app. Download links will show up here as soon as it's published.",
+  downloadTitle: "In testing on iOS and Android",
+  downloadBody: "We're testing the app on iPhone and Android before releasing it. Download links will show up here as soon as it's out in the stores.",
 };
 
 export const sucamecContent: Record<Locale, SucamecContent> = { es, en };

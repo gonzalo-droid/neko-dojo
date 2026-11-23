@@ -15,7 +15,7 @@ const en: Dictionary = {
   languageSwitch: { label: "Español", short: "ES", hint: "View this page in Spanish" },
   theme: { toLight: "Switch to light theme", toDark: "Switch to dark theme" },
   breadcrumbs: { label: "Breadcrumb", apps: "Apps" },
-  status: { available: "Available", "in-development": "In development", pending: "To be confirmed" },
+  status: { available: "Available", testing: "In testing", "in-development": "In development", pending: "To be confirmed" },
   common: {
     provisional: "Placeholder content",
     conceptMockup: "Concept mockup",

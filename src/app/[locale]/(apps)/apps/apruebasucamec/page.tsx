@@ -13,7 +13,7 @@ import FaqList from "@/components/shared/FaqList";
 import StatusBadge from "@/components/shared/StatusBadge";
 
 const app = getApp("apruebasucamec");
-const SHOT = { width: 920, height: 2053 };
+const SHOT = { width: 920, height: 1999 };
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
   const locale = await getLocale(params);
