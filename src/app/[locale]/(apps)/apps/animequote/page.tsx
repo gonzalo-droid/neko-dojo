@@ -53,7 +53,6 @@ export default async function AnimeQuotePage({ params }: LocaleParams) {
 
   return (
     <>
-      <a href="#main" className="skip-link">{t.a11y.skip}</a>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <Header c={c} locale={locale} studioLabel={t.common.backToStudio} allAppsLabel={t.common.allApps} mainNavLabel={t.a11y.mainNav} lang={t.languageSwitch} />
       <main id="main">
