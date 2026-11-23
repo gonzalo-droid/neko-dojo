@@ -82,28 +82,6 @@ export default async function ApruebaSucamecPage({ params }: LocaleParams) {
         </dl>
       </section>
 
-      {/* The online quiz, for practice without the app */}
-      <section className="border-b border-line">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 sm:px-6 md:flex-row md:items-center md:justify-between">
-          <div className="max-w-xl">
-            <h2 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">{c.webQuiz.title}</h2>
-            <p className="mt-2 leading-relaxed text-muted">{c.webQuiz.body}</p>
-          </div>
-          <div className="flex shrink-0 flex-col gap-2 md:items-end">
-            <a
-              href={SUCAMEC_WEB_QUIZ_URL}
-              target="_blank"
-              rel="noopener"
-              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 font-semibold text-on-accent transition-opacity hover:opacity-90"
-            >
-              {c.webQuiz.cta}
-              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M6 3h7v7M13 3 4 12" /></svg>
-            </a>
-            <span className="text-sm text-muted">alvaro-barrera.me</span>
-          </div>
-        </div>
-      </section>
-
       {/* Study modes */}
       <section id="modos" className="scroll-mt-20">
         <div className="mx-auto grid max-w-6xl items-start gap-12 px-4 py-20 sm:px-6 md:grid-cols-[1.4fr_1fr]">
@@ -127,6 +105,36 @@ export default async function ApruebaSucamecPage({ params }: LocaleParams) {
           </div>
           <div className="mx-auto w-full max-w-[16rem] md:sticky md:top-24 md:max-w-[18rem]">
             <Phone src={c.modes.shot.src} alt={c.modes.shot.alt} sizes="(min-width: 768px) 18rem, 16rem" />
+          </div>
+        </div>
+      </section>
+
+      {/* The online quiz, a complement for desktop visitors: secondary styling so the app stays the main path. */}
+      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+        <div className="grid items-center gap-8 rounded-2xl border border-line border-l-4 border-l-[var(--sa-gold)] bg-surface p-6 sm:p-8 md:grid-cols-[1.3fr_1fr] md:gap-12">
+          <div>
+            <h2 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">{c.webQuiz.title}</h2>
+            <p className="mt-3 leading-relaxed text-muted">{c.webQuiz.body}</p>
+            <ul className="mt-4 space-y-2">
+              {c.webQuiz.modes.map((m) => (
+                <li key={m} className="flex gap-3 text-ink">
+                  <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--sa-gold)]" />
+                  {m}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex flex-col items-start gap-2 md:items-end">
+            <a
+              href={SUCAMEC_WEB_QUIZ_URL}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex min-h-11 items-center gap-2 rounded-lg border-2 border-accent px-5 py-2.5 font-semibold text-accent transition-colors hover:bg-accent hover:text-on-accent"
+            >
+              {c.webQuiz.cta}
+              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 3h7v7M13 3 4 12" /></svg>
+            </a>
+            <span className="text-sm text-muted">{c.webQuiz.opens}</span>
           </div>
         </div>
       </section>
