@@ -37,6 +37,9 @@ const es = {
     rating: (value: string) => `${value} de 5 en la tienda`,
   },
   home: {
+    heroArt: "Bloques de colores, uno por app, que se conectan y forman en bucle el gato de Nekodojo, un teléfono, el destello de la IA y el símbolo de infinito",
+    pauseArt: "Pausar animación",
+    playArt: "Reanudar animación",
     lead: "Nekodojo es un estudio independiente. Hacemos apps pequeñas y cuidadas, cada una con su propia personalidad.",
     explore: "Ver las apps",
     available: "Disponibles",

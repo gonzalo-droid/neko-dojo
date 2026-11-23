@@ -9,6 +9,7 @@ import { tagline } from "@/content/site";
 import FeaturedAppCard from "@/components/studio/FeaturedAppCard";
 import AppIcon from "@/components/shared/AppIcon";
 import StatusBadge from "@/components/shared/StatusBadge";
+import BlockLoop from "@/components/studio/BlockLoop";
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
   const locale = await getLocale(params);
@@ -36,26 +37,32 @@ export default async function Home({ params }: LocaleParams) {
   return (
     <>
       <section className="tatami border-b border-line">
-        <div className="mx-auto max-w-6xl px-4 pb-14 pt-16 sm:px-6 md:pb-20 md:pt-24">
-          <h1 className="rise font-display text-[clamp(2.75rem,9vw,6.5rem)] font-bold leading-[0.95] tracking-[-0.035em]">
-            <span className="block">{first}.</span>{" "}
-            <span className="block text-muted">{second}</span>
-          </h1>
-          <div className="rise mt-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between" style={{ animationDelay: "120ms" }}>
-            <p className="max-w-md text-lg leading-relaxed text-muted">{t.home.lead}</p>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="#apps"
-                className="inline-flex min-h-11 items-center rounded-lg bg-accent px-5 py-3 font-semibold text-on-accent transition-opacity hover:opacity-90"
-              >
-                {t.home.explore}
-              </a>
-              <Link
-                href={localizePath(locale, "/studio")}
-                className="inline-flex min-h-11 items-center rounded-lg border border-line px-5 py-3 font-semibold text-ink transition-colors hover:border-accent"
-              >
-                {t.home.aboutLink}
-              </Link>
+        <div className="mx-auto grid max-w-6xl items-center gap-4 px-4 pb-14 pt-6 sm:px-6 md:grid-cols-2 md:gap-12 md:pb-20 md:pt-20">
+          {/* Phones: the art sits small above the headline. */}
+          <div className="w-full max-w-[250px] md:order-2 md:max-w-[520px] md:justify-self-center">
+            <BlockLoop label={t.home.heroArt} pauseLabel={t.home.pauseArt} playLabel={t.home.playArt} />
+          </div>
+          <div>
+            <h1 className="rise font-display text-[clamp(2.75rem,9vw,4.75rem)] font-bold leading-[0.95] tracking-[-0.035em] md:text-[clamp(3rem,5.4vw,4.75rem)]">
+              <span className="block">{first}.</span>{" "}
+              <span className="block text-muted">{second}</span>
+            </h1>
+            <div className="rise mt-8 flex flex-col gap-6" style={{ animationDelay: "120ms" }}>
+              <p className="max-w-md text-lg leading-relaxed text-muted">{t.home.lead}</p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="#apps"
+                  className="inline-flex min-h-11 items-center rounded-lg bg-accent px-5 py-3 font-semibold text-on-accent transition-opacity hover:opacity-90"
+                >
+                  {t.home.explore}
+                </a>
+                <Link
+                  href={localizePath(locale, "/studio")}
+                  className="inline-flex min-h-11 items-center rounded-lg border border-line px-5 py-3 font-semibold text-ink transition-colors hover:border-accent"
+                >
+                  {t.home.aboutLink}
+                </Link>
+              </div>
             </div>
           </div>
         </div>
