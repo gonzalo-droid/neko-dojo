@@ -93,14 +93,14 @@ const es = {
   },
   // The modes below are the ones the online quiz itself lists (checked 2026-11-23).
   webQuiz: {
-    title: "¿Sin la app? Haz el simulacro en la web",
-    body: "El cuestionario online es gratis y funciona en el navegador, sin instalar nada.",
+    title: "¿También estudias en la computadora? Prueba la versión web",
+    body: "La app va en tu teléfono. Desde la computadora puedes practicar con el cuestionario online, gratis y en el navegador:",
     modes: [
       "Simulacro de 5 preguntas al azar, como el examen",
       "Banco completo con las respuestas a la vista",
       "Cuestionario con el número de preguntas que elijas",
     ],
-    cta: "Hacer el simulacro online",
+    cta: "Probar el cuestionario web",
     opens: "Se abre en alvaro-barrera.me",
   },
   downloadTitle: "En pruebas en iOS y Android",
@@ -175,14 +175,14 @@ const en: SucamecContent = {
     body: "All the content is free. The app shows a banner in the practice modes and asks for your consent before loading ads where it applies. The exam simulation has no ads.",
   },
   webQuiz: {
-    title: "No app? Take the practice test on the web",
-    body: "The online quiz is free and runs in your browser, nothing to install. It's in Spanish.",
+    title: "Studying on a computer too? Try the web version",
+    body: "The app lives on your phone. From a computer you can practice with the online quiz, free and in your browser (in Spanish):",
     modes: [
       "A 5-question random test, like the real exam",
       "The full question bank with the answers shown",
       "A quiz with as many questions as you choose",
     ],
-    cta: "Take the online practice test",
+    cta: "Try the web quiz",
     opens: "Opens alvaro-barrera.me",
   },
   downloadTitle: "In testing on iOS and Android",
