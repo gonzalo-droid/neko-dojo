@@ -4,8 +4,8 @@ const en: Dictionary = {
   meta: {
     homeTitle: "Nekodojo — Small apps. Big possibilities.",
     homeDescription:
-      "Nekodojo is an independent app studio: AnimeQuote (anime quotes), MTCQuiz (Peru's driving test), ApruebaSUCAMEC (Peru's SUCAMEC firearms test), Anki Dojo and Goals. Each app has its own identity.",
-    catalogTitle: "Nekodojo apps: AnimeQuote, MTCQuiz, ApruebaSUCAMEC, Cazadores Perú, Anki Dojo and Goals",
+      "Independent app studio from Peru: AnimeQuote, MTCQuiz, ApruebaSUCAMEC, Cazadores Perú, Anki Dojo and Goals. Each app has its own identity.",
+    catalogTitle: "Nekodojo apps — AnimeQuote, MTCQuiz, ApruebaSUCAMEC and more",
     studioTitle: "The studio — Nekodojo, independent apps",
     supportTitle: "Nekodojo support: help, contact and data deletion",
     legalTitle: "Nekodojo legal center: privacy and terms",

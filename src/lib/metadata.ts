@@ -1,5 +1,18 @@
 import type { Metadata } from "next";
 import { defaultLocale, locales, localizePath, ogLocale, type Locale } from "@/i18n/config";
+import { apps } from "@/content/apps";
+
+/**
+ * Spanish pages whose original lives on another site (AnimeQuote, copied legal documents).
+ * Their Spanish version points canonical there, so it stays out of the sitemap and hreflang.
+ */
+export function externalOriginal(path: string): string | undefined {
+  // animequote.app stays the main Spanish page until a migration is decided (see docs/animequote-migration.md).
+  if (path === "/apps/animequote") return "https://animequote.app";
+  const m = path.match(/^\/apps\/([^/]+)\/(privacy|terms)$/);
+  const app = m ? apps.find((a) => a.slug === m[1]) : undefined;
+  return m && app?.legal.mode === "live" ? app.legal.publishedAt?.[m[2] as "privacy" | "terms"] : undefined;
+}
 
 type Options = {
   locale: Locale;
@@ -7,23 +20,23 @@ type Options = {
   path: string;
   title: string;
   description: string;
-  /** Absolute URL when the main version of this page lives elsewhere (AnimeQuote). */
-  canonical?: string;
   siteName?: string;
   noindex?: boolean;
   /** Share image (path or URL). Leave it out to use the opengraph-image file next to the page. */
   image?: { url: string; alt: string };
 };
 
-export function pageMetadata({ locale, path, title, description, canonical, siteName, noindex, image }: Options): Metadata {
-  const languages: Record<string, string> = {};
-  for (const l of locales) languages[l] = localizePath(l, path);
-  languages["x-default"] = localizePath(defaultLocale, path);
+export function pageMetadata({ locale, path, title, description, siteName, noindex, image }: Options): Metadata {
+  const original = externalOriginal(path);
+  // No hreflang when the Spanish version is not canonical here: it would point at a non-canonical page.
+  const languages: Record<string, string> | undefined = original
+    ? undefined
+    : { ...Object.fromEntries(locales.map((l) => [l, localizePath(l, path)])), "x-default": localizePath(defaultLocale, path) };
 
   return {
     title,
     description,
-    alternates: { canonical: canonical ?? localizePath(locale, path), languages },
+    alternates: { canonical: (locale === "es" && original) || localizePath(locale, path), languages },
     openGraph: {
       title,
       description,

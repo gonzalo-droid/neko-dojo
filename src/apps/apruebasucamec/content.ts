@@ -30,7 +30,7 @@ const es = {
   meta: {
     title: "ApruebaSUCAMEC — Examen SUCAMEC Perú: preguntas y simulacros",
     description:
-      "Prepara el examen teórico de SUCAMEC para tu licencia de armas: 100 preguntas tipo examen, simulacro de 5 preguntas en 10 minutos, revisión de respuestas e historial, sin internet. App independiente, no afiliada a SUCAMEC.",
+      "Prepara el examen teórico SUCAMEC: 100 preguntas tipo examen, simulacro de 5 preguntas en 10 minutos y sin internet. App independiente, no afiliada a SUCAMEC.",
   },
   nav: [
     { href: "#modos", label: "Modos de estudio" },
@@ -113,7 +113,7 @@ const en: SucamecContent = {
   meta: {
     title: "ApruebaSUCAMEC — Peru SUCAMEC test: questions and practice exams",
     description:
-      "Prepare for Peru's SUCAMEC written test for your firearms license: 100 exam-style questions, a 5-question simulation in 10 minutes, answer review and history, no internet needed. Independent app, not affiliated with SUCAMEC.",
+      "Prepare for Peru's SUCAMEC written test: 100 exam-style questions, a 5-question simulation in 10 minutes, no internet needed. Not affiliated with SUCAMEC.",
   },
   nav: [
     { href: "#modos", label: "Study modes" },

@@ -26,8 +26,6 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
     title: c.meta.title,
     description: c.meta.description,
     siteName: "AnimeQuote",
-    // animequote.app stays the main Spanish page until a migration is decided (see docs/animequote-migration.md).
-    canonical: locale === "es" ? "https://animequote.app" : undefined,
   });
 }
 
