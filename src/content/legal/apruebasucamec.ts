@@ -104,7 +104,7 @@ const privacyEs: LegalDoc = {
       heading: "6. Páginas legales y conexión a internet",
       blocks: [
         "Las preguntas y el manual vienen dentro de la app, así que estudiar no requiere conexión. La app solo usa internet para los anuncios y para abrir estas páginas legales.",
-        `Las páginas de Privacidad y legal se cargan dentro de la app desde ${SITE}. Ese sitio no usa analítica ni publicidad; como cualquier sitio web, su proveedor de alojamiento puede registrar datos técnicos de la conexión (como la dirección IP) por seguridad y para su funcionamiento.`,
+        `Las páginas de Privacidad y legal se cargan dentro de la app desde ${SITE}. Ese sitio no usa publicidad, y solo usa Google Analytics si lo aceptas en su aviso de cookies; como cualquier sitio web, su proveedor de alojamiento puede registrar datos técnicos de la conexión (como la dirección IP) por seguridad y para su funcionamiento.`,
       ],
     },
     {
@@ -249,7 +249,7 @@ const privacyEn: LegalDoc = {
       heading: "6. Legal pages and internet connection",
       blocks: [
         "The questions and the manual are inside the app, so studying doesn't need a connection. The app only uses the internet for ads and to open these legal pages.",
-        `The Privacy and legal pages load inside the app from ${SITE}. That site uses no analytics or advertising; like any website, its hosting provider may log technical connection data (such as the IP address) for security and to keep it running.`,
+        `The Privacy and legal pages load inside the app from ${SITE}. That site uses no advertising, and only uses Google Analytics if you accept it in its cookie notice; like any website, its hosting provider may log technical connection data (such as the IP address) for security and to keep it running.`,
       ],
     },
     {

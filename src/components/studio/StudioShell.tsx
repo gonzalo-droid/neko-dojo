@@ -7,6 +7,7 @@ import JsonLd from "@/components/shared/JsonLd";
 import { studioGraph } from "@/lib/structured-data";
 import StudioHeader from "./StudioHeader";
 import StudioFooter from "./StudioFooter";
+import Consent from "@/components/shared/Consent";
 
 // App display fonts are loaded here only so the catalog cards can preview each identity
 // (not preloaded: see previews.ts). Funnel Display is the studio's own display face.
@@ -20,6 +21,7 @@ export default function StudioShell({ locale, children }: { locale: Locale; chil
       <StudioHeader locale={locale} t={t} />
       <main id="main">{children}</main>
       <StudioFooter locale={locale} t={t} />
+      <Consent />
     </div>
   );
 }
