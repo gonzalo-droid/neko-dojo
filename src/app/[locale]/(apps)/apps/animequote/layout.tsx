@@ -1,3 +1,4 @@
+import Consent from "@/components/shared/Consent";
 import { cookies } from "next/headers";
 import { playfair } from "@/lib/fonts/playfair";
 
@@ -11,6 +12,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
       data-aq-theme={dark ? "dark" : undefined}
     >
       {children}
+      <Consent />
     </div>
   );
 }

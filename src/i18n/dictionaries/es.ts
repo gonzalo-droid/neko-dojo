@@ -184,6 +184,11 @@ const es = {
     translationNote: "",
     privacyTitle: (name: string) => `Política de privacidad de ${name}`,
     termsTitle: (name: string) => `Términos y condiciones de ${name}`,
+    cookiesTitle: "Cookies y analítica de este sitio",
+    cookiesBody:
+      "Este sitio usa Google Analytics, de Google LLC, para contar visitas y saber qué páginas y botones se usan. Solo se activa si lo aceptas en el aviso de cookies; si lo rechazas, no se carga. Cuando está activo, guarda sus propias cookies (las que empiezan con _ga) y Google recibe datos como las páginas que ves, tu tipo de dispositivo y navegador y tu ubicación aproximada. No usamos publicidad. Además, el sitio guarda en tu navegador tu idioma, tu tema (claro u oscuro) y tu elección sobre las cookies, que son necesarios para que funcione.",
+    cookiesPolicy: "Política de privacidad de Google",
+    cookiesChange: "Cambiar mi elección de cookies",
     backToApp: (name: string) => `Volver a ${name}`,
   },
   forms: {

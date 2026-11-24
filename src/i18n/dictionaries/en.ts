@@ -186,6 +186,11 @@ const en: Dictionary = {
     translationNote: "English translation for reference. If the two versions differ, the Spanish version prevails.",
     privacyTitle: (name: string) => `${name} privacy policy`,
     termsTitle: (name: string) => `${name} terms and conditions`,
+    cookiesTitle: "Cookies and analytics on this site",
+    cookiesBody:
+      "This site uses Google Analytics, by Google LLC, to count visits and see which pages and buttons are used. It only turns on if you accept it in the cookie notice; if you decline, it isn't loaded. When it's on, it stores its own cookies (the ones starting with _ga) and Google receives data such as the pages you view, your device and browser type and your approximate location. We don't use advertising. The site also stores your language, your theme (light or dark) and your cookie choice in your browser, which it needs to work.",
+    cookiesPolicy: "Google's privacy policy",
+    cookiesChange: "Change my cookie choice",
     backToApp: (name: string) => `Back to ${name}`,
   },
   forms: {

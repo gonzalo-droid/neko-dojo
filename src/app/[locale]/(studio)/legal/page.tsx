@@ -6,6 +6,7 @@ import { getLocale, type LocaleParams } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
 import { apps } from "@/content/apps";
 import AppIcon from "@/components/shared/AppIcon";
+import { ConsentReopen } from "@/components/shared/Consent";
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
   const locale = await getLocale(params);
@@ -86,6 +87,17 @@ export default async function LegalCenter({ params }: LocaleParams) {
           </tbody>
         </table>
       </div>
+
+      <section id="cookies" aria-labelledby="cookies-title" className="mt-16 scroll-mt-24 max-w-3xl">
+        <h2 id="cookies-title" className="font-display text-2xl font-bold tracking-tight">{t.legal.cookiesTitle}</h2>
+        <p className="mt-3 leading-relaxed text-muted">{t.legal.cookiesBody}</p>
+        <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <ConsentReopen label={t.legal.cookiesChange} className={`${cell} font-semibold`} />
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" className="inline-flex min-h-11 items-center text-sm font-semibold underline underline-offset-4 hover:text-accent">
+            {t.legal.cookiesPolicy}
+          </a>
+        </div>
+      </section>
     </div>
   );
 }

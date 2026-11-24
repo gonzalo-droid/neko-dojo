@@ -21,6 +21,8 @@ export const WHATSAPP_URL = "https://wa.me/51924262747";
 export const COBAYATECH_URL = "https://cobayatech.com";
 /** Online SUCAMEC quiz linked from the ApruebaSUCAMEC landing. */
 export const SUCAMEC_WEB_QUIZ_URL = "https://alvaro-barrera.me/sucamec/";
+/** GA4 property; it loads only after the visitor accepts the cookie notice (components/shared/Consent). */
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-EHYDPDFB5E";
 export const INSTAGRAM_URL = "https://www.instagram.com/nekodojo.apps/";
 /** AnimeQuote's own link, kept as in the original site (quote-anime/src/lib/constants.ts). */
 export const ANIMEQUOTE_INSTAGRAM_URL = "https://www.instagram.com/neko.manga.cix/";
