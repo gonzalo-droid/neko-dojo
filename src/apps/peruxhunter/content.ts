@@ -42,7 +42,7 @@ const es = {
   meta: {
     title: "Cazadores Perú — Los más buscados del Perú en tu celular",
     description:
-      "App gratuita y no oficial con los buscados del Programa de Recompensas del Mininter como carteles «Se busca»: quiénes son, qué delitos se les imputan y cuánto ofrece el Estado. Si reconoces a alguien, llama gratis al 0-800-40-007.",
+      "App gratuita y no oficial con los buscados del Programa de Recompensas del Mininter como carteles. ¿Reconoces a alguien? Llama gratis al 0-800-40-007.",
   },
   nav: [
     { href: "#como-funciona", label: "Cómo funciona" },
@@ -157,7 +157,7 @@ const en: Content = {
   meta: {
     title: "Cazadores Perú — Peru's most wanted on your phone",
     description:
-      "Free, unofficial app showing the people wanted by the Peruvian Interior Ministry's Rewards Program as “Wanted” posters: who they are, the crimes they're charged with and the reward the State offers. If you recognize someone, call 0-800-40-007 for free.",
+      "Free, unofficial app with the people wanted by Peru's Interior Ministry Rewards Program as posters. Recognize someone? Call 0-800-40-007 for free.",
   },
   nav: [
     { href: "#como-funciona", label: "How it works" },

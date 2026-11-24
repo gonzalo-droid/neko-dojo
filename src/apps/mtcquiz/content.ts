@@ -38,7 +38,7 @@ const es = {
   meta: {
     title: "MTCQuiz — Examen de brevete Perú: balotario del MTC y simulacros",
     description:
-      "Practica el balotario oficial del examen de reglas de tránsito del MTC: 9 categorías de licencia, unas 2.200 preguntas, simulacros cronometrados y sin internet. App independiente, no afiliada al MTC.",
+      "Practica el balotario oficial del examen de reglas de tránsito del MTC: unas 2.200 preguntas, simulacros cronometrados y sin internet. No afiliada al MTC.",
   },
   nav: [
     { href: "#practica", label: "Cómo practicar" },
@@ -123,9 +123,9 @@ export type MtcContent = typeof es;
 
 const en: MtcContent = {
   meta: {
-    title: "MTCQuiz — Peru driver's license test: MTC question bank and practice exams",
+    title: "MTCQuiz — Peru driver's license test: MTC questions and exams",
     description:
-      "Practice the official question bank of Peru's MTC traffic rules test: 9 license categories, about 2,200 questions, timed practice exams and no internet needed. Independent app, not affiliated with the MTC.",
+      "Practice the official question bank of Peru's MTC traffic rules test: about 2,200 questions, timed practice exams, no internet. Not affiliated with the MTC.",
   },
   nav: [
     { href: "#practica", label: "How it works" },

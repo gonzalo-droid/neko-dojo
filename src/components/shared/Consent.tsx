@@ -1,6 +1,7 @@
 "use client";
 
 import Script from "next/script";
+import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { localizePath, type Locale } from "@/i18n/config";
 import { GA_MEASUREMENT_ID } from "@/content/site";
@@ -58,6 +59,7 @@ export default function Consent() {
   const [reopened, setReopened] = useState(false);
   // Kept for this page too, in case the browser blocks localStorage.
   const [picked, setPicked] = useState<Choice>(null);
+  const pathname = usePathname();
   const choice = reopened ? null : (picked ?? stored);
 
   useEffect(() => {
@@ -90,6 +92,9 @@ export default function Consent() {
       location.reload();
     }
   };
+
+  // Internal admin panels: no notice and no GA on our own visits.
+  if (pathname.endsWith("/admin")) return null;
 
   const t = text[locale];
   return (

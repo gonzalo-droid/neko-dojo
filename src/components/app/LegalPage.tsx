@@ -23,8 +23,7 @@ export function legalMetadata(app: AppEntry, kind: Kind, locale: Locale): Metada
     path: `/apps/${app.slug}/${kind}`,
     title,
     description: `${title} — Nekodojo`,
-    // The Spanish original stays canonical at its current URL; drafts are kept out of search.
-    canonical: app.legal.mode === "live" && locale === "es" ? app.legal.publishedAt?.[kind] : undefined,
+    // Drafts are kept out of search; a copied Spanish original is handled by pageMetadata (externalOriginal).
     noindex: !live,
   });
 }

@@ -25,7 +25,7 @@ Estado actual (no cambiar en esta fase):
    - `src/components/app/LegalPage.tsx` (`canonical` cuando `legal.mode === "live"`)
    - Cambiar `publishedAt` en `src/content/apps.ts` a las nuevas URLs.
 4. Actualizar las fichas de Google Play y App Store con las nuevas URLs de privacidad (opcional: las redirecciones ya las cubren).
-5. Decidir qué pasa con el panel `/admin` de `quote-anime` (Firebase): no se migra a Nekodojo; puede seguir en un subdominio, por ejemplo `admin.animequote.app`.
+5. El panel `/admin` de `quote-anime` ya está migrado a `/apps/animequote/admin` (ver `docs/animequote-admin/README.md`). Redirigir `animequote.app/admin` → `nekodojo.app/apps/animequote/admin`.
 6. Avisar a Google Search Console del cambio de dirección.
 
 Alternativa sin migrar: mantener ambos sitios y que Nekodojo enlace a animequote.app. En ese caso, actualizar la copia de Nekodojo cuando cambie el texto de la landing o de los documentos legales (`src/apps/animequote/content.ts` y `src/content/legal/animequote.ts`).
