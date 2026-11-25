@@ -142,8 +142,8 @@ const es = {
     ],
     supportNote: "La app es gratuita y muestra anuncios, que ayudan a mantenerla.",
   },
-  downloadTitle: "En pruebas en iPhone y Android",
-  downloadBody: "Gratis para iPhone y Android. Estamos probando la app antes de publicarla; los enlaces aparecerán aquí cuando esté en las tiendas.",
+  downloadTitle: "Descárgala para iPhone",
+  downloadBody: "Gratis en el App Store. La versión de Android está en pruebas; su enlace aparecerá aquí cuando esté en Google Play.",
   notice: {
     title: "App no oficial",
     body: "Cazadores Perú es una app independiente de Nekodojo. No está afiliada al Ministerio del Interior ni a la Policía Nacional del Perú. Muestra datos públicos del Programa de Recompensas, que pueden cambiar sin aviso.",
@@ -257,8 +257,8 @@ const en: Content = {
     ],
     supportNote: "The app is free and shows ads, which help keep it running.",
   },
-  downloadTitle: "In testing on iPhone and Android",
-  downloadBody: "Free for iPhone and Android. We're testing the app before releasing it; the links will show up here once it's in the stores.",
+  downloadTitle: "Get it for iPhone",
+  downloadBody: "Free on the App Store. The Android version is in testing; its link will show up here once it's on Google Play.",
   notice: {
     title: "Unofficial app",
     body: "Cazadores Perú is an independent Nekodojo app. It isn't affiliated with Peru's Ministry of the Interior or the Peruvian National Police. It shows public data from the Rewards Program, which may change without notice.",

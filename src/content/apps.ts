@@ -266,11 +266,10 @@ export const apps: AppEntry[] = [
   {
     slug: "peruxhunter",
     name: "Cazadores Perú",
-    // In testing since 2026-11-18 (TestFlight, iPhone only; Play internal testing). On 2026-11-23 both store
-    // links below still returned 404. When they open, set status "available" and paste the links in `stores`:
-    //   Google Play https://play.google.com/store/apps/details?id=com.nekodojo.peruxhunter
-    //   App Store   https://apps.apple.com/app/id6836196201
-    status: "testing",
+    // On the App Store since 2026-11-25 (iPhone). Android is still in Play testing; when it's public, paste
+    //   https://play.google.com/store/apps/details?id=com.nekodojo.peruxhunter
+    // in `stores` and update downloadTitle/downloadBody in src/apps/peruxhunter/content.ts.
+    status: "available",
     // Texts are the app's own; screenshots are real (iOS) with faces, names and IDs pixelated.
     provisional: false,
     icon: { src: "/apps/peruxhunter/logo.png" },
@@ -284,8 +283,9 @@ export const apps: AppEntry[] = [
       en: "The people wanted by Peru's Interior Ministry Rewards Program as “Wanted” posters, with the free 0-800-40-007 hotline one tap away. Unofficial app.",
     },
     stores: [
+      // The live store first, so the pending one doesn't lead.
+      { store: "app-store", url: "https://apps.apple.com/pe/app/cazadores-per%C3%BA/id6836196201" },
       { store: "google-play", url: null },
-      { store: "app-store", url: null },
     ],
     screenshot: {
       src: "/apps/peruxhunter/home.webp",
@@ -425,6 +425,15 @@ export function getApp(slug: AppSlug): AppEntry {
  * date: "YYYY-MM" of the real event. Leave it out if you don't know it; the date is then not shown.
  */
 export const news: { app: AppSlug; text: L; date?: string }[] = [
+  {
+    app: "peruxhunter",
+    // App Store link confirmed live on 2026-11-25; Android still in testing.
+    date: "2026-11",
+    text: {
+      es: "Cazadores Perú ya está en el App Store para iPhone. La versión de Android llega pronto.",
+      en: "Cazadores Perú is out on the App Store for iPhone. The Android version is coming soon.",
+    },
+  },
   {
     app: "apruebasucamec",
     // Store links confirmed live on 2026-11-25.
