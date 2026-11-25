@@ -196,9 +196,9 @@ export const apps: AppEntry[] = [
   {
     slug: "apruebasucamec",
     name: "ApruebaSUCAMEC",
-    // 1.0.0 (1) in TestFlight; the Android AAB goes to Play internal testing (2026-11-23). No public test link yet.
+    // Published on Google Play and the App Store (links confirmed 2026-11-25).
     // Package name and bundle id: com.nekodojo.sucamecquiz.
-    status: "testing",
+    status: "available",
     // Texts, logo and screenshots are real (iOS build of the app).
     provisional: false,
     icon: { src: "/apps/apruebasucamec/logo.png" },
@@ -212,8 +212,8 @@ export const apps: AppEntry[] = [
       en: "Exam-style questions for Peru's SUCAMEC written test, with timed practice exams and no internet needed.",
     },
     stores: [
-      { store: "google-play", url: null },
-      { store: "app-store", url: null },
+      { store: "google-play", url: "https://play.google.com/store/apps/details?id=com.nekodojo.sucamecquiz" },
+      { store: "app-store", url: "https://apps.apple.com/pe/app/apruebasucamec/id6836632721" },
     ],
     screenshot: {
       src: "/apps/apruebasucamec/home.webp",
@@ -425,6 +425,15 @@ export function getApp(slug: AppSlug): AppEntry {
  * date: "YYYY-MM" of the real event. Leave it out if you don't know it; the date is then not shown.
  */
 export const news: { app: AppSlug; text: L; date?: string }[] = [
+  {
+    app: "apruebasucamec",
+    // Store links confirmed live on 2026-11-25.
+    date: "2026-11",
+    text: {
+      es: "ApruebaSUCAMEC ya está en Google Play y App Store: practica gratis el examen teórico de SUCAMEC.",
+      en: "ApruebaSUCAMEC is out on Google Play and the App Store: practice for Peru's SUCAMEC written test for free.",
+    },
+  },
   {
     app: "peruxhunter",
     // TestFlight build 2.0.0 (2) and Play internal testing, both on 2026-11-18.
