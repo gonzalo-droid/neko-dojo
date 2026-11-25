@@ -4,7 +4,7 @@ import type { CSSProperties } from "react";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale, type LocaleParams } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
-import { getApp, isIndexable, readyFaq } from "@/content/apps";
+import { downloadCopy, getApp, isIndexable, readyFaq } from "@/content/apps";
 import { mobileApplication } from "@/lib/structured-data";
 import JsonLd from "@/components/shared/JsonLd";
 import { classes, HOTLINE, peruxhunterContent, SHOT, SOURCE_URL } from "@/apps/peruxhunter/content";
@@ -87,6 +87,7 @@ export default async function PeruXHunterPage({ params }: LocaleParams) {
   const locale = await getLocale(params);
   const t = getDictionary(locale);
   const c = peruxhunterContent[locale];
+  const downloadText = downloadCopy(app, locale);
   const faq = readyFaq(app.support.faq[locale]);
   const appLd = mobileApplication(app, locale);
 
@@ -315,8 +316,8 @@ export default async function PeruXHunterPage({ params }: LocaleParams) {
               <p className="mt-5 text-sm text-muted">{c.about.supportNote}</p>
             </div>
             <div className="rounded-2xl bg-[var(--ph-header)] p-6 text-white" style={onHeader}>
-              <h3 className="ph-cond text-2xl">{c.downloadTitle}</h3>
-              <p className="mt-2 text-[var(--ph-on-header-muted)]">{c.downloadBody}</p>
+              <h3 className="ph-cond text-2xl">{downloadText.title}</h3>
+              <p className="mt-2 text-[var(--ph-on-header-muted)]">{downloadText.body}</p>
               <div className="mt-5">
                 <StoreButtons stores={app.stores} t={t.common} showPending />
               </div>

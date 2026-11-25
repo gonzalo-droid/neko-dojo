@@ -34,15 +34,17 @@ export type AppEntry = {
   stores: StoreLink[];
   /** Real average rating shown in the stores. Leave it out if there is none. */
   rating?: number;
-  /** Real screenshot for the studio cards (public path). */
-  screenshot?: { src: string; width: number; height: number; alt: L };
+  /**
+   * Real screenshot for the studio cards (public path). framed: the image already has its own
+   * phone mockup; otherwise the card draws one around the bare screen.
+   */
+  screenshot?: { src: string; width: number; height: number; alt: L; framed?: boolean };
   legal:
     | {
         mode: "live";
-        /** Most recent update of the two documents (shown on the studio's legal page). */
-        updated: L;
-        /** Per-document dates, when privacy and terms were updated on different days. */
-        updatedByKind?: { privacy: L; terms: L };
+        /** Last update of each document: "YYYY-MM-DD", or "YYYY-MM" when only the month is known. */
+        privacy: string;
+        terms: string;
         /**
          * Where the original is published, when this site holds a copy (its Spanish page then
          * points canonical there). Leave it out when this site is the original.
@@ -75,13 +77,14 @@ export const apps: AppEntry[] = [
     },
     stores: [
       { store: "google-play", url: "https://play.google.com/store/apps/details?id=com.gondroid.quoteanime" },
-      { store: "app-store", url: "https://apps.apple.com/pe/app/quoteanime-frases-de-anime/id6762100338?l=en-GB" },
+      { store: "app-store", url: "https://apps.apple.com/pe/app/anime-quote-frases-de-anime/id6762100338?l=en-GB" },
     ],
     rating: 4.5,
     screenshot: {
       src: "/apps/animequote/home_app.png",
       width: 900,
       height: 1901,
+      framed: true,
       alt: {
         es: "Pantalla principal de AnimeQuote mostrando una frase de anime a pantalla completa",
         en: "AnimeQuote home screen showing a full-screen anime quote",
@@ -89,7 +92,8 @@ export const apps: AppEntry[] = [
     },
     legal: {
       mode: "live",
-      updated: { es: "abril de 2026", en: "April 2026" },
+      privacy: "2026-04",
+      terms: "2026-04",
       publishedAt: {
         privacy: "https://animequote.app/privacy-policy",
         terms: "https://animequote.app/terms-and-conditions",
@@ -152,11 +156,8 @@ export const apps: AppEntry[] = [
     },
     legal: {
       mode: "live",
-      updated: { es: "16 de noviembre de 2026", en: "November 16, 2026" },
-      updatedByKind: {
-        privacy: { es: "16 de noviembre de 2026", en: "November 16, 2026" },
-        terms: { es: "11 de agosto de 2026", en: "August 11, 2026" },
-      },
+      privacy: "2026-11-16",
+      terms: "2026-08-11",
       publishedAt: {
         privacy: "https://gonzalo-lozg.me/apps-docs/mtcquiz/politics/",
         terms: "https://gonzalo-lozg.me/apps-docs/mtcquiz/term/",
@@ -226,11 +227,8 @@ export const apps: AppEntry[] = [
     },
     legal: {
       mode: "live",
-      updated: { es: "23 de noviembre de 2026", en: "November 23, 2026" },
-      updatedByKind: {
-        privacy: { es: "23 de noviembre de 2026", en: "November 23, 2026" },
-        terms: { es: "17 de noviembre de 2026", en: "November 17, 2026" },
-      },
+      privacy: "2026-11-23",
+      terms: "2026-11-17",
     },
     support: {
       faq: {
@@ -268,7 +266,7 @@ export const apps: AppEntry[] = [
     name: "Cazadores Perú",
     // On the App Store since 2026-11-25 (iPhone). Android is still in Play testing; when it's public, paste
     //   https://play.google.com/store/apps/details?id=com.nekodojo.peruxhunter
-    // in `stores` and update downloadTitle/downloadBody in src/apps/peruxhunter/content.ts.
+    // in `stores`; the landing's download box and every list update on their own.
     status: "available",
     // Texts are the app's own; screenshots are real (iOS) with faces, names and IDs pixelated.
     provisional: false,
@@ -299,12 +297,8 @@ export const apps: AppEntry[] = [
     // The app opens these pages from AppConfig.kt (this site is the original).
     legal: {
       mode: "live",
-      // Most recent of the two (shown on the studio's legal page); 2026-11-25: Crashlytics in the app.
-      updated: { es: "25 de noviembre de 2026", en: "November 25, 2026" },
-      updatedByKind: {
-        privacy: { es: "25 de noviembre de 2026", en: "November 25, 2026" },
-        terms: { es: "18 de noviembre de 2026", en: "November 18, 2026" },
-      },
+      privacy: "2026-11-25",
+      terms: "2026-11-18",
     },
     support: {
       faq: {
@@ -420,59 +414,45 @@ export function getApp(slug: AppSlug): AppEntry {
   return app;
 }
 
+/** Most recent update of an app's legal documents. */
+export function legalUpdated(legal: { privacy: string; terms: string }): string {
+  return legal.privacy > legal.terms ? legal.privacy : legal.terms;
+}
+
+/** "2026-11-16" → "16 de noviembre de 2026" / "November 16, 2026"; "2026-04" → "abril de 2026". */
+export function formatDate(iso: string, locale: Locale): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d || 1)).toLocaleDateString(locale === "es" ? "es-PE" : "en-US", {
+    ...(d ? { day: "numeric" } : {}),
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+const platformName = { "google-play": "Android", "app-store": "iPhone" } as const;
+const storeLabel: Record<Locale, Record<StoreLink["store"], string>> = {
+  es: { "google-play": "Google Play", "app-store": "App Store" },
+  en: { "google-play": "Google Play", "app-store": "the App Store" },
+};
+
 /**
- * Studio news. Only facts that can be checked; add new entries at the top.
- * date: "YYYY-MM" of the real event. Leave it out if you don't know it; the date is then not shown.
+ * Download box copy built from `stores`, so publishing a store link updates every landing:
+ * "Descárgala para Android y iPhone" / "Gratis en Google Play y App Store. La versión de Android llega pronto."
  */
-export const news: { app: AppSlug; text: L; date?: string }[] = [
-  {
-    app: "peruxhunter",
-    // App Store link confirmed live on 2026-11-25; Android still in testing.
-    date: "2026-11",
-    text: {
-      es: "Cazadores Perú ya está en el App Store para iPhone. La versión de Android llega pronto.",
-      en: "Cazadores Perú is out on the App Store for iPhone. The Android version is coming soon.",
-    },
-  },
-  {
-    app: "apruebasucamec",
-    // Store links confirmed live on 2026-11-25.
-    date: "2026-11",
-    text: {
-      es: "ApruebaSUCAMEC ya está en Google Play y App Store: practica gratis el examen teórico de SUCAMEC.",
-      en: "ApruebaSUCAMEC is out on Google Play and the App Store: practice for Peru's SUCAMEC written test for free.",
-    },
-  },
-  {
-    app: "peruxhunter",
-    // TestFlight build 2.0.0 (2) and Play internal testing, both on 2026-11-18.
-    date: "2026-11",
-    text: {
-      es: "Cazadores Perú entró en pruebas en iPhone y Android: los buscados del Programa de Recompensas como carteles.",
-      en: "Cazadores Perú is now in testing on iPhone and Android: the people wanted by Peru's Rewards Program as posters.",
-    },
-  },
-  {
-    app: "apruebasucamec",
-    // Build 1.0.0 (1) in TestFlight on 2026-11-23.
-    date: "2026-11",
-    text: {
-      es: "ApruebaSUCAMEC entró en pruebas en iOS y Android: practica el examen teórico de SUCAMEC.",
-      en: "ApruebaSUCAMEC is now in testing on iOS and Android: practice for Peru's SUCAMEC written test.",
-    },
-  },
-  {
-    app: "anki-dojo",
-    text: {
-      es: "Anki Dojo está en desarrollo. Abrimos la lista de espera.",
-      en: "Anki Dojo is in development. The waitlist is open.",
-    },
-  },
-  {
-    app: "animequote",
-    text: {
-      es: "AnimeQuote ya está disponible en Android e iOS.",
-      en: "AnimeQuote is out on Android and iOS.",
-    },
-  },
-];
+export function downloadCopy(app: AppEntry, locale: Locale): { title: string; body: string } {
+  const and = locale === "es" ? " y " : " and ";
+  const live = liveStores(app);
+  const soon = app.stores.filter((s) => !s.url).map((s) => platformName[s.store]).join(and);
+  const platforms = live.map((s) => platformName[s.store]).join(and);
+  const stores = live.map((s) => storeLabel[locale][s.store]).join(and);
+  if (locale === "es")
+    return {
+      title: platforms ? `Descárgala para ${platforms}` : "Muy pronto en las tiendas",
+      body: [stores && `Gratis en ${stores}.`, soon && `La versión de ${soon} llega pronto.`].filter(Boolean).join(" "),
+    };
+  return {
+    title: platforms ? `Get it for ${platforms}` : "Coming soon to the stores",
+    body: [stores && `Free on ${stores}.`, soon && `The ${soon} version is coming soon.`].filter(Boolean).join(" "),
+  };
+}

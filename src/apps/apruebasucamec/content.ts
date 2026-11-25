@@ -103,8 +103,8 @@ const es = {
     cta: "Probar el cuestionario web",
     opens: "Se abre en alvaro-barrera.me",
   },
-  downloadTitle: "Descárgala para iPhone y Android",
-  downloadBody: "Gratis en Google Play y App Store. Practica el examen teórico de SUCAMEC sin internet, donde estés.",
+  /** Follows the store line that downloadCopy() builds from apps.ts. */
+  downloadPitch: "Practica el examen teórico de SUCAMEC sin internet, donde estés.",
 };
 
 export type SucamecContent = typeof es;
@@ -185,8 +185,7 @@ const en: SucamecContent = {
     cta: "Try the web quiz",
     opens: "Opens alvaro-barrera.me",
   },
-  downloadTitle: "Get it for iPhone and Android",
-  downloadBody: "Free on Google Play and the App Store. Practice for the SUCAMEC written test offline, wherever you are.",
+  downloadPitch: "Practice for the SUCAMEC written test offline, wherever you are.",
 };
 
 export const sucamecContent: Record<Locale, SucamecContent> = { es, en };

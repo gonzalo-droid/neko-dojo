@@ -8,7 +8,7 @@ import { externalOriginal } from "@/lib/metadata";
 
 /** Every public page in both languages, with hreflang alternates (x-default = Spanish). Drafts and placeholder pages are left out, and so are Spanish pages whose original lives elsewhere. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ["/", "/apps", "/studio", "/about", "/blog", "/support", "/legal"];
+  const paths = ["/", "/studio", "/about", "/blog", "/support", "/legal"];
   for (const app of apps) {
     if (!isIndexable(app)) continue;
     paths.push(`/apps/${app.slug}`, `/apps/${app.slug}/support`);

@@ -1,14 +1,16 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { localizePath } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale, type LocaleParams } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
-import { apps } from "@/content/apps";
+import { apps, liveStores } from "@/content/apps";
 import { CONTACT_EMAIL, INSTAGRAM_URL, tagline } from "@/content/site";
 import CatMark from "@/components/shared/CatMark";
 import AppIcon from "@/components/shared/AppIcon";
 import StatusBadge from "@/components/shared/StatusBadge";
+import AppDirectory, { type DirectoryRow } from "@/components/studio/AppDirectory";
+
+const platformName = { "google-play": "Android", "app-store": "iOS" } as const;
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
   const locale = await getLocale(params);
@@ -19,6 +21,26 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
 export default async function Studio({ params }: LocaleParams) {
   const locale = await getLocale(params);
   const t = getDictionary(locale);
+  const rows: DirectoryRow[] = apps.map((app) => {
+    const base = `/apps/${app.slug}`;
+    const stores = liveStores(app);
+    const available = app.status === "available";
+    return {
+      slug: app.slug,
+      name: app.name,
+      tagline: app.tagline[locale],
+      available,
+      status: <StatusBadge status={app.status} label={t.status[app.status]} />,
+      icon: <AppIcon app={app} size={52} />,
+      platforms: stores.length ? stores.map((s) => platformName[s.store]).join(" · ") : available ? t.catalog.platformsPending : "—",
+      href: localizePath(locale, base),
+      links: [
+        { href: localizePath(locale, base), label: t.catalog.page },
+        { href: localizePath(locale, `${base}/support`), label: t.common.support },
+        { href: localizePath(locale, `${base}/privacy`), label: t.common.privacy },
+      ],
+    };
+  });
   return (
     <>
       <section className="tatami border-b border-line">
@@ -41,32 +63,22 @@ export default async function Studio({ params }: LocaleParams) {
         </div>
       </section>
 
-      {/* Status comes from the app registry, so this list never claims more than apps.ts. */}
-      <section className="border-t border-line bg-band">
+      {/* One row per app, straight from apps.ts: status, platforms (only confirmed store links) and direct links. */}
+      <section id="apps" className="scroll-mt-20 border-t border-line bg-band">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
           <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">{t.studio.timelineTitle}</h2>
           <p className="mt-3 max-w-lg text-muted">{t.studio.timelineBody}</p>
-          <ol className="relative mt-10 space-y-6 border-l border-line pl-8">
-            {apps.map((app) => (
-              <li key={app.slug} className="relative">
-                <span
-                  aria-hidden="true"
-                  className={`absolute -left-[37px] top-4 h-3 w-3 rounded-full ring-4 ring-band ${app.status === "available" ? "bg-accent" : "bg-line"}`}
-                />
-                <Link
-                  href={localizePath(locale, `/apps/${app.slug}`)}
-                  className="flex items-center gap-4 rounded-2xl border border-line bg-surface/50 p-4 transition-colors hover:border-accent"
-                >
-                  <AppIcon app={app} size={44} />
-                  <span className="min-w-0">
-                    <span className="block font-semibold text-ink">{app.name}</span>
-                    <span className="block text-sm text-muted">{app.summary[locale]}</span>
-                    <StatusBadge status={app.status} label={t.status[app.status]} className="mt-1 text-muted" />
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ol>
+          <AppDirectory
+            rows={rows}
+            labels={{
+              filter: t.catalog.filterLabel,
+              all: t.catalog.filterAll,
+              available: t.catalog.filterAvailable,
+              upcoming: t.catalog.filterUpcoming,
+              platforms: t.catalog.platforms,
+              empty: t.catalog.empty,
+            }}
+          />
         </div>
       </section>
 

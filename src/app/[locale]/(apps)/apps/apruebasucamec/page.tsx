@@ -4,7 +4,7 @@ import Image from "next/image";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale, type LocaleParams } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
-import { getApp, isIndexable, readyFaq } from "@/content/apps";
+import { downloadCopy, getApp, isIndexable, readyFaq } from "@/content/apps";
 import { mobileApplication } from "@/lib/structured-data";
 import JsonLd from "@/components/shared/JsonLd";
 import { licenses, sucamecContent } from "@/apps/apruebasucamec/content";
@@ -40,6 +40,7 @@ export default async function ApruebaSucamecPage({ params }: LocaleParams) {
   const locale = await getLocale(params);
   const t = getDictionary(locale);
   const c = sucamecContent[locale];
+  const downloadText = downloadCopy(app, locale);
   const faq = readyFaq(app.support.faq[locale]);
   const appLd = mobileApplication(app, locale);
 
@@ -200,8 +201,8 @@ export default async function ApruebaSucamecPage({ params }: LocaleParams) {
           <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">{c.pricing.title}</h2>
           <p className="mt-3 leading-relaxed text-muted">{c.pricing.body}</p>
           <div className="mt-10 rounded-2xl bg-accent p-6 text-on-accent">
-            <h3 className="font-display text-lg font-bold">{c.downloadTitle}</h3>
-            <p className="mt-2 text-on-accent/85">{c.downloadBody}</p>
+            <h3 className="font-display text-lg font-bold">{downloadText.title}</h3>
+            <p className="mt-2 text-on-accent/85">{downloadText.body} {c.downloadPitch}</p>
             <div className="mt-5">{download}</div>
           </div>
         </div>

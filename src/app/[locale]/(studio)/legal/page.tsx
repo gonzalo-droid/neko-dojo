@@ -4,7 +4,7 @@ import { localizePath } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale, type LocaleParams } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
-import { apps } from "@/content/apps";
+import { apps, formatDate, legalUpdated } from "@/content/apps";
 import AppIcon from "@/components/shared/AppIcon";
 import { ConsentReopen } from "@/components/shared/Consent";
 
@@ -63,7 +63,7 @@ export default async function LegalCenter({ params }: LocaleParams) {
                       {app.name}
                     </Link>
                     {app.legal.mode === "live" && (
-                      <p className="mt-1 pl-12 text-xs text-muted">{t.common.updated}: {app.legal.updated[locale]}</p>
+                      <p className="mt-1 pl-12 text-xs text-muted">{t.common.updated}: {formatDate(legalUpdated(app.legal), locale)}</p>
                     )}
                   </th>
                   <td className="py-5 pr-4">

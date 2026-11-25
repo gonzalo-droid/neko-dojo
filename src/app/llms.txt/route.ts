@@ -41,7 +41,6 @@ function build(): string {
   add("## Studio", "");
   add(
     `- [${en.studio.title}](${url("en", "/studio")}): ${en.studio.description}`,
-    `- [${en.catalog.title}](${url("en", "/apps")}): ${en.catalog.description}`,
     `- [${en.about.title}](${url("en", "/about")}): ${en.about.description}`,
     `- [${en.support.title}](${url("en", "/support")}): ${en.support.description}`,
     `- [${en.legal.title}](${url("en", "/legal")}): ${en.legal.description}`,
@@ -72,7 +71,6 @@ function build(): string {
   add("## En español", "", `> ${tagline.es} ${es.home.lead}`, "");
   add(
     `- [${es.studio.title}](${url("es", "/studio")})`,
-    `- [${es.catalog.title}](${url("es", "/apps")})`,
     `- [${es.about.title}](${url("es", "/about")})`,
     `- [${es.blog.title}](${url("es", "/blog")})`,
     `- [${es.support.title}](${url("es", "/support")})`,

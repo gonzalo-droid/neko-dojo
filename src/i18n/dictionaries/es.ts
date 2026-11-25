@@ -3,7 +3,6 @@ const es = {
     homeTitle: "Nekodojo — Pequeñas apps. Grandes posibilidades.",
     homeDescription:
       "Estudio independiente de apps del Perú: AnimeQuote, MTCQuiz, ApruebaSUCAMEC, Cazadores Perú, Anki Dojo y Goals. Cada app tiene su propia identidad.",
-    catalogTitle: "Apps de Nekodojo — AnimeQuote, MTCQuiz, ApruebaSUCAMEC y más",
     studioTitle: "El estudio — Nekodojo, apps independientes",
     supportTitle: "Soporte de Nekodojo: ayuda, contacto y eliminación de datos",
     legalTitle: "Centro legal de Nekodojo: privacidad y términos",
@@ -53,15 +52,10 @@ const es = {
     aboutBody:
       "Cada app nace de una necesidad concreta: practicar un examen, aprender palabras nuevas, encontrar una frase que te empuje o seguir una meta. Las hacemos de una en una, con calma, y dejamos que cada una tenga su propia voz.",
     aboutLink: "Conocer el estudio",
-    newsTitle: "Novedades",
     waitlistTitle: "Próximos lanzamientos",
     waitlistBody: "Algunas apps todavía no están listas. Apúntate y te avisamos cuando salgan.",
   },
   catalog: {
-    title: "Apps",
-    description:
-      "Todas las apps de Nekodojo: frases de anime, práctica para el examen de manejo en Perú, idiomas con tarjetas y metas por pasos. Estado, plataformas y soporte.",
-    intro: "Cada app tiene su propia página, con sus enlaces, soporte y documentos legales.",
     filterLabel: "Filtrar apps",
     filterAll: "Todas",
     filterAvailable: "Disponibles",
@@ -115,7 +109,7 @@ const es = {
   studio: {
     title: "El estudio",
     description:
-      "Nekodojo es un estudio independiente que crea apps pequeñas para aprender, inspirarse y avanzar, cada una con su propia identidad. Conoce cómo trabajamos.",
+      "Nekodojo es un estudio independiente que crea apps pequeñas para aprender, inspirarse y avanzar, cada una con su propia identidad. Cómo trabajamos y el estado de cada app.",
     lead: "Nekodojo es un estudio independiente de apps.",
     principlesTitle: "Cómo pensamos las apps",
     timelineTitle: "Las apps, una a una",

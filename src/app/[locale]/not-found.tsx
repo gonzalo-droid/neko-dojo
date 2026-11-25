@@ -38,7 +38,7 @@ export default function NotFound() {
           </ul>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href={localizePath(locale)} className="rounded-lg bg-accent px-5 py-2.5 font-semibold text-on-accent">{t.notFound.home}</Link>
-            <Link href={localizePath(locale, "/apps")} className="rounded-lg border border-line px-5 py-2.5 font-semibold hover:border-accent">{t.notFound.apps}</Link>
+            <Link href={`${localizePath(locale, "/studio")}#apps`} className="rounded-lg border border-line px-5 py-2.5 font-semibold hover:border-accent">{t.notFound.apps}</Link>
           </div>
         </div>
       </div>

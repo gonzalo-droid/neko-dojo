@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { localizePath, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import type { AppEntry } from "@/content/apps";
+import { formatDate, type AppEntry } from "@/content/apps";
 import { getLegalDoc, type Block } from "@/content/legal";
 import { pageMetadata } from "@/lib/metadata";
 import AppChrome from "./AppChrome";
@@ -76,7 +76,7 @@ export default function LegalPage({ app, kind, locale }: { app: AppEntry; kind: 
 
         {legal.mode === "live" ? (
           <div className="mt-4 space-y-1 text-sm text-muted">
-            <p>{t.common.updated}: {(legal.updatedByKind?.[kind] ?? legal.updated)[locale]}</p>
+            <p>{t.common.updated}: {formatDate(legal[kind], locale)}</p>
             {legal.publishedAt && <p>{t.legal.liveSource} <RichText text={legal.publishedAt[kind]} /></p>}
             {t.legal.translationNote && <p>{t.legal.translationNote}</p>}
           </div>
