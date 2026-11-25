@@ -50,6 +50,7 @@ function build(): string {
     `Simulador gratuito y no oficial del examen de reglas de tránsito del MTC para el brevete en Perú. El examen tipo MTC tiene ${n} preguntas al azar del balotario oficial, ${m} minutos y se aprueba con ${pass} correctas (según el simulador oficial ${MTC_EXAM.source}, revisado el ${MTC_EXAM.verified}). Sin registro; el progreso se guarda solo en el navegador. La app MTCQuiz permite practicar sin internet.`,
     "",
     `- [Simulador examen MTC](${url("es", MTC_BASE)}): simulacro tipo MTC, práctica con respuesta y fundamento, modo personalizado y repaso de errores.`,
+    `- [Guía del examen de reglas de tránsito MTC](${url("es", `${MTC_BASE}/guia`)}): cómo es el examen, pasos para sacar el brevete, dónde se rinde, costo en Lima, intentos y requisitos, con fuentes de gob.pe.`,
     `- [Balotario MTC por categoría](${url("es", `${MTC_BASE}/balotario`)}): las ${MTC_CATEGORIES.length} categorías con sus PDF oficiales.`,
     ...MTC_CATEGORIES.map(
       (k) => `- [Balotario MTC ${k.code}](${url("es", `${MTC_BASE}/balotario/${k.slug}`)}): ${loadQuestions(k.slug).length} preguntas con respuesta correcta y fundamento. ${k.vehicles.es}`,

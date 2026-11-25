@@ -15,8 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     paths.push(`/apps/${app.slug}`, `/apps/${app.slug}/support`);
     if (app.legal.mode === "live") paths.push(`/apps/${app.slug}/privacy`, `/apps/${app.slug}/terms`);
   }
-  // MTC simulator: the hub and the question bank pages (the exam page itself is noindex).
-  paths.push(MTC_BASE, `${MTC_BASE}/balotario`, ...MTC_CATEGORIES.map((k) => `${MTC_BASE}/balotario/${k.slug}`));
+  // MTC simulator: the hub, the test guide and the question bank pages (the exam page itself is noindex).
+  paths.push(MTC_BASE, `${MTC_BASE}/guia`, `${MTC_BASE}/balotario`, ...MTC_CATEGORIES.map((k) => `${MTC_BASE}/balotario/${k.slug}`));
   for (const project of about.projects) paths.push(`/about/projects/${project.slug}`);
   const modified: Record<string, string> = {};
   for (const post of getPosts("es")) {
