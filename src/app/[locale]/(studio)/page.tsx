@@ -4,7 +4,7 @@ import { localizePath } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale, type LocaleParams } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
-import { apps, news } from "@/content/apps";
+import { apps } from "@/content/apps";
 import { tagline } from "@/content/site";
 import FeaturedAppCard from "@/components/studio/FeaturedAppCard";
 import AppIcon from "@/components/shared/AppIcon";
@@ -17,22 +17,12 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
   return pageMetadata({ locale, path: "/", title: t.meta.homeTitle, description: t.meta.homeDescription });
 }
 
-function formatMonth(date: string, locale: string) {
-  const [y, m] = date.split("-").map(Number);
-  return new Date(Date.UTC(y, (m || 1) - 1, 1)).toLocaleDateString(locale === "es" ? "es-PE" : "en-US", {
-    month: "short",
-    year: "numeric",
-    timeZone: "UTC",
-  });
-}
-
 export default async function Home({ params }: LocaleParams) {
   const locale = await getLocale(params);
   const t = getDictionary(locale);
   const [first, second] = tagline[locale].split(". ");
   const available = apps.filter((a) => a.status === "available");
   const upcoming = apps.filter((a) => a.status !== "available");
-  const hasDates = news.some((n) => n.date);
 
   return (
     <>
@@ -121,29 +111,6 @@ export default async function Home({ params }: LocaleParams) {
         </div>
       </section>
 
-      <section className="border-t border-line">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
-          <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">{t.home.newsTitle}</h2>
-          <ul className="mt-6 divide-y divide-line border-y border-line">
-            {news.map((item) => {
-              const app = apps.find((a) => a.slug === item.app)!;
-              return (
-                <li key={item.text.es}>
-                  <Link href={localizePath(locale, `/apps/${app.slug}`)} className={`grid gap-1 py-4 hover:text-accent sm:gap-4 ${hasDates ? "sm:grid-cols-[7rem_9rem_1fr]" : "sm:grid-cols-[9rem_1fr]"}`}>
-                    {hasDates && (
-                      <span className="text-sm text-muted">
-                        {item.date ? <time dateTime={item.date}>{formatMonth(item.date, locale)}</time> : null}
-                      </span>
-                    )}
-                    <span className="text-sm font-semibold">{app.name}</span>
-                    <span className="text-muted">{item.text[locale]}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </section>
     </>
   );
 }

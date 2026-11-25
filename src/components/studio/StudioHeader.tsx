@@ -8,7 +8,6 @@ import ThemeToggle from "./ThemeToggle";
 
 export default function StudioHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
   const links = [
-    { href: "/apps", label: t.nav.apps },
     { href: "/studio", label: t.nav.studio },
     { href: "/about", label: t.nav.about },
     { href: "/blog", label: t.nav.blog },

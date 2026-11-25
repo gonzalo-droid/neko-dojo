@@ -5,7 +5,6 @@ const en: Dictionary = {
     homeTitle: "Nekodojo — Small apps. Big possibilities.",
     homeDescription:
       "Independent app studio from Peru: AnimeQuote, MTCQuiz, ApruebaSUCAMEC, Cazadores Perú, Anki Dojo and Goals. Each app has its own identity.",
-    catalogTitle: "Nekodojo apps — AnimeQuote, MTCQuiz, ApruebaSUCAMEC and more",
     studioTitle: "The studio — Nekodojo, independent apps",
     supportTitle: "Nekodojo support: help, contact and data deletion",
     legalTitle: "Nekodojo legal center: privacy and terms",
@@ -55,15 +54,10 @@ const en: Dictionary = {
     aboutBody:
       "Each app starts from a specific need: practicing for a test, learning new words, finding a quote that pushes you, or following a goal. We build them one at a time, calmly, and let each one find its own voice.",
     aboutLink: "Meet the studio",
-    newsTitle: "News",
     waitlistTitle: "Coming soon",
     waitlistBody: "Some apps aren't ready yet. Sign up and we'll tell you when they launch.",
   },
   catalog: {
-    title: "Apps",
-    description:
-      "Every Nekodojo app: anime quotes, practice for Peru's driving test, languages with flashcards and goals in steps. Status, platforms and support.",
-    intro: "Each app has its own page with links, support and legal documents.",
     filterLabel: "Filter apps",
     filterAll: "All",
     filterAvailable: "Available",
@@ -117,7 +111,7 @@ const en: Dictionary = {
   studio: {
     title: "The studio",
     description:
-      "Nekodojo is an independent studio making small apps to learn, get inspired and keep moving, each with its own identity. See how we work.",
+      "Nekodojo is an independent studio making small apps to learn, get inspired and keep moving, each with its own identity. How we work and where each app stands.",
     lead: "Nekodojo is an independent app studio.",
     principlesTitle: "How we think about apps",
     timelineTitle: "The apps, one by one",

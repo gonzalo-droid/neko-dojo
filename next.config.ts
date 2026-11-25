@@ -40,7 +40,12 @@ const nextConfig: NextConfig = {
       permanent: true,
       has: [{ type: "host" as const, value: "neko-dojo.vercel.app" }],
     };
-    return [vercelHost, ...OLD_HOSTS.flatMap((host) =>
+    // The old /apps catalog now lives on the studio page.
+    const catalog = [
+      { source: "/apps", destination: "/studio#apps", permanent: true },
+      { source: "/en/apps", destination: "/en/studio#apps", permanent: true },
+    ];
+    return [vercelHost, ...catalog, ...OLD_HOSTS.flatMap((host) =>
       portfolioMap.flatMap(([source, destination]) => [
         { source, destination: `https://nekodojo.app${destination}`, permanent: true, has: [{ type: "host" as const, value: host }] },
         ...(source === "/" || source.includes(":")

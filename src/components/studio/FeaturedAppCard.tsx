@@ -86,14 +86,28 @@ export default function FeaturedAppCard({ app, locale, t }: { app: AppEntry; loc
 
       {app.screenshot && (
         <div className="relative hidden w-[230px] self-end px-6 pt-8 sm:block" aria-hidden="false">
-          <Image
-            src={app.screenshot.src}
-            alt={app.screenshot.alt[locale]}
-            width={app.screenshot.width}
-            height={app.screenshot.height}
-            sizes="200px"
-            className="-mb-16 h-auto w-full drop-shadow-2xl"
-          />
+          {app.screenshot.framed ? (
+            <Image
+              src={app.screenshot.src}
+              alt={app.screenshot.alt[locale]}
+              width={app.screenshot.width}
+              height={app.screenshot.height}
+              sizes="200px"
+              className="-mb-16 h-auto w-full drop-shadow-2xl"
+            />
+          ) : (
+            // Bare screen: a phone body in the app's ink, cut by the card's bottom edge.
+            <div className="-mb-16 overflow-hidden rounded-[2.1rem] p-[7px] shadow-2xl" style={{ background: p.ink }}>
+              <Image
+                src={app.screenshot.src}
+                alt={app.screenshot.alt[locale]}
+                width={app.screenshot.width}
+                height={app.screenshot.height}
+                sizes="190px"
+                className="h-auto w-full rounded-[1.6rem]"
+              />
+            </div>
+          )}
         </div>
       )}
     </article>

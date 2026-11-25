@@ -1,4 +1,5 @@
 import type { Locale } from "@/i18n/config";
+import { getApp, liveStores, type AppSlug } from "@/content/apps";
 
 /**
  * "Sobre mí": contenido migrado tal cual del portafolio gonzalo-lozg.me
@@ -232,7 +233,7 @@ export const about: AboutData = {
       "links": [
         {
           "label": "Web",
-          "url": "https://www.agrosalasperu.com/"
+          "url": "https://agrosalasperu.com/"
         }
       ]
     },
@@ -295,7 +296,7 @@ export const about: AboutData = {
         },
         {
           "label": "Web",
-          "url": "https://www.animequote.app/"
+          "url": "https://animequote.app/"
         }
       ]
     },
@@ -686,6 +687,19 @@ export const platformLabel: Record<string, string> = {
   web: "Web",
   kmm: "Kotlin Multiplatform",
 };
+
+/**
+ * Projects that are Nekodojo apps take their store links from apps.ts, so a new or
+ * changed store link shows up here too.
+ */
+const projectApp: Record<string, AppSlug> = { "quote-anime": "animequote", "autotest-licencia": "mtcquiz" };
+const storeLabelName = { "google-play": "Play Store", "app-store": "App Store" } as const;
+for (const project of about.projects) {
+  const slug = projectApp[project.slug];
+  if (!slug) continue;
+  const others = project.links.filter((l) => !/play\.google\.com|apps\.apple\.com/.test(l.url));
+  project.links = [...liveStores(getApp(slug)).map((s) => ({ label: storeLabelName[s.store], url: s.url })), ...others];
+}
 
 export function getProject(slug: string): AboutProject | undefined {
   return about.projects.find((p) => p.slug === slug);
