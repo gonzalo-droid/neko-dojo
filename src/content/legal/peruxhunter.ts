@@ -7,7 +7,8 @@ import type { LegalDoc } from "./types";
  * AppConfig.PRIVACY_POLICY_URL / TERMS_URL. Spanish is the original; English is a reference translation.
  *
  * Every practice here was checked against the app's code (HunterXPeru, 2026-11-18):
- * - No accounts, no own backend, no analytics or crash reporting, no Firebase SDK.
+ * - No accounts, no own backend, no analytics. 2026-11-25 (HunterXPeru D38, next build): Firebase Crashlytics,
+ *   release builds only, fatal crashes only (no non-fatal errors, no Analytics, no custom keys or user IDs).
  * - Local storage: Room (saved posters "favorites", weekly list with thumbnails, search/detail/catalog
  *   caches with a 7-day TTL) and DataStore (onboarding_done, theme_mode).
  * - Network: the weekly list and photos from Firebase Storage over plain HTTPS (sync/sync_requisitoriados.py
@@ -55,7 +56,7 @@ const privacyEs: LegalDoc = {
           list: [
             "No pedimos registro, nombre, correo, número de teléfono ni documento de identidad.",
             "No tenemos un servidor propio: lo que buscas, guardas o reportas no se envía a Nekodojo.",
-            "No usamos herramientas de analítica ni de reportes de errores.",
+            "No usamos herramientas de analítica. Solo, si la app se cierra por un error, envía un informe técnico del fallo (sección 8).",
             "No pedimos acceso a tu ubicación, cámara, micrófono ni contactos, y la app no lee tu galería.",
           ],
         },
@@ -134,9 +135,11 @@ const privacyEs: LegalDoc = {
             "Firebase Storage (Google): para descargar la lista semanal y las fotos.",
             "La API pública del Programa de Recompensas del Ministerio del Interior: como respaldo, si la lista semanal no está disponible.",
             "Google AdMob: para los anuncios (secciones 6 y 7).",
+            "Firebase Crashlytics (Google): para enviar un informe si la app se cierra por un error.",
             `${SITE}: para mostrar estas páginas legales dentro de la app.`,
           ],
         },
+        "El informe de Firebase Crashlytics solo se envía cuando la app se cierra por un fallo. Incluye datos técnicos: dónde falló el código, el modelo del teléfono, las versiones del sistema y de la app, y un identificador de instalación de Firebase que no te identifica. No incluye tu nombre, lo que buscas, tus carteles ni tus reportes, y no se usa para publicidad. Nos sirve solo para encontrar y corregir errores.",
         "En esas conexiones la app solo envía lo necesario para pedir los datos (por ejemplo, el nombre que buscas cuando se usa la API de respaldo) y se identifica con su nombre y versión. Como cualquier servicio en internet, esos proveedores pueden registrar datos técnicos de la conexión, como la dirección IP, por seguridad y para su funcionamiento. Este sitio no usa publicidad, y solo usa Google Analytics si lo aceptas en su aviso de cookies.",
         "Si abres “Fuente de datos: recompensas.pe” desde Ajustes, la web oficial del Programa de Recompensas se carga dentro de la app. Ese sitio, del Ministerio del Interior, recibe los mismos datos técnicos que si lo abrieras en tu navegador (por ejemplo, la dirección IP) y los trata según sus propias condiciones. Los enlaces a otros sitios se abren en tu navegador.",
       ],
@@ -165,19 +168,19 @@ const privacyEs: LegalDoc = {
     {
       heading: "11. Finalidad y base legal",
       blocks: [
-        "Tratamos los datos de esta política para que la app funcione (mostrar la lista pública, guardar tus carteles y preferencias en tu teléfono) y para financiarla con publicidad. La base legal es, según el caso, la prestación del servicio que pides al usar la app, el carácter público de los datos que difunde el Estado y tu consentimiento para los anuncios y el rastreo, conforme a la Ley N.° 29733, Ley de Protección de Datos Personales del Perú, y su reglamento.",
+        "Tratamos los datos de esta política para que la app funcione (mostrar la lista pública, guardar tus carteles y preferencias en tu teléfono), para corregir sus fallos con los informes de errores y para financiarla con publicidad. La base legal es, según el caso, la prestación del servicio que pides al usar la app, el carácter público de los datos que difunde el Estado y tu consentimiento para los anuncios y el rastreo, conforme a la Ley N.° 29733, Ley de Protección de Datos Personales del Perú, y su reglamento.",
       ],
     },
     {
       heading: "12. Transferencias internacionales",
       blocks: [
-        "Google puede tratar los datos de los anuncios, y alojar la lista semanal, en servidores ubicados fuera del Perú, incluidos los Estados Unidos, con las garantías que describe su política de privacidad.",
+        "Google puede tratar los datos de los anuncios y los informes de errores, y alojar la lista semanal, en servidores ubicados fuera del Perú, incluidos los Estados Unidos, con las garantías que describe su política de privacidad.",
       ],
     },
     {
       heading: "13. Conservación",
       blocks: [
-        "Los datos locales se conservan en tu teléfono hasta que los borres o desinstales la app; las copias temporales de búsquedas y fichas se renuevan a los 7 días. Los plazos de conservación de los datos de anuncios los fija Google en su política.",
+        "Los datos locales se conservan en tu teléfono hasta que los borres o desinstales la app; las copias temporales de búsquedas y fichas se renuevan a los 7 días. Los informes de errores se borran de Firebase Crashlytics a los 90 días. Los plazos de conservación de los datos de anuncios los fija Google en su política.",
       ],
     },
     {
@@ -231,7 +234,7 @@ const privacyEn: LegalDoc = {
           list: [
             "We don't ask you to sign up, and we don't ask for your name, email, phone number or ID.",
             "We have no server of our own: what you search, save or report is never sent to Nekodojo.",
-            "We don't use analytics or crash-reporting tools.",
+            "We don't use analytics tools. Only if the app closes because of an error does it send a technical crash report (section 8).",
             "We don't ask for access to your location, camera, microphone or contacts, and the app doesn't read your photo library.",
           ],
         },
@@ -310,9 +313,11 @@ const privacyEn: LegalDoc = {
             "Firebase Storage (Google): to download the weekly list and the photos.",
             "The public API of the Interior Ministry's Rewards Program: as a fallback, if the weekly list isn't available.",
             "Google AdMob: for ads (sections 6 and 7).",
+            "Firebase Crashlytics (Google): to send a report if the app closes because of an error.",
             `${SITE}: to show these legal pages inside the app.`,
           ],
         },
+        "The Firebase Crashlytics report is only sent when the app closes because of a failure. It includes technical data: where the code failed, the phone model, the system and app versions, and a Firebase installation ID that doesn't identify you. It doesn't include your name, what you search for, your posters or your reports, and it isn't used for ads. We use it only to find and fix bugs.",
         "Over those connections the app only sends what it needs to request the data (for example, the name you search for when the fallback API is used) and identifies itself with its name and version. Like any internet service, those providers may log technical connection data, such as the IP address, for security and to keep running. This site uses no advertising, and only uses Google Analytics if you accept it in its cookie notice.",
         "If you open “Data source: recompensas.pe” from Settings, the official website of the Rewards Program loads inside the app. That site, run by the Ministry of the Interior, receives the same technical data as if you opened it in your browser (for example, the IP address) and handles it under its own terms. Links to other sites open in your browser.",
       ],
@@ -341,19 +346,19 @@ const privacyEn: LegalDoc = {
     {
       heading: "11. Purpose and legal basis",
       blocks: [
-        "We handle the data in this policy to make the app work (showing the public list, keeping your posters and preferences on your phone) and to fund it with ads. The legal basis is, as applicable, providing the service you request by using the app, the public nature of the data the State publishes, and your consent for ads and tracking, under Law No. 29733, Peru's Personal Data Protection Law, and its regulations.",
+        "We handle the data in this policy to make the app work (showing the public list, keeping your posters and preferences on your phone), to fix its bugs with the crash reports, and to fund it with ads. The legal basis is, as applicable, providing the service you request by using the app, the public nature of the data the State publishes, and your consent for ads and tracking, under Law No. 29733, Peru's Personal Data Protection Law, and its regulations.",
       ],
     },
     {
       heading: "12. International transfers",
       blocks: [
-        "Google may process ad data, and host the weekly list, on servers outside Peru, including the United States, with the safeguards described in its privacy policy.",
+        "Google may process ad data and crash reports, and host the weekly list, on servers outside Peru, including the United States, with the safeguards described in its privacy policy.",
       ],
     },
     {
       heading: "13. Retention",
       blocks: [
-        "Local data stays on your phone until you delete it or uninstall the app; temporary copies of searches and records are refreshed after 7 days. Google sets the retention periods for ad data in its policy.",
+        "Local data stays on your phone until you delete it or uninstall the app; temporary copies of searches and records are refreshed after 7 days. Crash reports are deleted from Firebase Crashlytics after 90 days. Google sets the retention periods for ad data in its policy.",
       ],
     },
     {
