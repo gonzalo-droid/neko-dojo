@@ -7,6 +7,7 @@ import { MTC_BASE, MTC_EXAM } from "@/lib/mtc";
 import StoreButtons from "@/components/app/StoreButtons";
 import AppIcon from "@/components/shared/AppIcon";
 import { simulatorContent } from "../simulator-content";
+import { guideContent } from "../guide-content";
 
 const app = getApp("mtcquiz");
 
@@ -59,6 +60,7 @@ export function simulatorNav(locale: Locale) {
   return [
     { href: localizePath(locale, MTC_BASE), label: c.breadcrumb.simulator },
     { href: localizePath(locale, `${MTC_BASE}/balotario`), label: c.breadcrumb.bank },
+    { href: localizePath(locale, `${MTC_BASE}/guia`), label: guideContent[locale].breadcrumb },
     { href: localizePath(locale, "/apps/mtcquiz"), label: "App MTCQuiz" },
   ];
 }

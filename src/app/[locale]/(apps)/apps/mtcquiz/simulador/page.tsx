@@ -9,6 +9,7 @@ import Image from "next/image";
 import { CAT_IMAGE, IMG_BASE, MTC_BASE, MTC_CATEGORIES, catImage, pdfPath, splitOption } from "@/lib/mtc";
 import { loadQuestions } from "@/lib/mtc-server";
 import { simulatorContent } from "@/apps/mtcquiz/simulator-content";
+import { guideContent } from "@/apps/mtcquiz/guide-content";
 import SetupForm from "@/apps/mtcquiz/simulator/SetupForm";
 import ProgressPanel from "@/apps/mtcquiz/simulator/ProgressPanel";
 import {
@@ -125,6 +126,13 @@ export default async function SimulatorPage({ params }: LocaleParams) {
                   className="font-semibold text-accent underline underline-offset-4"
                 >
                   {c.hero.bankLink}
+                </Link>
+                {" · "}
+                <Link
+                  href={localizePath(locale, `${MTC_BASE}/guia`)}
+                  className="font-semibold text-accent underline underline-offset-4"
+                >
+                  {guideContent[locale].hubLink}
                 </Link>
               </p>
             </div>
