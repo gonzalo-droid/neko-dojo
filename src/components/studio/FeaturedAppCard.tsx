@@ -32,7 +32,7 @@ export default function FeaturedAppCard({ app, locale, t }: { app: AppEntry; loc
 
   return (
     <article
-      className="relative grid overflow-hidden rounded-3xl ring-1 ring-white/5 sm:grid-cols-[minmax(0,1fr)_auto]"
+      className="relative grid h-full overflow-hidden rounded-3xl ring-1 ring-white/5 sm:grid-cols-[minmax(0,1fr)_auto]"
       style={{ background: p.canvas, color: p.ink, ...(luminance(p.canvas) > 0.4 ? statusOnLight : statusOnDark) }}
     >
       <div className="flex min-w-0 flex-col p-6 sm:p-8">
