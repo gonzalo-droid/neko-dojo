@@ -32,6 +32,8 @@ export type AppEntry = {
   tagline: L;
   summary: L;
   stores: StoreLink[];
+  /** A free tool of the app that runs on this site (internal path), linked from the home cards and the footer. */
+  webTool?: { path: string; label: L };
   /** Real average rating shown in the stores. Leave it out if there is none. */
   rating?: number;
   /**
@@ -141,6 +143,7 @@ export const apps: AppEntry[] = [
       { store: "google-play", url: "https://play.google.com/store/apps/details?id=com.gondroid.mtcquiz" },
       { store: "app-store", url: "https://apps.apple.com/pe/app/mtcquiz-examen-brevete-per%C3%BA/id6800840447" },
     ],
+    webTool: { path: "/apps/mtcquiz/simulador", label: { es: "Simulador examen MTC gratis", en: "Free MTC test simulator" } },
     screenshot: {
       src: "/apps/mtcquiz/home.webp",
       width: 920,

@@ -13,7 +13,7 @@ const es = {
   meta: {
     title: "Simulador examen MTC 2026 gratis: balotario y simulacro de brevete",
     description: `Simulacro del examen de reglas de tránsito del MTC: ${N} preguntas en ${M} minutos, todas las categorías, balotario completo y PDFs. Gratis y sin registro.`,
-    bankTitle: (code: string) => `Balotario MTC ${code} 2026: preguntas y respuestas`,
+    bankTitle: (code: string, count: number) => `Balotario MTC ${code} 2026: ${count} preguntas con respuestas`,
     bankDescription: (code: string, count: number) =>
       `Las ${count} preguntas del balotario oficial del MTC para la licencia ${code}, con la respuesta correcta y su fundamento. Practica gratis con el simulador.`,
     pdfTitle: "Balotario MTC en PDF: todas las categorías",
@@ -174,7 +174,7 @@ const en: SimulatorContent = {
   meta: {
     title: "Free Peru MTC driving test simulator: question bank and practice exam",
     description: `Practice Peru's MTC traffic rules test: ${N} questions in ${M} minutes, every license category, the full question bank and PDFs. Free, no sign-up.`,
-    bankTitle: (code: string) => `MTC ${code} question bank: questions and answers`,
+    bankTitle: (code: string, count: number) => `MTC ${code} question bank: ${count} questions with answers`,
     bankDescription: (code: string, count: number) =>
       `All ${count} questions in the official MTC question bank for the ${code} license, with the right answer and its legal basis. Practice free with the simulator.`,
     pdfTitle: "MTC question bank PDFs: every category",

@@ -81,6 +81,15 @@ export default function FeaturedAppCard({ app, locale, t }: { app: AppEntry; loc
           >
             {t.common.openApp}
           </Link>
+          {app.webTool && (
+            <Link
+              href={localizePath(locale, app.webTool.path)}
+              className="inline-flex min-h-11 items-center text-sm font-semibold underline decoration-2 underline-offset-4"
+              style={{ color: p.accent }}
+            >
+              {app.webTool.label[locale]}
+            </Link>
+          )}
         </div>
       </div>
 

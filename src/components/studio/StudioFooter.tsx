@@ -33,6 +33,15 @@ export default function StudioFooter({ locale, t }: { locale: Locale; t: Diction
                 </Link>
               </li>
             ))}
+            {apps.flatMap((app) =>
+              app.webTool ? (
+                <li key={`${app.slug}-tool`}>
+                  <Link href={localizePath(locale, app.webTool.path)} className="inline-flex min-h-11 items-center text-muted hover:text-ink">
+                    {app.webTool.label[locale]}
+                  </Link>
+                </li>
+              ) : [],
+            )}
           </ul>
         </nav>
         <div>

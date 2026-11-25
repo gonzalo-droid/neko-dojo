@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return pageMetadata({
     locale,
     path: `${MTC_BASE}/balotario/${cat.slug}`,
-    title: c.bankTitle(cat.code),
+    title: c.bankTitle(cat.code, questions.length),
     description: c.bankDescription(cat.code, questions.length),
     siteName: "MTCQuiz",
   });

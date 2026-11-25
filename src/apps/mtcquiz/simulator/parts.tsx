@@ -10,6 +10,10 @@ import { simulatorContent } from "../simulator-content";
 
 const app = getApp("mtcquiz");
 
+// Google Play passes this referrer to the install, so Play Console counts the installs that came from the simulator.
+const PLAY_REFERRER = encodeURIComponent("utm_source=nekodojo&utm_medium=web&utm_campaign=simulador_mtc");
+const stores = app.stores.map((s) => (s.store === "google-play" && s.url ? { ...s, url: `${s.url}&referrer=${PLAY_REFERRER}` } : s));
+
 /** The pitch for the app, shown on every simulator page and with each result. */
 export function AppCta({ locale, compact = false }: { locale: Locale; compact?: boolean }) {
   const t = getDictionary(locale);
@@ -33,7 +37,7 @@ export function AppCta({ locale, compact = false }: { locale: Locale; compact?: 
           </ul>
           {/* The store links are tracked as store_click by components/shared/Consent. */}
           <div className="mt-6 [&_a]:bg-on-accent [&_a]:text-accent">
-            <StoreButtons stores={app.stores} t={t.common} size={compact ? "sm" : "md"} />
+            <StoreButtons stores={stores} t={t.common} size={compact ? "sm" : "md"} />
           </div>
           <Link href={localizePath(locale, "/apps/mtcquiz")} className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold underline underline-offset-4">
             {c.link}

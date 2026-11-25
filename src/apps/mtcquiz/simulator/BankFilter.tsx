@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { track } from "@/lib/analytics";
 import { useHeaderOffset } from "./useHeaderOffset";
 
 type Props = { topics: string[]; total: number; listId: string; labels: { search: string; placeholder: string; topic: string; allTopics: string; showing: string; noResults: string } };
@@ -16,6 +17,7 @@ export default function BankFilter({ topics, total, listId, labels }: Props) {
   const [topic, setTopic] = useState("");
   const [shown, setShown] = useState(total);
   const top = useHeaderOffset();
+  const searchTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   function apply(nextQuery: string, nextTopic: string) {
     setQuery(nextQuery);
@@ -28,6 +30,11 @@ export default function BankFilter({ topics, total, listId, labels }: Props) {
       if (ok) n++;
     });
     setShown(n);
+    // GA4's standard search event, once the visitor stops typing: shows what people look for.
+    const term = nextQuery.trim();
+    if (term === query.trim()) return;
+    clearTimeout(searchTimer.current);
+    if (term.length >= 3) searchTimer.current = setTimeout(() => track("search", { search_term: term, results: n }), 1500);
   }
 
   return (
