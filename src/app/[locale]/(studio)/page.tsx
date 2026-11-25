@@ -71,9 +71,10 @@ export default async function Home({ params }: LocaleParams) {
       <section id="apps" className="scroll-mt-20 bg-band" aria-labelledby="available-title">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
           <h2 id="available-title" className="font-display text-3xl font-bold tracking-tight md:text-4xl">{t.home.available}</h2>
+          {/* An odd last card takes the full row, so the grid has no hole. */}
           <ul className="mt-6 grid grid-cols-1 gap-5 lg:grid-cols-2">
             {available.map((app, i) => (
-              <li key={app.slug} className="rise" style={{ animationDelay: `${200 + i * 90}ms` }}>
+              <li key={app.slug} className="rise lg:last:odd:col-span-2" style={{ animationDelay: `${200 + i * 90}ms` }}>
                 <FeaturedAppCard app={app} locale={locale} t={t} />
               </li>
             ))}
