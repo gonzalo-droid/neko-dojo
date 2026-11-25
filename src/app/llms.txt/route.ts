@@ -1,5 +1,7 @@
 import { localizePath, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { MTC_BASE, MTC_CATEGORIES, MTC_EXAM } from "@/lib/mtc";
+import { loadQuestions } from "@/lib/mtc-server";
 import { apps, isIndexable, liveStores } from "@/content/apps";
 import { CONTACT_EMAIL, INSTAGRAM_URL, SITE_URL, STUDIO_NAME, tagline } from "@/content/site";
 import { getPosts } from "@/lib/blog";
@@ -35,7 +37,25 @@ function build(): string {
     if (!isIndexable(app)) parts.push("(Page content is still provisional.)");
     add(parts.join(" "));
   }
+  add(
+    `- [MTC test simulator](${url("es", MTC_BASE)}): free web practice exam for Peru's MTC traffic rules test (${MTC_EXAM.questions} questions, ${MTC_EXAM.minutes} minutes, ${MTC_EXAM.pass} to pass), with the official question bank for 9 license categories and its PDFs. Unofficial; questions in Spanish.`,
+  );
   add("");
+
+  // In Spanish: people in Peru ask about the MTC test in Spanish, and these pages answer it.
+  const { questions: n, minutes: m, pass } = MTC_EXAM;
+  add(
+    "## Simulador examen MTC (Perú)",
+    "",
+    `Simulador gratuito y no oficial del examen de reglas de tránsito del MTC para el brevete en Perú. El examen tipo MTC tiene ${n} preguntas al azar del balotario oficial, ${m} minutos y se aprueba con ${pass} correctas (según el simulador oficial ${MTC_EXAM.source}, revisado el ${MTC_EXAM.verified}). Sin registro; el progreso se guarda solo en el navegador. La app MTCQuiz permite practicar sin internet.`,
+    "",
+    `- [Simulador examen MTC](${url("es", MTC_BASE)}): simulacro tipo MTC, práctica con respuesta y fundamento, modo personalizado y repaso de errores.`,
+    `- [Balotario MTC por categoría](${url("es", `${MTC_BASE}/balotario`)}): las ${MTC_CATEGORIES.length} categorías con sus PDF oficiales.`,
+    ...MTC_CATEGORIES.map(
+      (k) => `- [Balotario MTC ${k.code}](${url("es", `${MTC_BASE}/balotario/${k.slug}`)}): ${loadQuestions(k.slug).length} preguntas con respuesta correcta y fundamento. ${k.vehicles.es}`,
+    ),
+    "",
+  );
 
   add("## Studio", "");
   add(

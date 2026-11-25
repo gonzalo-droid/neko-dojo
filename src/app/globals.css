@@ -112,6 +112,7 @@ body:has(.theme-animequote[data-aq-theme="dark"]) { background-color: #0c0c1e; }
   --app-on-accent: #ffffff;
   --app-accent2: #f59e0b;
   --app-line: #dfe2f0;
+  --app-ok: #11704a;
   --app-display: var(--font-outfit), system-ui, sans-serif;
   --app-body: var(--font-inter), system-ui, sans-serif;
 }

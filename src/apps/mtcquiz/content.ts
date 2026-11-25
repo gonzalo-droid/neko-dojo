@@ -49,6 +49,7 @@ const es = {
   eyebrow: "Examen Brevete Perú",
   heroBody:
     "Estudia las mismas preguntas del balotario oficial del MTC y haz simulacros cronometrados hasta aprobar. Para sacar o recategorizar tu licencia de conducir.",
+  simulator: { nav: "Simulador web", cta: "Prueba gratis el simulador web del examen", hint: "40 preguntas, 40 minutos, sin instalar nada." },
   disclaimer: "App independiente. No está afiliada al Ministerio de Transportes y Comunicaciones (MTC) ni a ninguna entidad del Estado.",
   heroShot: { src: shots.home, alt: "Pantalla de inicio de MTCQuiz con las categorías de licencia A-I, A-IIa, A-IIb y A-IIIa" } as Shot,
   stats: [
@@ -136,6 +137,7 @@ const en: MtcContent = {
   eyebrow: "Peru driver's license test",
   heroBody:
     "Study the same questions as the MTC's official question bank and take timed practice exams until you pass. For getting or upgrading your driver's license in Peru.",
+  simulator: { nav: "Web simulator", cta: "Try the free web practice exam", hint: "40 questions, 40 minutes, nothing to install." },
   disclaimer: "Independent app. Not affiliated with Peru's Ministry of Transport and Communications (MTC) or any government body.",
   heroShot: { src: shots.home, alt: "MTCQuiz home screen listing the A-I, A-IIa, A-IIb and A-IIIa license categories" },
   stats: [

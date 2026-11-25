@@ -129,16 +129,16 @@ export default function Consent() {
       {choice === null && (
         <section
           aria-label={t.label}
-          className="fixed inset-x-4 bottom-4 z-50 rounded-2xl border border-line bg-surface p-4 text-ink shadow-lg sm:left-6 sm:right-auto sm:max-w-sm sm:p-5"
+          className="fixed inset-x-3 bottom-3 z-50 rounded-2xl border border-line bg-surface p-3 text-ink shadow-lg sm:bottom-4 sm:left-6 sm:right-auto sm:max-w-sm sm:p-5"
         >
-          <p className="text-sm leading-relaxed">
+          <p className="text-[13px] leading-snug sm:text-sm sm:leading-relaxed">
             {t.body}{" "}
             <a href={`${localizePath(locale, "/legal")}#cookies`} className="font-semibold underline underline-offset-4 hover:text-accent">
               {t.more}
             </a>
           </p>
           {/* Same size and weight: declining must be as easy as accepting. */}
-          <div className="mt-3 grid grid-cols-2 gap-2">
+          <div className="mt-2 grid grid-cols-2 gap-2 sm:mt-3">
             <button type="button" onClick={() => save("denied")} className="min-h-11 rounded-lg border border-line px-4 text-sm font-semibold transition-colors hover:border-accent">
               {t.decline}
             </button>
