@@ -4,7 +4,7 @@ import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { localizePath, type Locale } from "@/i18n/config";
-import { GA_MEASUREMENT_ID } from "@/content/site";
+import { GA_MEASUREMENT_ID, SUCAMEC_WEB_QUIZ_URL } from "@/content/site";
 
 const KEY = "nekodojo-consent";
 const REOPEN = "nekodojo:consent-reopen";
@@ -70,6 +70,25 @@ export default function Consent() {
     window.addEventListener(REOPEN, reopen);
     return () => window.removeEventListener(REOPEN, reopen);
   }, []);
+
+  // Outbound clicks we want to count. Matched by URL, so every store button on the site
+  // (studio cards, app landings, AnimeQuote) is covered without touching their markup.
+  useEffect(() => {
+    if (choice !== "granted") return;
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as Element | null)?.closest?.("a[href]") as HTMLAnchorElement | null;
+      const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+      if (!a || !gtag) return;
+      const host = a.hostname;
+      if (host === "play.google.com" || host === "apps.apple.com") {
+        gtag("event", "store_click", { store: host === "play.google.com" ? "google_play" : "app_store", link_url: a.href });
+      } else if (a.href.startsWith(SUCAMEC_WEB_QUIZ_URL)) {
+        gtag("event", "web_quiz_click", { link_url: a.href });
+      }
+    };
+    document.addEventListener("click", onClick, true);
+    return () => document.removeEventListener("click", onClick, true);
+  }, [choice]);
 
   const save = (next: "granted" | "denied") => {
     const wasGranted = readChoice() === "granted";
