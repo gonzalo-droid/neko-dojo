@@ -1,5 +1,6 @@
 import { localizePath, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { MTC_BASE, MTC_EXAM } from "@/lib/mtc";
 import { apps, isIndexable, liveStores } from "@/content/apps";
 import { CONTACT_EMAIL, INSTAGRAM_URL, SITE_URL, STUDIO_NAME, tagline } from "@/content/site";
 import { getPosts } from "@/lib/blog";
@@ -35,6 +36,9 @@ function build(): string {
     if (!isIndexable(app)) parts.push("(Page content is still provisional.)");
     add(parts.join(" "));
   }
+  add(
+    `- [MTC test simulator](${url("es", MTC_BASE)}): free web practice exam for Peru's MTC traffic rules test (${MTC_EXAM.questions} questions, ${MTC_EXAM.minutes} minutes, ${MTC_EXAM.pass} to pass), with the official question bank for 9 license categories and its PDFs. Unofficial; questions in Spanish.`,
+  );
   add("");
 
   add("## Studio", "");

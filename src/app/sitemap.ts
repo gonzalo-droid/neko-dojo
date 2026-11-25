@@ -5,6 +5,7 @@ import { about } from "@/content/about";
 import { SITE_URL } from "@/content/site";
 import { getPosts } from "@/lib/blog";
 import { externalOriginal } from "@/lib/metadata";
+import { MTC_BASE, MTC_CATEGORIES } from "@/lib/mtc";
 
 /** Every public page in both languages, with hreflang alternates (x-default = Spanish). Drafts and placeholder pages are left out, and so are Spanish pages whose original lives elsewhere. */
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -14,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     paths.push(`/apps/${app.slug}`, `/apps/${app.slug}/support`);
     if (app.legal.mode === "live") paths.push(`/apps/${app.slug}/privacy`, `/apps/${app.slug}/terms`);
   }
+  // MTC simulator: the hub and the question bank pages (the exam page itself is noindex).
+  paths.push(MTC_BASE, `${MTC_BASE}/balotario`, ...MTC_CATEGORIES.map((k) => `${MTC_BASE}/balotario/${k.slug}`));
   for (const project of about.projects) paths.push(`/about/projects/${project.slug}`);
   const modified: Record<string, string> = {};
   for (const post of getPosts("es")) {

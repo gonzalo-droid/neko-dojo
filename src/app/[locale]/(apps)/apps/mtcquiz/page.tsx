@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { localizePath } from "@/i18n/config";
+import { MTC_BASE } from "@/lib/mtc";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale, type LocaleParams } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
@@ -65,7 +68,11 @@ export default async function MtcQuizPage({ params }: LocaleParams) {
   const download = <StoreButtons stores={app.stores} t={t.common} showPending />;
 
   return (
-    <AppChrome app={app} locale={locale} nav={faq.length ? c.nav : c.nav.filter((n) => n.href !== "#faq")}>
+    <AppChrome
+      app={app}
+      locale={locale}
+      nav={[...(faq.length ? c.nav : c.nav.filter((n) => n.href !== "#faq")), { href: localizePath(locale, MTC_BASE), label: c.simulator.nav }]}
+    >
       {appLd && <JsonLd data={appLd} />}
 
       {/* Hero */}
@@ -80,6 +87,13 @@ export default async function MtcQuizPage({ params }: LocaleParams) {
           </h1>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted">{c.heroBody}</p>
           <div className="mt-8">{download}</div>
+          <Link
+            href={localizePath(locale, MTC_BASE)}
+            className="mt-5 inline-flex min-h-11 items-center gap-2 font-semibold text-accent underline decoration-2 underline-offset-4"
+          >
+            {c.simulator.cta} →
+          </Link>
+          <p className="mt-1 text-sm text-muted">{c.simulator.hint}</p>
           <p className="mt-8 max-w-lg border-l-4 border-accent2 pl-4 text-sm leading-relaxed text-ink">{c.disclaimer}</p>
         </div>
         <div className="mx-auto w-full max-w-[17rem] md:max-w-[19rem]">
