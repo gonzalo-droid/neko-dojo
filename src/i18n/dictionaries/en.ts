@@ -10,7 +10,7 @@ const en: Dictionary = {
     legalTitle: "Nekodojo legal center: privacy and terms",
   },
   a11y: { mainNav: "Main navigation", footerNav: "Footer", language: "Language" },
-  nav: { apps: "Apps", studio: "Studio", about: "About", blog: "Blog", support: "Support", legal: "Legal" },
+  nav: { home: "Home", apps: "Apps", studio: "Studio", about: "About", blog: "Blog", support: "Support", legal: "Legal" },
   languageSwitch: { label: "Español", short: "ES", hint: "View this page in Spanish" },
   theme: { toLight: "Switch to light theme", toDark: "Switch to dark theme" },
   breadcrumbs: { label: "Breadcrumb", apps: "Apps" },

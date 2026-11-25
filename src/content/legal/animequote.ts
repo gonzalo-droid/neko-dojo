@@ -1,10 +1,11 @@
 import type { Locale } from "@/i18n/config";
 import type { LegalDoc } from "./types";
+import { CONTACT_EMAIL } from "@/content/site";
 
 /*
- * Copy of the documents in force at animequote.app (April 2026).
- * Spanish is the original text; English is a reference translation.
- * If you edit the original at animequote.app, update this file too.
+ * AnimeQuote's documents in force (text from April 2026). Since 2026-11-25 this site is the
+ * original: animequote.app is being discontinued. Spanish is the original text; English is a
+ * reference translation. Contact email changed to the site's CONTACT_EMAIL on 2026-11-25.
  */
 
 const privacyEs: LegalDoc = {
@@ -13,7 +14,7 @@ const privacyEs: LegalDoc = {
       heading: "1. Información general",
       blocks: [
         "Frases Anime (“la Aplicación”) es desarrollada por NekoDojo. Esta Política de Privacidad describe cómo recopilamos, usamos y protegemos la información cuando usas nuestra aplicación para Android.",
-        "Al usar Frases Anime, aceptas las prácticas descritas en esta política. Si tienes alguna duda, puedes contactarnos en contacto@gondroid.dev.",
+        `Al usar Frases Anime, aceptas las prácticas descritas en esta política. Si tienes alguna duda, puedes contactarnos en ${CONTACT_EMAIL}.`,
       ],
     },
     {
@@ -97,7 +98,7 @@ const privacyEs: LegalDoc = {
     {
       heading: "9. Contacto",
       blocks: [
-        "Si tienes preguntas, comentarios o solicitudes sobre esta Política de Privacidad, puedes contactarnos: NekoDojo, desarrollador de Frases Anime — contacto@gondroid.dev.",
+        `Si tienes preguntas, comentarios o solicitudes sobre esta Política de Privacidad, puedes contactarnos: NekoDojo, desarrollador de Frases Anime — ${CONTACT_EMAIL}.`,
       ],
     },
   ],
@@ -109,7 +110,7 @@ const privacyEn: LegalDoc = {
       heading: "1. General information",
       blocks: [
         "Frases Anime (“the App”) is developed by NekoDojo. This Privacy Policy describes how we collect, use and protect information when you use our Android app.",
-        "By using Frases Anime, you accept the practices described in this policy. If you have any questions, contact us at contacto@gondroid.dev.",
+        `By using Frases Anime, you accept the practices described in this policy. If you have any questions, contact us at ${CONTACT_EMAIL}.`,
       ],
     },
     { heading: "2. Information we collect", blocks: [] },
@@ -190,7 +191,7 @@ const privacyEn: LegalDoc = {
     {
       heading: "9. Contact",
       blocks: [
-        "If you have questions, comments or requests about this Privacy Policy, contact us: NekoDojo, developer of Frases Anime — contacto@gondroid.dev.",
+        `If you have questions, comments or requests about this Privacy Policy, contact us: NekoDojo, developer of Frases Anime — ${CONTACT_EMAIL}.`,
       ],
     },
   ],
@@ -277,7 +278,7 @@ const termsEs: LegalDoc = {
     {
       heading: "10. Contacto",
       blocks: [
-        "Si tienes preguntas, comentarios o solicitudes sobre estos Términos y Condiciones, puedes contactarnos: NekoDojo, desarrollador de Frases Anime — contacto@gondroid.dev.",
+        `Si tienes preguntas, comentarios o solicitudes sobre estos Términos y Condiciones, puedes contactarnos: NekoDojo, desarrollador de Frases Anime — ${CONTACT_EMAIL}.`,
       ],
     },
   ],
@@ -364,7 +365,7 @@ const termsEn: LegalDoc = {
     {
       heading: "10. Contact",
       blocks: [
-        "If you have questions, comments or requests about these Terms and Conditions, contact us: NekoDojo, developer of Frases Anime — contacto@gondroid.dev.",
+        `If you have questions, comments or requests about these Terms and Conditions, contact us: NekoDojo, developer of Frases Anime — ${CONTACT_EMAIL}.`,
       ],
     },
   ],

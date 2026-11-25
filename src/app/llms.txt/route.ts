@@ -32,7 +32,6 @@ function build(): string {
   for (const app of apps) {
     const parts = [`- [${app.name}](${url("en", `/apps/${app.slug}`)}): ${app.summary.en} Status: ${en.status[app.status]}.`];
     for (const s of liveStores(app)) parts.push(`${STORE_NAME[s.store]}: ${s.url}`);
-    if (app.slug === "animequote") parts.push("Official site: https://animequote.app");
     if (!isIndexable(app)) parts.push("(Page content is still provisional.)");
     add(parts.join(" "));
   }

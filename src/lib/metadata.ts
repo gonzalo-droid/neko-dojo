@@ -3,12 +3,10 @@ import { defaultLocale, locales, localizePath, ogLocale, type Locale } from "@/i
 import { apps } from "@/content/apps";
 
 /**
- * Spanish pages whose original lives on another site (AnimeQuote, copied legal documents).
+ * Spanish pages whose original lives on another site (copied legal documents, e.g. MTCQuiz).
  * Their Spanish version points canonical there, so it stays out of the sitemap and hreflang.
  */
 export function externalOriginal(path: string): string | undefined {
-  // animequote.app stays the main Spanish page until a migration is decided (see docs/animequote-migration.md).
-  if (path === "/apps/animequote") return "https://animequote.app";
   const m = path.match(/^\/apps\/([^/]+)\/(privacy|terms)$/);
   const app = m ? apps.find((a) => a.slug === m[1]) : undefined;
   return m && app?.legal.mode === "live" ? app.legal.publishedAt?.[m[2] as "privacy" | "terms"] : undefined;

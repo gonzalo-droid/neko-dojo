@@ -10,12 +10,17 @@ type Item = { href: string; internal: string; label: string; desktopOnly?: boole
 /** Main studio links with the current section marked (aria-current + accent underline). */
 export default function NavLinks({ items }: { items: Item[] }) {
   const { internal } = parsePath(usePathname() ?? "/");
+  const firstHelp = items.findIndex((i) => i.desktopOnly);
   return (
-    <ul className="-mx-2 flex gap-1 overflow-x-auto">
-      {items.map((item) => {
-        const active = internal === item.internal || internal.startsWith(`${item.internal}/`);
+    <ul className="-mx-2 flex items-center gap-1 overflow-x-auto">
+      {items.map((item, i) => {
+        // "/" would prefix-match every page, so Home is only active on the home page itself.
+        const active = internal === item.internal || (item.internal !== "/" && internal.startsWith(`${item.internal}/`));
         return (
-          <li key={item.href} className={item.desktopOnly ? "max-sm:hidden" : undefined}>
+          <li
+            key={item.href}
+            className={`${item.desktopOnly ? "max-sm:hidden" : ""} ${i === firstHelp ? "ml-2 border-l border-line pl-3" : ""}`}
+          >
             <Link
               href={item.href}
               aria-current={active ? "page" : undefined}

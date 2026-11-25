@@ -7,7 +7,9 @@ import NavLinks from "./NavLinks";
 import ThemeToggle from "./ThemeToggle";
 
 export default function StudioHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
+  // Main pages first; help pages (desktopOnly) after a divider, and in the footer on phones.
   const links = [
+    { href: "/", label: t.nav.home },
     { href: "/studio", label: t.nav.studio },
     { href: "/about", label: t.nav.about },
     { href: "/blog", label: t.nav.blog },

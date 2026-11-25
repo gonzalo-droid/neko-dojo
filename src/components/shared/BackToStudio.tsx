@@ -1,7 +1,7 @@
 import Link from "next/link";
 import CatMark from "./CatMark";
 
-/** Quiet link from an app back to the studio's catalog. Compact on phones. */
+/** Quiet link from an app back to the studio home (which lists every app). Compact on phones. */
 export default function BackToStudio({ href, label, hint }: { href: string; label: string; hint: string }) {
   return (
     <Link

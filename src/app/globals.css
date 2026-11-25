@@ -72,7 +72,7 @@ body:has(.theme-studio) { background-color: #eeede9; }
 }
 [data-theme="dark"] body:has(.theme-studio) { background-color: #0d0b14; }
 
-/* ── AnimeQuote (values from animequote.app) ─────── */
+/* ── AnimeQuote (values from its original landing) ─ */
 .theme-animequote {
   color-scheme: light;
   --app-canvas: #f7f4ff;
