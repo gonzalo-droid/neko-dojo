@@ -4,9 +4,9 @@ import { useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { localizePath, type Locale } from "@/i18n/config";
-import { CAT_IMAGE, MTC_BASE, MTC_EXAM, catImage, getCategory, type CategorySlug, type MtcCategory } from "@/lib/mtc";
+import { CAT_IMAGE, MTC_BASE, MTC_EXAM, catImage, type CategorySlug, type MtcCategory } from "@/lib/mtc";
 import { simulatorContent } from "../simulator-content";
-import { rawItem, readMistakes, readSession, saveSession, subscribe, type Mode } from "../simulator-store";
+import { rawItem, readMistakes, subscribe, type Mode } from "../simulator-store";
 
 const COUNTS = [10, 20, 40, 60] as const;
 const MINUTES = [10, 20, 40, 60] as const;
@@ -25,12 +25,9 @@ export default function SetupForm({ locale, categories }: Props) {
   const [mode, setMode] = useState<Mode>("exam");
   const [count, setCount] = useState<number>(20);
   const [minutes, setMinutes] = useState<number | null>(20);
-  // Read once the page is in the browser; the server render shows no mistakes or pending exam.
+  // Read once the page is in the browser; the server render shows no mistakes.
   const mistakesRaw = useSyncExternalStore(subscribe, () => rawItem("mistakes"), () => null);
-  const pendingRaw = useSyncExternalStore(subscribe, () => rawItem("session"), () => null);
   const mistakes = mistakesRaw ? readMistakes() : {};
-  const pending = pendingRaw ? readSession() : null;
-  const unfinished = pending && !pending.finishedAt ? pending : null;
 
   const mistakeCount = (slug: CategorySlug) => mistakes[slug]?.length ?? 0;
   const examPath = localizePath(locale, `${MTC_BASE}/examen`);
@@ -48,49 +45,37 @@ export default function SetupForm({ locale, categories }: Props) {
 
   return (
     <div className="space-y-10">
-      {unfinished && (
-        <div className="flex flex-col gap-3 rounded-2xl border-2 border-accent bg-surface p-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-semibold text-ink">
-            {c.pending(getCategory(unfinished.cat)?.code ?? "", unfinished.answers.filter((a) => a !== null).length, unfinished.ids.length)}
-          </p>
-          <div className="flex gap-2">
-            <button type="button" onClick={() => router.push(examPath)} className="min-h-11 rounded-lg bg-accent px-4 text-sm font-semibold text-on-accent hover:opacity-90">
-              {c.resume}
-            </button>
-            <button type="button" onClick={() => saveSession(null)} className="min-h-11 rounded-lg border border-line px-4 text-sm font-semibold text-ink hover:border-accent">
-              {c.discard}
-            </button>
-          </div>
-        </div>
-      )}
-
       <fieldset>
         <legend className="font-display text-xl font-bold text-ink">{c.category}</legend>
         <p className="mt-1 text-sm text-muted">{c.categoryHint}</p>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Two columns on phones (picture on top) so the nine licenses fit in about a screen. */}
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-3">
           {categories.map((k) => {
             const on = k.slug === cat;
             return (
               <label
                 key={k.slug}
-                className={`relative flex cursor-pointer items-center gap-3 rounded-2xl border-2 bg-surface p-4 transition-colors has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-accent ${on ? "border-accent" : "border-line hover:border-accent/50"}`}
+                className={`relative flex cursor-pointer flex-col-reverse justify-end gap-2 rounded-2xl border-2 bg-surface p-3 transition-colors has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-accent sm:flex-row sm:items-center sm:justify-start sm:gap-3 sm:p-4 ${on ? "border-accent" : "border-line hover:border-accent/50"}`}
               >
                 <input type="radio" name="cat" value={k.slug} checked={on} onChange={() => {
                     setCat(k.slug);
                     if (mode === "mistakes" && mistakeCount(k.slug) === 0) setMode("exam");
                   }} className="sr-only" />
                 <span className="flex min-w-0 flex-1 flex-col">
-                  <span className="font-display text-2xl font-bold text-ink">{k.code}</span>
+                  <span className="font-display text-xl font-bold text-ink sm:text-2xl">{k.code}</span>
                   <span className="mt-1 text-sm leading-snug text-muted">{k.vehicles}</span>
                   <span className="mt-2 text-xs text-muted">
-                    {c.questionsCount(k.count)} · {c.officialName}: <span className="font-semibold text-ink">{k.officialCode}</span>
+                    {c.questionsCount(k.count)}
+                    <span className="hidden sm:inline">
+                      {" "}· {c.officialName}: <span className="font-semibold text-ink">{k.officialCode}</span>
+                    </span>
                   </span>
                   {mistakeCount(k.slug) > 0 && <span className="mt-1 text-xs font-semibold text-danger">{c.mistakesCount(mistakeCount(k.slug))}</span>}
                 </span>
                 {/* The same vehicle the app shows for this category; the code beside it names it. */}
-                <Image src={catImage(k.slug)} alt="" {...CAT_IMAGE} sizes="7rem" className="h-auto w-28 shrink-0" />
+                <Image src={catImage(k.slug)} alt="" {...CAT_IMAGE} sizes="7rem" className="h-auto w-24 shrink-0 sm:w-28" />
                 {on && (
-                  <span aria-hidden="true" className="absolute right-3 top-3 hidden h-5 w-5 items-center justify-center rounded-full bg-accent text-xs text-on-accent sm:flex">
+                  <span aria-hidden="true" className="absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-accent text-xs text-on-accent sm:right-3 sm:top-3">
                     ✓
                   </span>
                 )}
@@ -156,15 +141,18 @@ export default function SetupForm({ locale, categories }: Props) {
         )}
       </fieldset>
 
-      <button
-        type="button"
-        onClick={start}
-        disabled={!canStart}
-        className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-accent px-8 text-lg font-bold text-on-accent transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
-      >
-        {c.start} · {categories.find((k) => k.slug === cat)?.code}
-        {mode === "exam" && ` · ${MTC_EXAM.questions}/${MTC_EXAM.minutes} min`}
-      </button>
+      {/* On phones the button follows the reader down the form, so the choice is one tap from starting. */}
+      <div className="sticky bottom-0 z-10 -mx-4 border-t border-line bg-canvas/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur sm:static sm:mx-0 sm:border-0 sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
+        <button
+          type="button"
+          onClick={start}
+          disabled={!canStart}
+          className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-accent px-8 text-lg font-bold text-on-accent transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+        >
+          {c.start} · {categories.find((k) => k.slug === cat)?.code}
+          {mode === "exam" && ` · ${MTC_EXAM.questions}/${MTC_EXAM.minutes} min`}
+        </button>
+      </div>
     </div>
   );
 }

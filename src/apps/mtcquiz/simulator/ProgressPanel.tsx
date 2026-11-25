@@ -1,82 +1,115 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import type { Locale } from "@/i18n/config";
-import { getCategory } from "@/lib/mtc";
+import { localizePath, type Locale } from "@/i18n/config";
+import { MTC_BASE, getCategory } from "@/lib/mtc";
 import { simulatorContent } from "../simulator-content";
-import { clearProgress, rawItem, subscribe } from "../simulator-store";
+import { clearProgress, rawItem, readSession, saveSession, subscribe } from "../simulator-store";
 
 type Props = { locale: Locale };
 
 // Snapshots must be stable strings for useSyncExternalStore; parsed below.
-const snap = () => `${rawItem("history") ?? "[]"}|${rawItem("mistakes") ?? "{}"}`;
+const snap = () => `${rawItem("history") ?? "[]"}|${rawItem("mistakes") ?? "{}"}|${rawItem("session") ?? ""}`;
 
-/** Attempts and mistakes saved in this browser. Renders nothing on the server. */
+/**
+ * Returning visitors only: an unfinished exam and the results saved in this browser, as a short
+ * band under the hero. Renders nothing on the server or for a first visit.
+ */
 export default function ProgressPanel({ locale }: Props) {
   const c = simulatorContent[locale].progress;
-  const modes = simulatorContent[locale].setup.modes;
+  const setup = simulatorContent[locale].setup;
+  const modes = setup.modes;
   const raw = useSyncExternalStore(subscribe, snap, () => null);
   if (raw === null) return null;
-  const [h, m] = raw.split("|");
+  const [h, m, s] = raw.split("|");
   let history: { cat: string; mode: keyof typeof modes; total: number; correct: number; passed: boolean | null; at: number }[] = [];
   let mistakes: Record<string, number[]> = {};
   try {
     history = JSON.parse(h);
     mistakes = JSON.parse(m);
   } catch {}
+  const pending = s ? readSession() : null;
+  const unfinished = pending && !pending.finishedAt ? pending : null;
 
-  const mistakeTotal = Object.values(mistakes).reduce((s, ids) => s + ids.length, 0);
-  if (history.length === 0 && mistakeTotal === 0) return <p className="text-muted">{c.empty}</p>;
+  const mistakeTotal = Object.values(mistakes).reduce((sum, ids) => sum + ids.length, 0);
+  if (!unfinished && history.length === 0 && mistakeTotal === 0) return null;
 
   const graded = history.filter((a) => a.passed !== null);
   const best = history.reduce((b, a) => Math.max(b, a.total ? a.correct / a.total : 0), 0);
   const fmt = new Intl.DateTimeFormat(locale === "es" ? "es-PE" : "en-US", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+  const examPath = localizePath(locale, `${MTC_BASE}/examen`);
 
   return (
-    <div>
-      <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {[
-          { label: c.attempts, value: String(history.length) },
-          { label: c.best, value: `${Math.round(best * 100)} %` },
-          { label: c.passed, value: `${graded.filter((a) => a.passed).length}/${graded.length}` },
-          { label: c.mistakes, value: String(mistakeTotal) },
-        ].map((s) => (
-          <div key={s.label} className="flex flex-col rounded-2xl border border-line bg-surface p-4">
-            <dt className="order-2 text-sm text-muted">{s.label}</dt>
-            <dd className="order-1 font-display text-3xl font-bold tabular-nums text-ink">{s.value}</dd>
+    <section aria-labelledby="progress-title" className="border-b border-line bg-surface">
+      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+        <h2 id="progress-title" className="font-display text-2xl font-bold text-ink">
+          {c.title}
+        </h2>
+
+        {unfinished && (
+          <div className="mt-4 flex flex-col gap-3 rounded-2xl border-2 border-accent bg-canvas p-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="font-semibold text-ink">
+              {setup.pending(getCategory(unfinished.cat)?.code ?? "", unfinished.answers.filter((a) => a !== null).length, unfinished.ids.length)}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <a href={examPath} className="inline-flex min-h-11 items-center rounded-lg bg-accent px-4 text-sm font-semibold text-on-accent hover:opacity-90">
+                {setup.resume}
+              </a>
+              <button type="button" onClick={() => saveSession(null)} className="min-h-11 rounded-lg border border-line px-4 text-sm font-semibold text-ink hover:border-accent">
+                {setup.discard}
+              </button>
+            </div>
           </div>
-        ))}
-      </dl>
+        )}
 
-      {history.length > 0 && (
-        <>
-          <h3 className="mt-8 font-semibold text-ink">{c.recent}</h3>
-          <ul className="mt-3 divide-y divide-line border-y border-line">
-            {history.slice(0, 5).map((a) => (
-              <li key={a.at} className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-3 text-sm">
-                <span className="font-semibold text-ink">
-                  {getCategory(a.cat)?.code} · {modes[a.mode]?.title}
-                </span>
-                <span className="tabular-nums text-muted">{fmt.format(a.at)}</span>
-                <span className={`font-semibold tabular-nums ${a.passed === false ? "text-danger" : a.passed ? "text-ok" : "text-ink"}`}>
-                  {a.correct}/{a.total}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
+        {history.length + mistakeTotal > 0 && (
+          <>
+            <dl className="mt-4 grid grid-cols-4 gap-2 sm:gap-3">
+              {[
+                { label: c.attempts, value: String(history.length) },
+                { label: c.best, value: `${Math.round(best * 100)} %` },
+                { label: c.passed, value: `${graded.filter((a) => a.passed).length}/${graded.length}` },
+                { label: c.mistakes, value: String(mistakeTotal) },
+              ].map((x) => (
+                <div key={x.label} className="flex flex-col rounded-xl border border-line bg-canvas p-2.5 sm:rounded-2xl sm:p-4">
+                  <dt className="order-2 text-xs leading-tight text-muted sm:text-sm">{x.label}</dt>
+                  <dd className="order-1 font-display text-xl font-bold tabular-nums text-ink sm:text-3xl">{x.value}</dd>
+                </div>
+              ))}
+            </dl>
 
-      <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-muted">{c.local}</p>
-        <button
-          type="button"
-          onClick={() => window.confirm(c.resetConfirm) && clearProgress()}
-          className="min-h-11 self-start rounded-lg border border-line px-4 text-sm font-semibold text-ink hover:border-danger hover:text-danger"
-        >
-          {c.reset}
-        </button>
+            {/* The detail is folded so the band stays short; the setup comes right after. */}
+            <details className="mt-4">
+              <summary className="inline-flex min-h-11 cursor-pointer items-center font-semibold text-accent underline underline-offset-4">{c.recent}</summary>
+              {history.length > 0 && (
+                <ul className="mt-2 divide-y divide-line border-y border-line">
+                  {history.slice(0, 5).map((a) => (
+                    <li key={a.at} className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-3 text-sm">
+                      <span className="font-semibold text-ink">
+                        {getCategory(a.cat)?.code} · {modes[a.mode]?.title}
+                      </span>
+                      <span className="tabular-nums text-muted">{fmt.format(a.at)}</span>
+                      <span className={`font-semibold tabular-nums ${a.passed === false ? "text-danger" : a.passed ? "text-ok" : "text-ink"}`}>
+                        {a.correct}/{a.total}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-sm text-muted">{c.local}</p>
+                <button
+                  type="button"
+                  onClick={() => window.confirm(c.resetConfirm) && clearProgress()}
+                  className="min-h-11 self-start rounded-lg border border-line px-4 text-sm font-semibold text-ink hover:border-danger hover:text-danger"
+                >
+                  {c.reset}
+                </button>
+              </div>
+            </details>
+          </>
+        )}
       </div>
-    </div>
+    </section>
   );
 }

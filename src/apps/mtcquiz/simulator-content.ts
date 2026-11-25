@@ -24,6 +24,9 @@ const es = {
   hero: {
     eyebrow: "Simulador del examen de brevete",
     sampleLabel: "Pregunta de ejemplo",
+    startA1: "Empezar examen A-I",
+    otherCategory: "Elegir otra licencia",
+    bankLink: "Ver balotario y PDF",
     title: "Simulador del examen MTC, gratis y sin registro",
     body: `Practica el examen de reglas de tránsito como el real: ${N} preguntas al azar del balotario oficial, ${M} minutos y ${P} correctas para aprobar. Desde tu celular, cuantas veces quieras.`,
     facts: [
@@ -58,7 +61,6 @@ const es = {
   },
   progress: {
     title: "Tu progreso",
-    empty: "Cuando termines tu primer simulacro, aquí verás tus resultados.",
     attempts: "Simulacros",
     best: "Mejor nota",
     passed: "Aprobados",
@@ -183,6 +185,9 @@ const en: SimulatorContent = {
   hero: {
     eyebrow: "Peru driver's license test simulator",
     sampleLabel: "Sample question",
+    startA1: "Start the A-I exam",
+    otherCategory: "Pick another license",
+    bankLink: "See the question bank and PDFs",
     title: "Free MTC test simulator, no sign-up",
     body: `Practice Peru's traffic rules test like the real one: ${N} random questions from the official bank, ${M} minutes and ${P} right answers to pass. On your phone, as often as you like.`,
     facts: [
@@ -217,7 +222,6 @@ const en: SimulatorContent = {
   },
   progress: {
     title: "Your progress",
-    empty: "Once you finish your first practice exam, your results show up here.",
     attempts: "Exams taken",
     best: "Best score",
     passed: "Passed",

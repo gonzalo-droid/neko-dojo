@@ -89,25 +89,44 @@ export default async function SimulatorPage({ params }: LocaleParams) {
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
                 {c.hero.body}
               </p>
-              <dl className="mt-8 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4">
+              {/* One row at every width, so the start button stays on the first screen. */}
+              <dl className="mt-6 grid max-w-2xl grid-cols-4 gap-2 sm:mt-8 sm:gap-3">
                 {c.hero.facts.map((f) => (
                   <div
                     key={f.label}
-                    className="flex flex-col rounded-2xl bg-surface p-4 ring-1 ring-line"
+                    className="flex flex-col rounded-xl bg-surface p-2.5 ring-1 ring-line sm:rounded-2xl sm:p-4"
                   >
-                    <dt className="order-2 text-sm text-muted">{f.label}</dt>
-                    <dd className="order-1 font-display text-3xl font-bold tabular-nums text-accent">
+                    <dt className="order-2 text-xs text-muted sm:text-sm">{f.label}</dt>
+                    <dd className="order-1 whitespace-nowrap font-display text-lg font-bold tabular-nums text-accent sm:text-3xl">
                       {f.value}
                     </dd>
                   </div>
                 ))}
               </dl>
-              <a
-                href="#simulacro"
-                className="mt-8 inline-flex min-h-12 items-center rounded-xl bg-accent px-6 text-lg font-bold text-on-accent hover:opacity-90"
-              >
-                {c.setup.start} →
-              </a>
+              {/* A-I is the default license: start it in one tap; the setup below is for the rest. */}
+              <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center">
+                <Link
+                  href={`${localizePath(locale, `${MTC_BASE}/examen`)}?cat=a-i&modo=exam`}
+                  className="inline-flex min-h-12 items-center justify-center rounded-xl bg-accent px-6 text-lg font-bold text-on-accent hover:opacity-90"
+                >
+                  {c.hero.startA1}
+                </Link>
+                <a
+                  href="#simulacro"
+                  className="inline-flex min-h-12 items-center justify-center rounded-xl border-2 border-line bg-surface px-6 font-semibold text-ink hover:border-accent"
+                >
+                  {c.hero.otherCategory}
+                </a>
+              </div>
+              <p className="mt-3 text-sm text-muted">
+                A-I: {MTC_CATEGORIES[0].vehicles[locale]}{" "}
+                <Link
+                  href={localizePath(locale, `${MTC_BASE}/balotario`)}
+                  className="font-semibold text-accent underline underline-offset-4"
+                >
+                  {c.hero.bankLink}
+                </Link>
+              </p>
             </div>
             <figure className="hidden rounded-3xl border border-line bg-surface p-6 shadow-xl shadow-accent/10 lg:block">
               <figcaption className="flex items-center justify-between text-xs font-semibold text-muted">
@@ -151,6 +170,9 @@ export default async function SimulatorPage({ params }: LocaleParams) {
         </div>
       </section>
 
+      {/* Only for returning visitors: an unfinished exam and past results, right under the hero. */}
+      <ProgressPanel locale={locale} />
+
       <section
         id="simulacro"
         aria-labelledby="setup-title"
@@ -170,23 +192,6 @@ export default async function SimulatorPage({ params }: LocaleParams) {
             <SetupForm locale={locale} categories={categories} />
           </div>
           <p className="mt-6 text-sm text-muted">{c.categoriesNote}</p>
-        </div>
-      </section>
-
-      <section
-        aria-labelledby="progress-title"
-        className="border-t border-line bg-surface"
-      >
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <h2
-            id="progress-title"
-            className="font-display text-2xl font-bold text-ink"
-          >
-            {c.progress.title}
-          </h2>
-          <div className="mt-6">
-            <ProgressPanel locale={locale} />
-          </div>
         </div>
       </section>
 
