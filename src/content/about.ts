@@ -296,7 +296,7 @@ export const about: AboutData = {
         },
         {
           "label": "Web",
-          "url": "https://animequote.app/"
+          "url": "https://nekodojo.app/apps/animequote"
         }
       ]
     },

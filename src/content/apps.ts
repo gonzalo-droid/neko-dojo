@@ -94,10 +94,6 @@ export const apps: AppEntry[] = [
       mode: "live",
       privacy: "2026-04",
       terms: "2026-04",
-      publishedAt: {
-        privacy: "https://animequote.app/privacy-policy",
-        terms: "https://animequote.app/terms-and-conditions",
-      },
     },
     support: {
       faq: {

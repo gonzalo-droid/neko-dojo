@@ -26,7 +26,7 @@ export default function AppChrome({ app, locale, children, nav = [], actions }: 
     <>
       <header className="sticky top-0 z-40 border-b border-line bg-canvas/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:gap-4 sm:px-6">
-          <BackToStudio href={`${localizePath(locale, "/studio")}#apps`} label={t.common.backToStudio} hint={t.common.allApps} />
+          <BackToStudio href={localizePath(locale)} label={t.common.backToStudio} hint={t.common.allApps} />
           <Link href={localizePath(locale, base)} className="flex min-w-0 items-center gap-2.5 font-display text-lg font-bold text-ink">
             <AppIcon app={app} size={32} />
             {app.name}

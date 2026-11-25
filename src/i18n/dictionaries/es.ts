@@ -8,7 +8,7 @@ const es = {
     legalTitle: "Centro legal de Nekodojo: privacidad y términos",
   },
   a11y: { mainNav: "Navegación principal", footerNav: "Pie de página", language: "Idioma" },
-  nav: { apps: "Apps", studio: "Estudio", about: "Sobre mí", blog: "Blog", support: "Soporte", legal: "Legal" },
+  nav: { home: "Inicio", apps: "Apps", studio: "Estudio", about: "Sobre mí", blog: "Blog", support: "Soporte", legal: "Legal" },
   languageSwitch: { label: "English", short: "EN", hint: "Ver esta página en inglés" },
   theme: { toLight: "Cambiar a tema claro", toDark: "Cambiar a tema oscuro" },
   breadcrumbs: { label: "Ruta de navegación", apps: "Apps" },

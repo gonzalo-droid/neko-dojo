@@ -3,7 +3,8 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale, type LocaleParams } from "@/lib/locale";
 import { pageMetadata } from "@/lib/metadata";
 import { getApp } from "@/content/apps";
-import { ANIMEQUOTE_INSTAGRAM_URL, CONTACT_EMAIL } from "@/content/site";
+import { ANIMEQUOTE_INSTAGRAM_URL, CONTACT_EMAIL, SITE_URL } from "@/content/site";
+import { localizePath } from "@/i18n/config";
 import { aqContent } from "@/apps/animequote/content";
 import Header from "@/apps/animequote/components/Header";
 import Hero from "@/apps/animequote/components/Hero";
@@ -41,7 +42,7 @@ export default async function AnimeQuotePage({ params }: LocaleParams) {
     alternateName: ["Quote Anime", "QuoteAnime"],
     operatingSystem: "ANDROID, IOS",
     applicationCategory: "LifestyleApplication",
-    url: "https://animequote.app",
+    url: `${SITE_URL}${localizePath(locale, "/apps/animequote")}`,
     downloadUrl: playUrl,
     sameAs: [appStoreUrl, ANIMEQUOTE_INSTAGRAM_URL],
     publisher: { "@type": "Organization", name: "Nekodojo" },

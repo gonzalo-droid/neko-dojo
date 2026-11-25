@@ -23,7 +23,7 @@ export default function Header({ c, locale, studioLabel, allAppsLabel, mainNavLa
     <header className="sticky top-0 z-50 border-b border-accent/10 bg-canvas/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
         <div className="flex min-w-0 items-center gap-2 sm:gap-4">
-          <BackToStudio href={`${localizePath(locale, "/studio")}#apps`} label={studioLabel} hint={allAppsLabel} />
+          <BackToStudio href={localizePath(locale)} label={studioLabel} hint={allAppsLabel} />
           <Link href={localizePath(locale, "/apps/animequote")} aria-label="AnimeQuote" className="group flex items-center gap-3">
             <Image src="/apps/animequote/logo.png" alt="" width={36} height={36} className="h-9 w-9 rounded-[10px] object-cover" priority />
             <span className="hidden font-semibold text-ink transition-colors duration-200 group-hover:text-accent min-[420px]:inline">AnimeQuote</span>
