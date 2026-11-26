@@ -2,7 +2,7 @@ import type { Locale } from "@/i18n/config";
 
 type L<T = string> = Record<Locale, T>;
 
-export type AppSlug = "animequote" | "mtcquiz" | "apruebasucamec" | "peruxhunter" | "anki-dojo" | "goals";
+export type AppSlug = "animequote" | "mtcquiz" | "apruebasucamec" | "peruxhunter" | "anki-dojo" | "goals" | "subtrack";
 
 /**
  * available       → published in a store
@@ -379,6 +379,55 @@ export const apps: AppEntry[] = [
       dataDeletion: {
         es: ["[Pendiente: se definirá antes del lanzamiento.]"],
         en: ["[Pending: to be defined before launch.]"],
+      },
+    },
+  },
+  {
+    slug: "subtrack",
+    name: "SubTrack",
+    // Not published yet: both store links stay null until the listings are live.
+    status: "in-development",
+    // Placeholder icon (glyph) and no screenshots yet.
+    provisional: true,
+    icon: { glyph: "S" },
+    preview: { canvas: "#0A0A0C", ink: "#F5F5F7", muted: "#9A9AA3", accent: "#32D74B", fontVar: "--font-inter" },
+    tagline: { es: "Tus suscripciones, claras. Cobra tu parte.", en: "Your subscriptions, clear. Collect your share." },
+    summary: {
+      es: "Gestiona tus suscripciones personales y compartidas, y cobra tu parte por WhatsApp.",
+      en: "Track your personal and shared subscriptions, and collect each person's share over WhatsApp.",
+    },
+    stores: [
+      { store: "google-play", url: null },
+      { store: "app-store", url: null },
+    ],
+    // Documents are written for Google Play's Data safety form; the app isn't public yet.
+    legal: { mode: "live", privacy: "2026-11-26", terms: "2026-11-26" },
+    support: {
+      faq: {
+        es: [
+          { q: "¿SubTrack procesa pagos?", a: "No. SubTrack solo te ayuda a coordinar quién debe qué. El dinero se mueve fuera de la app, entre tú y tus miembros." },
+          { q: "¿Cómo cobro por WhatsApp?", a: "La app abre WhatsApp con un mensaje ya redactado. Tú decides si lo envías; nada se envía a Nekodojo." },
+          { q: "¿Necesito una cuenta?", a: "Sí, inicias sesión con tu cuenta de Google. Tus datos se guardan en tu dispositivo y se sincronizan con tu cuenta." },
+          { q: "¿Tiene anuncios?", a: "No. SubTrack no tiene anuncios, analítica ni reporte de fallos de terceros." },
+        ],
+        en: [
+          { q: "Does SubTrack process payments?", a: "No. SubTrack only helps you coordinate who owes what. Money moves outside the app, between you and your members." },
+          { q: "How do I collect over WhatsApp?", a: "The app opens WhatsApp with a pre-written message. You decide whether to send it; nothing is sent to Nekodojo." },
+          { q: "Do I need an account?", a: "Yes, you sign in with your Google account. Your data is stored on your device and synced to your account." },
+          { q: "Does it have ads?", a: "No. SubTrack has no ads, no analytics and no third-party crash reporting." },
+        ],
+      },
+      dataDeletion: {
+        es: [
+          "En la app, ve a Ajustes → Eliminar cuenta. Se borran de inmediato tu cuenta de acceso, todos los datos de tu cuenta en la nube y los datos locales del dispositivo.",
+          "Si ya no tienes la app, escribe al correo de soporte de esta página y pide la eliminación de tu cuenta. La completamos en un máximo de 30 días.",
+          "Cerrar sesión no borra tus datos en la nube. Hay más detalle en la página de eliminación de cuenta de SubTrack.",
+        ],
+        en: [
+          "In the app, go to Settings → Delete account (Ajustes → Eliminar cuenta). Your sign-in account, all the cloud data of your account and the local data on the device are deleted immediately.",
+          "If you no longer have the app, write to the support email on this page and ask for your account to be deleted. We complete it within 30 days.",
+          "Signing out does not delete your cloud data. There is more detail on SubTrack's account deletion page.",
+        ],
       },
     },
   },
