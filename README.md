@@ -39,11 +39,13 @@ Las rutas están siempre en inglés. El español (idioma principal) no lleva pre
 /apps/[app]/privacy      /en/apps/[app]/privacy
 /apps/[app]/terms        /en/apps/[app]/terms
 /apps/[app]/support      /en/apps/[app]/support
+/apps/peruxhunter/download  /en/apps/peruxhunter/download   (redirige a la tienda)
 ```
 
 - Internamente el español vive en `src/app/[locale]` con `locale = es`; `src/proxy.ts` lo sirve sin prefijo. Una URL con `/es/...` redirige a la versión sin prefijo.
 - Primera visita: si el navegador prefiere inglés, se redirige a `/en/...`. La elección queda en la cookie `locale`, así que quien cambia a español con el selector se queda en español.
 - El selector de idioma muestra la bandera del idioma al que cambias (🇪🇸 / 🇺🇸) y conserva la página.
+- Enlace para compartir una app: `/apps/[app]/download` manda el iPhone al App Store y Android a Google Play; en computadora, o si esa tienda aún no tiene enlace en `stores`, abre la página de la app (`src/lib/store-redirect.ts`). Hoy solo existe para peruxhunter.
 - Instrucciones de borrado de datos con URL estable para las tiendas: `/apps/[app]/support#delete-data`.
 - El modo oscuro de AnimeQuote se guarda en la cookie `aq-theme`; el servidor lo aplica desde el primer pintado.
 
