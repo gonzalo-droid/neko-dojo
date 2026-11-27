@@ -1,10 +1,10 @@
 # Inyección de Dependencias en Android con Hilt
 
-La inyección de dependencias es una técnica fundamental en el desarrollo de aplicaciones Android modernas. En este artículo, exploraremos cómo implementar DI usando Hilt, la solución oficial de Google.
+La inyección de dependencias (DI) es una técnica muy usada en las apps Android actuales. Aquí explico cómo implementarla con Hilt, la solución oficial de Google: la configuración, los módulos, los ViewModels y las pruebas.
 
-## ¿Qué es la Inyección de Dependencias?
+## ¿Qué es la inyección de dependencias?
 
-La inyección de dependencias es un patrón de diseño que permite la creación de componentes débilmente acoplados, facilitando el testing y la mantenibilidad del código. Hilt es una biblioteca que simplifica la implementación de DI en Android.
+Es un patrón de diseño para crear componentes débilmente acoplados, lo que hace el código más fácil de probar y de mantener. Hilt es una biblioteca que simplifica la implementación de DI en Android.
 
 ## Configuración básica
 
@@ -133,20 +133,23 @@ object TestAppModule {
 
 ## Mejores prácticas
 
-1. **Estructura de módulos**
-   - Separar módulos por funcionalidad
-   - Usar scopes apropiados
-   - Mantener los módulos pequeños y enfocados
+### Estructura de módulos
 
-2. **Inyección de dependencias**
-   - Inyectar en el nivel más alto posible
-   - Usar constructor injection cuando sea posible
-   - Evitar inyección de dependencias en clases de UI
+- Separar los módulos por funcionalidad.
+- Usar scopes apropiados.
+- Mantener los módulos pequeños y enfocados.
 
-3. **Testing**
-   - Crear módulos de prueba específicos
-   - Usar fakes o mocks según sea necesario
-   - Mantener las pruebas independientes
+### Inyección
+
+- Inyectar en el nivel más alto posible.
+- Usar constructor injection cuando se pueda.
+- Evitar la inyección de dependencias en clases de UI.
+
+### Pruebas
+
+- Crear módulos de prueba específicos.
+- Usar fakes o mocks según haga falta.
+- Mantener las pruebas independientes entre sí.
 
 ## Ejemplos de uso
 
@@ -161,7 +164,7 @@ class MyService : Service() {
 }
 ```
 
-### 2. Inyección en un WorkManager
+### 2. Inyección en un Worker de WorkManager
 ```kotlin
 @HiltWorker
 class MyWorker @AssistedInject constructor(
@@ -173,12 +176,4 @@ class MyWorker @AssistedInject constructor(
 
 ## Ventajas de Hilt
 
-- **Integración con Android**
-- **Configuración mínima**
-- **Soporte para testing**
-- **Integración con ViewModel**
-- **Documentación oficial**
-
-## Conclusión
-
-Hilt proporciona una solución robusta y fácil de usar para la inyección de dependencias en Android. Su integración con el ecosistema Android y su soporte para testing lo convierten en la opción preferida para proyectos modernos. 
+Hilt se integra con Android y con ViewModel, pide una configuración mínima, trae soporte para pruebas y tiene documentación oficial. Es fácil de usar y, por su integración con el ecosistema Android y su soporte para pruebas, es la opción preferida en proyectos actuales. 

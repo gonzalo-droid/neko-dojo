@@ -1,10 +1,10 @@
 # Testing on Android: A Complete Guide
 
-Testing is a fundamental part of Android app development. In this article, we'll explore the different testing strategies and tools available on Android.
+In this article I go over the kinds of tests you write on Android (unit, integration, UI, ViewModel and coroutine tests) and the tools for each one.
 
-## Types of Testing
+## Types of testing
 
-### 1. Unit Testing
+### 1. Unit testing
 ```kotlin
 class UserRepositoryTest {
     @Test
@@ -22,7 +22,7 @@ class UserRepositoryTest {
 }
 ```
 
-### 2. Integration Testing
+### 2. Integration testing
 ```kotlin
 @HiltAndroidTest
 class UserFlowTest {
@@ -47,9 +47,9 @@ class UserFlowTest {
 }
 ```
 
-## UI Testing
+## UI testing
 
-### 1. Compose Testing
+### 1. Compose testing
 ```kotlin
 @Test
 fun testUserScreen() {
@@ -71,7 +71,7 @@ fun testUserScreen() {
 }
 ```
 
-### 2. Espresso Testing
+### 2. Espresso testing
 ```kotlin
 @Test
 fun testUserList() {
@@ -93,7 +93,7 @@ fun testUserList() {
 
 ## Testing ViewModels
 
-### 1. ViewModel Testing
+### 1. ViewModel testing
 ```kotlin
 class UserViewModelTest {
     @Test
@@ -114,7 +114,7 @@ class UserViewModelTest {
 }
 ```
 
-### 2. State Testing
+### 2. State testing
 ```kotlin
 @Test
 fun `test loading state`() = runTest {
@@ -134,9 +134,9 @@ fun `test loading state`() = runTest {
 }
 ```
 
-## Testing Coroutines
+## Testing coroutines
 
-### 1. Coroutine Testing
+### 1. Coroutine testing
 ```kotlin
 @Test
 fun `test coroutine flow`() = runTest {
@@ -156,7 +156,7 @@ fun `test coroutine flow`() = runTest {
 }
 ```
 
-### 2. Error Handling
+### 2. Error handling
 ```kotlin
 @Test
 fun `test error handling`() = runTest {
@@ -171,53 +171,33 @@ fun `test error handling`() = runTest {
 }
 ```
 
-## Best Practices
+## Best practices
 
-1. **Test structure**
-   - Follow the AAA pattern (Arrange-Act-Assert)
-   - Keep tests independent
-   - Use descriptive names
+### Test structure
 
-2. **Mocks and fakes**
-   - Use mocks for external dependencies
-   - Implement fakes for integration testing
-   - Avoid excessive mocking
+- Follow the AAA pattern (Arrange-Act-Assert).
+- Keep tests independent of each other.
+- Use descriptive names.
 
-3. **Code coverage**
-   - Aim for meaningful coverage
-   - Focus on critical use cases
-   - Don't obsess over 100%
+### Mocks and fakes
 
-## Testing Tools
+- Use mocks for external dependencies.
+- Write fakes for integration tests.
+- Don't overuse mocks.
 
-1. **JUnit**
-   - Base testing framework
-   - Annotations for setup
-   - Assertions for validation
+### Code coverage
 
-2. **Mockito**
-   - Creating mocks
-   - Verifying interactions
-   - Stubbing behavior
+- Aim for coverage that means something.
+- Focus on critical use cases.
+- Don't obsess over 100%.
 
-3. **Espresso**
-   - UI testing
-   - Interacting with views
-   - State validation
+## Testing tools
 
-4. **Compose Testing**
-   - Declarative UI testing
-   - Interacting with composables
-   - State validation
+- JUnit: the base framework. It provides annotations for setup and assertions for validation.
+- Mockito: creates mocks, verifies interactions and stubs behavior.
+- Espresso: UI tests with views. It interacts with them and validates their state.
+- Compose Testing: the same for declarative UI, with composables.
 
-## Benefits of Good Testing
+## Benefits of good testing
 
-- **Early bug detection**
-- **Safe refactoring**
-- **Living documentation**
-- **Better code design**
-- **Confidence in your code**
-
-## Conclusion
-
-Testing is an essential part of Android app development. A good testing strategy helps maintain code quality and makes long-term maintenance easier.
+Tests catch bugs early, let you refactor safely and give you confidence in your code. They also work as living documentation, push you toward better design and, over time, help keep code quality up and make maintenance easier.

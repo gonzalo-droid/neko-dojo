@@ -1,10 +1,10 @@
 # Testing en Android: Guía completa
 
-El testing es una parte fundamental del desarrollo de aplicaciones Android. En este artículo, exploraremos las diferentes estrategias y herramientas disponibles para testing en Android.
+En este artículo repaso los tipos de pruebas que se escriben en Android (unitarias, de integración, de UI, de ViewModels y de coroutines) y las herramientas para cada una.
 
-## Tipos de Testing
+## Tipos de testing
 
-### 1. Unit Testing
+### 1. Pruebas unitarias
 ```kotlin
 class UserRepositoryTest {
     @Test
@@ -22,7 +22,7 @@ class UserRepositoryTest {
 }
 ```
 
-### 2. Integration Testing
+### 2. Pruebas de integración
 ```kotlin
 @HiltAndroidTest
 class UserFlowTest {
@@ -49,7 +49,7 @@ class UserFlowTest {
 
 ## Testing de UI
 
-### 1. Compose Testing
+### 1. Pruebas con Compose
 ```kotlin
 @Test
 fun testUserScreen() {
@@ -71,7 +71,7 @@ fun testUserScreen() {
 }
 ```
 
-### 2. Espresso Testing
+### 2. Pruebas con Espresso
 ```kotlin
 @Test
 fun testUserList() {
@@ -93,7 +93,7 @@ fun testUserList() {
 
 ## Testing de ViewModels
 
-### 1. ViewModel Testing
+### 1. Pruebas del ViewModel
 ```kotlin
 class UserViewModelTest {
     @Test
@@ -114,7 +114,7 @@ class UserViewModelTest {
 }
 ```
 
-### 2. State Testing
+### 2. Pruebas de estado
 ```kotlin
 @Test
 fun `test loading state`() = runTest {
@@ -134,9 +134,9 @@ fun `test loading state`() = runTest {
 }
 ```
 
-## Testing de Coroutines
+## Testing de coroutines
 
-### 1. Coroutine Testing
+### 1. Pruebas de coroutines
 ```kotlin
 @Test
 fun `test coroutine flow`() = runTest {
@@ -156,7 +156,7 @@ fun `test coroutine flow`() = runTest {
 }
 ```
 
-### 2. Error Handling
+### 2. Manejo de errores
 ```kotlin
 @Test
 fun `test error handling`() = runTest {
@@ -171,53 +171,33 @@ fun `test error handling`() = runTest {
 }
 ```
 
-## Mejores prácticas
+## Buenas prácticas
 
-1. **Estructura de pruebas**
-   - Seguir el patrón AAA (Arrange-Act-Assert)
-   - Mantener las pruebas independientes
-   - Usar nombres descriptivos
+### Estructura de las pruebas
 
-2. **Mocks y Fakes**
-   - Usar mocks para dependencias externas
-   - Implementar fakes para testing de integración
-   - Evitar mocks excesivos
+- Sigue el patrón AAA (Arrange-Act-Assert).
+- Mantén las pruebas independientes entre sí.
+- Usa nombres descriptivos.
 
-3. **Cobertura de código**
-   - Apuntar a una cobertura significativa
-   - Enfocarse en casos de uso críticos
-   - No obsesionarse con el 100%
+### Mocks y fakes
+
+- Usa mocks para las dependencias externas.
+- Escribe fakes para las pruebas de integración.
+- No abuses de los mocks.
+
+### Cobertura de código
+
+- Apunta a una cobertura que signifique algo.
+- Concéntrate en los casos de uso críticos.
+- No te obsesiones con el 100%.
 
 ## Herramientas de testing
 
-1. **JUnit**
-   - Framework base para testing
-   - Anotaciones para configuración
-   - Assertions para validaciones
-
-2. **Mockito**
-   - Creación de mocks
-   - Verificación de interacciones
-   - Stubbing de comportamientos
-
-3. **Espresso**
-   - Testing de UI
-   - Interacciones con vistas
-   - Validaciones de estado
-
-4. **Compose Testing**
-   - Testing de UI declarativa
-   - Interacciones con composables
-   - Validaciones de estado
+- JUnit: el framework base. Trae anotaciones para la configuración y assertions para las validaciones.
+- Mockito: crea mocks, verifica interacciones y hace stubbing de comportamientos.
+- Espresso: pruebas de UI con vistas. Interactúa con ellas y valida su estado.
+- Compose Testing: lo mismo para UI declarativa, con composables.
 
 ## Ventajas de un buen testing
 
-- **Detección temprana de errores**
-- **Refactorización segura**
-- **Documentación viva**
-- **Mejor diseño de código**
-- **Confianza en el código**
-
-## Conclusión
-
-El testing es una parte esencial del desarrollo de aplicaciones Android. Una buena estrategia de testing ayuda a mantener la calidad del código y facilita el mantenimiento a largo plazo. 
+Las pruebas detectan errores temprano, te dejan refactorizar con seguridad y te dan confianza en el código. También funcionan como documentación viva, empujan hacia un mejor diseño y, con el tiempo, ayudan a mantener la calidad y hacen más fácil el mantenimiento.

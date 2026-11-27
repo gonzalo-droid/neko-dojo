@@ -1,19 +1,18 @@
 # Desarrollo de Apps con Kotlin Multiplatform
 
-Kotlin Multiplatform (KMP) es una tecnología que permite compartir código entre diferentes plataformas, principalmente Android e iOS. En este artículo, exploraremos cómo utilizar KMP para desarrollar aplicaciones multiplataforma eficientemente.
+Kotlin Multiplatform (KMP) permite compartir código entre plataformas, sobre todo Android e iOS. Aquí reviso cómo se organiza un proyecto KMP, qué bibliotecas se usan y algunas prácticas que conviene seguir.
 
 ## ¿Qué es Kotlin Multiplatform?
 
-Kotlin Multiplatform es una solución que permite escribir código común en Kotlin y compilarlo para diferentes plataformas. Esto significa que puedes compartir la lógica de negocio, el manejo de datos y otras funcionalidades entre Android e iOS.
+Con KMP escribes código común en Kotlin y lo compilas para cada plataforma. Así puedes compartir entre Android e iOS la lógica de negocio, el manejo de datos y otras partes de la app.
 
 ## Ventajas de usar KMP
 
-- **Código compartido**: Reduce la duplicación de código
-- **Mantenibilidad**: Un solo código base para múltiples plataformas
-- **Rendimiento**: Código nativo para cada plataforma
-- **Flexibilidad**: Puedes compartir tanto o tan poco código como necesites
+Al compartir código hay menos duplicación y un solo código base que mantener para varias plataformas. Cada plataforma recibe código nativo, así que no pierdes rendimiento, y tú decides cuánto código compartir: puede ser mucho o muy poco.
 
 ## Estructura básica de un proyecto KMP
+
+El código compartido vive en `commonMain`, y cada plataforma tiene su propia implementación en `androidMain` e `iosMain`:
 
 ```kotlin
 // commonMain/kotlin/com/example/shared/Repository.kt
@@ -38,10 +37,10 @@ class IosRepository : Repository {
 
 ## Bibliotecas esenciales
 
-1. **Ktor**: Cliente HTTP multiplataforma
-2. **Kotlinx.serialization**: Serialización JSON
-3. **SQLDelight**: Base de datos SQL multiplataforma
-4. **Koin**: Inyección de dependencias
+1. Ktor: cliente HTTP multiplataforma.
+2. Kotlinx.serialization: serialización JSON.
+3. SQLDelight: base de datos SQL multiplataforma.
+4. Koin: inyección de dependencias.
 
 ## Ejemplo de implementación
 
@@ -74,21 +73,14 @@ class UserViewModel(
 
 ## Mejores prácticas
 
-1. **Separación de responsabilidades**
-   - Código común en módulos compartidos
-   - UI específica en cada plataforma
-   - Lógica de negocio compartida
+### Separación de responsabilidades
 
-2. **Manejo de dependencias**
-   - Usar expect/actual para APIs específicas
-   - Implementar interfaces en cada plataforma
-   - Mantener la compatibilidad
+El código común y la lógica de negocio van en módulos compartidos. La UI se escribe en cada plataforma.
 
-3. **Testing**
-   - Pruebas unitarias en código compartido
-   - Pruebas específicas para cada plataforma
-   - Mocks y stubs para testing
+### Manejo de dependencias
 
-## Conclusión
+Usa expect/actual para las APIs propias de cada plataforma, implementa las interfaces en cada una y mantén la compatibilidad entre ellas.
 
-Kotlin Multiplatform es una excelente opción para desarrollar aplicaciones multiplataforma, permitiendo compartir código mientras mantienes la flexibilidad de implementar características específicas para cada plataforma. 
+### Testing
+
+Escribe pruebas unitarias para el código compartido y pruebas específicas para cada plataforma, con mocks y stubs donde hagan falta.

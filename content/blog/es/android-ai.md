@@ -1,14 +1,10 @@
 # Integración de IA en Apps Android
 
-La integración de Inteligencia Artificial en aplicaciones Android se ha vuelto cada vez más accesible y potente. En este artículo, exploraremos cómo incorporar IA en tus aplicaciones Android.
+Aquí repaso tres formas de agregar inteligencia artificial a una app Android (ML Kit, la API de OpenAI y TensorFlow Lite), con un ejemplo de código para cada una, además de algunas prácticas y casos de uso.
 
 ## ¿Por qué integrar IA en Android?
 
-La IA puede mejorar significativamente la experiencia del usuario y agregar funcionalidades avanzadas a tu aplicación:
-- Procesamiento de lenguaje natural
-- Reconocimiento de imágenes
-- Recomendaciones personalizadas
-- Automatización de tareas
+Con IA, una app puede procesar lenguaje natural, reconocer imágenes, hacer recomendaciones personalizadas y automatizar tareas.
 
 ## Opciones de integración
 
@@ -79,38 +75,20 @@ class ImageClassifier(private val context: Context) {
 
 ## Mejores prácticas
 
-1. **Optimización de recursos**
-   - Usar modelos ligeros
-   - Implementar carga diferida
-   - Manejar el ciclo de vida
+### Optimización de recursos
 
-2. **Experiencia de usuario**
-   - Proporcionar feedback visual
-   - Manejar errores graciosamente
-   - Ofrecer alternativas offline
+Usa modelos ligeros, cárgalos de forma diferida y maneja bien el ciclo de vida.
 
-3. **Privacidad y seguridad**
-   - Procesar datos sensibles localmente
-   - Implementar encriptación
-   - Respetar políticas de privacidad
+### Experiencia de usuario
+
+Muestra feedback visual, maneja los errores sin romper la experiencia y ofrece alternativas offline.
+
+### Privacidad y seguridad
+
+Procesa los datos sensibles en el dispositivo, usa cifrado y respeta las políticas de privacidad.
 
 ## Casos de uso comunes
 
-1. **Procesamiento de texto**
-   - Traducción
-   - Resumen de contenido
-   - Análisis de sentimiento
-
-2. **Procesamiento de imágenes**
-   - Reconocimiento de objetos
-   - Clasificación de imágenes
-   - Filtros inteligentes
-
-3. **Recomendaciones**
-   - Contenido personalizado
-   - Sugerencias de productos
-   - Predicción de comportamiento
-
-## Conclusión
-
-La integración de IA en aplicaciones Android abre un mundo de posibilidades para mejorar la experiencia del usuario y agregar funcionalidades avanzadas. Con las herramientas adecuadas y siguiendo las mejores prácticas, puedes crear aplicaciones más inteligentes y útiles. 
+- Texto: traducción, resumen de contenido y análisis de sentimiento.
+- Imágenes: reconocimiento de objetos, clasificación de imágenes y filtros inteligentes.
+- Recomendaciones: contenido personalizado, sugerencias de productos y predicción de comportamiento.

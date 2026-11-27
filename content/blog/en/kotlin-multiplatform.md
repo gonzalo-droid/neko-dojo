@@ -1,19 +1,18 @@
 # Building Apps with Kotlin Multiplatform
 
-Kotlin Multiplatform (KMP) is a technology that lets you share code across different platforms, mainly Android and iOS. In this article, we'll explore how to use KMP to build cross-platform apps efficiently.
+Kotlin Multiplatform (KMP) lets you share code across platforms, mainly Android and iOS. Here I go over how a KMP project is organized, which libraries it uses and some practices worth following.
 
-## What Is Kotlin Multiplatform?
+## What is Kotlin Multiplatform?
 
-Kotlin Multiplatform is a solution that lets you write common code in Kotlin and compile it for different platforms. This means you can share business logic, data handling, and other functionality between Android and iOS.
+With KMP you write common code in Kotlin and compile it for each platform. That way you can share business logic, data handling and other parts of the app between Android and iOS.
 
-## Benefits of Using KMP
+## Benefits of using KMP
 
-- **Shared code**: Reduces code duplication
-- **Maintainability**: A single codebase for multiple platforms
-- **Performance**: Native code for each platform
-- **Flexibility**: You can share as much or as little code as you need
+Sharing code means less duplication and a single codebase to maintain for several platforms. Each platform gets native code, so you do not lose performance, and you decide how much code to share: a lot or very little.
 
-## Basic Structure of a KMP Project
+## Basic structure of a KMP project
+
+Shared code lives in `commonMain`, and each platform has its own implementation in `androidMain` and `iosMain`:
 
 ```kotlin
 // commonMain/kotlin/com/example/shared/Repository.kt
@@ -36,14 +35,14 @@ class IosRepository : Repository {
 }
 ```
 
-## Essential Libraries
+## Essential libraries
 
-1. **Ktor**: Multiplatform HTTP client
-2. **Kotlinx.serialization**: JSON serialization
-3. **SQLDelight**: Multiplatform SQL database
-4. **Koin**: Dependency injection
+1. Ktor: multiplatform HTTP client.
+2. Kotlinx.serialization: JSON serialization.
+3. SQLDelight: multiplatform SQL database.
+4. Koin: dependency injection.
 
-## Implementation Example
+## Implementation example
 
 ```kotlin
 // Shared model
@@ -72,23 +71,16 @@ class UserViewModel(
 }
 ```
 
-## Best Practices
+## Best practices
 
-1. **Separation of concerns**
-   - Common code in shared modules
-   - Platform-specific UI on each platform
-   - Shared business logic
+### Separation of concerns
 
-2. **Dependency management**
-   - Use expect/actual for platform-specific APIs
-   - Implement interfaces on each platform
-   - Maintain compatibility
+Common code and business logic go in shared modules. The UI is written on each platform.
 
-3. **Testing**
-   - Unit tests for shared code
-   - Platform-specific tests
-   - Mocks and stubs for testing
+### Dependency management
 
-## Conclusion
+Use expect/actual for platform-specific APIs, implement the interfaces on each platform and keep them compatible.
 
-Kotlin Multiplatform is an excellent choice for building cross-platform apps, letting you share code while keeping the flexibility to implement platform-specific features.
+### Testing
+
+Write unit tests for the shared code and platform-specific tests for each platform, with mocks and stubs where you need them.
