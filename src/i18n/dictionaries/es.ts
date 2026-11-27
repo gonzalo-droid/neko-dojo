@@ -101,6 +101,7 @@ const es = {
     eyebrow: "Notas de desarrollo",
     lead: "Lo que aprendo construyendo apps: Android, Kotlin Multiplatform, web, IA y marketing.",
     back: "Blog",
+    toc: "En este post",
     translationNote: "",
     categoriesLabel: "Filtrar por categoría",
     all: "Todos",

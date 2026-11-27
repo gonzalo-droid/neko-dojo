@@ -1,10 +1,10 @@
 # Qué es una skill de Claude, cómo crearla y cuáles uso
 
-Cuando repites la misma tarea con Claude (hacer un reel, revisar un texto, preparar las noticias de la semana), terminas explicando lo mismo una y otra vez. Una skill resuelve eso: es un manual que Claude lee solo cuando lo necesita.
+Cuando repites la misma tarea con Claude (hacer un reel, revisar un texto, preparar las noticias de la semana), terminas explicando lo mismo una y otra vez. Una skill resuelve eso: **es un manual que Claude lee solo cuando lo necesita**.
 
 ## Qué es una skill
 
-Una skill es una carpeta con un archivo principal, `SKILL.md`, y opcionalmente scripts, plantillas y documentos de referencia:
+Una skill es **una carpeta con un archivo principal**, `SKILL.md`, y opcionalmente scripts, plantillas y documentos de referencia:
 
 ```text
 reels-motion/
@@ -31,15 +31,15 @@ description: "Diseña y genera carruseles para Instagram listos para subir…
 
 Claude no lee todas las skills todo el tiempo:
 
-1. Al empezar, solo ve el nombre y la descripción de cada skill.
+1. Al empezar, **solo ve el nombre y la descripción de cada skill**.
 2. Cuando lo que pides encaja con una descripción, abre ese `SKILL.md` y sigue sus instrucciones.
 3. Los archivos de `references/` o `scripts/` los abre solo cuando un paso los necesita.
 
-Por eso puedes tener muchas skills sin que Claude se sature. También por eso la descripción es lo que más cuidado necesita: si no dice cuándo usar la skill, Claude no la va a usar.
+Por eso puedes tener muchas skills sin que Claude se sature. También por eso **la descripción es lo que más cuidado necesita**: si no dice cuándo usar la skill, Claude no la va a usar.
 
 ## En qué se diferencia de un prompt o de un proyecto
 
-Un prompt sirve para una conversación. Las instrucciones de un proyecto, o un `CLAUDE.md`, aplican siempre dentro de ese proyecto. Una skill se activa sola en cualquier conversación cuando la tarea encaja, y puede traer sus propios scripts y archivos.
+Un prompt sirve para una conversación. Las instrucciones de un proyecto, o un `CLAUDE.md`, aplican siempre dentro de ese proyecto. **Una skill se activa sola en cualquier conversación cuando la tarea encaja**, y puede traer sus propios scripts y archivos.
 
 ## Cómo crear una skill
 
@@ -57,11 +57,11 @@ Basta con pedirle: *"Crea una skill para hacer carruseles de Instagram con mis m
 
 ### Opción 2: a partir de algo que ya funcionó
 
-Es la forma que más uso. Primero hago la tarea con Claude paso a paso, corrigiendo lo que haga falta. Cuando el resultado me gusta, le pido: *"Guarda todo este proceso como una skill"*. Así la skill copia un flujo que ya funcionó al menos una vez.
+*Es la forma que más uso.* Primero hago la tarea con Claude paso a paso, corrigiendo lo que haga falta. Cuando el resultado me gusta, le pido: *"Guarda todo este proceso como una skill"*. Así **la skill copia un flujo que ya funcionó al menos una vez**.
 
 ### Dónde viven
 
-Las skills se guardan en tu cuenta de claude.ai, en la sección de skills de la configuración. Desde ahí puedes activarlas, desactivarlas o subir una nueva. Las skills de tu cuenta también están disponibles en las sesiones de Claude Code.
+Las skills se guardan en tu cuenta de claude.ai, en la sección de skills de la configuración. Desde ahí puedes activarlas, desactivarlas o subir una nueva. Las skills de tu cuenta **también están disponibles en las sesiones de Claude Code**.
 
 ## Consejos para escribir una buena skill
 
@@ -69,9 +69,9 @@ Las skills se guardan en tu cuenta de claude.ai, en la sección de skills de la 
 - Al inicio, pon una tabla de qué archivo está dónde: perfiles, plantillas, guías y scripts.
 - Escribe el flujo en pasos numerados y marca dónde Claude debe esperar tu aprobación.
 - Las reglas que no se negocian van escritas tal cual, por ejemplo "no inventes cifras ni testimonios".
-- Deja una sección de errores. Cada vez que algo falla, lo anotas ahí con la solución.
+- **Deja una sección de errores.** Cada vez que algo falla, lo anotas ahí con la solución.
 - Guarda los datos (colores, logos, contactos) en archivos aparte para cambiarlos sin tocar las instrucciones.
-- Nunca guardes claves dentro de la skill. Van como secretos del entorno.
+- **Nunca guardes claves dentro de la skill.** Van como secretos del entorno.
 
 ## Las skills que uso
 
@@ -95,4 +95,4 @@ Las skills se guardan en tu cuenta de claude.ai, en la sección de skills de la 
 
 ## Por dónde empezar
 
-Piensa en algo que le pides a Claude cada semana. Hazlo una vez con calma, corrigiendo cada detalle, y al final pídele que lo guarde como skill. La próxima vez solo dirás *"lo de siempre, pero sobre X"*.
+*Piensa en algo que le pides a Claude cada semana.* Hazlo una vez con calma, corrigiendo cada detalle, y al final **pídele que lo guarde como skill**. La próxima vez solo dirás *"lo de siempre, pero sobre X"*.

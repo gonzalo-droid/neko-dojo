@@ -75,13 +75,34 @@ export function getPosts(locale: Locale): PostMeta[] {
     .sort((a, b) => b.date.localeCompare(a.date));
 }
 
-export function getPost(locale: Locale, slug: string): (PostMeta & { html: string }) | null {
+export type TocItem = { id: string; text: string };
+
+const ENTITIES: Record<string, string> = { "&amp;": "&", "&quot;": '"', "&#39;": "'", "&lt;": "<", "&gt;": ">" };
+
+/** Gives every <h2> an id (from its text) so the side index can link to it. */
+function withHeadingIds(html: string): { html: string; toc: TocItem[] } {
+  const toc: TocItem[] = [];
+  const seen = new Map<string, number>();
+  const out = html.replace(/<h2>([\s\S]*?)<\/h2>/g, (_, inner: string) => {
+    const text = inner.replace(/<[^>]+>/g, "").replace(/&(amp|quot|#39|lt|gt);/g, (e) => ENTITIES[e]).trim();
+    const base =
+      text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "seccion";
+    const n = seen.get(base) ?? 0;
+    seen.set(base, n + 1);
+    const id = n ? `${base}-${n + 1}` : base;
+    toc.push({ id, text });
+    return `<h2 id="${id}">${inner}</h2>`;
+  });
+  return { html: out, toc };
+}
+
+export function getPost(locale: Locale, slug: string): (PostMeta & { html: string; toc: TocItem[] }) | null {
   const meta = getPosts(locale).find((p) => p.slug === slug);
   if (!meta) return null;
   const md = fs.readFileSync(path.join(ROOT, locale, `${slug}.md`), "utf8");
   // The page already shows the title as <h1>; drop the article's own leading heading.
   const body = md.replace(/^\s*#\s+.*\n/, "");
-  return { ...meta, html: marked.parse(body, { async: false }) as string };
+  return { ...meta, ...withHeadingIds(marked.parse(body, { async: false }) as string) };
 }
 
 export function formatDate(date: string, locale: Locale): string {
