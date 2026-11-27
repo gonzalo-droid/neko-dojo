@@ -1,4 +1,4 @@
-# Testing en Android: Guía completa
+# Testing en Android
 
 En este artículo repaso los tipos de pruebas que se escriben en Android (unitarias, de integración, de UI, de ViewModels y de coroutines) y las herramientas para cada una.
 

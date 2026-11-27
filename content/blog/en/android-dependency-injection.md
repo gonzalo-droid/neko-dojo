@@ -141,9 +141,9 @@ object TestAppModule {
 
 ### Injection
 
-- Inject at the highest possible level.
 - Use constructor injection whenever you can.
-- Avoid dependency injection in UI classes.
+- Keep field injection (`@Inject lateinit var`) for classes Android creates, such as Activities, Fragments and Services.
+- In Activities and Fragments, inject only what the view needs and leave the logic in the ViewModel.
 
 ### Tests
 
@@ -171,8 +171,15 @@ class MyWorker @AssistedInject constructor(
     @Assisted context: Context,
     @Assisted workerParams: WorkerParameters,
     private val repository: Repository
-) : CoroutineWorker(context, workerParams)
+) : CoroutineWorker(context, workerParams) {
+    override suspend fun doWork(): Result {
+        // ...
+        return Result.success()
+    }
+}
 ```
+
+For WorkManager to use Hilt, the `Application` class implements `Configuration.Provider` with an injected `HiltWorkerFactory`, and WorkManager's default initializer is turned off in the manifest.
 
 ## Benefits of Hilt
 

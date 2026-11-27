@@ -8,7 +8,8 @@
       "JUnit",
       "Espresso",
       "Mockito"
-    ]
+    ],
+    "image": "/blog/android-testing-en.webp"
   },
   "kotlin-multiplatform": {
     "title": "Building Apps with Kotlin Multiplatform",
@@ -19,7 +20,8 @@
       "Android",
       "iOS",
       "Cross-platform"
-    ]
+    ],
+    "image": "/blog/kotlin-multiplatform-en.webp"
   },
   "android-ai": {
     "title": "Integrating AI into Android Apps",
@@ -30,7 +32,8 @@
       "OpenAI",
       "ML",
       "Kotlin"
-    ]
+    ],
+    "image": "/blog/android-ai-en.webp"
   },
   "android-mvvm": {
     "title": "MVVM Architecture on Android",
@@ -41,7 +44,8 @@
       "Architecture",
       "Kotlin",
       "ViewModel"
-    ]
+    ],
+    "image": "/blog/android-mvvm-en.webp"
   },
   "android-coroutines": {
     "title": "Coroutines on Android: Modern Asynchronous Programming",
@@ -51,7 +55,8 @@
       "Coroutines",
       "Kotlin",
       "Async"
-    ]
+    ],
+    "image": "/blog/android-coroutines-en.webp"
   },
   "android-dependency-injection": {
     "title": "Dependency Injection on Android with Hilt",
@@ -62,7 +67,8 @@
       "Architecture",
       "Kotlin",
       "Testing"
-    ]
+    ],
+    "image": "/blog/android-dependency-injection-en.webp"
   },
   "android-jetpack-compose": {
     "title": "Jetpack Compose: The Future of UI on Android",
@@ -72,7 +78,8 @@
       "Jetpack Compose",
       "UI",
       "Kotlin"
-    ]
+    ],
+    "image": "/blog/android-jetpack-compose-en.webp"
   },
   "vercel-supabase-claude": {
     "title": "Vercel, Supabase and Claude: automatic deployments step by step",
