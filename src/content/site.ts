@@ -13,7 +13,7 @@ export const SITE_URL = (
 ).replace(/\/$/, "");
 
 export const STUDIO_NAME = "Nekodojo";
-export const CONTACT_EMAIL = "gonzalo.lozg@gmail.com";
+export const CONTACT_EMAIL = "nekodojo.apps@gmail.com";
 /** Public WhatsApp that already appeared on the gonzalo-lozg.me portfolio. */
 export const WHATSAPP_URL = "https://wa.me/51924262747";
 /** The studio's Instagram: studio pages, structured data and app waitlist fallbacks. */

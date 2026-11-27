@@ -17,7 +17,7 @@ const factsEs = {
     "Responsable: NekoDojo",
     "Paquete Android: com.gondroid.mtcquiz",
     "Bundle ID iOS: com.gonzadev.mtcquiz",
-    "Contacto: gonzalo.lozg@gmail.com",
+    "Contacto: nekodojo.apps@gmail.com",
     "Jurisdicción: Perú",
   ],
 };
@@ -28,14 +28,14 @@ const factsEn = {
     "Controller: NekoDojo",
     "Android package: com.gondroid.mtcquiz",
     "iOS bundle ID: com.gonzadev.mtcquiz",
-    "Contact: gonzalo.lozg@gmail.com",
+    "Contact: nekodojo.apps@gmail.com",
     "Jurisdiction: Peru",
   ],
 };
 
 const contactEs = {
   list: [
-    "Correo electrónico: gonzalo.lozg@gmail.com",
+    "Correo electrónico: nekodojo.apps@gmail.com",
     "Responsable: NekoDojo",
     "Aplicación: MTCQuiz — com.gondroid.mtcquiz (Android) / com.gonzadev.mtcquiz (iOS)",
   ],
@@ -43,7 +43,7 @@ const contactEs = {
 
 const contactEn = {
   list: [
-    "Email: gonzalo.lozg@gmail.com",
+    "Email: nekodojo.apps@gmail.com",
     "Controller: NekoDojo",
     "App: MTCQuiz — com.gondroid.mtcquiz (Android) / com.gonzadev.mtcquiz (iOS)",
   ],
@@ -62,7 +62,7 @@ const privacyEs: LegalDoc = {
     {
       heading: "2. Responsable del tratamiento",
       blocks: [
-        "El responsable del tratamiento de los datos descritos en esta política es NekoDojo, desarrollador de MTCQuiz. Para cualquier consulta relacionada con privacidad, protección de datos o el ejercicio de tus derechos, puedes escribir a gonzalo.lozg@gmail.com.",
+        "El responsable del tratamiento de los datos descritos en esta política es NekoDojo, desarrollador de MTCQuiz. Para cualquier consulta relacionada con privacidad, protección de datos o el ejercicio de tus derechos, puedes escribir a nekodojo.apps@gmail.com.",
       ],
     },
     {
@@ -226,7 +226,7 @@ const privacyEs: LegalDoc = {
             "Oposición: oponerte al tratamiento de tus datos en determinadas circunstancias.",
           ],
         },
-        "Puedes ejercer cualquiera de estos derechos escribiendo a gonzalo.lozg@gmail.com. Responderemos tu solicitud en un plazo razonable conforme a la normativa aplicable. Ten en cuenta que la mayoría de tus datos (resultados, racha, preferencias) ya están bajo tu control directo: puedes eliminarlos en cualquier momento borrando los datos de la app o desinstalándola.",
+        "Puedes ejercer cualquiera de estos derechos escribiendo a nekodojo.apps@gmail.com. Responderemos tu solicitud en un plazo razonable conforme a la normativa aplicable. Ten en cuenta que la mayoría de tus datos (resultados, racha, preferencias) ya están bajo tu control directo: puedes eliminarlos en cualquier momento borrando los datos de la app o desinstalándola.",
       ],
     },
     {
@@ -261,7 +261,7 @@ const privacyEn: LegalDoc = {
     {
       heading: "2. Data controller",
       blocks: [
-        "The controller of the data described in this policy is NekoDojo, developer of MTCQuiz. For any question about privacy, data protection or exercising your rights, write to gonzalo.lozg@gmail.com.",
+        "The controller of the data described in this policy is NekoDojo, developer of MTCQuiz. For any question about privacy, data protection or exercising your rights, write to nekodojo.apps@gmail.com.",
       ],
     },
     {
@@ -423,7 +423,7 @@ const privacyEn: LegalDoc = {
             "Objection: object to the processing of your data in certain circumstances.",
           ],
         },
-        "You can exercise any of these rights by writing to gonzalo.lozg@gmail.com. We'll answer your request within a reasonable time under the applicable rules. Keep in mind that most of your data (results, streak, preferences) is already under your direct control: you can delete it at any time by clearing the app's data or uninstalling it.",
+        "You can exercise any of these rights by writing to nekodojo.apps@gmail.com. We'll answer your request within a reasonable time under the applicable rules. Keep in mind that most of your data (results, streak, preferences) is already under your direct control: you can delete it at any time by clearing the app's data or uninstalling it.",
       ],
     },
     {
