@@ -296,7 +296,7 @@ export const apps: AppEntry[] = [
     // The app opens these pages from AppConfig.kt (this site is the original).
     legal: {
       mode: "live",
-      privacy: "2026-11-25",
+      privacy: "2026-11-27",
       terms: "2026-11-18",
     },
     support: {

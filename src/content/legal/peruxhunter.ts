@@ -22,6 +22,11 @@ import type { LegalDoc } from "./types";
  * 2026-11-19, next build (changes given by the owner, NOT re-checked against the app code): the "hide ads"
  * option (ads_hidden) no longer exists; banners also at the bottom of each record; a rewarded ad before sharing
  * a poster (no ad if none is available or there is no UMP consent); recompensas.pe opens in a WebView from Settings.
+ * 2026-11-27 (HunterXPeru 2.0.3, checked against the code): Android backs up only the Room database (saved posters +
+ *   weekly list cache) and DataStore preferences (D41, data_extraction_rules.xml); iOS keeps them in Documents, which
+ *   iCloud / device backups include. recompensas.pe and gob.pe/mininter open in Custom Tabs / SFSafariViewController
+ *   (D42); the WebView is only for these legal pages. Settings → Contact drafts an email with app version, device
+ *   model and OS version; the user sends it.
  * If the app changes any of this, update this file and the dates in src/content/apps.ts.
  */
 
@@ -39,7 +44,7 @@ const contactEn = {
 
 const privacyEs: LegalDoc = {
   intro: [
-    "Esta política explica qué datos trata Cazadores Perú, una app de Nekodojo que muestra a las personas buscadas por el Programa de Recompensas del Ministerio del Interior. En resumen: la app no tiene cuentas ni servidor propio, no envía ni guarda tus reportes, guarda tus carteles solo en tu teléfono y muestra anuncios de Google AdMob, que sí pueden recopilar datos de tu dispositivo según tu consentimiento.",
+    "Esta política explica qué datos trata Cazadores Perú, una app de Nekodojo que muestra a las personas buscadas por el Programa de Recompensas del Ministerio del Interior. En resumen: la app no tiene cuentas ni servidor propio, no envía ni guarda tus reportes, guarda tus carteles en tu teléfono (y en la copia de seguridad del sistema, si la usas) y muestra anuncios de Google AdMob, que sí pueden recopilar datos de tu dispositivo según tu consentimiento.",
   ],
   sections: [
     {
@@ -86,7 +91,9 @@ const privacyEs: LegalDoc = {
             "Tus preferencias: el tema (sistema, claro u oscuro) y si ya viste la introducción.",
           ],
         },
-        "Estos datos no salen de tu teléfono y nosotros no podemos verlos. Puedes quitar un cartel desde Mis carteles, y borrar todo lo demás borrando los datos de la app en los ajustes del sistema o desinstalándola.",
+        "Nosotros no podemos ver estos datos: no salen de tu teléfono hacia ningún servidor nuestro.",
+        "Copia de seguridad del sistema: en Android, si tienes activada la copia de seguridad de Google, el sistema incluye en ella tus carteles guardados, tus preferencias y la copia de la lista semanal, para restaurarlos si cambias de teléfono; las fotos temporales no se incluyen. En iPhone, la copia de iCloud o la de tu computadora incluye los datos de la app. Esas copias las guarda Google o Apple en tu cuenta, según sus propias políticas, y nosotros no tenemos acceso a ellas. Puedes desactivarlas en los ajustes de tu teléfono.",
+        "Puedes quitar un cartel desde Mis carteles, y borrar todo lo demás borrando los datos de la app en los ajustes del sistema o desinstalándola.",
       ],
     },
     {
@@ -141,7 +148,7 @@ const privacyEs: LegalDoc = {
         },
         "El informe de Firebase Crashlytics solo se envía cuando la app se cierra por un fallo. Incluye datos técnicos: dónde falló el código, el modelo del teléfono, las versiones del sistema y de la app, y un identificador de instalación de Firebase que no te identifica. No incluye tu nombre, lo que buscas, tus carteles ni tus reportes, y no se usa para publicidad. Nos sirve solo para encontrar y corregir errores.",
         "En esas conexiones la app solo envía lo necesario para pedir los datos (por ejemplo, el nombre que buscas cuando se usa la API de respaldo) y se identifica con su nombre y versión. Como cualquier servicio en internet, esos proveedores pueden registrar datos técnicos de la conexión, como la dirección IP, por seguridad y para su funcionamiento. Este sitio no usa publicidad, y solo usa Google Analytics si lo aceptas en su aviso de cookies.",
-        "Si abres “Fuente de datos: recompensas.pe” desde Ajustes, la web oficial del Programa de Recompensas se carga dentro de la app. Ese sitio, del Ministerio del Interior, recibe los mismos datos técnicos que si lo abrieras en tu navegador (por ejemplo, la dirección IP) y los trata según sus propias condiciones. Los enlaces a otros sitios se abren en tu navegador.",
+        "Si abres recompensas.pe o la página del Ministerio del Interior en gob.pe desde Ajustes o desde una ficha, se abren en el navegador integrado de tu teléfono (Chrome Custom Tabs en Android, Safari en iPhone) sin salir de la app. La app no ve lo que haces en esas páginas. Esos sitios, del Estado peruano, reciben los mismos datos técnicos que si los abrieras en tu navegador (por ejemplo, la dirección IP) y los tratan según sus propias condiciones. Los enlaces a otros sitios se abren en tu navegador.",
       ],
     },
     {
@@ -210,14 +217,18 @@ const privacyEs: LegalDoc = {
     },
     {
       heading: "18. Contacto",
-      blocks: ["Para cualquier consulta sobre esta política o sobre tus datos:", contactEs],
+      blocks: [
+        "Para cualquier consulta sobre esta política o sobre tus datos:",
+        contactEs,
+        "Si escribes desde Ajustes → Contacto y reportar un problema, la app prepara el correo con la versión de la app, el modelo del teléfono y la versión del sistema, para ayudarnos a encontrar el error. Puedes ver y borrar esos datos antes de enviarlo; solo los recibimos si lo envías.",
+      ],
     },
   ],
 };
 
 const privacyEn: LegalDoc = {
   intro: [
-    "This policy explains what data Cazadores Perú handles. It's a Nekodojo app that shows the people wanted by the Rewards Program of Peru's Ministry of the Interior. In short: the app has no accounts and no server of its own, doesn't send or store your reports, keeps your posters only on your phone, and shows Google AdMob ads, which may collect data from your device depending on your consent.",
+    "This policy explains what data Cazadores Perú handles. It's a Nekodojo app that shows the people wanted by the Rewards Program of Peru's Ministry of the Interior. In short: the app has no accounts and no server of its own, doesn't send or store your reports, keeps your posters on your phone (and in the system backup, if you use it), and shows Google AdMob ads, which may collect data from your device depending on your consent.",
   ],
   sections: [
     {
@@ -264,7 +275,9 @@ const privacyEn: LegalDoc = {
             "Your preferences: the theme (system, light or dark) and whether you've seen the introduction.",
           ],
         },
-        "This data never leaves your phone and we can't see it. You can remove a poster from My posters, and delete everything else by clearing the app's data in your system settings or uninstalling it.",
+        "We can't see this data: it never leaves your phone for any server of ours.",
+        "System backup: on Android, if you have Google backup turned on, the system includes your saved posters, your preferences and the copy of the weekly list in it, to restore them if you change phones; temporary images aren't included. On iPhone, the iCloud backup or your computer's backup includes the app's data. Google or Apple keep those backups in your account under their own policies, and we have no access to them. You can turn them off in your phone's settings.",
+        "You can remove a poster from My posters, and delete everything else by clearing the app's data in your system settings or uninstalling it.",
       ],
     },
     {
@@ -319,7 +332,7 @@ const privacyEn: LegalDoc = {
         },
         "The Firebase Crashlytics report is only sent when the app closes because of a failure. It includes technical data: where the code failed, the phone model, the system and app versions, and a Firebase installation ID that doesn't identify you. It doesn't include your name, what you search for, your posters or your reports, and it isn't used for ads. We use it only to find and fix bugs.",
         "Over those connections the app only sends what it needs to request the data (for example, the name you search for when the fallback API is used) and identifies itself with its name and version. Like any internet service, those providers may log technical connection data, such as the IP address, for security and to keep running. This site uses no advertising, and only uses Google Analytics if you accept it in its cookie notice.",
-        "If you open “Data source: recompensas.pe” from Settings, the official website of the Rewards Program loads inside the app. That site, run by the Ministry of the Interior, receives the same technical data as if you opened it in your browser (for example, the IP address) and handles it under its own terms. Links to other sites open in your browser.",
+        "If you open recompensas.pe or the Ministry of the Interior's page on gob.pe from Settings or from a record, they open in your phone's built-in browser (Chrome Custom Tabs on Android, Safari on iPhone) without leaving the app. The app doesn't see what you do on those pages. Those sites, run by the Peruvian State, receive the same technical data as if you opened them in your browser (for example, the IP address) and handle it under their own terms. Links to other sites open in your browser.",
       ],
     },
     {
@@ -386,7 +399,11 @@ const privacyEn: LegalDoc = {
     },
     {
       heading: "18. Contact",
-      blocks: ["For any question about this policy or your data:", contactEn],
+      blocks: [
+        "For any question about this policy or your data:",
+        contactEn,
+        "If you write from Settings → Contact and report a problem, the app drafts the email with the app version, the phone model and the system version, to help us find the bug. You can see and delete that data before sending it; we only receive it if you send it.",
+      ],
     },
   ],
 };
