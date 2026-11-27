@@ -304,3 +304,20 @@ body {
 .article-body blockquote { border-left: 3px solid var(--color-accent); padding-left: 1rem; color: var(--color-muted); }
 .article-body table { width: 100%; border-collapse: collapse; font-size: 0.9rem; display: block; overflow-x: auto; }
 .article-body th, .article-body td { border: 1px solid var(--color-line); padding: 0.5rem 0.7rem; text-align: left; }
+
+/* ── SubTrack ────────────────────────────────────── */
+.theme-subtrack {
+  --app-danger: #ff453a;
+  color-scheme: dark;
+  --app-canvas: #0a0a0c;
+  --app-surface: #131316;
+  --app-ink: #f5f5f7;
+  --app-muted: #9a9aa3;
+  --app-accent: #32d74b;
+  --app-on-accent: #0a0a0c;
+  --app-accent2: #ffb340;
+  --app-line: #242428;
+  --app-display: var(--font-inter), system-ui, sans-serif;
+  --app-body: var(--font-inter), system-ui, sans-serif;
+}
+body:has(.theme-subtrack) { background-color: #0a0a0c; }
