@@ -1,4 +1,4 @@
-# Testing on Android: A Complete Guide
+# Testing on Android
 
 In this article I go over the kinds of tests you write on Android (unit, integration, UI, ViewModel and coroutine tests) and the tools for each one.
 

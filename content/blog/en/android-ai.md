@@ -24,31 +24,31 @@ recognizer.process(image)
     }
 ```
 
-### 2. OpenAI API
-```kotlin
-// OpenAI integration example
-class OpenAIService {
-    private val client = OkHttpClient()
-    private val gson = Gson()
+### 2. The OpenAI API through your backend
 
-    suspend fun generateText(prompt: String): String {
+The OpenAI key should not ship inside the app: anyone can pull it out of the APK. The app calls an endpoint of yours, and that server calls the OpenAI API with the key stored as a secret.
+
+```kotlin
+// The app never sees the OpenAI key
+class AiService(private val client: OkHttpClient = OkHttpClient()) {
+    private val jsonType = "application/json".toMediaType()
+
+    suspend fun generateText(prompt: String): String = withContext(Dispatchers.IO) {
+        val body = JSONObject().put("prompt", prompt).toString().toRequestBody(jsonType)
         val request = Request.Builder()
-            .url("https://api.openai.com/v1/completions")
-            .addHeader("Authorization", "Bearer $apiKey")
-            .post(RequestBody.create(
-                MediaType.parse("application/json"),
-                gson.toJson(ChatRequest(prompt))
-            ))
+            .url("https://api.your-backend.com/ai/generate") // your endpoint, not api.openai.com
+            .post(body)
             .build()
 
-        return withContext(Dispatchers.IO) {
-            client.newCall(request).execute().use { response ->
-                // Process response
-            }
+        client.newCall(request).execute().use { response ->
+            if (!response.isSuccessful) throw IOException("HTTP ${response.code}")
+            JSONObject(response.body!!.string()).getString("text") // you define the response format
         }
     }
 }
 ```
+
+On the server, that endpoint uses OpenAI's Responses or Chat Completions API (the legacy `/v1/completions` endpoint is no longer recommended) and returns only the text the app needs.
 
 ### 3. TensorFlow Lite
 ```kotlin

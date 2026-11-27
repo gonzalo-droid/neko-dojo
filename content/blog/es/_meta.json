@@ -10,7 +10,7 @@
       "Espresso",
       "Mockito"
     ],
-    "image": "/about/projects/app_noteai.webp",
+    "image": "/blog/android-testing.webp",
     "categories": [
       "android"
     ]
@@ -26,7 +26,7 @@
       "iOS",
       "Multiplataforma"
     ],
-    "image": "/about/projects/app_cixcash.webp",
+    "image": "/blog/kotlin-multiplatform.webp",
     "categories": [
       "kmm",
       "android",
@@ -44,7 +44,7 @@
       "ML",
       "Kotlin"
     ],
-    "image": "/about/projects/app_noteai.webp",
+    "image": "/blog/android-ai.webp",
     "categories": [
       "android",
       "ia"
@@ -61,7 +61,7 @@
       "Kotlin",
       "ViewModel"
     ],
-    "image": "/about/projects/app_ulearning.webp",
+    "image": "/blog/android-mvvm.webp",
     "categories": [
       "android"
     ]
@@ -76,7 +76,7 @@
       "Kotlin",
       "Asíncrono"
     ],
-    "image": "/about/projects/app_noteai.webp",
+    "image": "/blog/android-coroutines.webp",
     "categories": [
       "android"
     ]
@@ -92,7 +92,7 @@
       "Kotlin",
       "Testing"
     ],
-    "image": "/about/projects/app_crm.webp",
+    "image": "/blog/android-dependency-injection.webp",
     "categories": [
       "android"
     ]
@@ -107,7 +107,7 @@
       "UI",
       "Kotlin"
     ],
-    "image": "/about/projects/app_erp.webp",
+    "image": "/blog/android-jetpack-compose.webp",
     "categories": [
       "android"
     ]
