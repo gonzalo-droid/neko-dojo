@@ -1,10 +1,10 @@
 # What a Claude skill is, how to create one and which ones I use
 
-When you repeat the same task with Claude (making a reel, reviewing a text, preparing the week's news), you end up explaining the same thing over and over. A skill solves that: it is a manual Claude reads only when it needs it.
+When you repeat the same task with Claude (making a reel, reviewing a text, preparing the week's news), you end up explaining the same thing over and over. A skill solves that: **it is a manual Claude reads only when it needs it**.
 
 ## What a skill is
 
-A skill is a folder with a main file, `SKILL.md`, and optionally scripts, templates and reference documents:
+A skill is **a folder with a main file**, `SKILL.md`, and optionally scripts, templates and reference documents:
 
 ```text
 reels-motion/
@@ -31,15 +31,15 @@ description: "Designs and generates Instagram carousels ready to upload…
 
 Claude does not read every skill all the time:
 
-1. At the start, it only sees each skill's name and description.
+1. At the start, **it only sees each skill's name and description**.
 2. When your request matches a description, it opens that `SKILL.md` and follows its instructions.
 3. It opens files in `references/` or `scripts/` only when a step needs them.
 
-That is why you can have many skills without overloading Claude. It is also why the description needs the most care: if it does not say when to use the skill, Claude will not use it.
+That is why you can have many skills without overloading Claude. It is also why **the description needs the most care**: if it does not say when to use the skill, Claude will not use it.
 
 ## How it differs from a prompt or a project
 
-A prompt works for one conversation. A project's instructions, or a `CLAUDE.md`, always apply inside that project. A skill turns on by itself in any conversation when the task matches, and it can bring its own scripts and files.
+A prompt works for one conversation. A project's instructions, or a `CLAUDE.md`, always apply inside that project. **A skill turns on by itself in any conversation when the task matches**, and it can bring its own scripts and files.
 
 ## How to create a skill
 
@@ -57,11 +57,11 @@ Just ask: *"Create a skill to make Instagram carousels for my brands"*.
 
 ### Option 2: from something that already worked
 
-This is the way I use most. First I do the task with Claude step by step, correcting whatever needs it. When I like the result, I ask: *"Save this whole process as a skill"*. That way the skill copies a workflow that has worked at least once.
+*This is the way I use most.* First I do the task with Claude step by step, correcting whatever needs it. When I like the result, I ask: *"Save this whole process as a skill"*. That way **the skill copies a workflow that has worked at least once**.
 
 ### Where they live
 
-Skills are saved in your claude.ai account, in the skills section of the settings. From there you can turn them on or off, or upload a new one. Your account's skills are also available in Claude Code sessions.
+Skills are saved in your claude.ai account, in the skills section of the settings. From there you can turn them on or off, or upload a new one. Your account's skills are **also available in Claude Code sessions**.
 
 ## Tips for writing a good skill
 
@@ -69,9 +69,9 @@ Skills are saved in your claude.ai account, in the skills section of the setting
 - At the top, add a table of which file is where: profiles, templates, guides and scripts.
 - Write the workflow as numbered steps and mark where Claude must wait for your approval.
 - Write the non-negotiable rules as they are, for example "do not make up figures or testimonials".
-- Keep a section of mistakes. Every time something breaks, you write it down there with the fix.
+- **Keep a section of mistakes.** Every time something breaks, you write it down there with the fix.
 - Put the data (colors, logos, contacts) in separate files so you can change it without touching the instructions.
-- Never store keys inside the skill. They go in as environment secrets.
+- **Never store keys inside the skill.** They go in as environment secrets.
 
 ## The skills I use
 
@@ -95,4 +95,4 @@ Skills are saved in your claude.ai account, in the skills section of the setting
 
 ## Where to start
 
-Think of something you ask Claude for every week. Do it once carefully, correcting every detail, and at the end ask it to save it as a skill. Next time you will just say *"the usual, but about X"*.
+*Think of something you ask Claude for every week.* Do it once carefully, correcting every detail, and at the end **ask it to save it as a skill**. Next time you will just say *"the usual, but about X"*.

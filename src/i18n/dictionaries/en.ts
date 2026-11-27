@@ -103,6 +103,7 @@ const en: Dictionary = {
     eyebrow: "Development notes",
     lead: "What I learn building apps: Android, Kotlin Multiplatform, web, AI and marketing.",
     back: "Blog",
+    toc: "On this page",
     translationNote: "Translated from the original Spanish article.",
     categoriesLabel: "Filter by category",
     all: "All",
