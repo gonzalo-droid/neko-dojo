@@ -175,5 +175,23 @@
       "ia"
     ],
     "image": "/blog/skills-claude.webp"
+  },
+  "claude-code-apps-android-ios-fase-1": {
+    "title": "Cómo uso Claude Code en mis apps Android e iOS: fase 1",
+    "description": "Cómo uso hoy Claude Code en mis apps Android, iOS y KMP: skills compartidas, reglas de arquitectura, sesiones en paralelo y revisión desde el celular.",
+    "date": "2026-11-27",
+    "tags": [
+      "Claude Code",
+      "IA",
+      "Android",
+      "iOS",
+      "Kotlin Multiplatform"
+    ],
+    "categories": [
+      "ia",
+      "android",
+      "ios",
+      "kmm"
+    ]
   }
 }

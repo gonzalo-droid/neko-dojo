@@ -119,5 +119,16 @@
       "AI"
     ],
     "image": "/blog/tipos-de-skills-claude-en.webp"
+  },
+  "claude-code-apps-android-ios-fase-1": {
+    "title": "How I use Claude Code in my Android and iOS apps: phase 1",
+    "description": "How I use Claude Code today across my Android, iOS and KMP apps: shared skills, architecture rules, parallel sessions and reviewing from my phone.",
+    "tags": [
+      "Claude Code",
+      "AI",
+      "Android",
+      "iOS",
+      "Kotlin Multiplatform"
+    ]
   }
 }
