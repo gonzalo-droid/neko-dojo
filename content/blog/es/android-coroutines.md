@@ -1,14 +1,14 @@
 # Coroutines en Android: Programación asíncrona moderna
 
-Las coroutines de Kotlin son una herramienta poderosa para manejar operaciones asíncronas en Android. En este artículo, exploraremos cómo utilizarlas efectivamente en el desarrollo de aplicaciones Android.
+Las coroutines de Kotlin sirven para manejar operaciones asíncronas en Android. En este artículo reviso los conceptos básicos, algunos patrones comunes, cómo se usan con ViewModel y Room, y cómo probarlas.
 
-## ¿Qué son las Coroutines?
+## ¿Qué son las coroutines?
 
-Las coroutines son una forma de programación asíncrona que permite escribir código secuencial para operaciones asíncronas. En Android, son especialmente útiles para manejar operaciones de red, base de datos y otras tareas que no deben bloquear el hilo principal.
+Con coroutines escribes código secuencial para operaciones asíncronas. En Android son útiles sobre todo para llamadas de red, acceso a base de datos y otras tareas que no deben bloquear el hilo principal.
 
 ## Conceptos básicos
 
-### 1. Scope y Context
+### 1. Scope y context
 ```kotlin
 class MyViewModel : ViewModel() {
     // Scope específico para ViewModel
@@ -97,7 +97,7 @@ class UserViewModel(
 }
 ```
 
-### 2. Room Database
+### 2. Base de datos Room
 ```kotlin
 @Dao
 interface UserDao {
@@ -117,22 +117,25 @@ class UserRepository(
 }
 ```
 
-## Mejores prácticas
+## Buenas prácticas
 
-1. **Scopes apropiados**
-   - Usar `viewModelScope` en ViewModels
-   - Usar `lifecycleScope` en Activities/Fragments
-   - Crear scopes personalizados cuando sea necesario
+### Scopes
 
-2. **Manejo de errores**
-   - Implementar try-catch en operaciones críticas
-   - Usar `Result` para encapsular resultados
-   - Manejar errores de red específicamente
+- Usa `viewModelScope` en ViewModels.
+- Usa `lifecycleScope` en Activities/Fragments.
+- Crea scopes personalizados solo cuando los necesites.
 
-3. **Performance**
-   - Elegir el dispatcher correcto
-   - Evitar operaciones bloqueantes
-   - Usar `withContext` para cambiar de contexto
+### Manejo de errores
+
+- Envuelve en try-catch las operaciones críticas.
+- Usa `Result` para encapsular resultados.
+- Trata los errores de red por separado.
+
+### Rendimiento
+
+- Elige el dispatcher correcto.
+- Evita operaciones bloqueantes.
+- Usa `withContext` para cambiar de contexto.
 
 ## Testing
 
@@ -154,14 +157,6 @@ fun testUserLoading() = runTest {
 }
 ```
 
-## Ventajas de las Coroutines
+## Ventajas de las coroutines
 
-- **Código más legible y mantenible**
-- **Mejor manejo de errores**
-- **Integración con otras APIs de Kotlin**
-- **Menos código boilerplate**
-- **Mejor control del ciclo de vida**
-
-## Conclusión
-
-Las coroutines son una herramienta esencial para el desarrollo moderno de Android. Su capacidad para manejar operaciones asíncronas de manera elegante y eficiente las convierte en la opción preferida para la programación asíncrona en Kotlin. 
+El código queda más legible y fácil de mantener, con menos boilerplate. Los errores se manejan mejor, se integran con otras APIs de Kotlin y, con scopes como `viewModelScope`, controlas mejor el ciclo de vida.

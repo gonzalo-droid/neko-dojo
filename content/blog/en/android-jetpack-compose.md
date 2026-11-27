@@ -1,14 +1,14 @@
 # Jetpack Compose: The Future of UI on Android
 
-Jetpack Compose is Android's modern toolkit for building native UI, and it simplifies and speeds up user interface development. In this article, we'll explore its main features and how to use it effectively.
+Jetpack Compose is Android's current toolkit for building native UI, and it simplifies and speeds up interface development. Here I go over its main features and how to use it well.
 
-## What Is Jetpack Compose?
+## What is Jetpack Compose?
 
-Jetpack Compose is a declarative UI toolkit that lets you build native Android user interfaces using Kotlin. Unlike the traditional View system, Compose uses an approach based on composable functions.
+It's a declarative UI toolkit for building native Android interfaces in Kotlin. Instead of the traditional View system, you build the interface out of composable functions.
 
-## Basic Concepts
+## Basic concepts
 
-### 1. Composable Functions
+### 1. Composable functions
 ```kotlin
 @Composable
 fun Greeting(name: String) {
@@ -26,7 +26,7 @@ fun App() {
 }
 ```
 
-### 2. State and Recomposition
+### 2. State and recomposition
 ```kotlin
 @Composable
 fun Counter() {
@@ -41,7 +41,7 @@ fun Counter() {
 }
 ```
 
-## Main Components
+## Main components
 
 ### 1. Layouts
 ```kotlin
@@ -73,7 +73,7 @@ fun LayoutExample() {
 }
 ```
 
-### 2. Lists and Grids
+### 2. Lists and grids
 ```kotlin
 @Composable
 fun ListExample(items: List<String>) {
@@ -90,7 +90,7 @@ fun ListExample(items: List<String>) {
 }
 ```
 
-## Themes and Styles
+## Themes and styles
 
 ### 1. Material Design 3
 ```kotlin
@@ -108,7 +108,7 @@ fun ThemedApp() {
 }
 ```
 
-### 2. Custom Modifiers
+### 2. Custom modifiers
 ```kotlin
 fun Modifier.cardStyle() = this
     .padding(16.dp)
@@ -145,22 +145,25 @@ fun NavigationExample() {
 }
 ```
 
-## Best Practices
+## Best practices
 
-1. **Composition vs. inheritance**
-   - Prefer composition over inheritance
-   - Build reusable components
-   - Keep composable functions small
+### Composition vs. inheritance
 
-2. **State management**
-   - Use `remember` and `mutableStateOf`
-   - Use a `ViewModel` for complex logic
-   - Use `LaunchedEffect` for side effects
+- Prefer composition over inheritance.
+- Build reusable components.
+- Keep composable functions small.
 
-3. **Performance**
-   - Avoid unnecessary recompositions
-   - Use `remember` and `derivedStateOf`
-   - Use `key` in lists
+### State management
+
+- Use `remember` and `mutableStateOf`.
+- Use a `ViewModel` for complex logic.
+- Use `LaunchedEffect` for side effects.
+
+### Performance
+
+- Avoid unnecessary recompositions.
+- Use `remember` and `derivedStateOf`.
+- Use `key` in lists.
 
 ## Testing
 
@@ -178,12 +181,4 @@ fun testGreeting() {
 
 ## Benefits of Compose
 
-- **More concise, readable code**
-- **Less boilerplate code**
-- **Better state management**
-- **Real-time preview**
-- **Material Design 3 integration**
-
-## Conclusion
-
-Jetpack Compose represents a significant shift in how user interfaces are built on Android. Its declarative approach and its integration with Kotlin make it a powerful tool for modern Android app development.
+With Compose the code is more concise and readable, with less boilerplate. State is easier to manage, you get a real-time preview, and it integrates with Material Design 3. Its declarative approach and its Kotlin integration change quite a bit about how interfaces are built on Android.

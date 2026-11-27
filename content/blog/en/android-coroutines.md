@@ -1,14 +1,14 @@
 # Coroutines on Android: Modern Asynchronous Programming
 
-Kotlin coroutines are a powerful tool for handling asynchronous operations on Android. In this article, we'll explore how to use them effectively in Android app development.
+Kotlin coroutines handle asynchronous operations on Android. In this article I go over the basic concepts, some common patterns, how they work with ViewModel and Room, and how to test them.
 
-## What Are Coroutines?
+## What are coroutines?
 
-Coroutines are a form of asynchronous programming that lets you write sequential code for asynchronous operations. On Android, they're especially useful for handling network operations, database access, and other tasks that shouldn't block the main thread.
+With coroutines you write sequential code for asynchronous operations. On Android they're mostly useful for network calls, database access and other tasks that shouldn't block the main thread.
 
-## Basic Concepts
+## Basic concepts
 
-### 1. Scope and Context
+### 1. Scope and context
 ```kotlin
 class MyViewModel : ViewModel() {
     // ViewModel-specific scope
@@ -35,9 +35,9 @@ class Repository {
 }
 ```
 
-## Common Patterns
+## Common patterns
 
-### 1. Error Handling
+### 1. Error handling
 ```kotlin
 class UserRepository {
     suspend fun getUser(id: String): Result<User> = try {
@@ -62,7 +62,7 @@ viewModelScope.launch {
 }
 ```
 
-### 2. Parallel Operations
+### 2. Parallel operations
 ```kotlin
 class DataManager {
     suspend fun loadData() = coroutineScope {
@@ -75,7 +75,7 @@ class DataManager {
 }
 ```
 
-## Android Integration
+## Android integration
 
 ### 1. ViewModel
 ```kotlin
@@ -97,7 +97,7 @@ class UserViewModel(
 }
 ```
 
-### 2. Room Database
+### 2. Room database
 ```kotlin
 @Dao
 interface UserDao {
@@ -117,22 +117,25 @@ class UserRepository(
 }
 ```
 
-## Best Practices
+## Best practices
 
-1. **Appropriate scopes**
-   - Use `viewModelScope` in ViewModels
-   - Use `lifecycleScope` in Activities/Fragments
-   - Create custom scopes when needed
+### Scopes
 
-2. **Error handling**
-   - Use try-catch for critical operations
-   - Use `Result` to wrap results
-   - Handle network errors specifically
+- Use `viewModelScope` in ViewModels.
+- Use `lifecycleScope` in Activities/Fragments.
+- Create custom scopes only when you need them.
 
-3. **Performance**
-   - Choose the right dispatcher
-   - Avoid blocking operations
-   - Use `withContext` to switch contexts
+### Error handling
+
+- Wrap critical operations in try-catch.
+- Use `Result` to wrap results.
+- Handle network errors separately.
+
+### Performance
+
+- Choose the right dispatcher.
+- Avoid blocking operations.
+- Use `withContext` to switch contexts.
 
 ## Testing
 
@@ -154,14 +157,6 @@ fun testUserLoading() = runTest {
 }
 ```
 
-## Benefits of Coroutines
+## Benefits of coroutines
 
-- **More readable, maintainable code**
-- **Better error handling**
-- **Integration with other Kotlin APIs**
-- **Less boilerplate code**
-- **Better lifecycle control**
-
-## Conclusion
-
-Coroutines are an essential tool for modern Android development. Their ability to handle asynchronous operations elegantly and efficiently makes them the preferred choice for asynchronous programming in Kotlin.
+The code is more readable and easier to maintain, with less boilerplate. Error handling is clearer, they integrate with other Kotlin APIs, and scopes like `viewModelScope` give you better lifecycle control.

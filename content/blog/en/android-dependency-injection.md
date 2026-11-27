@@ -1,12 +1,12 @@
 # Dependency Injection on Android with Hilt
 
-Dependency injection is a fundamental technique in modern Android app development. In this article, we'll explore how to implement DI using Hilt, Google's official solution.
+Dependency injection (DI) is a widely used technique in current Android apps. Here I explain how to implement it with Hilt, Google's official solution: setup, modules, ViewModels and tests.
 
-## What Is Dependency Injection?
+## What is dependency injection?
 
-Dependency injection is a design pattern that lets you build loosely coupled components, making code easier to test and maintain. Hilt is a library that simplifies implementing DI on Android.
+It's a design pattern for building loosely coupled components, which makes code easier to test and maintain. Hilt is a library that simplifies implementing DI on Android.
 
-## Basic Setup
+## Basic setup
 
 ### 1. Dependencies
 ```gradle
@@ -29,7 +29,7 @@ dependencies {
 class MyApplication : Application()
 ```
 
-## Main Components
+## Main components
 
 ### 1. Modules
 ```kotlin
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-## Advanced Patterns
+## Advanced patterns
 
 ### 1. Injecting into ViewModels
 ```kotlin
@@ -82,7 +82,7 @@ class UserViewModel @Inject constructor(
 }
 ```
 
-### 2. Custom Modules
+### 2. Custom modules
 ```kotlin
 @Module
 @InstallIn(ActivityComponent::class)
@@ -98,7 +98,7 @@ object UserModule {
 
 ## Testing
 
-### 1. Test Setup
+### 1. Test setup
 ```kotlin
 @HiltAndroidTest
 class UserRepositoryTest {
@@ -115,7 +115,7 @@ class UserRepositoryTest {
 }
 ```
 
-### 2. Test Modules
+### 2. Test modules
 ```kotlin
 @Module
 @TestInstallIn(
@@ -131,24 +131,27 @@ object TestAppModule {
 }
 ```
 
-## Best Practices
+## Best practices
 
-1. **Module structure**
-   - Split modules by feature
-   - Use appropriate scopes
-   - Keep modules small and focused
+### Module structure
 
-2. **Dependency injection**
-   - Inject at the highest possible level
-   - Use constructor injection whenever possible
-   - Avoid dependency injection in UI classes
+- Split modules by feature.
+- Use appropriate scopes.
+- Keep modules small and focused.
 
-3. **Testing**
-   - Create dedicated test modules
-   - Use fakes or mocks as needed
-   - Keep tests independent
+### Injection
 
-## Usage Examples
+- Inject at the highest possible level.
+- Use constructor injection whenever you can.
+- Avoid dependency injection in UI classes.
+
+### Tests
+
+- Create dedicated test modules.
+- Use fakes or mocks as needed.
+- Keep tests independent of each other.
+
+## Usage examples
 
 ### 1. Injecting into a Service
 ```kotlin
@@ -173,12 +176,4 @@ class MyWorker @AssistedInject constructor(
 
 ## Benefits of Hilt
 
-- **Android integration**
-- **Minimal setup**
-- **Testing support**
-- **ViewModel integration**
-- **Official documentation**
-
-## Conclusion
-
-Hilt provides a robust, easy-to-use solution for dependency injection on Android. Its integration with the Android ecosystem and its testing support make it the preferred choice for modern projects.
+Hilt integrates with Android and with ViewModel, needs minimal setup, comes with testing support and has official documentation. It's easy to use, and its integration with the Android ecosystem and its testing support make it the preferred choice for current projects.

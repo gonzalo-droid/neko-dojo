@@ -1,16 +1,16 @@
 # MVVM Architecture on Android
 
-The MVVM (Model-View-ViewModel) pattern is one of the most popular architectures in modern Android app development. In this article, we'll explore how to implement MVVM correctly.
+MVVM (Model-View-ViewModel) is one of the most widely used architectures on Android. Here I explain how to implement it with StateFlow, Compose and Hilt, and how to test the ViewModel.
 
-## What Is MVVM?
+## What is MVVM?
 
-MVVM is an architectural pattern that separates presentation logic from business logic and the user interface. Its main components are:
+MVVM is a pattern that separates presentation logic from business logic and from the user interface. It has three components:
 
-- **Model**: Represents the data and business logic
-- **View**: The user interface
-- **ViewModel**: Handles presentation logic and UI state
+- Model: the data and business logic.
+- View: the user interface.
+- ViewModel: presentation logic and UI state.
 
-## Basic Implementation
+## Basic implementation
 
 ### 1. Model
 ```kotlin
@@ -77,24 +77,27 @@ fun UserScreen(
 }
 ```
 
-## Best Practices
+## Best practices
 
-1. **State management**
-   - Use StateFlow for observable state
-   - Implement UI states (loading, error, success)
-   - Handle configuration changes
+### State management
 
-2. **Dependency injection**
-   - Use Hilt for injection
-   - Provide ViewModels through ViewModelProvider
-   - Keep dependencies testable
+- Use StateFlow for observable state.
+- Define UI states (loading, error, success).
+- Handle configuration changes.
 
-3. **Testing**
-   - Unit tests for ViewModels
-   - Integration tests for repositories
-   - UI tests with Compose
+### Dependency injection
 
-## Testing Example
+- Use Hilt for injection.
+- Provide ViewModels through ViewModelProvider.
+- Keep dependencies easy to test.
+
+### Testing
+
+- Unit tests for ViewModels.
+- Integration tests for repositories.
+- UI tests with Compose.
+
+## Testing example
 
 ```kotlin
 @Test
@@ -117,12 +120,4 @@ fun `test user loading`() = runTest {
 
 ## Benefits of MVVM
 
-- **Separation of concerns**
-- **Improved testability**
-- **Code maintainability**
-- **Component reuse**
-- **Simpler lifecycle**
-
-## Conclusion
-
-MVVM is a robust, flexible architecture that fits the needs of modern Android development well. With the right tools and by following best practices, you can build maintainable, scalable apps.
+Each layer has one responsibility, so the code is easier to test and maintain, and components can be reused. Because state lives in the ViewModel, the screen's lifecycle is also simpler to handle.

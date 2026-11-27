@@ -1,16 +1,12 @@
 # Integrating AI into Android Apps
 
-Integrating artificial intelligence into Android apps has become increasingly accessible and powerful. In this article, we'll explore how to bring AI into your Android apps.
+Here I go over three ways to add artificial intelligence to an Android app (ML Kit, the OpenAI API and TensorFlow Lite), with a code example for each, plus some practices and use cases.
 
-## Why Integrate AI into Android?
+## Why integrate AI into Android?
 
-AI can significantly improve the user experience and add advanced features to your app:
-- Natural language processing
-- Image recognition
-- Personalized recommendations
-- Task automation
+With AI, an app can process natural language, recognize images, make personalized recommendations and automate tasks.
 
-## Integration Options
+## Integration options
 
 ### 1. ML Kit
 ```kotlin
@@ -77,40 +73,22 @@ class ImageClassifier(private val context: Context) {
 }
 ```
 
-## Best Practices
+## Best practices
 
-1. **Resource optimization**
-   - Use lightweight models
-   - Implement lazy loading
-   - Handle the lifecycle
+### Resource optimization
 
-2. **User experience**
-   - Provide visual feedback
-   - Handle errors gracefully
-   - Offer offline alternatives
+Use lightweight models, load them lazily and handle the lifecycle properly.
 
-3. **Privacy and security**
-   - Process sensitive data locally
-   - Implement encryption
-   - Respect privacy policies
+### User experience
 
-## Common Use Cases
+Show visual feedback, handle errors without breaking the experience and offer offline alternatives.
 
-1. **Text processing**
-   - Translation
-   - Content summarization
-   - Sentiment analysis
+### Privacy and security
 
-2. **Image processing**
-   - Object recognition
-   - Image classification
-   - Smart filters
+Process sensitive data on the device, use encryption and respect privacy policies.
 
-3. **Recommendations**
-   - Personalized content
-   - Product suggestions
-   - Behavior prediction
+## Common use cases
 
-## Conclusion
-
-Integrating AI into Android apps opens up a world of possibilities for improving the user experience and adding advanced features. With the right tools and by following best practices, you can build smarter, more useful apps.
+- Text: translation, content summarization and sentiment analysis.
+- Images: object recognition, image classification and smart filters.
+- Recommendations: personalized content, product suggestions and behavior prediction.

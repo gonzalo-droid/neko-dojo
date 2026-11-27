@@ -1,14 +1,14 @@
 # Arquitectura MVVM en Android
 
-El patrón MVVM (Model-View-ViewModel) es una de las arquitecturas más populares en el desarrollo de aplicaciones Android modernas. En este artículo, exploraremos cómo implementar MVVM correctamente.
+MVVM (Model-View-ViewModel) es una de las arquitecturas más usadas en Android. Aquí explico cómo implementarlo con StateFlow, Compose y Hilt, y cómo probar el ViewModel.
 
 ## ¿Qué es MVVM?
 
-MVVM es un patrón arquitectónico que separa la lógica de presentación de la lógica de negocio y la interfaz de usuario. Sus componentes principales son:
+MVVM es un patrón que separa la lógica de presentación de la lógica de negocio y de la interfaz de usuario. Tiene tres componentes:
 
-- **Model**: Representa los datos y la lógica de negocio
-- **View**: La interfaz de usuario
-- **ViewModel**: Maneja la lógica de presentación y el estado de la UI
+- Model: los datos y la lógica de negocio.
+- View: la interfaz de usuario.
+- ViewModel: la lógica de presentación y el estado de la UI.
 
 ## Implementación básica
 
@@ -77,22 +77,25 @@ fun UserScreen(
 }
 ```
 
-## Mejores prácticas
+## Buenas prácticas
 
-1. **Manejo de estado**
-   - Usar StateFlow para estado observable
-   - Implementar estados de UI (loading, error, success)
-   - Manejar la configuración de cambios
+### Manejo de estado
 
-2. **Inyección de dependencias**
-   - Usar Hilt para inyección
-   - Proporcionar ViewModels a través de ViewModelProvider
-   - Mantener las dependencias testables
+- Usa StateFlow para el estado observable.
+- Define estados de UI (loading, error, success).
+- Maneja los cambios de configuración.
 
-3. **Testing**
-   - Pruebas unitarias para ViewModels
-   - Pruebas de integración para repositorios
-   - Pruebas de UI con Compose
+### Inyección de dependencias
+
+- Usa Hilt para la inyección.
+- Entrega los ViewModels a través de ViewModelProvider.
+- Mantén las dependencias fáciles de probar.
+
+### Testing
+
+- Pruebas unitarias para los ViewModels.
+- Pruebas de integración para los repositorios.
+- Pruebas de UI con Compose.
 
 ## Ejemplo de testing
 
@@ -117,12 +120,4 @@ fun `test user loading`() = runTest {
 
 ## Ventajas de MVVM
 
-- **Separación de responsabilidades**
-- **Testabilidad mejorada**
-- **Mantenibilidad del código**
-- **Reutilización de componentes**
-- **Ciclo de vida más simple**
-
-## Conclusión
-
-MVVM es una arquitectura robusta y flexible que se adapta bien a las necesidades modernas del desarrollo Android. Con las herramientas adecuadas y siguiendo las mejores prácticas, puedes crear aplicaciones mantenibles y escalables. 
+Cada capa tiene una sola responsabilidad, así que el código es más fácil de probar y de mantener, y los componentes se pueden reutilizar. Como el estado vive en el ViewModel, el ciclo de vida de la pantalla también se vuelve más simple de manejar.
