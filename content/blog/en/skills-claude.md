@@ -1,10 +1,10 @@
 # What a Claude skill is, how to create one and which ones I use
 
-When you repeat the same task with Claude (making a reel, reviewing a text, preparing the week's news), you end up explaining the same thing over and over. A **skill** solves that: it is a manual Claude reads only when it needs it. Here I explain what it is, how to create your own and which ones I use for the studio and my brands.
+When you repeat the same task with Claude (making a reel, reviewing a text, preparing the week's news), you end up explaining the same thing over and over. A skill solves that: it is a manual Claude reads only when it needs it.
 
 ## What a skill is
 
-A skill is a **folder** with a main file, `SKILL.md`, and optionally scripts, templates and reference documents:
+A skill is a folder with a main file, `SKILL.md`, and optionally scripts, templates and reference documents:
 
 ```text
 reels-motion/
@@ -29,25 +29,23 @@ description: "Designs and generates Instagram carousels ready to upload…
 
 ## How Claude uses it
 
-The important part is that **Claude does not read every skill all the time**:
+Claude does not read every skill all the time:
 
-1. At the start, Claude only sees each skill's **name and description**.
+1. At the start, it only sees each skill's name and description.
 2. When your request matches a description, it opens that `SKILL.md` and follows its instructions.
 3. It opens files in `references/` or `scripts/` only when a step needs them.
 
-That is why you can have many skills without overloading Claude, and why **the description is the most important part**: if it does not say when to use the skill, Claude will not use it.
+That is why you can have many skills without overloading Claude. It is also why the description needs the most care: if it does not say when to use the skill, Claude will not use it.
 
-## Skill, prompt and project: the difference
+## How it differs from a prompt or a project
 
-- A **prompt** works for one conversation.
-- A **project's instructions** or a `CLAUDE.md` always apply inside that project.
-- A **skill** turns on by itself when the task matches, in any conversation, and can bring its own scripts and files.
+A prompt works for one conversation. A project's instructions, or a `CLAUDE.md`, always apply inside that project. A skill turns on by itself in any conversation when the task matches, and it can bring its own scripts and files.
 
 ## How to create a skill
 
 ### Option 1: with the `skill-creator` skill
 
-Claude has a skill for creating skills. The process it follows:
+Claude has a skill for creating skills, and it works like this:
 
 1. It asks what the skill should do and how.
 2. It writes a first draft.
@@ -59,7 +57,7 @@ Just ask: *"Create a skill to make Instagram carousels for my brands"*.
 
 ### Option 2: from something that already worked
 
-This is the way I use most. First I do the task with Claude step by step, correcting whatever needs it. When I like the result, I ask: *"Save this whole process as a skill"*. That way the skill comes from a tested workflow, not from an abstract idea.
+This is the way I use most. First I do the task with Claude step by step, correcting whatever needs it. When I like the result, I ask: *"Save this whole process as a skill"*. That way the skill copies a workflow that has worked at least once.
 
 ### Where they live
 
@@ -67,17 +65,17 @@ Skills are saved in your claude.ai account, in the skills section of the setting
 
 ## Tips for writing a good skill
 
-- **A description with trigger phrases.** Include how you would ask for it: *"Use it EVERY time I ask for reels, short videos or 'another reel like the previous ones'"*.
-- **A "what is where" table** at the top: profiles, templates, guides and scripts.
-- **The workflow in numbered steps**, with the points where Claude must wait for your approval.
-- **Non-negotiable rules** written plainly: for example, "do not make up figures or testimonials".
-- **A section of mistakes already made.** Every time something breaks, it gets written down there with the fix.
-- **Data in separate files** (colors, logos, contacts), not mixed with the instructions, so you can change them without touching the rest.
-- **Never store keys** inside the skill. They go in as environment secrets.
+- In the description, write the phrases you would use to ask for it: *"Use it EVERY time I ask for reels, short videos or 'another reel like the previous ones'"*.
+- At the top, add a table of which file is where: profiles, templates, guides and scripts.
+- Write the workflow as numbered steps and mark where Claude must wait for your approval.
+- Write the non-negotiable rules as they are, for example "do not make up figures or testimonials".
+- Keep a section of mistakes. Every time something breaks, you write it down there with the fix.
+- Put the data (colors, logos, contacts) in separate files so you can change it without touching the instructions.
+- Never store keys inside the skill. They go in as environment secrets.
 
 ## The skills I use
 
-**Built for my brands**
+### Built for my brands
 
 | Skill | What for |
 | --- | --- |
@@ -88,12 +86,12 @@ Skills are saved in your claude.ai account, in the skills section of the setting
 | `animequote-frases` | Finds and checks anime quotes for AnimeQuote against two sources. |
 | `morning` | My morning brief. |
 
-**General purpose**
+### General purpose
 
-- **Documents**: `docx` (Word), `pdf`, `pptx` (PowerPoint), `xlsx` (Excel), `google-workspace` and `docs`.
-- **Research**: `deep-research`, for reports drawing on many sources.
-- **Browser and computer**: `chrome-browser`, `built-in-browser` and `computer-use`.
-- **Utilities**: `skill-creator` (create and improve skills) and `import-memory`.
+- Documents: `docx` (Word), `pdf`, `pptx` (PowerPoint), `xlsx` (Excel), `google-workspace` and `docs`.
+- Research: `deep-research`, for reports drawing on many sources.
+- Browser and computer: `chrome-browser`, `built-in-browser` and `computer-use`.
+- Utilities: `skill-creator` (create and improve skills) and `import-memory`.
 
 ## Where to start
 
